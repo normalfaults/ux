@@ -1,0 +1,179 @@
+<div class="add-project-page main-content left-184" fix-sidebar set-width>
+    <ng-include src="'/partials/common/solution-search.html'"></ng-include>
+
+    <div class="contents">
+        <hr class="shadow-top">
+
+        <div class="titles-box">
+            <h2>
+                <span class="icon-projects"><i></i></span>
+                <strong class="orange-texts">ADD PROJECT DETAILS</strong>
+            </h2>
+            <div class="titles-border-bar">
+                <span class="blues width218"></span>
+                <span class="whites width3"></span>
+            </div>
+        </div>
+        <!-- end .titles-box -->
+
+        <div class="app-project-box">
+            <div class="app-project">
+                <div class="col40">
+                    <div class="icon-boxes icon-boxes-2">
+                        <a href="javascript:;"><img src="/i/assets/projects/1.png"></a>
+                    </div>
+                    <h3>COMPANY APP PROJECT</h3>
+                    <p><a href="http://companyapp.clouddealer.com">companyapp.clouddealer.com</a></p>
+                    <div class="bottom-icons-box">
+                        <div class="ok-state fl">
+                            <span class="icon-green-ok"></span>
+                            <span class="texts">Running</span>
+                        </div>
+                        <div class="icons-gray-box fl">
+                            <a href="javascript:;" class="icon-chart"></a>
+                            <a href="javascript:;" class="icon-detailed"></a>
+                            <a href="javascript:;" class="icon-reload"></a>
+                            <a href="javascript:;" class="icon-set"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col21">
+                    <h4>
+                        <span>Account Number</span><br/>
+                        <span>78564</span>
+                    </h4>
+                </div>
+                <div class="col20">
+                    <p>Budget</p>
+                    <div class="price">$ 15.000,00</div>
+                </div>
+                <div class="col18">
+                    <p>Resources</p>
+                    <div class="size">256 MB</div>
+                </div>
+            </div>
+        </div>
+        <!-- end .app-project-box -->
+
+        <div class="table-container table-box">
+            <table class="table-data">
+                <colgroup>
+                    <col class="col40">
+                    <col>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <td class="left-text">Requestor Name</td>
+                    <td class="min-value">
+                         <span class="input-box">
+                          <input name="" type="text">
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Requestor Date</td>
+                    <td class="min-value">
+                          <span class="calendar">
+                           <input name="from-date" type="text" class="from-date" readonly datepicker />
+                           <a href="javascript:;" class="date-icon"><span>calendar</span></a>
+                          </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Team Name</td>
+                    <td class="min-value">
+                          <span class="input-box">
+                            <input name="" type="text">
+                          </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Project Name</td>
+                    <td class="min-value">
+                          <span class="input-box">
+                            <input name="" type="text">
+                          </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Charge Number</td>
+                    <td class="min-value">
+                          <span class="input-box">
+                            <input name="" type="text">
+                          </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">NTE budget</td>
+                    <td class="min-value">
+                          <span class="input-box">
+                            <input name="" type="text">
+                          </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Project Owner</td>
+                    <td class="min-value">
+                          <span class="selectsContainer form-container" jqtransform>
+                          <select class="select-def">
+                              <option ng-repeat="item in projectValues.owners" value="{{item.value}}">{{item.name}}</option>
+                          </select>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Sr. Associate</td>
+                    <td class="min-value">
+                          <span class="selectsContainer form-container" jqtransform>
+                          <select class="select-def">
+                              <option ng-repeat="item in projectValues.associates" value="{{item.value}}">{{item.name}}</option>
+                          </select>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Principal</td>
+                    <td class="min-value">
+                          <span class="selectsContainer form-container" jqtransform>
+                          <select class="select-def">
+                              <option ng-repeat="item in projectValues.principals" value="{{item.value}}">{{item.name}}</option>
+                          </select>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Estimated Project Termination Date</td>
+                    <td class="min-value">
+                          <span class="input-box">
+                            <input name="" type="text">
+                          </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Data Type</td>
+                    <td class="min-value">
+                          <span class="selectsContainer form-container" jqtransform>
+                          <select class="select-def">
+                              <option ng-repeat="item in projectValues.dataTypes" value="{{item.value}}">{{item.name}}</option>
+                          </select>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Others</td>
+                    <td class="min-value">
+                          <span class="input-box">
+                            <input name="" type="text">
+                          </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <a href="javascript:;" class="blue-btn height30 font12">SUBMIT</a>
+        </div>
+        <!-- end .table-box -->
+    </div>
+    <!-- end .main-content -->
+
+    <span class="clearfix"></span>
+</div>

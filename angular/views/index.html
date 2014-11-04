@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<!--
+    Copyright (C) 2014 TopCoder Inc., All Rights Reserved.
+
+    Main html page for angular app.
+    @version 1.0
+    @author Sky_
+-->
+
+<html ng-app="broker">
+<head>
+<!-- Meta Tags -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>Dashboard Cloud Dealer</title>
+
+  <link href="/css/font.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="/css/jqtransform.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="/css/jquery.ui.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="/css/screen.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="/css/jquery-ui-1.9.2.tooltip.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="/bower_components/angular-loading-bar/build/loading-bar.min.css" type="text/css" rel="stylesheet" media="screen" />
+
+</head>
+<body>
+  <div class="dashboard-pages" ng-cloak>
+    <ng-include src="'/partials/common/header.html'"></ng-include>
+
+    <ui-view></ui-view>
+
+
+    <footer>
+      <div class="container">
+        <div class="left fl">
+          <strong>CloudDealer</strong>
+          <span>Copyright &copy; 2014 clouddealer. All Rights Reserved.</span>
+        </div>
+        <!-- end .left --> 
+        <div class="right fr">
+          <nav class="links">
+            <a href="javascript:;">ABOUT US</a>
+            <a href="javascript:;">PRODUCT &amp; SOLUTION</a>
+            <a href="javascript:;">SUPPORT</a>
+            <a href="javascript:;">CONTACT</a>
+          </nav>
+          <!-- end .links -->
+          <div class="shape">
+            <a href="javascript:;" class="fb"></a>
+            <a href="javascript:;" class="tw"></a>
+            <a href="javascript:;" class="in"></a>
+            <a href="javascript:;" class="gg"></a>   
+          </div>
+          <!-- end .shape -->
+        </div> 
+        <!-- end .right -->   
+      </div>
+    </footer>
+    <!-- end footer -->
+  </div>
+
+
+  <script src="/bower_components/angular/angular.min.js" type="text/javascript"></script>
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js" type="text/javascript"></script>
+  <script src="/bower_components/angular-resource/angular-resource.min.js" type="text/javascript"></script>
+  <script src="/bower_components/angular-animate/angular-animate.min.js" type="text/javascript"></script>
+  <script src="/bower_components/angular-loading-bar/build/loading-bar.min.js" type="text/javascript"></script>
+  <script src="/bower_components/angular-gravatar/build/md5.js"></script>
+  <script src="/bower_components/angular-gravatar/build/angular-gravatar.js"></script>
+
+  <script src="/libs/jquery-1.7.2.min.js" type="text/javascript"></script>
+  <script src="/libs/jquery.cookie.js" type="text/javascript"></script>
+  <script src="/libs/jquery.knob.js" type="text/javascript"></script>
+  <script src="/libs/jquery.jqtransform.js" type="text/javascript"></script>
+  <script src="/libs/jquery.ui.core.js" type="text/javascript"></script>
+  <script src="/libs/jquery.ui.datepicker.js" type="text/javascript"></script>
+  <script src="/libs/jquery-ui-1.9.2.tooltip.js" type="text/javascript"></script>
+  <script src="/js/app.js" type="text/javascript"></script>
+  <script src="/js/controllers.js" type="text/javascript"></script>
+  <script src="/js/directives.js" type="text/javascript"></script>
+  <script src="/js/factories.js" type="text/javascript"></script>
+
+</body>
+</html>
