@@ -1,3 +1,10 @@
+# You should never run a node app as root (port 80 or 443)
+# so let's run this through a reverse proxy with apache (will make setting
+# up SSL so much easier) too.
+#
+# Also, on RHEL/CentOS (with SELinux enabled) run this:
+# /usr/sbin/setsebool httpd_can_network_connect 1
+
 <VirtualHost *:80>
     ServerAdmin noreply@jellyfish-ux-test.dpi.bah.com
     ServerName jellyfish-ux-test.dpi.bah.com
