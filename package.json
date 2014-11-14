@@ -4,10 +4,11 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-  	"start": "node app"
+    "start": "node app"
   },
   "author": "Sky_",
   "license": "All rights reserved",
+  "repository": {},
   "dependencies": {
     "async": "^0.9.0",
     "body-parser": "~1.6.6",
@@ -16,6 +17,111 @@
     "ejs": "~1.0.0",
     "express": "^3.4.8",
     "underscore": "~1.7.0",
-    "winston": "^0.7.3"
+    "winston": "^0.7.3",
+    "browserify": "^6.2.0",
+    "browserify-ngannotate": "^0.2.0",
+    "browserify-shim": "^3.8.0",
+    "gulp": "^3.8.9",
+    "gulp-angular-templatecache": "^1.4.2",
+    "gulp-autoprefixer": "^1.0.1",
+    "gulp-bower": "0.0.7",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.4.1",
+    "gulp-filter": "^1.0.2",
+    "gulp-imagemin": "^1.2.1",
+    "gulp-jshint": "^1.8.6",
+    "gulp-notify": "^2.0.0",
+    "gulp-plumber": "^0.6.6",
+    "gulp-ruby-sass": "^0.7.1",
+    "gulp-uglify": "^1.0.1",
+    "gulp-unpathify": "^0.1.1",
+    "gulp-util": "^3.0.1",
+    "gulp-watch": "^1.1.0",
+    "jshint-stylish-recolor": "^0.2.0-a",
+    "vinyl-transform": "0.0.1"
+  },
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "browserify-ngannotate"
+    ]
+  },
+  "browserify-shim": {
+    "jQuery": "$",
+    "jquery-ui": {
+      "depends": [
+        "jQuery"
+      ]
+    },
+    "jquery-knob": {
+      "depends": [
+        "jQuery"
+      ]
+    },
+    "jquery-cookie": {
+      "depends": [
+        "jQuery"
+      ]
+    },
+    "lodash": "_",
+    "angular": {
+      "depends": [
+        "jQuery"
+      ],
+      "exports": "angular"
+    },
+    "angular-animate": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ngAnimate').name"
+    },
+    "angular-ui-router": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ui.route').name"
+    },
+    "angular-resource": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ngResource').name"
+    },
+    "angular-bootstrap": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ui.bootstrap').name"
+    },
+    "angular-loading-bar": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('cfp.loadingBar').name"
+    },
+    "angular-gravatar": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ui.gravatar').name"
+    }
+  },
+  "browser": {
+    "jQuery": "./bower_components/jquery/dist/jquery.js",
+    "jquery-ui": "./bower_components/jquery-ui/jquery-ui.js",
+    "jquery-knob": "./bower_components/jquery-knob/js/jquery-knob.js",
+    "jquery-cookie": "./bower_components/jquery-cookie/jquery.cookie.js",
+    "angular": "./bower_components/angular/angular.js",
+    "angular-animate": "./bower_components/angular-animate/angular-animate.js",
+    "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
+    "angular-resource": "./bower_components/angular-resource/angular-resource.js",
+    "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
+    "angular-loading-bar": "./bower_components/angular-loading-bar/build/loading-bar.js",
+    "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
+    "lodash": "./bower_components/lodash/dist/lodash.js"
+  },
+  "devDependencies": {
+    "gulp-concat": "^2.4.1"
   }
 }

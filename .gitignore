@@ -1,0 +1,8 @@
+# ignore IDE
+.idea
+
+# ignore bower
+bower_components
+
+# ignore node modules
+node_modules
