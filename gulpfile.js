@@ -3,6 +3,7 @@ var gulp = require('gulp'),
   concat = require('gulp-concat'),
   plumber = require('gulp-plumber'),
   bower = require('gulp-bower'),
+  server = require( 'gulp-develop-server' );
 
 // JS Hint
   jshint = require('gulp-jshint'),
@@ -146,6 +147,17 @@ gulp.task('icons', ['bower'], function() {
 gulp.task('theme', ['bower'], function() {
   return gulp.src([paths.src.theme+'jquery-ui.min.css', paths.src.theme+'images/**/*'], {base: paths.src.theme})
     .pipe(gulp.dest(paths.dest.styles));
+});
+
+
+// run server
+gulp.task( 'server:start', function() {
+  server.listen( { path: './app.js' } );
+});
+
+// restart server if app.js changed
+gulp.task( 'server:restart', function() {
+  gulp.watch( [ './app.js' ], server.restart );
 });
 
 gulp.task('watch', function() {

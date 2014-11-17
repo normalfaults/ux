@@ -122,6 +122,8 @@
     "lodash": "./bower_components/lodash/dist/lodash.js"
   },
   "devDependencies": {
-    "gulp-concat": "^2.4.1"
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.1",
+    "gulp-develop-server": "^0.2.5"
   }
 }
