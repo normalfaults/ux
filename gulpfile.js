@@ -43,7 +43,7 @@ var appAssetSrc = 'assets',
       scripts: ['./' + appAssetSrc + '/javascripts/main.js'],
       templates: [appAssetSrc + '/templates/**/*.html'],
       styles: [
-        appAssetSrc + '/stylesheets/styles.sass'
+        appAssetSrc + '/sass/styles.sass'
       ],
       images: [
         appAssetSrc + '/images/**/*'
@@ -55,7 +55,7 @@ var appAssetSrc = 'assets',
     dest: {
       scripts: appAssetDest + '/javascripts',
       templates: appAssetDest + '/javascripts',
-      styles: appAssetDest + '/stylesheets',
+      styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
       fonts: appAssetDest + '/fonts'
     }
@@ -167,7 +167,7 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/templates/**/*.html', ['templates']);
 
   // watches Sass files for changes
-  gulp.watch(appAssetSrc + '/stylesheets/**/*.s?ss', ['styles']);
+  gulp.watch(appAssetSrc + '/sass/**/*.s?ss', ['styles']);
 
   // watches Image files for changes
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
