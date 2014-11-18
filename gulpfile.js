@@ -40,7 +40,7 @@ var appAssetSrc = 'assets',
   theme = 'pepper-grinder',
   paths = {
     src: {
-      scripts: ['./' + appAssetSrc + '/javascripts/main.js'],
+      scripts: ['./' + appAssetSrc + '/js/main.js'],
       templates: [appAssetSrc + '/templates/**/*.html'],
       styles: [
         appAssetSrc + '/sass/styles.sass'
@@ -53,8 +53,8 @@ var appAssetSrc = 'assets',
     },
     bower: bowerPath,
     dest: {
-      scripts: appAssetDest + '/javascripts',
-      templates: appAssetDest + '/javascripts',
+      scripts: appAssetDest + '/js',
+      templates: appAssetDest + '/js',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
       fonts: appAssetDest + '/fonts'
@@ -67,9 +67,9 @@ gulp.task('bower', function() {
 });
 
 gulp.task('jshint', ['bower'], function() {
-  var jsFilter = filter(['*', '!' + appAssetSrc + '/javascripts/vendor']);
+  var jsFilter = filter(['*', '!' + appAssetSrc + '/js/vendor']);
 
-  return gulp.src(appAssetSrc + '/javascripts/**/*.js')
+  return gulp.src(appAssetSrc + '/js/**/*.js')
     .pipe(plumber({
       errorHandler: errorHandler
     }))
@@ -129,7 +129,7 @@ gulp.task('images', ['bower'], function() {
     .pipe(plumber({
       errorHandler: errorHandler
     }))
-    .pipe(imagemin({optimizationLevel: 5, progressive: true, interlaced: true}))
+    .pipe(imagemin({optimizationLevel: 7, progressive: true, interlaced: true}))
     .pipe(gulp.dest(paths.dest.images))
     .pipe(notify({message: 'Finished images task.'}));
 });
@@ -161,7 +161,7 @@ gulp.task( 'server:restart', function() {
 
 gulp.task('watch', function() {
   // watches JavaScript files for changes
-  gulp.watch(appAssetSrc + '/javascripts/**/*.js', ['jshint', 'scripts']);
+  gulp.watch(appAssetSrc + '/js/**/*.js', ['jshint', 'scripts']);
 
   // Watch and recompile templates
   gulp.watch(appAssetSrc + '/templates/**/*.html', ['templates']);
