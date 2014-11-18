@@ -1,40 +1,40 @@
-var gulp = require('gulp'),
-  util = require('gulp-util'),
-  concat = require('gulp-concat'),
-  plumber = require('gulp-plumber'),
-  bower = require('gulp-bower'),
-  server = require( 'gulp-develop-server' );
+var gulp = require('gulp');
+var util = require('gulp-util');
+var concat = require('gulp-concat');
+var plumber = require('gulp-plumber');
+var bower = require('gulp-bower');
+var server = require( 'gulp-develop-server');
 
 // JS Hint
-  jshint = require('gulp-jshint'),
-  filter = require('gulp-filter'),
+var jshint = require('gulp-jshint');
+var filter = require('gulp-filter');
 
 // JavaScript
-  browserify = require('browserify'),
-  transform = require('vinyl-transform'),
-  unpathify = require('gulp-unpathify'),
-  uglify = require('gulp-uglify'),
+var browserify = require('browserify');
+var transform = require('vinyl-transform');
+var unpathify = require('gulp-unpathify');
+var uglify = require('gulp-uglify');
 
 // Templates
-  templates = require('gulp-angular-templatecache'),
+var templates = require('gulp-angular-templatecache');
 
 // CSS
-  sass = require('gulp-ruby-sass'),
-  autoprefix = require('gulp-autoprefixer'),
+var sass = require('gulp-ruby-sass');
+var autoprefix = require('gulp-autoprefixer');
 
 // Images
-  imagemin = require('gulp-imagemin'),
+var imagemin = require('gulp-imagemin');
 
 // Utils
-  clean = require('gulp-clean'),
-  notify = require('gulp-notify');
+var clean = require('gulp-clean');
+var notify = require('gulp-notify');
 
 var errorHandler = function(err) {
   util.log(util.colors.red('Error'), err.message);
   this.emit('end');
 };
 
-var appAssetSrc = 'src',
+var appAssetSrc = 'assets',
   appAssetDest = 'public',
   bowerPath = './bower_components',
   theme = 'pepper-grinder',
@@ -148,7 +148,6 @@ gulp.task('theme', ['bower'], function() {
   return gulp.src([paths.src.theme+'jquery-ui.min.css', paths.src.theme+'images/**/*'], {base: paths.src.theme})
     .pipe(gulp.dest(paths.dest.styles));
 });
-
 
 // run server
 gulp.task( 'server:start', function() {
