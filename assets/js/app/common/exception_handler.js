@@ -2,10 +2,10 @@
 
 var angular = require('angular');
 
-var module = angular.module('broker.common.exceptions', []);
+module.exports = angular.module('broker.common.exceptions', [])
 
 /**@ngInject*/
-module.config(function($provide) {
+  .config(function($provide) {
 
   /**@ngInject*/
   $provide.decorator("$exceptionHandler", function($delegate) {
@@ -16,4 +16,5 @@ module.config(function($provide) {
   });
 });
 
-module.exports = module;
+
+
