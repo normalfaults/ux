@@ -10,7 +10,7 @@
     "budget": 15000,
     "resources": 512,
     "resourcesUnit": "MB",
-    "icon": "/i/assets/projects/2.png",
+    "icon": "/public/images/assets/projects/2.png",
     "cpu": 6,
     "hdd": "42 GB",
     "ram": "4 GB",

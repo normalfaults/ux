@@ -117,7 +117,7 @@ angular
             restrict: 'A',
             link: function (scope, element) {
                 element.ready(function () {
-                    $(element).jqTransform({imgPath: '/i/forms/'});
+                    $(element).jqTransform({imgPath: '/public/images/forms/'});
                 });
             }
         };

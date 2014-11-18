@@ -5,7 +5,7 @@
     "url": "http://app4.clouddealer.com",
     "state": "Running",
     "stateOk": true,
-    "icon": "/i/assets/projects/4.png",
+    "icon": "/public/images/assets/projects/4.png",
     "resources": 400,
     "resourcesUnit": "MB",
     "services": [5,6,7]
