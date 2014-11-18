@@ -110,7 +110,7 @@ module.exports = angular.module('broker.directives', [])
       restrict: 'A',
       link: function(scope, element) {
         element.ready(function() {
-          $(element).jqTransform({imgPath: '/public/images/forms/'});
+          $(element).jqTransform({imgPath: '/images/forms/'});
         });
       }
     };

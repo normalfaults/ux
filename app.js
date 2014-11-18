@@ -34,7 +34,7 @@ app.set('views', path.join(__dirname, '/angular/views'));
 app.engine('html', ejs.renderFile);
 
 app.use(express.static(path.join(__dirname, 'angular')));
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, '')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 

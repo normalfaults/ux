@@ -80,7 +80,7 @@
       "depends": [
         "angular"
       ],
-      "exports": "angular.module('ui.route').name"
+      "exports": "angular.module('ui.router').name"
     },
     "angular-resource": {
       "depends": [
