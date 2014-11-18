@@ -40,6 +40,11 @@
     "jshint-stylish-recolor": "^0.2.0-a",
     "vinyl-transform": "0.0.1"
   },
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-concat": "^2.4.1",
+    "gulp-develop-server": "^0.2.5"
+  },
   "browserify": {
     "transform": [
       "browserify-shim",
@@ -102,10 +107,17 @@
     },
     "angular-gravatar": {
       "depends": [
-        "angular"
+        "angular",
+        "md5"
       ],
       "exports": "angular.module('ui.gravatar').name"
-    }
+    },
+    "md5": {
+      "depends": [
+        "angular-gravatar"
+      ],
+      "exports": "angular.module('md5').name"
+      }
   },
   "browser": {
     "jQuery": "./bower_components/jquery/dist/jquery.js",
@@ -119,11 +131,7 @@
     "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
     "angular-loading-bar": "./bower_components/angular-loading-bar/build/loading-bar.js",
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
+    "md5" : "./bower_components/angular-gravatar/build/md5.js",
     "lodash": "./bower_components/lodash/dist/lodash.js"
-  },
-  "devDependencies": {
-    "gulp": "^3.8.10",
-    "gulp-concat": "^2.4.1",
-    "gulp-develop-server": "^0.2.5"
   }
 }
