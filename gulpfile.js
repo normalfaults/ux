@@ -41,7 +41,8 @@ var appAssetSrc = 'assets',
   paths = {
     src: {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
-      templates: [appAssetSrc + '/templates/partials/**/*.html'],
+      partials: [appAssetSrc + '/templates/partials/**/*.html'],
+      views: [appAssetSrc + '/templates/views/**/*.html'],
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
@@ -54,7 +55,8 @@ var appAssetSrc = 'assets',
     bower: bowerPath,
     dest: {
       scripts: appAssetDest + '/js',
-      templates: appAssetDest + '/js',
+      partials: appAssetDest + '/js',
+      views: appAssetDest + '/views',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
       fonts: appAssetDest + '/fonts'
@@ -85,6 +87,20 @@ gulp.task('jshint', ['bower'], function() {
     .pipe(jsFilter.restore());
 });
 
+gulp.task('templates', ['bower'], function() {
+  // Copy over views
+  gulp.src(paths.src.views)
+    .pipe(gulp.dest(paths.dest.views));
+
+  // Concat and compress partials into a browserfied templateCache
+  gulp.src(paths.src.partials)
+    .pipe(templates({
+      root: '/partials/',
+      module: 'broker'
+    }))
+    .pipe(gulp.dest(paths.dest.partials));
+});
+
 gulp.task('scripts', ['bower'], function() {
 
   var browserified = transform(function(filename) {
@@ -101,15 +117,6 @@ gulp.task('scripts', ['bower'], function() {
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
-});
-
-gulp.task('templates', ['bower'], function() {
-  return gulp.src(paths.src.templates)
-    .pipe(templates({
-      module: 'broker',
-      root: '/partials/'
-    }))
-    .pipe(gulp.dest(paths.dest.templates));
 });
 
 gulp.task('styles', ['bower'], function() {
@@ -177,6 +184,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['bower', 'scripts', 'templates', 'styles', 'images', 'icons', 'fonts', 'theme', 'watch']);
+gulp.task('default', ['bower', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme', 'watch']);
 
-gulp.task('production', ['bower', 'scripts', 'templates', 'styles', 'images', 'icons', 'fonts', 'theme']);
+gulp.task('production', ['bower', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme']);

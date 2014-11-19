@@ -33,7 +33,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride());
 
-app.set('views', path.join(__dirname, '/assets/templates/views'));
+app.set('views', path.join(__dirname, '/public/views'));
 app.engine('html', ejs.renderFile);
 
 app.use(express.static(path.join(__dirname, 'public')));
