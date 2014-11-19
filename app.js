@@ -19,7 +19,7 @@ var http = require('http');
 var _ = require('underscore');
 var winston = require('winston');
 var routes = require("./api/routes");
-var compression = require('compression')
+var compression = require('compression');
 var app = express();
 
 app.set('port', process.env.PORT || 5000);
