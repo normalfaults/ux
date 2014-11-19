@@ -34,11 +34,11 @@ var errorHandler = function(err) {
   this.emit('end');
 };
 
-var appAssetSrc = 'assets',
-  appAssetDest = 'public',
-  bowerPath = './bower_components',
-  theme = 'pepper-grinder',
-  paths = {
+var appAssetSrc = 'assets';
+var appAssetDest = 'public';
+var bowerPath = './bower_components';
+var theme = 'pepper-grinder';
+var paths = {
     src: {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
       partials: [appAssetSrc + '/templates/partials/**/*.html'],
@@ -66,6 +66,11 @@ var appAssetSrc = 'assets',
 gulp.task('bower', function() {
   return bower()
     .pipe(gulp.dest(paths.bower));
+});
+
+gulp.task('clean-destination', function() {
+  return gulp.src(appAssetDest, {read: false})
+    .pipe(clean({force: true}));
 });
 
 gulp.task('jshint', ['bower'], function() {
@@ -184,6 +189,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['bower', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme', 'watch']);
+gulp.task('default', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme', 'watch']);
 
-gulp.task('production', ['bower', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme']);
+gulp.task('production', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme']);
