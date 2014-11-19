@@ -33,11 +33,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride());
 
-app.set('views', path.join(__dirname, '/angular/views'));
+app.set('views', path.join(__dirname, '/assets/templates/views'));
 app.engine('html', ejs.renderFile);
 
-app.use(express.static(path.join(__dirname, 'angular')));
-app.use(express.static(path.join(__dirname, '')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 

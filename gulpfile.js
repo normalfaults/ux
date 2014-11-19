@@ -41,7 +41,7 @@ var appAssetSrc = 'assets',
   paths = {
     src: {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
-      templates: [appAssetSrc + '/templates/**/*.html'],
+      templates: [appAssetSrc + '/templates/partials/**/*.html'],
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
@@ -107,7 +107,7 @@ gulp.task('templates', ['bower'], function() {
   return gulp.src(paths.src.templates)
     .pipe(templates({
       module: 'broker',
-      root: '/'
+      root: '/partials/'
     }))
     .pipe(gulp.dest(paths.dest.templates));
 });
