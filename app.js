@@ -39,7 +39,8 @@ app.engine('html', ejs.renderFile);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
-//load all routes
+
+// Load Mock API routes
 _.each(_.keys(routes), function (route) {
     var value = routes[route],
         httpMethod = route.split(' ').shift().toLowerCase(),
@@ -59,9 +60,28 @@ app.all("/api/*", function (req, res) {
     res.send("Not found", 404);
 });
 
+// Get all the public directories.
+var fs = require('fs');
+var dirs = fs.readdirSync(path.join(__dirname, 'public'));
+
 //redirect all other routes to angular
 app.get("*", function (req, res) {
-    res.render("index.html");
+
+  /**
+   * We check to see if the url matches one of our internal urls
+   * if it does, that means that it has not matched, so we return a
+   * 404 here.  This allows us to return 404 and debug easier than
+   * returning the original html and 200.
+   */
+  var url = req.originalUrl || req.url;
+  _.any(dirs, function(dir) {
+    if (url.match('^/' + dir)) {
+      res.status(404).send('Not found');
+    }
+  });
+
+  // If not allow url to pass through and return the bootstrap html.
+  res.render("index.html");
 });
 
 //start the app
