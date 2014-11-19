@@ -86,6 +86,7 @@ gulp.task('jshint', ['bower'], function() {
 });
 
 gulp.task('scripts', ['bower'], function() {
+
   var browserified = transform(function(filename) {
     var b = browserify(filename);
     return b.bundle();

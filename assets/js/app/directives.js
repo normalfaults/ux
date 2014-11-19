@@ -6,6 +6,10 @@
 
 var angular = require('angular');
 
+// @todo Should be an angular depdency
+var jqTransform = require('jqTransform');
+var jqueryui = require('jquery-ui');
+
 module.exports = angular.module('broker.directives', [])
   // custom select control
   .directive('dropDown', [function() {
