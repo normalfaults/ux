@@ -151,7 +151,7 @@ module.exports = angular.module('broker.directives', [])
     };
   }])
   // display table with project orders
-  .directive('ordersTable', [function() {
+  .directive('ordersTable', [function($templateCache) {
     return {
       restrict: 'E',
       scope: {
@@ -161,7 +161,7 @@ module.exports = angular.module('broker.directives', [])
     };
   }])
   // display box with service details
-  .directive('serviceBox', [function() {
+  .directive('serviceBox', [function($templateCache) {
     return {
       restrict: 'E',
       scope: {
@@ -203,7 +203,7 @@ module.exports = angular.module('broker.directives', [])
     };
   }])
   // show category (blue print, webservices, applications) in marketplace view
-  .directive('marketplaceItems', [function() {
+  .directive('marketplaceItems', [function($templateCache) {
     return {
       restrict: 'E',
       templateUrl: '/partials/common/marketplace-items.html',
