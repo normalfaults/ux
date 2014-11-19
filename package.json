@@ -125,7 +125,7 @@
     "jquery-ui": "./bower_components/jquery-ui/jquery-ui.js",
     "jquery-knob": "./bower_components/jquery-knob/js/jquery-knob.js",
     "jquery-cookie": "./bower_components/jquery-cookie/jquery.cookie.js",
-    "jqTransform": "./angular/libs/jquery.jqtransform.js",
+    "jqTransform": "./bower_components/jqTransform/jqtransformplugin/jquery.jqtransform.js",
     "angular": "./bower_components/angular/angular.js",
     "angular-animate": "./bower_components/angular-animate/angular-animate.js",
     "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
