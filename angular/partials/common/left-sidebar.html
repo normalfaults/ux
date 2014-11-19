@@ -22,6 +22,7 @@
                                                                ui-sref-active="active">{{item.name}}</a></li>
                 </ul>
             </li>
+            <!--
             <li class="li-bundles" expand-arrow>
                 <a href="javascript:;" class="li-links">
                     <span class="icon-bundles"></span>
@@ -34,6 +35,7 @@
                         ng-repeat="item in bundles"><i></i><a href="javascript:">{{item.name}}</a></li>
                 </ul>
             </li>
+          -->
             <li class="li-application" expand-arrow>
                 <a href="javascript:;" class="li-links">
                     <span class="icon-application"></span>
@@ -55,7 +57,7 @@
             <li>
                 <a href="javascript:;" class="li-links">
                     <span class="icon-service"></span>
-                    <span class="texts">HELP DEKS</span>
+                    <span class="texts">HELP DESK</span>
                 </a>
             </li>
             <li ng-class="{active: $state.includes('base.marketplace') || $state.includes('base.service') }">
@@ -66,7 +68,7 @@
             </li>
             <li ng-class="{active: $state.includes('base.marketplace') || $state.includes('base.service') }">
                 <a ui-sref="base.marketplace" class="li-links last">
-                    <span class="icon-marketplace"></span>
+                    <span class="icon-bundles"></span>
                     <span class="texts">SEARCH &amp; COMPARE</span>
                 </a>
             </li>
