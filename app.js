@@ -19,15 +19,20 @@ var http = require('http');
 var _ = require('underscore');
 var winston = require('winston');
 var routes = require("./api/routes");
+var compression = require('compression')
 var app = express();
 
 app.set('port', process.env.PORT || 5000);
 
+app.use(compression({
+  threshold: 512
+}));
 app.use(express.logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride());
+
 app.set('views', path.join(__dirname, '/angular/views'));
 app.engine('html', ejs.renderFile);
 
