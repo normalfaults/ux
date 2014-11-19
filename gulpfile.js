@@ -92,7 +92,7 @@ gulp.task('jshint', ['bower'], function() {
     .pipe(jsFilter.restore());
 });
 
-gulp.task('templates', ['bower'], function() {
+gulp.task('templates', ['bower', 'clean-destination'], function() {
   // Copy over views
   gulp.src(paths.src.views)
     .pipe(gulp.dest(paths.dest.views));
@@ -106,7 +106,7 @@ gulp.task('templates', ['bower'], function() {
     .pipe(gulp.dest(paths.dest.partials));
 });
 
-gulp.task('scripts', ['bower'], function() {
+gulp.task('scripts', ['bower', 'clean-destination'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
@@ -124,7 +124,7 @@ gulp.task('scripts', ['bower'], function() {
     .pipe(notify({message: 'Finished scripts task.'}));
 });
 
-gulp.task('styles', ['bower'], function() {
+gulp.task('styles', ['bower', 'clean-destination'], function() {
   return gulp.src(paths.src.styles)
     .pipe(sass({
       style: 'compressed',
@@ -140,7 +140,7 @@ gulp.task('styles', ['bower'], function() {
     .pipe(gulp.dest(paths.dest.styles));
 });
 
-gulp.task('images', ['bower'], function() {
+gulp.task('images', ['bower', 'clean-destination'], function() {
   return gulp.src(paths.src.images)
     .pipe(plumber({
       errorHandler: errorHandler
@@ -150,17 +150,17 @@ gulp.task('images', ['bower'], function() {
     .pipe(notify({message: 'Finished images task.'}));
 });
 
-gulp.task('fonts', function() {
+gulp.task('fonts', ['clean-destination'], function() {
   return gulp.src(paths.src.fonts)
     .pipe(gulp.dest(paths.dest.fonts));
 });
 
-gulp.task('icons', ['bower'], function() {
+gulp.task('icons', ['bower', 'clean-destination'], function() {
   return gulp.src(paths.bower + '/fontawesome/fonts/**.*')
     .pipe(gulp.dest(paths.dest.fonts));
 });
 
-gulp.task('theme', ['bower'], function() {
+gulp.task('theme', ['bower', 'clean-destination'], function() {
   return gulp.src([paths.src.theme+'jquery-ui.min.css', paths.src.theme+'images/**/*'], {base: paths.src.theme})
     .pipe(gulp.dest(paths.dest.styles));
 });

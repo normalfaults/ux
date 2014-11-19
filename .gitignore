@@ -4,8 +4,9 @@
 # ignore bower
 bower_components
 
-# ignore node modules
+# ignore node modules, npm artifacts
 node_modules
+npm-debug.log
 
 # build
 public/
