@@ -1,0 +1,358 @@
+
+
+
+
+<div class="project-detail-page main-content" fix-sidebar set-width>
+
+<ng-include src="'/partials/common/solution-search.html'"></ng-include>
+
+
+<div class="contents">
+    <hr class="shadow-top"/>
+
+    <div class="app-project-box">
+        <div class="app-project">
+            <div class="col40">
+                <div class="icon-boxes"><a href="javascript:;"><img ng-src="{{project.icon}}"/></a></div>
+                <h3>{{project.name | uppercase}}</h3>
+                <p><a href="{{project.url}}">{{project.domain}}</a></p>
+                <div class="bottom-icons-box" >
+                    <div class="fl" ng-class="{'ok-state': project.stateOk, 'error-state' : !project.stateOk }">
+                        <span ng-class="{'icon-green-ok': project.stateOk, 'icon-red-error' : !project.stateOk }"></span>
+                        <span class="texts">{{project.state}}</span>
+                    </div>
+                    <div class="icons-gray-box fl">
+                        <a href="javascript:;" class="icon-chart"></a>
+                        <a href="javascript:;" class="icon-detailed"></a>
+                        <a href="javascript:;" class="icon-reload"></a>
+                        <a href="javascript:;" class="icon-set"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col21">
+                <h4>
+                    <span>Account Number</span><br/>
+                    <span>{{project.accountNumber}}</span>
+                </h4>
+            </div>
+            <div class="col20">
+                <p>Budget</p>
+                <div class="price">{{project.budget | currency}}</div>
+            </div>
+            <div class="col18">
+                <p>Resources</p>
+                <div class="size">
+                    <table border="0">
+                        <tbody><tr>
+                            <td class="c1 r1">CPU &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{project.cpu}}</td><td class="c2 r1">RAM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{project.ram}}</td>
+                        </tr>
+                        <tr>
+                            <td class="c1 r2">HDD</td><td class="c2 r2">{{project.hdd}}</td>
+                        </tr>
+                        </tbody></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end .app-project-box -->
+
+    <div class="order-history-box column-box">
+        <div class="titles-box">
+            <h2>
+                <strong>ORDER HISTORY</strong>
+                <a href="javascript:;" class="blue-link fr">VIEW ALL</a>
+            </h2>
+            <div class="titles-border-bar">
+                <span class="blues width157"></span>
+                <span class="whites width3"></span>
+            </div>
+        </div>
+        <!-- end .titles-box -->
+
+        <orders-table orders="project.orderHistory"></orders-table>
+    </div>
+    <!-- end .order-history-box -->
+
+    <div class="services-box column-box">
+    <div class="titles-box">
+        <h2>
+            <strong>SERVICES ({{project.services.length}})</strong>
+            <switch-view-buttons
+                    grid-view="'.container-grid-project-detail-services'"
+                    list-view="'.container-list-project-detail-services'"></switch-view-buttons>
+        </h2>
+
+        <div class="titles-border-bar">
+            <span class="blues width112"></span>
+            <span class="whites width3"></span>
+        </div>
+    </div>
+    <!-- end .titles-box -->
+
+    <div class="container-grid container-grid-project-detail-services content-box-featured">
+        <service-box ng-repeat="service in project.services" service="service"></service-box>
+        <div class="btn-new-box">
+            <div class="boxs">
+                <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW SERVICES</span></a>
+            </div>
+        </div>
+    </div>
+    <!-- end .container-grid -->
+
+    <div class="container-list container-list-project-detail-services content-box-featured hide">
+        <div class="boxes" ng-repeat="item in project.services">
+            <div class="boxes-box col15">
+                <span class="icon-boxes orange-top-border">
+                    <a href="javascript:;"><span class="center-image"></span><img class="center-image-img" ng-src="{{item.iconBig}}"/></a></span>
+                </span>
+            </div>
+            <div class="texts-box col30">
+                <span class="titles"><a ui-sref="base.service({serviceId: item.id})">{{item.name}}</a></span>
+                <span class="texts">{{item.source}}</span>
+            </div>
+            <div class="texts-box col20">
+                <span class="titles">Type</span>
+                <span class="texts">{{item.type | uppercase}}</span>
+            </div>
+            <div class="texts-box col35">
+                <span class="titles">Plan Started From</span>
+                <span class="texts">{{item.startsFrom | currency}} {{item.startsFromSuffix}}</span>
+            </div>
+        </div>
+
+        <div class="btn-new-box fr">
+            <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW SERVICES</span></a>
+        </div>
+        <span class="clearfix"></span>
+    </div>
+    <!-- end .container-list -->
+    </div>
+    <!-- end .services-box -->
+
+    <div class="users-column-box column-box">
+        <div class="titles-box">
+            <h2>
+                <strong>USERS ({{project.users.length}})</strong>
+
+                <switch-view-buttons
+                        grid-view="'.container-grid-users'"
+                        list-view="'.users-list'"></switch-view-buttons>
+            </h2>
+
+            <div class="titles-border-bar">
+                <span class="blues width112"></span>
+                <span class="whites width3"></span>
+            </div>
+        </div>
+        <!-- end .titles-box -->
+
+        <div class="users-list hide">
+            <div class="container-list">
+                <div class="boxes" ng-repeat="item in project.users">
+                    <div class="boxes-box col15">
+                        <span class="icon-boxes">
+                            <span class="center-image"></span><img class="center-image-img" gravatar-src="item.email"/></a>
+                        </span>
+                    </div>
+                    <div class="texts-box col20">
+                        <span class="titles"><a href="javascript:;">{{item.name}}</a></span>
+                    </div>
+                    <div class="texts-box col28">
+                        <span class="gray-texts">Allowed For</span>
+                        <span class="texts">{{item.allowed.join(", ")}}</span>
+                    </div>
+                    <div class="texts-box col20">
+                        <a href="javascript:;" class="blue-btn height30 font12">EDIT</a>
+                    </div>
+                    <div class="texts-box col17">
+                        <a href="javascript:;" class="light-blue-btn icon-less-btn height30"><i></i></a>
+                    </div>
+                </div>
+                <div class="btn-box fr">
+                    <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
+                </div>
+                <span class="clearfix"></span>
+                <!-- end .btn-box -->
+            </div>
+            <!-- end .container-list -->
+        </div>
+
+
+        <div class="container-grid container-grid-users content-box-featured">
+
+            <div class="boxes" ng-repeat="item in project.users">
+                <span class="icon-boxes orange-top-border">
+                    <a href="javascript:;"><span class="center-image"></span><img class="center-image-img" gravatar-src="item.email"/></a>
+                </span>
+                <span class="titles"><span>{{item.name}}</span></span>
+                <span class="btn-box"><a href="javascript:" >VIEW MORE</a></span>
+            </div>
+            <div class="btn-new-box">
+                <div class="boxs">
+                    <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
+                </div>
+            </div>
+        </div>
+        <!-- end .container-grid -->
+    </div>
+    <!-- end .users-column-box -->
+
+    <div class="project-details-box column-box">
+        <div class="titles-box">
+            <h2>
+                <strong>PROJECT DETAILS</strong>
+            </h2>
+
+            <div class="titles-border-bar">
+                <span class="blues width137"></span>
+                <span class="whites width3"></span>
+            </div>
+        </div>
+        <!-- end .titles-box -->
+
+        <div class="table-container table-box">
+            <table class="table-data">
+                <colgroup>
+                    <col class="col40">
+                    <col>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <td class="left-text">Requestor Name</td>
+                    <td class="min-value">{{project.details.requestorName}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Requestor Date</td>
+                    <td class="min-value">{{project.details.requestorDate}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Team Name</td>
+                    <td class="min-value">{{project.details.teamName}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Project Name</td>
+                    <td class="min-value">{{project.name}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Charge Number</td>
+                    <td class="min-value">{{project.details.chargeNumber}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">NTE budget</td>
+                    <td class="min-value">{{project.details.nteBudget | currency}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Project Owner</td>
+                    <td class="min-value">{{project.details.projectOwner}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Sr. Associate</td>
+                    <td class="min-value">{{project.details.srAssociate}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Principal</td>
+                    <td class="min-value">{{project.details.principal}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Estimated Project Termination Date</td>
+                    <td class="min-value">{{project.details.estimatedTerminationDate}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Data Type</td>
+                    <td class="min-value">{{project.details.dataType}}</td>
+                </tr>
+                <tr>
+                    <td class="left-text">Others</td>
+                    <td class="min-value">{{project.details.others}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- end .table-box -->
+        <div class="bottom-btn-box">
+            <a ui-sref="base.newProject()" class="blue-btn height30 font12 fr">EDIT</a>
+        </div>
+    </div>
+    <!-- end .project-details-box -->
+
+    <div class="project-status-box column-box">
+        <div class="titles-box">
+            <h2>
+                <strong>PROJECT STATUS</strong>
+            </h2>
+
+            <div class="titles-border-bar">
+                <span class="blues width137"></span>
+                <span class="whites width3"></span>
+            </div>
+        </div>
+        <!-- end .titles-box -->
+
+        <div class="progress-step">
+            <div class="step-box">
+                <div class="step1" ng-class="{completed: project.status > 1, 'current-completed': project.status == 1, incomplete: project.status < 1}">
+                    <div class="boxs">
+                        <div class="round"><span><span>1</span></span></div>
+                        <p>
+                            <span>Provision</span>
+                            <span>Request</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- end .step1 -->
+                <div class="step2" ng-class="{completed: project.status > 2, 'current-completed': project.status == 2, incomplete: project.status < 2}">
+                    <div class="boxs">
+                        <div class="round"><span><span>2</span></span></div>
+                        <p>
+                            <span>Community</span>
+                            <span>Approved</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- end .step2 -->
+                <div class="step3" ng-class="{completed: project.status > 3, 'current-completed': project.status == 3, incomplete: project.status < 3}">
+                    <div class="boxs">
+                        <div class="round"><span><span>3</span></span></div>
+                        <p>
+                            <span>Alpha</span>
+                            <span>Approved</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- end .step3 -->
+                <div class="step4" ng-class="{completed: project.status > 4, 'current-completed': project.status == 4, incomplete: project.status < 4}">
+                    <div class="boxs">
+                        <div class="round"><span><span>4</span></span></div>
+                        <p>
+                            <span>Beta</span>
+                            <span>Approved</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- end .step4 -->
+                <div class="step5" ng-class="{completed: project.status > 5, 'current-completed': project.status == 5, incomplete: project.status < 5}">
+                    <div class="boxs">
+                        <div class="round"><span><span>5</span></span></div>
+                        <p>
+                            <span>Gold</span>
+                            <span>Release</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- end .step5 -->
+                <div class="step6" ng-class="{completed: project.status > 6, 'current-completed': project.status == 6, incomplete: project.status < 6}">
+                    <div class="boxs">
+                        <div class="round"><span><span>6</span></span></div>
+                        <p>
+                            <span>Comit</span>
+                        </p>
+                    </div>
+                </div>
+                <!-- end .step6 -->
+            </div>
+        </div>
+        <!-- end .progress-step -->
+    </div>
+    <!-- end .project-status-box -->
+    </div>
+</div>

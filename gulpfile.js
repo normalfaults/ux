@@ -105,7 +105,10 @@ gulp.task('scripts', ['bower'], function() {
 
 gulp.task('templates', ['bower'], function() {
   return gulp.src(paths.src.templates)
-    .pipe(templates({module: 'broker'}))
+    .pipe(templates({
+      module: 'broker',
+      root: '/'
+    }))
     .pipe(gulp.dest(paths.dest.templates));
 });
 

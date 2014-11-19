@@ -9,7 +9,6 @@
  */
 "use strict";
 
-
 var express = require('express');
 var path = require('path');
 var methodOverride = require('method-override');
@@ -23,7 +22,6 @@ var routes = require("./api/routes");
 var app = express();
 
 app.set('port', process.env.PORT || 5000);
-
 
 app.use(express.logger('dev'));
 app.use(cookieParser());
