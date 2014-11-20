@@ -1,3 +1,6 @@
+# Ignore OS
+.DS_Store
+
 # ignore IDE
 .idea
 
