@@ -24,6 +24,7 @@ var autoprefix = require('gulp-autoprefixer');
 
 // Images
 var imagemin = require('gulp-imagemin');
+var pngquant = require('imagemin-pngquant');
 
 // Utils
 var clean = require('gulp-clean');
@@ -145,7 +146,12 @@ gulp.task('images', ['bower', 'clean-destination'], function() {
     .pipe(plumber({
       errorHandler: errorHandler
     }))
-    .pipe(imagemin({optimizationLevel: 7, progressive: true, interlaced: true}))
+    .pipe(imagemin({
+      optimizationLevel: 7,
+      progressive: true,
+      interlaced: true,
+      use: [pngquant()]
+    }))
     .pipe(gulp.dest(paths.dest.images))
     .pipe(notify({message: 'Finished images task.'}));
 });
