@@ -12,6 +12,7 @@ require('jquery-ui-core');
 require('jquery-ui-widget');
 require('jquery-ui-datepicker');
 require('jquery-ui-tooltip');
+require('jquery-ui-mouse');
 
 module.exports = angular.module('broker.directives', [])
   // custom select control

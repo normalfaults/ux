@@ -21,6 +21,7 @@ var templates = require('gulp-angular-templatecache');
 // CSS
 var sass = require('gulp-ruby-sass');
 var autoprefix = require('gulp-autoprefixer');
+var minifyCSS = require('gulp-minify-css');
 
 // Images
 var imagemin = require('gulp-imagemin');
@@ -167,7 +168,14 @@ gulp.task('icons', ['bower', 'clean-destination'], function() {
 });
 
 gulp.task('theme', ['bower', 'clean-destination'], function() {
-  return gulp.src([paths.src.theme+'jquery-ui.min.css', paths.src.theme+'images/**/*'], {base: paths.src.theme})
+  // Concat/Min the jquery-ui CSS
+  gulp.src(paths.src.theme + '*.css')
+    .pipe(concat("jquery-ui.min.css"))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest(paths.dest.styles));
+
+  // Move/compress the images.
+  gulp.src(paths.src.theme+'images/**/*', {base: paths.src.theme})
     .pipe(imagemin({
       optimizationLevel: 7,
       progressive: true,
