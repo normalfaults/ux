@@ -168,6 +168,12 @@ gulp.task('icons', ['bower', 'clean-destination'], function() {
 
 gulp.task('theme', ['bower', 'clean-destination'], function() {
   return gulp.src([paths.src.theme+'jquery-ui.min.css', paths.src.theme+'images/**/*'], {base: paths.src.theme})
+    .pipe(imagemin({
+      optimizationLevel: 7,
+      progressive: true,
+      interlaced: true,
+      use: [pngquant()]
+    }))
     .pipe(gulp.dest(paths.dest.styles));
 });
 
