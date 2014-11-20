@@ -6,9 +6,12 @@
 
 var angular = require('angular');
 
-// @todo Should be an angular depdency
-var jqTransform = require('jqTransform');
-var jqueryui = require('jquery-ui');
+require('jqTransform');
+// @todo Can these be combined into one shim?
+require('jquery-ui-core');
+require('jquery-ui-widget');
+require('jquery-ui-datepicker');
+require('jquery-ui-tooltip');
 
 module.exports = angular.module('broker.directives', [])
   // custom select control

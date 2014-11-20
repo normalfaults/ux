@@ -1,7 +1,7 @@
 (function(undefined) {
   'use strict';
 
-  require('jQuery');
+  require('jquery');
 
   var app = require('./app');
 
