@@ -9,7 +9,6 @@ var angular = require('angular');
 // @todo Can these be combined into one shim?
 require('jquery-ui-core');
 require('jquery-ui-widget');
-require('jquery-ui-datepicker');
 require('jquery-ui-tooltip');
 require('jquery-ui-mouse');
 
@@ -119,21 +118,6 @@ module.exports = angular.module('broker.directives', [])
   //    link: function(scope, element) {
   //      element.ready(function() {
   //        $(element).jqTransform({imgPath: '/images/forms/'});
-  //      });
-  //    }
-  //  };
-  //}])
-  // custom date picker
-  //.directive('datepicker', [function() {
-  //  return {
-  //    restrict: 'A',
-  //    link: function(scope, element) {
-  //      var $ele = $(element);
-  //      $ele.datepicker({
-  //        dateFormat: "mm/dd/yy"
-  //      });
-  //      $ele.next(".date-icon").click(function() {
-  //        $ele.trigger("click").focus();
   //      });
   //    }
   //  };

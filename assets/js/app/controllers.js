@@ -58,6 +58,23 @@ module.exports = angular.module('broker.controllers', [])
     $scope.solutions = solutions;
     $scope.solution = solutions[0];
     $scope.projectValues = projectValues;
+
+    $scope.today = function() {
+      $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function () {
+      $scope.dt = null;
+    };
+
+    $scope.open = function($event) {
+      $event.preventDefault();
+      $event.stopPropagation();
+
+      $scope.opened = true;
+    };
+
   }])
   // Controller for Project Details View
   .controller('ProjectCtrl', ["$scope", "project", "solutions", function($scope, project, solutions) {
