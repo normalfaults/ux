@@ -6,6 +6,7 @@ require('angular-resource');
 require('angular-bootstrap');
 require('angular-gravatar');
 require('angular-loading-bar');
+require('templates');
 
 var angular = require('angular');
 
@@ -16,6 +17,7 @@ var app = angular.module('broker', [
   'ngAnimate',
   "ui.gravatar",
   "ui.bootstrap",
+  "templates",
   require('./common').name,
   require('./controllers').name,
   require('./directives').name,

@@ -131,6 +131,7 @@
     "angular-loading-bar": "./bower_components/angular-loading-bar/build/loading-bar.js",
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
     "md5": "./bower_components/angular-gravatar/build/md5.js",
-    "lodash": "./bower_components/lodash/dist/lodash.js"
+    "lodash": "./bower_components/lodash/dist/lodash.js",
+    "templates": "./public/js/templates.js"
   }
 }

@@ -52,7 +52,7 @@ var paths = {
       images: [
         appAssetSrc + '/images/**/*'
       ],
-      fonts: [appAssetSrc + '/fonts/**/*'],
+      fonts: [appAssetSrc + '/fonts/**/*']
     },
     bower: bowerPath,
     dest: {
@@ -103,7 +103,9 @@ gulp.task('templates', ['bower', 'clean-destination'], function() {
   gulp.src(paths.src.partials)
     .pipe(templates({
       root: '/partials/',
-      module: 'broker'
+      module: 'templates',
+      standalone: true,
+      moduleSystem: "Browserify"
     }))
     .pipe(gulp.dest(paths.dest.partials));
 });
@@ -115,12 +117,14 @@ gulp.task('scripts', ['bower', 'clean-destination'], function() {
     return b.bundle();
   });
 
+  // Combine all the js, browserify it, uglify it, write out the bundle file.
   return gulp.src(paths.src.scripts)
     .pipe(plumber({
       errorHandler: errorHandler
     }))
     .pipe(browserified)
     .pipe(unpathify())
+    .pipe(concat('bundle.js'))
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
