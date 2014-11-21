@@ -45,17 +45,18 @@
                 </a>
                 <ul>
                     <li ng-class="{first: $first}"
-                        ng-repeat="item in applications"><i></i><a href="javascript:">{{item.name}}</a></li>
+                        ng-repeat="item in applications"><i></i><a ui-sref="base.application({applicationId: item.id})"
+                                                                   ui-sref-active="active">{{item.name}}</a></li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;" class="li-links">
+            <li ng-class="{active: $state.includes('base.orderHistory') || $state.includes('base.service') }">
+                <a ui-sref="base.orderHistory" class="li-links last">
                     <span class="icon-order-history"></span>
                     <span class="texts">ORDER HISTORY</span>
                 </a>
             </li>
-            <li>
-                <a href="javascript:;" class="li-links">
+            <li ng-class="{active: $state.includes('base.helpDesk') || $state.includes('base.service') }">
+                <a ui-sref="base.helpDesk" class="li-links last">
                     <span class="icon-service"></span>
                     <span class="texts">HELP DESK</span>
                 </a>
@@ -66,8 +67,8 @@
                     <span class="texts">MARKETPLACE</span>
                 </a>
             </li>
-            <li ng-class="{active: $state.includes('base.marketplace') || $state.includes('base.service') }">
-                <a ui-sref="base.marketplace" class="li-links last">
+            <li ng-class="{active: $state.includes('base.searchAndCompare') || $state.includes('base.service') }">
+                <a ui-sref="base.searchAndCompare" class="li-links last">
                     <span class="icon-bundles"></span>
                     <span class="texts">SEARCH &amp; COMPARE</span>
                 </a>

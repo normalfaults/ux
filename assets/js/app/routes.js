@@ -123,6 +123,16 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
       },
       controller: "MarketplaceCtrl"
     })
+    // Search and Compare
+    .state('base.searchAndCompare', {
+      url: "^/search-and-compare"
+    })
+    .state('base.helpDesk', {
+      url: "^/help-desk"
+    })
+    .state('base.orderHistory', {
+      url: "^/order-history"
+    })
     // create alert
     .state('base.createAlert', {
       url: "^/create-alert",
