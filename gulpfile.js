@@ -4,6 +4,7 @@ var concat = require('gulp-concat');
 var plumber = require('gulp-plumber');
 var bower = require('gulp-bower');
 var server = require( 'gulp-develop-server');
+var es = require('event-stream');
 
 // JS Hint
 var jshint = require('gulp-jshint');
@@ -126,19 +127,28 @@ gulp.task('scripts', ['bower', 'clean-destination'], function() {
 });
 
 gulp.task('styles', ['bower', 'clean-destination'], function() {
-  return gulp.src(paths.src.styles)
+  // Vendor Angular Loading Bar CSS
+  var angularLoadingBarFiles = gulp.src(paths.bower + '/angular-loading-bar/build/loading-bar.css');
+
+  // App Sass files and Vendor Sass Files
+  var sassFiles = gulp.src(paths.src.styles)
     .pipe(sass({
-      style: 'compressed',
       loadPath: [
           paths.bower + '/bootstrap-sass-official/assets/stylesheets',
           paths.bower + '/fontawesome/scss'
       ]
     }).on("error", notify.onError(function(error) {
       return "Error: " + error.message;
-    })))
+    })));
+
+  // Combine the output from Sass/Vendor, Concat, minify, autprefix.
+  return es.concat(angularLoadingBarFiles, sassFiles)
+    .pipe(concat('styles.css'))
     .pipe(autoprefix("last 2 version", "> 1%"))
     .pipe(notify({message: 'Finished styles task.'}))
+    .pipe(minifyCSS())
     .pipe(gulp.dest(paths.dest.styles));
+
 });
 
 gulp.task('images', ['bower', 'clean-destination'], function() {
