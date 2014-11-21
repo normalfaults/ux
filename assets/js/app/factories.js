@@ -58,7 +58,7 @@ module.exports = angular.module('broker.factories', [])
     });
   }])
   // fix sidebar height
-  .factory('fixSidebar', [function() {  
+  .factory('fixSidebar', [function() {
     return function() {
       var $nav = $('.side-nav');
       $nav.height(500);
