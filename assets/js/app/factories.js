@@ -58,12 +58,15 @@ module.exports = angular.module('broker.factories', [])
     });
   }])
   // fix sidebar height
-  .factory('fixSidebar', [function() {
+  .factory('fixSidebar', [function() {  
     return function() {
       var $nav = $('.side-nav');
       $nav.height(500);
-      if (($(".main-content").height() + 58) < (document.documentElement.clientHeight - 76)) {
-        $nav.height(document.documentElement.clientHeight - 134);
+
+      var headerAndFooterHeight = $('header').outerHeight() + $('footer').outerHeight();
+
+      if (($(".main-content").height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
+        $nav.height(document.documentElement.clientHeight - headerAndFooterHeight);
       } else {
         $nav.height($(".main-content").height());
       }
