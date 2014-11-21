@@ -5,6 +5,7 @@
 'use strict';
 
 var angular = require('angular');
+require('jquery-knob');
 
 module.exports = angular.module('broker.directives', [])
   // custom select control
@@ -13,10 +14,13 @@ module.exports = angular.module('broker.directives', [])
       restrict: 'A',
       link: function(scope, element, attrs) {
         $(element).click(function() {
-          $(".drop-down-active").removeClass("drop-down-active");
+
+          var dropDownActiveEl = $(".drop-down-active");
+
+          dropDownActiveEl.removeClass("drop-down-active");
           $(this).next().addClass("drop-down-active");
           $(".drop-down-box:not(.drop-down-active)").hide();
-          $(".drop-down-active").toggle();
+          dropDownActiveEl.toggle();
           if (attrs.fixArrow) {
             var w = $(element).width() - 16;
             $('.drop-down-active .icon-arrow').css({left: w + "px"});
@@ -104,18 +108,6 @@ module.exports = angular.module('broker.directives', [])
       }
     };
   }])
-  // transform form controls
-  // @todo Switch this out with something more sane.
-  //.directive('jqtransform', [function() {
-  //  return {
-  //    restrict: 'A',
-  //    link: function(scope, element) {
-  //      element.ready(function() {
-  //        $(element).jqTransform({imgPath: '/images/forms/'});
-  //      });
-  //    }
-  //  };
-  //}])
   // iterate through all boxes and fix height
   .directive('fixBoxesHeight', [function() {
     return {
