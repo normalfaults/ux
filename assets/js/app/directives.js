@@ -256,12 +256,15 @@ module.exports = angular.module('broker.directives', [])
               }
             }, 10);
           };
-          animate();
           scope.$watch("selectedStatistic", function(newValue, oldValue) {
             if (newValue !== oldValue) {
               animate();
             }
           });
+          scope.$watch("assignments", function() {
+            animate();
+          });
+
         });
       }
     };
