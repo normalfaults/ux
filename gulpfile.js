@@ -49,6 +49,9 @@ var paths = {
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
+      ieStyles: [
+        appAssetSrc + '/sass/ie.sass'
+      ],
       images: [
         appAssetSrc + '/images/**/*'
       ],
@@ -130,7 +133,7 @@ gulp.task('scripts', ['bower', 'clean-destination'], function() {
     .pipe(notify({message: 'Finished scripts task.'}));
 });
 
-gulp.task('styles', ['bower', 'clean-destination'], function() {
+gulp.task('styles', ['bower', 'clean-destination', 'ie-styles'], function() {
   // Vendor Angular Loading Bar CSS
   var angularLoadingBarFiles = gulp.src(paths.bower + '/angular-loading-bar/build/loading-bar.css');
 
@@ -152,8 +155,22 @@ gulp.task('styles', ['bower', 'clean-destination'], function() {
     .pipe(notify({message: 'Finished styles task.'}))
     .pipe(minifyCSS())
     .pipe(gulp.dest(paths.dest.styles));
-
 });
+
+/**
+ * Since we concat all the sass output above, we use a separate directive to
+ * actually get a separate stylesheet.
+ */
+gulp.task('ie-styles', ['bower', 'clean-destination'], function() {
+  return gulp.src(paths.src.ieStyles)
+    .pipe(sass())
+    .on("error", notify.onError(function (error) {
+      return "Error: " + error.message;
+    }))
+    //.pipe(minifyCSS())
+    .pipe(gulp.dest(paths.dest.styles));
+});
+
 
 gulp.task('images', ['bower', 'clean-destination'], function() {
   return gulp.src(paths.src.images)
