@@ -167,7 +167,12 @@ gulp.task('images', ['bower', 'clean-destination'], function() {
 });
 
 gulp.task('fonts', ['clean-destination'], function() {
-  return gulp.src(paths.src.fonts)
+  // Move internal system fonts
+  gulp.src(paths.src.fonts)
+    .pipe(gulp.dest(paths.dest.fonts));
+
+  // Move angular glypicon font.
+  gulp.src(paths.bower + '/bootstrap-sass-official/assets/fonts/**/*')
     .pipe(gulp.dest(paths.dest.fonts));
 });
 

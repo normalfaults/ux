@@ -75,6 +75,10 @@ module.exports = angular.module('broker.controllers', [])
       $scope.opened = true;
     };
 
+    $scope.dateOptions = {
+      showWeeks: false
+    };
+
   }])
   // Controller for Project Details View
   .controller('ProjectCtrl', ["$scope", "project", "solutions", function($scope, project, solutions) {
