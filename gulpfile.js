@@ -52,7 +52,6 @@ var paths = {
         appAssetSrc + '/images/**/*'
       ],
       fonts: [appAssetSrc + '/fonts/**/*'],
-      theme: bowerPath + '/jquery-ui/themes/' + theme + '/'
     },
     bower: bowerPath,
     dest: {
@@ -167,24 +166,6 @@ gulp.task('icons', ['bower', 'clean-destination'], function() {
     .pipe(gulp.dest(paths.dest.fonts));
 });
 
-gulp.task('theme', ['bower', 'clean-destination'], function() {
-  // Concat/Min the jquery-ui CSS
-  gulp.src(paths.src.theme + '*.css')
-    .pipe(concat("jquery-ui.min.css"))
-    .pipe(minifyCSS())
-    .pipe(gulp.dest(paths.dest.styles));
-
-  // Move/compress the images.
-  gulp.src(paths.src.theme+'images/**/*', {base: paths.src.theme})
-    .pipe(imagemin({
-      optimizationLevel: 7,
-      progressive: true,
-      interlaced: true,
-      use: [pngquant()]
-    }))
-    .pipe(gulp.dest(paths.dest.styles));
-});
-
 // run server
 gulp.task( 'server:start', function() {
   server.listen( { path: './app.js' } );
@@ -209,6 +190,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme', 'watch']);
+gulp.task('default', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'watch']);
 
-gulp.task('production', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'theme']);
+gulp.task('production', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts']);

@@ -6,12 +6,6 @@
 
 var angular = require('angular');
 
-// @todo Can these be combined into one shim?
-require('jquery-ui-core');
-require('jquery-ui-widget');
-require('jquery-ui-tooltip');
-require('jquery-ui-mouse');
-
 module.exports = angular.module('broker.directives', [])
   // custom select control
   .directive('dropDown', [function() {
@@ -201,21 +195,6 @@ module.exports = angular.module('broker.directives', [])
       },
       link: function(scope) {
         scope.tab = "featured";
-      }
-    };
-  }])
-  // show tooltip on mouse over
-  .directive('tooltip', [function() {
-    return {
-      restrict: 'A',
-      link: function(scope, element) {
-        $(element).tooltip({
-          tooltipClass: "icon-arrow",
-          position: {
-            my: "left-23 top",
-            at: "center bottom+24"
-          }
-        });
       }
     };
   }])

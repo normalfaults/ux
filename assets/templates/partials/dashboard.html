@@ -5,8 +5,8 @@
             <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
             <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
             <span  class="icons">
-              <a href="javascript:;" class="icon-set" tooltip title="Settings"></a>
-              <a href="javascript:;" class="icon-reload" tooltip title="Refresh"></a>
+              <a href="javascript:;" class="icon-set" title="Settings" tooltip-placement="bottom" tooltip="Settings"></a>
+              <a href="javascript:;" class="icon-reload" title="Refresh" tooltip-placement="bottom" tooltip="Refresh"></a>
             </span>
         </h3>
         <div class="data-box">
@@ -35,8 +35,8 @@
                   <span ng-class="{'icon-green-ok': item.stateOk, 'icon-red-error' : !item.stateOk }"></span>
                 </span>
                 <span class="fr">
-                  <a href="javascript:;" class="icon-chart" tooltip title="Statistics"></a>
-                  <a href="javascript:;" class="icon-detailed"  tooltip title="Play"></a>
+                  <a href="javascript:;" class="icon-chart" title="Statistics" tooltip-placement="bottom" tooltip="Statistics"></a>
+                  <a href="javascript:;" class="icon-detailed" title="Play" tooltip-placement="bottom" tooltip="Play"></a>
                 </span>
         </div>
         <!-- end .bottom-area -->
