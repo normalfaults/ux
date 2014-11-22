@@ -114,12 +114,19 @@ module.exports = angular.module('broker.directives', [])
       restrict: 'A',
       link: function(scope, element) {
         element.ready(function() {
-          var maxHeight = 0,
-            $boxes = $(element).find('.boxes');
-          $boxes.each(function() {
-            maxHeight = Math.max(maxHeight, $(this).height());
+          var fixHeight = function() {
+            var maxHeight = 0;
+            var $boxes = $(element).find('.boxes');
+
+            $boxes.each(function () {
+              maxHeight = Math.max(maxHeight, $(this).height());
+            });
+            $boxes.height(maxHeight);
+          };
+          scope.$watch("assignments", function() {
+            fixHeight();
           });
-          $boxes.height(maxHeight);
+
         });
       }
     };
