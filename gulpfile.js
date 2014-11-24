@@ -73,11 +73,6 @@ gulp.task('bower', function() {
     .pipe(gulp.dest(paths.bower));
 });
 
-gulp.task('clean-destination', function() {
-  return gulp.src(appAssetDest, {read: false})
-    .pipe(clean({force: true}));
-});
-
 gulp.task('jshint', ['bower'], function() {
   var jsFilter = filter(['*', '!' + appAssetSrc + '/js/vendor']);
 
@@ -182,7 +177,7 @@ gulp.task('styles', ['bower', 'clean-styles', 'ie-styles'], function() {
  * Since we concat all the sass output above, we use a separate directive to
  * actually get a separate stylesheet.
  */
-gulp.task('ie-styles', ['bower', 'clean-destination'], function() {
+gulp.task('ie-styles', ['bower'], function() {
   return gulp.src(paths.src.ieStyles)
     .pipe(sass())
     .on("error", notify.onError(function (error) {
@@ -227,7 +222,7 @@ gulp.task('fonts', ['clean-fonts', 'icons'], function() {
     .pipe(gulp.dest(paths.dest.fonts));
 });
 
-gulp.task('icons', ['bower', 'clean-destination'], function() {
+gulp.task('icons', ['bower'], function() {
   return gulp.src(paths.bower + '/fontawesome/fonts/**.*')
     .pipe(gulp.dest(paths.dest.fonts));
 });
