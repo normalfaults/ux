@@ -37,7 +37,6 @@
     "gulp-unpathify": "^0.1.1",
     "gulp-util": "^3.0.1",
     "gulp-watch": "^1.1.0",
-    "http-proxy": "^1.6.2",
     "imagemin-pngquant": "^4.0.0",
     "jshint-stylish-recolor": "^0.2.0-a",
     "method-override": "~2.1.3",

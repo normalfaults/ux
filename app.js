@@ -16,7 +16,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var ejs = require('ejs');
 var http = require('http');
-var httpProxy = require('http-proxy');
 var _ = require('underscore');
 var winston = require('winston');
 var routes = require("./api/routes");
@@ -58,13 +57,8 @@ _.each(_.keys(routes), function (route) {
     });
 });
 
-// @todo Uncomment this to proxy the api for now.
-// @todo Should change the endpoints to include a host, but this allows quick hookup for now.
-//var apiProxy = httpProxy.createProxyServer();
 app.all("/api/*", function (req, res) {
     res.send("Not found", 404);
-
-  //apiProxy.web(req, res, { target: 'http://localhost:5001' });
 });
 
 // Get all the public directories.

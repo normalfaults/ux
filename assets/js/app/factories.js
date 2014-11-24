@@ -5,57 +5,109 @@
 'use strict';
 
 var angular = require('angular');
+var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
+  .factory('ApiResource', [function() {
+
+    // @todo Move this to it's own JSON file.
+    var jsonRoutes = {
+      'basePath': 'http://localhost:5000/api',
+      'routes': {
+        'solutions':         '/solutions/:id',
+        'projectValues':     '/projectValues',
+        'manageValues':      '/manageValues',
+        'marketplaceValues': '/marketplaceValues',
+        'alerts':            '/alerts',
+        'alertPopup':        '/alertPopup',
+        'usersById':         '/users/:id',
+        'recentUsers':       '/users/recent',
+        'ordersById':        '/orders/:id',
+        'recentOrders':      '/orders/recent',
+        'projectsById':      '/projects/:id',
+        'servicesById':      '/services/:id',
+        'applicationsById':  '/applications/:id',
+        'bundlesById':       '/bundles/:id',
+        'header':            '/header'
+      }
+    };
+
+    return function(apiResourceKey) {
+      if (_.isEmpty(apiResourceKey)) {
+        return jsonRoutes.basePath;
+      }
+      return jsonRoutes.basePath + jsonRoutes.routes[apiResourceKey];
+    };
+  }])
   // resource for Solution
-  .factory('Solution', ['$resource', function($resource) {
-    return $resource("/api/solutions/:id");
+  .factory('Solution', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('solutions'));
   }])
   // resource for general data
-  .factory('DataService', ['$resource', function($resource) {
-    return $resource("/api", {}, {
+  .factory('DataService', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource(), {}, {
       getProjectValues: {
         method: "GET",
-        url: "/api/projectValues"
+        url: ApiResource('projectValues')
       },
       getManageValues: {
         method: "GET",
-        url: "/api/manageValues"
+        url: ApiResource('manageValues')
       },
       getMarketplaceValues: {
         method: "GET",
-        url: "/api/marketplaceValues"
+        url: ApiResource('marketplaceValues')
       },
       getAlerts: {
         method: "GET",
         isArray: true,
-        url: "/api/alerts"
+        url: ApiResource('alerts')
       },
       getAlertPopup: {
         method: "GET",
-        url: "/api/alertPopup"
+        url: ApiResource('alertPopup')
       }
     });
   }])
   // resource for User
-  .factory('User', ['$resource', function($resource) {
-    return $resource("/api/users/:id", {}, {
+  .factory('User', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('usersById'), {}, {
       getRecentUsers: {
         method: "GET",
         isArray: true,
-        url: "/api/users/recent"
+        url: ApiResource('recentUsers')
       }
     });
   }])
   // resource for Order
-  .factory('Order', ['$resource', function($resource) {
-    return $resource("/api/orders/:id", {}, {
+  .factory('Order', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('ordersById'), {}, {
       getRecentOrders: {
         method: "GET",
         isArray: true,
-        url: "/api/orders/recent"
+        url: ApiResource('recentOrders')
       }
     });
+  }])
+  // resource for Project
+  .factory('Project', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('projectsById'));
+  }])
+  // resource for Service
+  .factory('Service', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('servicesById'));
+  }])
+  // resource for Application
+  .factory('Application', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('applicationsById'));
+  }])
+  // resource for Bundle
+  .factory('Bundle', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('bundlesById'));
+  }])
+  // resource for data displayed in header (notifications and basket count)
+  .factory('HeaderData', ['$resource', 'ApiResource', function($resource, ApiResource) {
+    return $resource(ApiResource('header'));
   }])
   // fix sidebar height
   .factory('fixSidebar', [function() {
@@ -64,31 +116,12 @@ module.exports = angular.module('broker.factories', [])
       $nav.height(500);
 
       var headerAndFooterHeight = $('header').outerHeight() + $('footer').outerHeight();
+      var mainContentEl = $('.main-content');
 
-      if (($(".main-content").height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
+      if ((mainContentEl.height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
         $nav.height(document.documentElement.clientHeight - headerAndFooterHeight);
       } else {
-        $nav.height($(".main-content").height());
+        $nav.height(mainContentEl.height());
       }
     };
-  }])
-  // resource for Project
-  .factory('Project', ['$resource', function($resource) {
-    return $resource("/api/projects/:id");
-  }])
-  // resource for Service
-  .factory('Service', ['$resource', function($resource) {
-    return $resource("/api/services/:id");
-  }])
-  // resource for Application
-  .factory('Application', ['$resource', function($resource) {
-    return $resource("/api/applications/:id");
-  }])
-  // resource for Bundle
-  .factory('Bundle', ['$resource', function($resource) {
-    return $resource("/api/bundles/:id");
-  }])
-  // resource for data displayed in header (notifications and basket count)
-  .factory('HeaderData', ['$resource', function($resource) {
-    return $resource("/api/header");
   }]);
