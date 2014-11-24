@@ -166,15 +166,15 @@ module.exports = angular.module('broker.directives', [])
       },
       link: function(scope, element) {
         scope.showList = function() {
-          $(scope.gridView).hide();
-          $(scope.listView).show();
+          $(scope.gridView).addClass('hide');
+          $(scope.listView).removeClass('hide');
           $(element).find(".js-list-btn").addClass('btn-active');
           $(element).find(".js-grid-btn").removeClass('btn-active');
           fixSidebar();
         };
         scope.showGrid = function() {
-          $(scope.gridView).show();
-          $(scope.listView).hide();
+          $(scope.gridView).removeClass('hide');
+          $(scope.listView).addClass('hide');
           $(element).find(".js-grid-btn").addClass('btn-active');
           $(element).find(".js-list-btn").removeClass('btn-active');
           fixSidebar();
