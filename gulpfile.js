@@ -97,7 +97,12 @@ gulp.task('jshint', ['bower'], function() {
     .pipe(jsFilter.restore());
 });
 
-gulp.task('templates', ['bower', 'clean-destination'], function() {
+gulp.task('clean-templates', function() {
+  return gulp.src(paths.dest.views, {read: false})
+    .pipe(clean({force: true}));
+});
+
+gulp.task('templates', ['bower', 'clean-templates'], function() {
   // Copy over views
   gulp.src(paths.src.views)
     .pipe(gulp.dest(paths.dest.views));
@@ -113,7 +118,12 @@ gulp.task('templates', ['bower', 'clean-destination'], function() {
     .pipe(gulp.dest(paths.dest.partials));
 });
 
-gulp.task('scripts', ['bower', 'clean-destination'], function() {
+gulp.task('clean-scripts', function() {
+  return gulp.src(paths.dest.scripts, {read: false})
+    .pipe(clean({force: true}));
+});
+
+gulp.task('scripts', ['bower', 'clean-scripts'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
@@ -133,7 +143,12 @@ gulp.task('scripts', ['bower', 'clean-destination'], function() {
     .pipe(notify({message: 'Finished scripts task.'}));
 });
 
-gulp.task('styles', ['bower', 'clean-destination', 'ie-styles'], function() {
+gulp.task('clean-styles', function() {
+  return gulp.src(paths.dest.styles, {read: false})
+    .pipe(clean({force: true}));
+});
+
+gulp.task('styles', ['bower', 'clean-styles', 'ie-styles'], function() {
   // Vendor Angular Loading Bar CSS
   var angularLoadingBarFiles = gulp.src(paths.bower + '/angular-loading-bar/build/loading-bar.css');
 
@@ -171,8 +186,12 @@ gulp.task('ie-styles', ['bower', 'clean-destination'], function() {
     .pipe(gulp.dest(paths.dest.styles));
 });
 
+gulp.task('clean-images', function() {
+  return gulp.src(paths.dest.images, {read: false})
+    .pipe(clean({force: true}));
+});
 
-gulp.task('images', ['bower', 'clean-destination'], function() {
+gulp.task('images', ['bower', 'clean-images'], function() {
   return gulp.src(paths.src.images)
     .pipe(plumber({
       errorHandler: errorHandler
@@ -187,7 +206,12 @@ gulp.task('images', ['bower', 'clean-destination'], function() {
     .pipe(notify({message: 'Finished images task.'}));
 });
 
-gulp.task('fonts', ['clean-destination'], function() {
+gulp.task('clean-fonts', function() {
+  return gulp.src(paths.dest.fonts, {read: false})
+    .pipe(clean({force: true}));
+});
+
+gulp.task('fonts', ['clean-fonts', 'icons'], function() {
   // Move internal system fonts
   gulp.src(paths.src.fonts)
     .pipe(gulp.dest(paths.dest.fonts));
@@ -226,6 +250,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts', 'watch']);
+gulp.task('default', ['bower', 'templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
 
-gulp.task('production', ['bower', 'clean-destination', 'templates', 'scripts', 'styles', 'images', 'icons', 'fonts']);
+gulp.task('production', ['bower', 'templates', 'scripts', 'styles', 'images', 'fonts']);
