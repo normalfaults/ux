@@ -123,7 +123,13 @@ gulp.task('clean-scripts', function() {
     .pipe(clean({force: true}));
 });
 
-gulp.task('scripts', ['bower', 'clean-scripts'], function() {
+/**
+ * Minify, Concat JS Files
+ *
+ * Dependent on templates because template partials are wrapped into a
+ * js file required here.
+ */
+gulp.task('scripts', ['bower', 'clean-scripts', 'templates'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
@@ -241,7 +247,7 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/js/**/*.js', ['jshint', 'scripts']);
 
   // Watch and recompile templates
-  gulp.watch(appAssetSrc + '/templates/**/*.html', ['templates']);
+  gulp.watch(appAssetSrc + '/templates/**/*.html', ['templates', 'scripts']);
 
   // watches Sass files for changes
   gulp.watch(appAssetSrc + '/sass/**/*.s?ss', ['styles']);
@@ -250,6 +256,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['bower', 'templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
+gulp.task('default', ['templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
 
-gulp.task('production', ['bower', 'templates', 'scripts', 'styles', 'images', 'fonts']);
+gulp.task('production', ['templates', 'scripts', 'styles', 'images', 'fonts']);
