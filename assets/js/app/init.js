@@ -18,6 +18,6 @@ module.exports = function($rootScope, $log, fixSidebar) {
     if ($target.closest('.drop-down-box').length && $target.closest('.keep-drop-down-open').length) {
       return false;
     }
-    $(".drop-down-box").hide();
+    $(".drop-down-box").addClass('hide');
   });
 };

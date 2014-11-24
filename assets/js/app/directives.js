@@ -18,9 +18,8 @@ module.exports = angular.module('broker.directives', [])
           var dropDownActiveEl = $(".drop-down-active");
 
           dropDownActiveEl.removeClass("drop-down-active");
-          $(this).next().addClass("drop-down-active");
-          $(".drop-down-box:not(.drop-down-active)").hide();
-          dropDownActiveEl.toggle();
+          $(this).next().addClass("drop-down-active").removeClass('hide');
+          $(".drop-down-box:not(.drop-down-active)").addClass('hide');
           if (attrs.fixArrow) {
             var w = $(element).width() - 16;
             $('.drop-down-active .icon-arrow').css({left: w + "px"});
