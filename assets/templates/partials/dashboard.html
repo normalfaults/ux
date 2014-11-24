@@ -1,0 +1,103 @@
+
+<script type="text/ng-template" id="ModuleBox.html">
+    <div class="module">
+        <h3>
+            <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
+            <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
+            <span  class="icons">
+              <a href="javascript:;" class="icon-set" title="Settings" tooltip-placement="bottom" tooltip="Settings"></a>
+              <a href="javascript:;" class="icon-reload" title="Refresh" tooltip-placement="bottom" tooltip="Refresh"></a>
+            </span>
+        </h3>
+        <div class="data-box">
+            <div class="info">
+                <a ng-if="item.sref" ui-sref="{{item.sref}}" class="icon-projects-emoticon">
+                    <img ng-src="{{item.icon}}"/>
+                </a>
+                <a ng-if="!item.sref" href="javascript:" class="icon-projects-emoticon">
+                    <img ng-src="{{item.icon}}"/>
+                </a>
+                <p>
+                    <a href="{{item.url}}" class="blue-texts">{{item.domain}}</a>
+                    <span>Resources  {{item.resources}}{{item.resourcesUnit}}</span>
+                </p>
+            </div>
+            <div class="icons">
+                <a ui-sref="base.service({serviceId: service.id})" class="" ng-repeat="service in item.services | limitTo:4">
+                    <span class="center-image"></span><img class="center-image-img" ng-src="{{service.icon}}"/>
+                </a>
+            </div>
+        </div>
+        <!-- end .data-box -->
+        <div class="bottom-area">
+                <span class="fl">
+                  <span class="blue-texts">{{item.state}}</span>
+                  <span ng-class="{'icon-green-ok': item.stateOk, 'icon-red-error' : !item.stateOk }"></span>
+                </span>
+                <span class="fr">
+                  <a href="javascript:;" class="icon-chart" title="Statistics" tooltip-placement="bottom" tooltip="Statistics"></a>
+                  <a href="javascript:;" class="icon-detailed" title="Play" tooltip-placement="bottom" tooltip="Play"></a>
+                </span>
+        </div>
+        <!-- end .bottom-area -->
+    </div>
+</script>
+
+
+<div class="dashboard-page main-content" fix-sidebar set-width>
+
+        <ng-include src="'/partials/common/solution-search.html'"></ng-include>
+
+        <alert-popup ng-if="alertPopup">
+            {{alertPopup.text}}
+        </alert-popup>
+
+        <ng-include src="'/partials/common/problem-alerts.html'"></ng-include>
+
+
+        <div class="dashboard-tab">
+        <div class="tabs">
+            <ul>
+                <li ng-class="{active: tab == 'projects'}"><a href="javascript:;" class="icon-projects" ng-click="showTab('projects')"><i></i><span>PROJECTS ({{projects.length}})</span></a><span class="border-spacing"></span></li>
+                <li ng-class="{active: tab == 'solutions'}"><a href="javascript:;" class="icon-solutions" ng-click="showTab('solutions')"><i></i><span>SOLUTIONS ({{solutions.length}})</span></a><span class="border-spacing"></span></li>
+                <li ng-class="{active: tab == 'applications'}"><a href="javascript:;" class="icon-applications" ng-click="showTab('applications')"><i></i><span>SERVICE WIZARD ({{applications.length}})</span></a><span class="border-spacing"></span></li>
+            </ul>
+        </div>
+        <!-- end .tabs -->
+
+        <div class="tab-content projects-content" ng-show="tab == 'projects'">
+
+            <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
+
+            <div class="btn-box">
+                <a ui-sref="base.newProject" class="add-btn icon-add"><i></i><span>ADD NEW PROJECT</span></a>
+            </div>
+            <!-- end .btn-box -->
+        </div>
+        <!-- end .tab-content -->
+
+        <div class="tab-content company-content" ng-show="tab == 'solutions'">
+
+            <ng-include src="'ModuleBox.html'" ng-repeat="item in solutions"></ng-include>
+
+            <div class="btn-box">
+                <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW SOLUTIONS</span></a>
+            </div>
+            <!-- end .btn-box -->
+        </div>
+        <!-- end .tab-content -->
+
+        <div class="tab-content applications-content" ng-show="tab == 'applications'">
+
+            <ng-include src="'ModuleBox.html'" ng-repeat="item in applications"></ng-include>
+
+            <div class="btn-box">
+                <a href="javascript:;" class="add-btn icon-add add-applications"><i></i><span><span>ADD NEW</span> <span>SERVICE WIZARD</span></span></a>
+            </div>
+            <!-- end .btn-box -->
+        </div>
+        <!-- end .tab-content -->
+        </div>
+        <!-- end .dashboard-tab -->
+
+    </div>

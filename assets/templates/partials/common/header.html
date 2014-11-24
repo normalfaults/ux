@@ -1,0 +1,61 @@
+
+<header class="header">
+
+    <div class="logo fl">
+        <a href="/app/solution"><img src="/images/logo.png" alt="Project Jellyfish"></a>
+    </div>
+    <!-- end .logo -->
+    <div class="nav-user fr">
+        <nav>
+            <ul>
+                <li ng-class="{active: !$state.includes('base.solutionBase.manage')}">
+                    <a ui-sref="base.solutionBase.dashboard">DASHBOARD</a>
+                </li>
+                <li><a href="javascript:">BROWSE</a></li>
+                <li><a href="javascript:">BUILD</a></li>
+                <li ng-class="{active: $state.includes('base.solutionBase.manage')}">
+                    <a ui-sref="base.solutionBase.manage">MANAGE</a>
+                </li>
+                <li><a href="javascript:">PRICING</a></li>
+            </ul>
+        </nav>
+        <!-- end nav -->
+        <div class="icons-box">
+            <a href="javascript:;" class="icon-notice" drop-down><i ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
+            <div class="drop-down-box hide keep-drop-down-open">
+                <span class="icon-arrow"></span>
+                <ul>
+                    <li ng-repeat="item in headerData.notifications">
+                        <span class="texts" ng-bind-html="item.trustedHtml"></span>
+                        <span class="ago">{{item.ago}}</span>
+                    </li>
+                </ul>
+                <div class="view-all">
+                    <a href="javascript:;">View all notifications</a>
+                </div>
+            </div>
+            <!-- end nav -->
+        </div>
+        <!-- end .drop-down-box -->
+        <div class="icons-box">
+            <a href="javascript:" class="icon-cart"><i ng-if="headerData.cartCount">{{headerData.cartCount}}</i></a>
+        </div>
+        <!-- end .icons-box -->
+        <div class="user-info">
+            <a href="javascript:;" class="user-info-dwwn" drop-down>
+                <span class="texts">Welcome<span class="name">{{headerData.username}}</span></span>
+                <span class="avatar"><img ng-src="{{headerData.userImage}}" alt="Avatar"></span>
+                <span class="icon-arrow"></span>
+            </a>
+            <div class="drop-down-box hide">
+                <span class="icon-arrow"></span>
+                <ul ng-repeat="item in headerData.options">
+                    <li><a ng-href="{{item.url}}">{{item.text}}</a></li>
+                </ul>
+            </div>
+            <!-- end .drop-down-box -->
+        </div>
+        <!-- end .user-info -->
+    </div>
+    <!-- end .nav-user -->
+</header>

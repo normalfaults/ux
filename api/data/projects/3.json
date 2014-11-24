@@ -14,7 +14,7 @@
     "cpu": 16,
     "hdd": "2 TB",
     "ram": "64 GB",
-    "icon": "/i/assets/projects/2.png",
+    "icon": "/images/assets/projects/2.png",
     "orderHistory": [
         {
             "orderId": 20031,

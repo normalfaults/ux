@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="broker">
+<head>
+    <!-- Meta Tags -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Dashboard - Jellyfish</title>
+
+    <link href="/css/styles.css" type="text/css" rel="stylesheet" media="screen"/>
+    <!--[if lt IE 9]>
+        <link href="/css/ie.css" type="text/css" rel="stylesheet" media="screen"/>
+    <![endif]-->
+
+</head>
+<body>
+<div class="dashboard-pages" ng-cloak>
+    <ng-include src="'/partials/common/header.html'"></ng-include>
+
+    <ui-view></ui-view>
+
+    <footer>
+        <div class="footer-content">
+            <div class="left fl">
+                <strong>Project Jellyfish – Release 2 Preview</strong>
+                <span>Copyright &copy; 2014 Booz Allen Hamilton. All Rights Reserved.</span>
+            </div>
+            <!-- end .left -->
+            <div class="right fr">
+                <nav class="links">
+                    <a href="javascript:;">ABOUT US</a>
+                    <a href="javascript:;">PRODUCT &amp; SOLUTION</a>
+                    <a href="javascript:;">SUPPORT</a>
+                    <a href="javascript:;">CONTACT</a>
+                </nav>
+                <!-- end .links -->
+                <div class="shape">
+                    <a href="javascript:;" class="fb"></a>
+                    <a href="javascript:;" class="tw"></a>
+                    <a href="javascript:;" class="in"></a>
+                    <a href="javascript:;" class="gg"></a>
+                </div>
+                <!-- end .shape -->
+            </div>
+            <!-- end .right -->
+        </div>
+    </footer>
+    <!-- end footer -->
+</div>
+
+<script src="/js/bundle.js" type="text/javascript"></script>
+
+</body>
+</html>

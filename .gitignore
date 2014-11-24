@@ -1,2 +1,16 @@
+# Ignore OS
 .DS_Store
-node_modules/
+
+# ignore IDE
+.idea
+
+# ignore bower
+bower_components
+
+# ignore node modules, npm artifacts
+node_modules
+npm-debug.log
+
+# build
+public/
+.sass-cache/
