@@ -5,8 +5,9 @@
 'use strict';
 
 var angular = require('angular');
+require('angular-cookies');
 
-module.exports = angular.module('broker.controllers', [])
+module.exports = angular.module('broker.controllers', ['ngCookies'])
   // Initialize base data for all controllers
   .controller("BaseCtrl", ["$rootScope", "$sce", "$state", "headerData", "projects", "bundles", "applications",
     function($rootScope, $sce, $state, headerData, projects, bundles, applications) {
@@ -105,4 +106,28 @@ module.exports = angular.module('broker.controllers', [])
     $scope.blueprintServices = $filter('filter')(services, {isBlueprint: true});
     $scope.services = services;
     $scope.viewValues = viewValues;
-  }]);
+  }])
+  .controller('LoginController', function ($scope, $location, $cookieStore, authorization) {
+
+    $scope.login = function () {
+        var credentials = {
+            email: this.email,
+            password: this.password
+        };
+
+        var success = function (data) {
+            console.warn(data);
+
+            //api.init(token);
+
+            //$cookieStore.put('token', token);
+            //$location.path('/');
+        };
+
+        var error = function () {
+            // TODO: apply user notification here..
+        };
+
+        authorization.login(credentials).success(success).error(error);
+    };
+  });

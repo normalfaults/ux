@@ -80,6 +80,8 @@ var alerts = require("../data/alerts.json");
 // alerts with x icon for dashboard
 var alertPopup = require("../data/alert-popup.json");
 
+var staffSignIn = require("../data/staff/sign_in.json");
+
 /**
  * Populate references.
  * @param {Object} target the elements to populate (hashmap id to element)
@@ -294,6 +296,16 @@ function getAlertPopup(req, res, next) {
     res.json(alertPopup);
 }
 
+/**
+ * Get staff sign in.
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ * @param {Function} next the callback function
+ */
+function postStaffSignIn(req, res, next) {
+  res.json(staffSignIn);
+}
+
 module.exports = {
     getSolution: getSolution,
     getProject: getProject,
@@ -311,5 +323,6 @@ module.exports = {
     getRecentOrders: getRecentOrders,
     getServices: getServices,
     getAlerts: getAlerts,
-    getAlertPopup: getAlertPopup
+    getAlertPopup: getAlertPopup,
+    postStaffSignIn: postStaffSignIn
 };

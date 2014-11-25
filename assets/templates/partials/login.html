@@ -1,0 +1,14 @@
+<div class="wrapper {{wrapperCssClass}}">
+    <ui-view>
+        <div class="login-panel">
+          <p>Please Sign In</p>
+          <form class="pure-form" ng-submit="login()">
+              <input type="text" class="pure-input-1-3" placeholder="Email" name="email" ng-model="email" required/>
+              <input type="password" class="pure-input-1-3" placeholder="Password" name="password" ng-model="password" required/>
+
+              <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+          </form>
+        </div>
+    </ui-view>
+    <span class="clearfix"></span>
+</div>

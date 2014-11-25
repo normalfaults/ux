@@ -25,4 +25,9 @@ var app = angular.module('broker', [
 ])
   // These are temporary until the app is fully refactored
   // TODO refactor into modules
-  .config(require('./routes')).run(require('./init'));
+  .config(require('./routes'))
+  .config(function ($httpProvider) {
+    $httpProvider.responseInterceptors.push('httpInterceptor');
+
+  })
+  .run(require('./init'));

@@ -30,6 +30,11 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
       },
       controller: "BaseCtrl"
     })
+    .state('login', {
+      url: "^/login",
+      templateUrl: '/partials/login.html',
+      controller: "LoginController"
+    })
     // base state with solution statistics
     .state('base.solutionBase', {
       url: "/",
