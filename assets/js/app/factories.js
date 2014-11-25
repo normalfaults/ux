@@ -12,7 +12,8 @@ module.exports = angular.module('broker.factories', [])
 
     // @todo Move this to it's own JSON file.
     var jsonRoutes = {
-      'basePath': 'http://localhost:5000/api',
+      //'basePath': 'http://localhost:5000/api',
+      'basePath': '/api',
       'routes': {
         'solutions':         '/solutions/:id',
         'projectValues':     '/projectValues',
