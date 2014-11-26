@@ -9,8 +9,8 @@ require('angular-cookies');
 
 module.exports = angular.module('broker.controllers', ['ngCookies'])
   // Initialize base data for all controllers
-  .controller("BaseCtrl", ["$rootScope", "$sce", "$state", "headerData", "projects", "bundles", "applications",
-    function($rootScope, $sce, $state, headerData, projects, bundles, applications) {
+  .controller("BaseCtrl", ["$rootScope", "$scope", "$sce", "$state", "headerData", "projects", "bundles", "applications", "AuthService",
+    function($rootScope, $scope, $sce, $state, headerData, projects, bundles, applications, AuthService) {
       $rootScope.$state = $state;
       $rootScope.headerData = headerData;
       $rootScope.projects = projects;
@@ -22,6 +22,11 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
       angular.forEach(projects, function(project) {
         project.sref = "base.project(" + angular.toJson({projectId: project.id}) + ")";
       });
+
+      $scope.logout = function() {
+        AuthService.logout();
+      }
+
     }])
   // Controller for Dashboard view
   .controller('DashboardCtrl', ["$scope", "alerts", "alertPopup", function($scope, alerts, alertPopup) {
@@ -121,4 +126,7 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
       });
 
     };
+  })
+  .controller('LogoutController', function ($scope, $location, $cookieStore, AuthService) {
+    AuthService.logout();
   });

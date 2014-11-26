@@ -128,7 +128,7 @@ module.exports = angular.module('broker.factories', [])
       }
     };
   }])
-  .factory('httpInterceptor', function httpInterceptor ($q, $window, $location) {
+  .factory('httpInterceptor', function httpInterceptor ($q, $window, AuthService) {
     return function (promise) {
         var success = function (response) {
             return response;
@@ -136,7 +136,7 @@ module.exports = angular.module('broker.factories', [])
 
         var error = function (response) {
             if (response.status === 401) {
-                $location.url('/login');
+                AuthService.logout();
             }
 
             return $q.reject(response);
@@ -145,7 +145,7 @@ module.exports = angular.module('broker.factories', [])
         return promise.then(success, error);
     };
   })
-  .factory('AuthService', function ($http, Session, ApiResource, USER_ROLES) {
+  .factory('AuthService', function ($http, $location, Session, ApiResource, USER_ROLES) {
     var authService = {};
 
     authService.login = function (credentials) {
@@ -157,6 +157,11 @@ module.exports = angular.module('broker.factories', [])
         .error(function() {
           // Do error here.
         })
+    };
+
+    authService.logout = function() {
+      Session.destroy();
+      $location.path('/');
     };
 
     // @todo Need to check the cookie here and then regrab the session data.
