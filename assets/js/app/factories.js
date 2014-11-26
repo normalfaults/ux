@@ -128,7 +128,7 @@ module.exports = angular.module('broker.factories', [])
       }
     };
   }])
-  .factory('httpInterceptor', function httpInterceptor ($q, $window, AuthService) {
+  .factory('httpInterceptor', ['$q', '$window', '$location', function($q, $window, $location) {
     return function (promise) {
         var success = function (response) {
             return response;
@@ -136,7 +136,7 @@ module.exports = angular.module('broker.factories', [])
 
         var error = function (response) {
             if (response.status === 401) {
-                AuthService.logout();
+                $location('/login');
             }
 
             return $q.reject(response);
@@ -144,8 +144,9 @@ module.exports = angular.module('broker.factories', [])
 
         return promise.then(success, error);
     };
-  })
-  .factory('AuthService', function ($http, $location, Session, ApiResource, USER_ROLES) {
+  }])
+  .factory('AuthService', ['$http', '$location', 'Session', 'ApiResource', 'USER_ROLES',
+    function ($http, $location, Session, ApiResource, USER_ROLES) {
     var authService = {};
 
     authService.login = function (credentials) {
@@ -183,7 +184,7 @@ module.exports = angular.module('broker.factories', [])
     };
 
     return authService;
-  })
+  }])
   .service('Session', function () {
     this.create = function (email, role) {
       this.email = email;

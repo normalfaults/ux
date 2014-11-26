@@ -29,7 +29,8 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
 
     }])
   // Controller for Dashboard view
-  .controller('DashboardCtrl', ["$scope", "alerts", "alertPopup", function($scope, alerts, alertPopup) {
+  .controller('DashboardCtrl', ["$scope", "alerts", "alertPopup",
+    function($scope, alerts, alertPopup) {
     $scope.tab = "projects";
     $scope.alerts = alerts;
     $scope.alertPopup = alertPopup;
@@ -38,7 +39,8 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
     };
   }])
   // Controller for Dashboard view
-  .controller('SolutionBaseCtrl', ["$scope", "solutions", function($scope, solutions) {
+  .controller('SolutionBaseCtrl', ["$scope", "solutions",
+    function($scope, solutions) {
     var solution = solutions[0];
     $scope.solutions = solutions;
     $scope.solution = solutions[0];
@@ -60,7 +62,8 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
       $scope.manageValues = manageValues;
     }])
   // Controller for New Project View
-  .controller('NewProjectCtrl', ["$scope", "projectValues", "solutions", function($scope, projectValues, solutions) {
+  .controller('NewProjectCtrl', ["$scope", "projectValues", "solutions",
+    function($scope, projectValues, solutions) {
     $scope.solutions = solutions;
     $scope.solution = solutions[0];
     $scope.projectValues = projectValues;
@@ -87,13 +90,15 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
 
   }])
   // Controller for Project Details View
-  .controller('ProjectCtrl', ["$scope", "project", "solutions", function($scope, project, solutions) {
+  .controller('ProjectCtrl', ["$scope", "project", "solutions",
+    function($scope, project, solutions) {
     $scope.solution = solutions[0];
     $scope.solutions = solutions;
     $scope.project = project;
   }])
   // Controller for Service Details View
-  .controller('ServiceCtrl', ["$scope", "$sce", "service", "viewValues", function($scope, $sce, service, viewValues) {
+  .controller('ServiceCtrl', ["$scope", "$sce", "service", "viewValues",
+    function($scope, $sce, service, viewValues) {
     $scope.service = service;
     $scope.viewValues = viewValues;
     $scope.tab = "feature";
@@ -105,14 +110,16 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
     service.review = $sce.trustAsHtml(service.review);
   }])
   // Controller for Marketplace View
-  .controller('MarketplaceCtrl', ["$scope", "$filter", "services", "viewValues", function($scope, $filter, services, viewValues) {
+  .controller('MarketplaceCtrl', ["$scope", "$filter", "services", "viewValues",
+    function($scope, $filter, services, viewValues) {
     $scope.applicationServices = $filter('filter')(services, {isApplication: true});
     $scope.webServices = $filter('filter')(services, {isWebService: true});
     $scope.blueprintServices = $filter('filter')(services, {isBlueprint: true});
     $scope.services = services;
     $scope.viewValues = viewValues;
   }])
-  .controller('LoginController', function ($scope, $location, $cookieStore, AuthService) {
+  .controller('LoginController', ['$scope', '$location', '$cookieStore', 'AuthService',
+    function ($scope, $location, $cookieStore, AuthService) {
 
     $scope.login = function () {
       var credentials = {
@@ -126,7 +133,8 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
       });
 
     };
-  })
-  .controller('LogoutController', function ($scope, $location, $cookieStore, AuthService) {
+  }])
+  .controller('LogoutController', ['AuthService',
+    function (AuthService) {
     AuthService.logout();
-  });
+  }]);
