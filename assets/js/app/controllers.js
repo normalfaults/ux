@@ -110,15 +110,15 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
   .controller('LoginController', function ($scope, $location, $cookieStore, AuthService) {
 
     $scope.login = function () {
-        var credentials = {
-            email: this.email,
-            password: this.password
-        };
+      var credentials = {
+        email: this.email,
+        password: this.password
+      };
 
-        AuthService.login(credentials).success(function() {
-          console.warn('success!');
-          $location.path('/')
-        });
+      // @todo Add optional to redirect back to where they were instead of always going to dashboard.
+      AuthService.login(credentials).success(function() {
+        $location.path('/')
+      });
 
     };
   });
