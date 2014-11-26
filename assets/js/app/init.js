@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($rootScope, $log, fixSidebar) {
+module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, AUTH_EVENTS) {
   $rootScope.sideBarExpanded = true;
   // catch any error in resolve in state
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
@@ -19,5 +19,28 @@ module.exports = function($rootScope, $log, fixSidebar) {
       return false;
     }
     $(".drop-down-box").addClass('hide');
+  });
+
+  $rootScope.$on('$stateChangeStart', function (event, next) {
+    var authorizedRoles = next.data.authorizedRoles;
+    if (!AuthService.isAuthorized(authorizedRoles)) {
+      event.preventDefault();
+
+      // @see https://github.com/angular/angular.js/issues/9607
+      $rootScope.$evalAsync(function() {
+        $location.path('/login');
+      });
+      //if (AuthService.isAuthenticated()) {
+      //  console.warn('authenticated');
+      //  // user is not allowed
+      //  //$rootScope.$broadcast(AUTH_EVENTS.notAuthorized);
+      //  $location.path('/login');
+      //} else {
+      //  console.warn('else');
+      //  // user is not logged in
+      //  //$rootScope.$broadcast(AUTH_EVENTS.notAuthenticated);
+      //  $location.path('/login');
+      //}
+    }
   });
 };

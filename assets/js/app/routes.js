@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($stateProvider, $urlRouterProvider, $locationProvider) {
+module.exports = function($stateProvider, $urlRouterProvider, $locationProvider, USER_ROLES) {
   $urlRouterProvider.otherwise("/dashboard");
 
   $stateProvider
@@ -11,6 +11,9 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
       url: "/app",
       abstract: true,
       templateUrl: "/partials/base.html",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      },
       resolve: {
         headerData: ["HeaderData", function(HeaderData) {
           return HeaderData.get().$promise;
@@ -33,19 +36,26 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('login', {
       url: "^/login",
       templateUrl: '/partials/login.html',
+      data: {
+        authorizedRoles: [USER_ROLES.all]
+      },
       controller: "LoginController"
     })
     // base state with solution statistics
     .state('base.solutionBase', {
       url: "/",
       template: "<ui-view></ui-view>",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      },
       controller: "SolutionBaseCtrl"
     })
     // solution dashboard
     .state('base.solutionBase.dashboard', {
       url: "^/dashboard",
       data: {
-        wrapperCssClass: "dashboard-bg"
+        wrapperCssClass: "dashboard-bg",
+        authorizedRoles: [USER_ROLES.user]
       },
       templateUrl: "/partials/dashboard.html",
       resolve: {
@@ -62,6 +72,9 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('base.solutionBase.manage', {
       url: "^/manage",
       templateUrl: "/partials/manage.html",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      },
       resolve: {
         recentOrders: ["Order", function(Order) {
           return Order.getRecentOrders().$promise;
@@ -82,6 +95,9 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('base.newProject', {
       url: "^/project/new",
       templateUrl: "/partials/new-project.html",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      },
       resolve: {
         projectValues: ["DataService", function(DataService) {
           return DataService.getProjectValues().$promise;
@@ -104,6 +120,9 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('base.service', {
       url: "^/service/:serviceId",
       templateUrl: "/partials/service.html",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      },
       resolve: {
         service: ['Service', "$stateParams", function(Service, $stateParams) {
           return Service.get({id: $stateParams.serviceId}).$promise;
@@ -118,6 +137,9 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
     .state('base.marketplace', {
       url: "^/marketplace",
       templateUrl: "/partials/marketplace.html",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      },
       resolve: {
         viewValues: ['DataService', function(DataService) {
           return DataService.getMarketplaceValues().$promise;
@@ -130,18 +152,30 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider)
     })
     // Search and Compare
     .state('base.searchAndCompare', {
-      url: "^/search-and-compare"
+      url: "^/search-and-compare",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      }
     })
     .state('base.helpDesk', {
-      url: "^/help-desk"
+      url: "^/help-desk",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      }
     })
     .state('base.orderHistory', {
-      url: "^/order-history"
+      url: "^/order-history",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      }
     })
     // create alert
     .state('base.createAlert', {
       url: "^/create-alert",
-      templateUrl: "/partials/create-alert.html"
+      templateUrl: "/partials/create-alert.html",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      }
     });
   $locationProvider.html5Mode(true);
 };

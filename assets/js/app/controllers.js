@@ -107,7 +107,7 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
     $scope.services = services;
     $scope.viewValues = viewValues;
   }])
-  .controller('LoginController', function ($scope, $location, $cookieStore, authorization) {
+  .controller('LoginController', function ($scope, $location, $cookieStore, AuthService) {
 
     $scope.login = function () {
         var credentials = {
@@ -115,19 +115,10 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
             password: this.password
         };
 
-        var success = function (data) {
-            console.warn(data);
+        AuthService.login(credentials).success(function() {
+          console.warn('success!');
+          $location.path('/')
+        });
 
-            //api.init(token);
-
-            //$cookieStore.put('token', token);
-            //$location.path('/');
-        };
-
-        var error = function () {
-            // TODO: apply user notification here..
-        };
-
-        authorization.login(credentials).success(success).error(error);
     };
   });
