@@ -29,6 +29,7 @@
     "lodash": "~2.4.1",
     "angular-cookies": "~1.2.0",
     "jquery-knob": "~1.2.11",
-    "jquery-cookie": "~1.4.1"
+    "jquery-cookie": "~1.4.1",
+    "angular-dynforms": "~0.0.4"
   }
 }

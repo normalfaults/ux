@@ -16,7 +16,8 @@ module.exports = angular.module('broker.factories', [])
       'basePath': '/api',
       'routes': {
         'solutions':         '/solutions/:id',
-        'projectValues':     '/projectValues',
+        'createProject': '/projects',
+        'projectQuestions':  '/project_questions',
         'manageValues':      '/manageValues',
         'marketplaceValues': '/marketplaceValues',
         'alerts':            '/alerts',
@@ -47,9 +48,14 @@ module.exports = angular.module('broker.factories', [])
   // resource for general data
   .factory('DataService', ['$resource', 'ApiResource', function($resource, ApiResource) {
     return $resource(ApiResource(), {}, {
-      getProjectValues: {
+      getProjectQuestions: {
         method: "GET",
-        url: ApiResource('projectValues')
+        isArray: true,
+        url: ApiResource('projectQuestions')
+      },
+      createProject: {
+        method: "POST",
+        url: ApiResource('createProject')
       },
       getManageValues: {
         method: "GET",
