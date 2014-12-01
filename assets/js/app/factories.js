@@ -152,61 +152,62 @@ module.exports = angular.module('broker.factories', [])
   }])
   .factory('httpInterceptor', ['$q', '$window', '$location', function($q, $window, $location) {
     return function (promise) {
-        var success = function (response) {
-            return response;
-        };
+      var success = function (response) {
+        return response;
+      };
 
-        var error = function (response) {
-            if (response.status === 401) {
-                $location('/login');
-            }
+      var error = function (response) {
+        if (response.status === 401) {
+          $location('/login');
+        }
 
-            return $q.reject(response);
-        };
+        return $q.reject(response);
+      };
 
-        return promise.then(success, error);
+      return promise.then(success, error);
     };
   }])
   .factory('AuthService', ['$http', '$location', 'Session', 'ApiResource', 'USER_ROLES',
     function ($http, $location, Session, ApiResource, USER_ROLES) {
-    var authService = {};
+      var authService = {};
 
-    authService.login = function (credentials) {
-      return $http
-        .post(ApiResource('signIn'), credentials)
-        .success(function (data, statusCode) {
-          Session.create(data.email, data.role);
-        })
-        .error(function() {
-          // Do error here.
-        })
-    };
+      authService.login = function (credentials) {
+        return $http
+          .post(ApiResource('signIn'), credentials)
+          .success(function (data, statusCode) {
+            Session.create(data.email, data.role);
+          })
+          .error(function() {
+            // Do error here.
+          })
+      };
 
-    authService.logout = function() {
-      Session.destroy();
-      $location.path('/');
-    };
+      // @todo need to call sign_out endpoint.
+      authService.logout = function() {
+        Session.destroy();
+        $location.path('/');
+      };
 
-    // @todo Need to check the cookie here and then regrab the session data.
-    authService.isAuthenticated = function () {
-      return !!Session.email;
-    };
+      // @todo Need to check the cookie here and then regrab the session data.
+      authService.isAuthenticated = function () {
+        return !!Session.email;
+      };
 
-    authService.isAuthorized = function (authorizedRoles) {
-      if (!angular.isArray(authorizedRoles)) {
-        authorizedRoles = [authorizedRoles];
-      }
+      authService.isAuthorized = function (authorizedRoles) {
+        if (!angular.isArray(authorizedRoles)) {
+          authorizedRoles = [authorizedRoles];
+        }
 
-      // If authorizedRoles contains 'all', then we allow it through.
-      if (authorizedRoles.indexOf(USER_ROLES.all) !== -1) {
-        return true;
-      } else {
-        return (authService.isAuthenticated() && authorizedRoles.indexOf(Session.role) !== -1);
-      }
-    };
+        // If authorizedRoles contains 'all', then we allow it through.
+        if (authorizedRoles.indexOf(USER_ROLES.all) !== -1) {
+          return true;
+        } else {
+          return (authService.isAuthenticated() && authorizedRoles.indexOf(Session.role) !== -1);
+        }
+      };
 
-    return authService;
-  }])
+      return authService;
+    }])
   .service('Session', function () {
     this.create = function (email, role) {
       this.email = email;

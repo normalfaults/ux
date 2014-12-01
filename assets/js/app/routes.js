@@ -48,11 +48,6 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       data: {
         authorizedRoles: [USER_ROLES.all]
       },
-      resolve: {
-        currentUser: ["User", function(User) {
-          return User.getCurrentUser();
-        }]
-      },
       controller: "LoginController"
     })
     // base state with solution statistics

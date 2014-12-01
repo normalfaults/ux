@@ -139,7 +139,7 @@ gulp.task('scripts', ['bower', 'clean-scripts', 'templates'], function() {
     .pipe(browserified)
     .pipe(unpathify())
     .pipe(concat('bundle.js'))
-    .pipe(uglify({preserveComments: 'some'}))
+    //.pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
 });

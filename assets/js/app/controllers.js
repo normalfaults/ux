@@ -111,8 +111,8 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
       $scope.services = services;
       $scope.viewValues = viewValues;
     }])
-  .controller('LoginController', ['$scope', '$location', '$cookieStore', 'AuthService', 'currentUser',
-    function ($scope, $location, $cookieStore, AuthService, currentUser) {
+  .controller('LoginController', ['$scope', '$location', '$cookieStore', 'AuthService',
+    function ($scope, $location, $cookieStore, AuthService) {
 
       $scope.login = function () {
         var credentials = {
