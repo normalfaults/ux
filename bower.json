@@ -27,7 +27,6 @@
     "angular-bootstrap": "~0.11.2",
     "jquery": "~2.1.1",
     "lodash": "~2.4.1",
-    "angular-cookies": "~1.2.0",
     "jquery-knob": "~1.2.11",
     "jquery-cookie": "~1.4.1",
     "angular-dynforms": "~0.0.4"

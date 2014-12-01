@@ -5,9 +5,8 @@
 'use strict';
 
 var angular = require('angular');
-require('angular-cookies');
 
-module.exports = angular.module('broker.controllers', ['ngCookies'])
+module.exports = angular.module('broker.controllers', [])
   // Initialize base data for all controllers
   .controller("BaseCtrl", ["$rootScope", "$scope", "$sce", "$state", "headerData", "projects", "bundles", "applications", "AuthService",
     function($rootScope, $scope, $sce, $state, headerData, projects, bundles, applications, AuthService) {
