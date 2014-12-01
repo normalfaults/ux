@@ -65,7 +65,7 @@ var bundles = {
 var header = require("../data/header.json");
 
 // dropdown values for new project
-var projectValues = require("../data/new-project.json");
+var projectQuestions = require("../data/project_questions.json");
 
 // dropdown values for manage view
 var manageValues = require("../data/manage.json");
@@ -126,6 +126,16 @@ function _returnItem(item, res, next) {
  */
 function getSolution(req, res, next) {
     _returnItem(solutions[req.params.id], res, next);
+}
+
+/**
+ * Post a project.
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ * @param {Function} next the callback function
+ */
+function createProject(req, res, next) {
+    res.json(req.params.project);
 }
 
 /**
@@ -204,8 +214,8 @@ function getHeader(req, res, next) {
  * @param {Object} res the response object
  * @param {Function} next the callback function
  */
-function getProjectValues(req, res, next) {
-    res.json(projectValues);
+function getProjectQuestions(req, res, next) {
+    res.json(projectQuestions);
 }
 
 /**
@@ -308,13 +318,14 @@ function postStaffSignIn(req, res, next) {
 
 module.exports = {
     getSolution: getSolution,
+    createProject: createProject,
     getProject: getProject,
     getSolutions: getSolutions,
     getProjects: getProjects,
     getHeader: getHeader,
     getApplications: getApplications,
     getBundles: getBundles,
-    getProjectValues: getProjectValues,
+    getProjectQuestions: getProjectQuestions,
     getManageValues: getManageValues,
     getService: getService,
     getMarketplaceValues: getMarketplaceValues,

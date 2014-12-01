@@ -99,8 +99,11 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
         authorizedRoles: [USER_ROLES.user]
       },
       resolve: {
-        projectValues: ["DataService", function(DataService) {
-          return DataService.getProjectValues().$promise;
+        projectQuestions: ["DataService", function(DataService) {
+          return DataService.getProjectQuestions().$promise;
+        }],
+        createProject: ["DataService", function(DataService) {
+          return DataService.createProject;
         }]
       },
       controller: "NewProjectCtrl"
