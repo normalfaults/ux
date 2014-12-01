@@ -5,7 +5,7 @@
         <a href="/app/solution"><img src="/images/logo.png" alt="Project Jellyfish"></a>
     </div>
     <!-- end .logo -->
-    <div class="nav-user fr">
+    <div class="nav-user fr" ng-if="headerData">
         <nav>
             <ul>
                 <li ng-class="{active: !$state.includes('base.solutionBase.manage')}">
