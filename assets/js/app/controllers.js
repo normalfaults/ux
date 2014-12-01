@@ -54,31 +54,25 @@ module.exports = angular.module('broker.controllers', [])
       $scope.manageValues = manageValues;
     }])
   // Controller for New Project View
-  .controller('NewProjectCtrl', ["$scope", "projectValues", "solutions", function($scope, projectValues, solutions) {
-    $scope.solutions = solutions;
-    $scope.solution = solutions[0];
-    $scope.projectValues = projectValues;
+  .controller('NewProjectCtrl', ["$scope", "projectQuestions", "createProject", function($scope, projectQuestions, createProject) {
+    var _createProject = createProject,
+        _projectQuestions = projectQuestions,
+        _scope = $scope
 
-    $scope.today = function() {
-      $scope.dt = new Date();
-    };
-    $scope.today();
+    $scope.project = $scope.project || {}
+    $scope.project.project_answers = $scope.project.project_answers || []
 
-    $scope.clear = function () {
-      $scope.dt = null;
-    };
+    _.each(_projectQuestions, function(projectQuestion){
+      _scope.project.project_answers.push({
+        project_question_id: projectQuestion.id,
+        project_question: projectQuestion
+      })
+    })
 
-    $scope.open = function($event) {
-      $event.preventDefault();
-      $event.stopPropagation();
-
-      $scope.opened = true;
-    };
-
-    $scope.dateOptions = {
-      showWeeks: false
-    };
-
+    $scope.createProject = function() {
+      console.log(_scope);
+      _createProject({project: _scope.project})
+    }
   }])
   // Controller for Project Details View
   .controller('ProjectCtrl', ["$scope", "project", "solutions", function($scope, project, solutions) {

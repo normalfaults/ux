@@ -1,0 +1,32 @@
+<!--also suitable for creation-->
+<label>{{ field.title }}<em ng-hide="!field.required">*</em> :</label>
+<span ng-switch on="field.type.view">
+  <span ng-switch-when="input">
+    <input
+            ng-model="entity[field.name]"
+            type="text"
+            />
+  </span>
+  <span ng-switch-when="checkbox">
+      <input
+              ng-model="entity[field.name]"
+              ng-checked="entity[field.name]"
+              type="checkbox"
+              />
+  </span>
+  <span ng-switch-when="textarea">
+    <textarea
+            ng-model="entity[field.name]"
+            ></textarea>
+  </span>
+  <span ng-switch-when="select">
+    <select
+            ng-model="entity[field.name]"
+            ng-options="item.id as item.name for item in field.type.options"
+            ></select>
+  </span>
+  <!--You can add more custom widget types needed for your project-->
+  <span ng-switch-default>
+      <span>Unknown widget</span>
+  </span>
+</span>
