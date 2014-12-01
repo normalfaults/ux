@@ -66,20 +66,19 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
   function($scope, projectQuestions, createProject) {
     var _createProject = createProject,
         _projectQuestions = projectQuestions,
-        _scope = $scope
+        _scope = $scope;
 
-    $scope.project = $scope.project || {}
-    $scope.project.project_answers = $scope.project.project_answers || []
+    $scope.project = $scope.project || {};
+    $scope.project.project_answers = $scope.project.project_answers || [];
 
     _.each(_projectQuestions, function(projectQuestion){
       _scope.project.project_answers.push({
         project_question_id: projectQuestion.id,
         project_question: projectQuestion
       })
-    })
+    });
 
     $scope.createProject = function() {
-      console.log(_scope);
       _createProject({project: _scope.project})
     }
   }])
