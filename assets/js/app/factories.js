@@ -32,7 +32,8 @@ module.exports = angular.module('broker.factories', [])
         'bundlesById':       '/bundles/:id',
         'header':            '/header',
         'signIn':            '/staff/sign_in',
-        'signOut':           '/staff/sign_out'
+        'signOut':           '/staff/sign_out',
+        'currentUser':       '/current_user'
       }
     };
 
@@ -85,6 +86,11 @@ module.exports = angular.module('broker.factories', [])
         method: "GET",
         isArray: true,
         url: ApiResource('recentUsers')
+      },
+      getCurrentUser: {
+        method: 'GET',
+        isArray: false,
+        url: ApiResource('currentUser')
       }
     });
   }])

@@ -24,12 +24,24 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService) 
   $rootScope.$on('$stateChangeStart', function (event, next) {
     var authorizedRoles = next.data.authorizedRoles;
     if (!AuthService.isAuthorized(authorizedRoles)) {
+
       event.preventDefault();
 
-      // @see https://github.com/angular/angular.js/issues/9607
-      $rootScope.$evalAsync(function() {
-        $location.path('/login');
-      });
+      // If they are logged in but not authorized, back to the root.
+      // Otherwise back to login.
+      if (AuthService.isAuthenticated()) {
+        // @see https://github.com/angular/angular.js/issues/9607
+        $rootScope.$evalAsync(function() {
+          $location.path('/');
+        });
+      } else {
+        // @see https://github.com/angular/angular.js/issues/9607
+        $rootScope.$evalAsync(function() {
+          $location.path('/login');
+        });
+      }
+
+
     }
   });
 };

@@ -82,6 +82,8 @@ var alertPopup = require("../data/alert-popup.json");
 
 var staffSignIn = require("../data/staff/sign_in.json");
 
+var currentUser = require("../data/current_user.json");
+
 /**
  * Populate references.
  * @param {Object} target the elements to populate (hashmap id to element)
@@ -316,6 +318,17 @@ function postStaffSignIn(req, res, next) {
   res.json(staffSignIn);
 }
 
+/**
+ * Get Current User
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
+function getCurrentUser(req, res, next) {
+  res.json(currentUser);
+}
+
 module.exports = {
     getSolution: getSolution,
     createProject: createProject,
@@ -335,5 +348,6 @@ module.exports = {
     getServices: getServices,
     getAlerts: getAlerts,
     getAlertPopup: getAlertPopup,
-    postStaffSignIn: postStaffSignIn
+    postStaffSignIn: postStaffSignIn,
+    getCurrentUser: getCurrentUser
 };
