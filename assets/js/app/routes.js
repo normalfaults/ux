@@ -39,7 +39,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       abstract: true,
       templateUrl: "/partials/base.html",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.all]
       }
     })
     .state('publicbase.login', {

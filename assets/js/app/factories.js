@@ -150,7 +150,8 @@ module.exports = angular.module('broker.factories', [])
       }
     };
   }])
-  .factory('httpInterceptor', ['$q', '$window', '$location', function($q, $window, $location) {
+  .factory('httpInterceptor', ['$rootScope', '$q', '$location', function($rootScope, $q, $location) {
+    
     return function (promise) {
       var success = function (response) {
         return response;
@@ -158,7 +159,7 @@ module.exports = angular.module('broker.factories', [])
 
       var error = function (response) {
         if (response.status === 401) {
-          $location('/login');
+          $location.path('/login');
         }
 
         return $q.reject(response);

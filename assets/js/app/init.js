@@ -41,14 +41,15 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, 
   // Authorization and Authentication when switching Pages.
   $rootScope.$on('$stateChangeStart', function (event, next) {
 
-    // Block all routing until the current user is loaded for the first time.
-    if (!currentUser.$resolved) {
-      event.preventDefault();
-      return;
-    }
-
     var authorizedRoles = next.data.authorizedRoles;
     if (!AuthService.isAuthorized(authorizedRoles)) {
+
+      // Block all routing until the current user is loaded for the first time.
+      // After authorization check because public routes do not need currentUser to verify.
+      if (!currentUser.$resolved) {
+        event.preventDefault();
+        return;
+      }
 
       // If they are logged in but not authorized, back to the root.
       // Otherwise back to login.
@@ -63,8 +64,6 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, 
           $location.path('/login');
         });
       }
-
-
     }
   });
 };
