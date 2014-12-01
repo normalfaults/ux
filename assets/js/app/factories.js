@@ -122,15 +122,25 @@ module.exports = angular.module('broker.factories', [])
   .factory('fixSidebar', [function() {
     return function() {
       var $nav = $('.side-nav');
-      $nav.height(500);
+      var $footer = $('footer');
 
-      var headerAndFooterHeight = $('header').outerHeight() + $('footer').outerHeight();
-      var mainContentEl = $('.main-content');
+      // If the nav is shown (only shown when logged in) we resize the nav to the correct size based
+      // on page content.
+      if ($nav && $nav.is(":visible")) {
+        $nav.height(500);
 
-      if ((mainContentEl.height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
-        $nav.height(document.documentElement.clientHeight - headerAndFooterHeight);
+        var headerAndFooterHeight = $('header').outerHeight() + $footer.outerHeight();
+        var mainContentEl = $('.main-content');
+
+        if ((mainContentEl.height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
+          $nav.height(document.documentElement.clientHeight - headerAndFooterHeight);
+        } else {
+          $nav.height(mainContentEl.height());
+          $footer.css('position', '');
+        }
       } else {
-        $nav.height(mainContentEl.height());
+        // If there is no visible sidebar, we set the footer to absolute to make sure it stays on the bottom.
+        $footer.css('position', 'absolute');
       }
     };
   }])
