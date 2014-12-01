@@ -23,7 +23,7 @@ module.exports = angular.module('broker.controllers', ['ngCookies'])
         project.sref = "base.project(" + angular.toJson({projectId: project.id}) + ")";
       });
 
-      $scope.logout = function() {
+      $rootScope.logout = function() {
         AuthService.logout();
       }
 

@@ -33,7 +33,17 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       },
       controller: "BaseCtrl"
     })
-    .state('login', {
+    // base state for our app
+    // get data for header and left sidebar menu
+    .state('publicbase', {
+      url: "/app",
+      abstract: true,
+      templateUrl: "/partials/base.html",
+      data: {
+        authorizedRoles: [USER_ROLES.user]
+      }
+    })
+    .state('publicbase.login', {
       url: "^/login",
       templateUrl: '/partials/login.html',
       data: {
