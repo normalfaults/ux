@@ -318,6 +318,10 @@ function postStaffSignIn(req, res, next) {
   res.json(staffSignIn);
 }
 
+function deleteStaffSignOut(req, res, next) {
+  res.json();
+}
+
 /**
  * Get Current User
  *
@@ -348,6 +352,7 @@ module.exports = {
     getServices: getServices,
     getAlerts: getAlerts,
     getAlertPopup: getAlertPopup,
-    postStaffSignIn: postStaffSignIn,
+    staffSignIn: postStaffSignIn,
+    staffSignOut: deleteStaffSignOut,
     getCurrentUser: getCurrentUser
 };

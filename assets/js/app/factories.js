@@ -151,7 +151,7 @@ module.exports = angular.module('broker.factories', [])
     };
   }])
   .factory('httpInterceptor', ['$rootScope', '$q', '$location', function($rootScope, $q, $location) {
-    
+
     return function (promise) {
       var success = function (response) {
         return response;
@@ -185,8 +185,12 @@ module.exports = angular.module('broker.factories', [])
 
       // @todo need to call sign_out endpoint.
       authService.logout = function() {
-        Session.destroy();
-        $location.path('/');
+        return $http
+          .delete(ApiResource('signOut'))
+          .success(function() {
+            Session.destroy();
+            $location.path('/');
+          });
       };
 
       // @todo Need to check the cookie here and then regrab the session data.
