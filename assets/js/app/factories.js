@@ -159,7 +159,7 @@ module.exports = angular.module('broker.factories', [])
 
       var error = function (response) {
         if (response.status === 401) {
-          $location.path('/login');
+          $location.path('/logout');
         }
 
         return $q.reject(response);

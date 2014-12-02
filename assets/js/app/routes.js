@@ -55,6 +55,13 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       },
       controller: "LoginController"
     })
+    .state('logout', {
+      url: "^/logout",
+      data: {
+        authorizedRoles: [USER_ROLES.all]
+      },
+      controller: "LogoutController"
+    })
     // base state with solution statistics
     .state('base.solutionBase', {
       template: "<ui-view></ui-view>",
