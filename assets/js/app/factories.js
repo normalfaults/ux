@@ -61,10 +61,10 @@ module.exports = angular.module('broker.factories', [])
         isArray: true,
         url: ApiResource('recentUsers')
       },
-      getCurrentUser: {
+      getCurrentMember: {
         method: 'GET',
         isArray: false,
-        url: ApiResource('currentUser')
+        url: ApiResource('currentMember')
       }
     });
   }])

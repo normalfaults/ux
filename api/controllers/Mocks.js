@@ -76,13 +76,10 @@ var marketplaceValues = require("../data/marketplace.json");
 // alerts for dashboard and manage
 var alerts = require("../data/alerts.json");
 
-
 // alerts with x icon for dashboard
 var alertPopup = require("../data/alert-popup.json");
 
 var staffSignIn = require("../data/staff/sign_in.json");
-
-var currentUser = require("../data/current_user.json");
 
 /**
  * Populate references.
@@ -335,8 +332,9 @@ function deleteStaffSignOut(req, res, next) {
  * @param res
  * @param next
  */
-function getCurrentUser(req, res, next) {
-  res.json(currentUser);
+function getStaffCurrentMember(req, res, next) {
+  // Reuse the staff/sign_in data since they are the same.
+  res.json(staffSignIn);
 }
 
 module.exports = {
@@ -360,5 +358,5 @@ module.exports = {
     getAlertPopup: getAlertPopup,
     staffSignIn: postStaffSignIn,
     staffSignOut: deleteStaffSignOut,
-    getCurrentUser: getCurrentUser
+    getCurrentMember: getStaffCurrentMember
 };

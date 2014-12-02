@@ -28,8 +28,8 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, 
 
   // On init we check the current user to see if we are already authenticated.
   // If we are, we create the session and and sync the routes.
-  var currentUser = User.getCurrentUser();
-  currentUser.$promise.then(function(data) {
+  var currentMember = User.getCurrentMember();
+  currentMember.$promise.then(function(data) {
     Session.create(data.email, data.role);
     $urlRouter.sync();
   }, function() {
@@ -44,11 +44,11 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, 
 
       // Block all routing until the current user is loaded for the first time.
       // After authorization check because public routes do not need currentUser to verify.
-      if (!currentUser.$resolved) {
+      if (!currentMember.$resolved) {
         event.preventDefault();
         return;
       }
-      
+
       $location.path('/');
     }
   });

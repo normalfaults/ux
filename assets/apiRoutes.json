@@ -19,6 +19,6 @@
     "header":            "/header",
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
-    "currentUser":       "/current_user"
+    "currentMember":     "/staff/current_member"
   }
 }
