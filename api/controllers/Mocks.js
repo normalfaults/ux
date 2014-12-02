@@ -80,6 +80,10 @@ var alerts = require("../data/alerts.json");
 // alerts with x icon for dashboard
 var alertPopup = require("../data/alert-popup.json");
 
+var staffSignIn = require("../data/staff/sign_in.json");
+
+var currentUser = require("../data/current_user.json");
+
 /**
  * Populate references.
  * @param {Object} target the elements to populate (hashmap id to element)
@@ -304,6 +308,37 @@ function getAlertPopup(req, res, next) {
     res.json(alertPopup);
 }
 
+/**
+ * Staff Sign In.
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ * @param {Function} next the callback function
+ */
+function postStaffSignIn(req, res, next) {
+  res.json(staffSignIn);
+}
+
+/**
+ * Staff Sign Out.
+ * @param req
+ * @param res
+ * @param next
+ */
+function deleteStaffSignOut(req, res, next) {
+  res.json();
+}
+
+/**
+ * Get Current User
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
+function getCurrentUser(req, res, next) {
+  res.json(currentUser);
+}
+
 module.exports = {
     getSolution: getSolution,
     createProject: createProject,
@@ -322,5 +357,8 @@ module.exports = {
     getRecentOrders: getRecentOrders,
     getServices: getServices,
     getAlerts: getAlerts,
-    getAlertPopup: getAlertPopup
+    getAlertPopup: getAlertPopup,
+    staffSignIn: postStaffSignIn,
+    staffSignOut: deleteStaffSignOut,
+    getCurrentUser: getCurrentUser
 };
