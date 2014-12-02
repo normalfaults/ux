@@ -4,44 +4,18 @@
 
 'use strict';
 
+var apiRoutes = require ('apiRoutes');
 var angular = require('angular');
 var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
   .factory('ApiResource', [function() {
 
-    // @todo Move this to it's own JSON file.
-    var jsonRoutes = {
-      //'basePath': 'http://localhost:5000/api',
-      'basePath': '/api',
-      'routes': {
-        'solutions':         '/solutions/:id',
-        'createProject': '/projects',
-        'projectQuestions':  '/project_questions',
-        'manageValues':      '/manageValues',
-        'marketplaceValues': '/marketplaceValues',
-        'alerts':            '/alerts',
-        'alertPopup':        '/alertPopup',
-        'usersById':         '/users/:id',
-        'recentUsers':       '/users/recent',
-        'ordersById':        '/orders/:id',
-        'recentOrders':      '/orders/recent',
-        'projectsById':      '/projects/:id',
-        'servicesById':      '/services/:id',
-        'applicationsById':  '/applications/:id',
-        'bundlesById':       '/bundles/:id',
-        'header':            '/header',
-        'signIn':            '/staff/sign_in',
-        'signOut':           '/staff/sign_out',
-        'currentUser':       '/current_user'
-      }
-    };
-
     return function(apiResourceKey) {
       if (_.isEmpty(apiResourceKey)) {
-        return jsonRoutes.basePath;
+        return apiRoutes.basePath;
       }
-      return jsonRoutes.basePath + jsonRoutes.routes[apiResourceKey];
+      return apiRoutes.basePath + apiRoutes.routes[apiResourceKey];
     };
   }])
   // resource for Solution
