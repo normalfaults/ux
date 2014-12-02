@@ -74,7 +74,7 @@ _.each(_.keys(routes), function (route) {
     } else {
       if (!req.session.loggedIn) {
         res.status(401);
-        res.send('Not Authorized');
+        res.send('{}');
         return;
       }
     }
