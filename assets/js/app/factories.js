@@ -168,8 +168,8 @@ module.exports = angular.module('broker.factories', [])
       return promise.then(success, error);
     };
   }])
-  .factory('AuthService', ['$http', '$location', 'Session', 'ApiResource', 'USER_ROLES',
-    function ($http, $location, Session, ApiResource, USER_ROLES) {
+  .factory('AuthService', ['$rootScope', '$http', '$location', 'Session', 'ApiResource', 'USER_ROLES',
+    function ($rootScope, $http, $location, Session, ApiResource, USER_ROLES) {
       var authService = {};
 
       authService.login = function (credentials) {
@@ -188,6 +188,7 @@ module.exports = angular.module('broker.factories', [])
         return $http
           .delete(ApiResource('signOut'))
           .success(function() {
+            $rootScope.headerData = null;
             Session.destroy();
             $location.path('/');
           });
