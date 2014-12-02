@@ -33,9 +33,7 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, 
     Session.create(data.email, data.role);
     $urlRouter.sync();
   }, function() {
-    $rootScope.$evalAsync(function() {
-      $location.path('/login');
-    });
+    $location.path('/');
   });
 
   // Authorization and Authentication when switching Pages.
@@ -50,20 +48,8 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, 
         event.preventDefault();
         return;
       }
-
-      // If they are logged in but not authorized, back to the root.
-      // Otherwise back to login.
-      if (AuthService.isAuthenticated()) {
-        // @see https://github.com/angular/angular.js/issues/9607
-        $rootScope.$evalAsync(function() {
-          $location.path('/');
-        });
-      } else {
-        // @see https://github.com/angular/angular.js/issues/9607
-        $rootScope.$evalAsync(function() {
-          $location.path('/login');
-        });
-      }
+      
+      $location.path('/');
     }
   });
 };
