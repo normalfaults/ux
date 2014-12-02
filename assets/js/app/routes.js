@@ -22,19 +22,19 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       },
       resolve: {
         headerData: ["HeaderData", function(HeaderData) {
-          return HeaderData.get().$promise;
+          return HeaderData.get();
         }],
         projects: ["Project", function(Project) {
-          return Project.query().$promise;
+          return Project.query();
         }],
         bundles: ["Bundle", function(Bundle) {
-          return Bundle.query().$promise;
+          return Bundle.query();
         }],
         applications: ["Application", function(Application) {
-          return Application.query().$promise;
+          return Application.query();
         }],
         solutions: ['Solution', function(Solution) {
-          return Solution.query().$promise;
+          return Solution.query();
         }]
       },
       controller: "BaseCtrl"
@@ -80,10 +80,10 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       templateUrl: "/partials/dashboard.html",
       resolve: {
         alerts: ["DataService", function(DataService) {
-          return DataService.getAlerts().$promise;
+          return DataService.getAlerts();
         }],
         alertPopup: ["DataService", function(DataService) {
-          return DataService.getAlertPopup().$promise;
+          return DataService.getAlertPopup();
         }]
       },
       controller: "DashboardCtrl"
@@ -97,16 +97,16 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       },
       resolve: {
         recentOrders: ["Order", function(Order) {
-          return Order.getRecentOrders().$promise;
+          return Order.getRecentOrders();
         }],
         recentUsers: ["User", function(User) {
-          return User.getRecentUsers().$promise;
+          return User.getRecentUsers();
         }],
         manageValues: ["DataService", function(DataService) {
-          return DataService.getManageValues().$promise;
+          return DataService.getManageValues();
         }],
         alerts: ["DataService", function(DataService) {
-          return DataService.getAlerts().$promise;
+          return DataService.getAlerts();
         }]
       },
       controller: "ManageCtrl"
@@ -120,7 +120,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       },
       resolve: {
         projectQuestions: ["DataService", function(DataService) {
-          return DataService.getProjectQuestions().$promise;
+          return DataService.getProjectQuestions();
         }],
         createProject: ["DataService", function(DataService) {
           return DataService.createProject;
@@ -134,7 +134,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       templateUrl: "/partials/project.html",
       resolve: {
         project: ['Project', "$stateParams", function(Project, $stateParams) {
-          return Project.get({id: $stateParams.projectId}).$promise;
+          return Project.get({id: $stateParams.projectId});
         }]
       },
       controller: "ProjectCtrl"
@@ -148,10 +148,10 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       },
       resolve: {
         service: ['Service', "$stateParams", function(Service, $stateParams) {
-          return Service.get({id: $stateParams.serviceId}).$promise;
+          return Service.get({id: $stateParams.serviceId});
         }],
         viewValues: ['DataService', function(DataService) {
-          return DataService.getMarketplaceValues().$promise;
+          return DataService.getMarketplaceValues();
         }]
       },
       controller: "ServiceCtrl"
@@ -165,10 +165,10 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       },
       resolve: {
         viewValues: ['DataService', function(DataService) {
-          return DataService.getMarketplaceValues().$promise;
+          return DataService.getMarketplaceValues();
         }],
         services: ["Service", function(Service) {
-          return Service.query().$promise;
+          return Service.query();
         }]
       },
       controller: "MarketplaceCtrl"

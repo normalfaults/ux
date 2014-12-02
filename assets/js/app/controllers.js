@@ -15,11 +15,16 @@ module.exports = angular.module('broker.controllers', [])
       $rootScope.projects = projects;
       $rootScope.bundles = bundles;
       $rootScope.applications = applications;
-      angular.forEach(headerData.notifications, function(item) {
-        item.trustedHtml = $sce.trustAsHtml(item.text);
+
+      headerData.$promise.then(function() {
+        angular.forEach(headerData.notifications, function(item) {
+          item.trustedHtml = $sce.trustAsHtml(item.text);
+        });
       });
-      angular.forEach(projects, function(project) {
-        project.sref = "base.project(" + angular.toJson({projectId: project.id}) + ")";
+      projects.$promise.then(function() {
+        angular.forEach(projects, function(project) {
+          project.sref = "base.project(" + angular.toJson({projectId: project.id}) + ")";
+        });
       });
 
       $rootScope.logout = function() {
@@ -40,17 +45,21 @@ module.exports = angular.module('broker.controllers', [])
   // Controller for Dashboard view
   .controller('SolutionBaseCtrl', ["$scope", "solutions",
     function($scope, solutions) {
-      var solution = solutions[0];
-      $scope.solutions = solutions;
-      $scope.solution = solutions[0];
-      $scope.selectedStatistic = solution.statistics[0];
-      $scope.selectInterval = function(stats) {
-        $scope.selectedStatistic = stats;
-      };
-      $scope.showSolution = function(solution) {
-        $scope.solution = solution;
+
+      solutions.$promise.then(function() {
+
+        var solution = solutions[0];
+        $scope.solutions = solutions;
+        $scope.solution = solutions[0];
         $scope.selectedStatistic = solution.statistics[0];
-      };
+        $scope.selectInterval = function(stats) {
+          $scope.selectedStatistic = stats;
+        };
+        $scope.showSolution = function(solution) {
+          $scope.solution = solution;
+          $scope.selectedStatistic = solution.statistics[0];
+        };
+      });
     }])
   // Controller for Manage view
   .controller('ManageCtrl', ["$scope", "recentOrders", "recentUsers", "manageValues", "alerts",
@@ -63,18 +72,20 @@ module.exports = angular.module('broker.controllers', [])
   // Controller for New Project View
   .controller('NewProjectCtrl', ["$scope", "projectQuestions", "createProject",
     function($scope, projectQuestions, createProject) {
-      var _createProject = createProject,
-        _projectQuestions = projectQuestions,
-        _scope = $scope;
+      var _createProject = createProject;
+      var _projectQuestions = projectQuestions;
+      var _scope = $scope;
 
       $scope.project = $scope.project || {};
       $scope.project.project_answers = $scope.project.project_answers || [];
 
-      _.each(_projectQuestions, function(projectQuestion){
-        _scope.project.project_answers.push({
-          project_question_id: projectQuestion.id,
-          project_question: projectQuestion
-        })
+      _projectQuestions.$promise.then(function() {
+        _.each(_projectQuestions, function(projectQuestion){
+          _scope.project.project_answers.push({
+            project_question_id: projectQuestion.id,
+            project_question: projectQuestion
+          })
+        });
       });
 
       $scope.createProject = function() {
