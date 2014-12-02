@@ -2,13 +2,19 @@
 
 /**@ngInject*/
 module.exports = function($stateProvider, $urlRouterProvider, $locationProvider, USER_ROLES) {
-  $urlRouterProvider.otherwise("/dashboard");
+  $urlRouterProvider.otherwise("/");
 
   $stateProvider
+    .state('root', {
+      url: "/",
+      data: {
+        authorizedRoles: [USER_ROLES.public]
+      },
+      controller: 'RootController'
+    })
     // base state for our app
     // get data for header and left sidebar menu
     .state('base', {
-      url: "/app",
       abstract: true,
       templateUrl: "/partials/base.html",
       data: {
@@ -35,7 +41,6 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
     })
     // public base state for our app
     .state('publicbase', {
-      url: "/app",
       abstract: true,
       templateUrl: "/partials/base.html",
       data: {
@@ -52,7 +57,6 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
     })
     // base state with solution statistics
     .state('base.solutionBase', {
-      url: "/",
       template: "<ui-view></ui-view>",
       data: {
         authorizedRoles: [USER_ROLES.user]

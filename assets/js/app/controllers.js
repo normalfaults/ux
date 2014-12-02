@@ -129,4 +129,13 @@ module.exports = angular.module('broker.controllers', [])
   .controller('LogoutController', ['AuthService',
     function (AuthService) {
       AuthService.logout();
-    }]);
+    }])
+  .controller('RootController', ['AuthService', "$location",
+    function(AuthService, $location) {
+      if (AuthService.isAuthenticated()) {
+        $location.path('/dashboard');
+      } else {
+        $location.path('/login');
+      }
+    }
+  ]);
