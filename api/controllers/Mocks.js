@@ -309,7 +309,7 @@ function getAlertPopup(req, res, next) {
 }
 
 /**
- * Get staff sign in.
+ * Staff Sign In.
  * @param {Object} req the request object
  * @param {Object} res the response object
  * @param {Function} next the callback function
@@ -318,6 +318,12 @@ function postStaffSignIn(req, res, next) {
   res.json(staffSignIn);
 }
 
+/**
+ * Staff Sign Out.
+ * @param req
+ * @param res
+ * @param next
+ */
 function deleteStaffSignOut(req, res, next) {
   res.json();
 }
