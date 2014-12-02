@@ -8,7 +8,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
     .state('root', {
       url: "/",
       data: {
-        authorizedRoles: [USER_ROLES.public]
+        authorizedRoles: [USER_ROLES.all]
       },
       controller: 'RootController'
     })
