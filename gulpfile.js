@@ -60,7 +60,7 @@ var paths = {
     bower: bowerPath,
     dest: {
       scripts: appAssetDest + '/js',
-      partials: appAssetDest + '/js',
+      partials: appAssetDest + '/templates',
       views: appAssetDest + '/views',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
@@ -93,7 +93,9 @@ gulp.task('jshint', ['bower'], function() {
 });
 
 gulp.task('clean-templates', function() {
-  return gulp.src(paths.dest.views, {read: false})
+  gulp.src(paths.dest.views, {read: false})
+    .pipe(clean({force: true}));
+  gulp.src(paths.dest.partials, {read: false})
     .pipe(clean({force: true}));
 });
 
@@ -124,7 +126,7 @@ gulp.task('clean-scripts', function() {
  * Dependent on templates because template partials are wrapped into a
  * js file required here.
  */
-gulp.task('scripts', ['bower', 'clean-scripts', 'templates'], function() {
+gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
@@ -242,7 +244,7 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/js/**/*.js', ['jshint', 'scripts']);
 
   // Watch and recompile templates
-  gulp.watch(appAssetSrc + '/templates/**/*.html', ['templates', 'scripts']);
+  gulp.watch(appAssetSrc + '/templates/**/*.html', ['scripts']);
 
   // watches Sass files for changes
   gulp.watch(appAssetSrc + '/sass/**/*.s?ss', ['styles']);
@@ -251,6 +253,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
+gulp.task('default', ['scripts', 'styles', 'images', 'fonts', 'watch']);
 
-gulp.task('production', ['templates', 'scripts', 'styles', 'images', 'fonts']);
+gulp.task('production', ['scripts', 'styles', 'images', 'fonts']);
