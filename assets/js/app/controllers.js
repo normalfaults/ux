@@ -126,8 +126,10 @@ module.exports = angular.module('broker.controllers', [])
 
       $scope.login = function () {
         var credentials = {
-          email: this.email,
-          password: this.password
+          staff: {
+            email: $scope.email,
+            password: $scope.password
+          }
         };
 
         // @todo Add optional to redirect back to where they were instead of always going to dashboard.

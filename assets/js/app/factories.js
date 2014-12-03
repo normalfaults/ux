@@ -10,7 +10,7 @@ var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
   .factory('ApiResource', [function() {
-
+    
     return function(apiResourceKey) {
       if (_.isEmpty(apiResourceKey)) {
         return apiRoutes.basePath;
