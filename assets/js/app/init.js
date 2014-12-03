@@ -6,6 +6,10 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
 
+  // Allows us to have a different host for the API and still have cookies set correctly.
+  // Requires CORS setup on API endpoints, as well as non wildcard values.
+  $http.defaults.withCredentials = true;
+
   $rootScope.sideBarExpanded = true;
 
   // catch any error in resolve in state
