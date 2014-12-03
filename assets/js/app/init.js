@@ -5,6 +5,7 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
+  $http.defaults.withCredentials = true;
 
   $rootScope.sideBarExpanded = true;
 
