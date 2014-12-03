@@ -69,17 +69,18 @@ module.exports = angular.module('broker.controllers', [])
       $scope.manageValues = manageValues;
     }])
   // Controller for New Project View
-  .controller('NewProjectCtrl', ["$scope", "projectQuestions", "createProject",
-    function($scope, projectQuestions, createProject) {
+  .controller('NewProjectCtrl', ["$scope", "$location", "projectQuestions", "createProject",
+    function($scope, $location, projectQuestions, createProject) {
       var _createProject = createProject;
       var _projectQuestions = projectQuestions;
       var _scope = $scope;
 
       $scope.project = $scope.project || {};
-      $scope.project.project_answers = $scope.project.project_answers || [];
+
 
       _projectQuestions.$promise.then(function() {
         _.each(_projectQuestions, function(projectQuestion){
+          $scope.project.project_answers = $scope.project.project_answers || [];
           _scope.project.project_answers.push({
             project_question_id: projectQuestion.id,
             project_question: projectQuestion
@@ -88,7 +89,9 @@ module.exports = angular.module('broker.controllers', [])
       });
 
       $scope.createProject = function() {
-        _createProject({project: _scope.project})
+        _createProject({project: _scope.project}).$promise.then(function(){
+          $location.path('/dashboard');
+        });
       }
     }])
   // Controller for Project Details View

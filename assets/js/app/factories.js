@@ -17,7 +17,6 @@ module.exports = angular.module('broker.factories', [])
 
     // Remove trailing slash if it exists.
     apiBasePath = apiBasePath.replace(/\/$/, "");
-
     return function(apiResourceKey) {
       if (_.isEmpty(apiResourceKey)) {
         return apiBasePath;
