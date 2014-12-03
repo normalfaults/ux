@@ -12,7 +12,7 @@ module.exports = angular.module('broker.factories', [])
 
     // @todo Move this to it's own JSON file.
     var jsonRoutes = {
-      //'basePath': 'http://localhost:5000/api',
+      //'basePath': 'http://localhost:3000',
       'basePath': '/api',
       'routes': {
         'solutions':         '/solutions/:id',
@@ -33,7 +33,7 @@ module.exports = angular.module('broker.factories', [])
         'header':            '/header',
         'signIn':            '/staff/sign_in',
         'signOut':           '/staff/sign_out',
-        'currentUser':       '/current_user'
+        'currentUser':       '/staff/current_member'
       }
     };
 

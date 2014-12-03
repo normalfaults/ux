@@ -1,7 +1,10 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter) {
+module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter) {
+
+  $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
+  $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
 
   $rootScope.sideBarExpanded = true;
 
@@ -48,7 +51,7 @@ module.exports = function($rootScope, $log, $location, fixSidebar, AuthService, 
         event.preventDefault();
         return;
       }
-      
+
       $location.path('/');
     }
   });
