@@ -60,7 +60,7 @@ var paths = {
     bower: bowerPath,
     dest: {
       scripts: appAssetDest + '/js',
-      partials: appAssetDest + '/js',
+      partials: appAssetDest + '/templates',
       views: appAssetDest + '/views',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
@@ -93,7 +93,9 @@ gulp.task('jshint', ['bower'], function() {
 });
 
 gulp.task('clean-templates', function() {
-  return gulp.src(paths.dest.views, {read: false})
+  gulp.src(paths.dest.views, {read: false})
+    .pipe(clean({force: true}));
+  gulp.src(paths.dest.partials, {read: false})
     .pipe(clean({force: true}));
 });
 
