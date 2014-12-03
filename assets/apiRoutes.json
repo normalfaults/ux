@@ -1,0 +1,24 @@
+{
+  "basePath": "/api",
+  "routes": {
+    "solutions":         "/solutions/:id",
+    "createProject":     "/projects",
+    "projectQuestions":  "/project_questions",
+    "manageValues":      "/manageValues",
+    "marketplaceValues": "/marketplaceValues",
+    "alerts":            "/alerts",
+    "alertPopup":        "/alertPopup",
+    "usersById":         "/users/:id",
+    "recentUsers":       "/users/recent",
+    "ordersById":        "/orders/:id",
+    "recentOrders":      "/orders/recent",
+    "projectsById":      "/projects/:id",
+    "servicesById":      "/services/:id",
+    "applicationsById":  "/applications/:id",
+    "bundlesById":       "/bundles/:id",
+    "header":            "/header",
+    "signIn":            "/staff/sign_in",
+    "signOut":           "/staff/sign_out",
+    "currentMember":     "/staff/current_member"
+  }
+}

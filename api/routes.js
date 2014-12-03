@@ -30,5 +30,5 @@ module.exports = {
     "GET /api/alertPopup": "Mocks#getAlertPopup",
     "POST /api/staff/sign_in": "Mocks#staffSignIn",
     "DELETE /api/staff/sign_out": "Mocks#staffSignOut",
-    "GET /api/current_user": "Mocks#getCurrentUser"
+    "GET /api/staff/current_member": "Mocks#getStaffCurrentMember"
 };
