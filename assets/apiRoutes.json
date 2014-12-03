@@ -1,5 +1,5 @@
 {
-  "basePath": "http://localhost:3000",
+  "basePath": "/api",
   "routes": {
     "solutions":         "/solutions/:id",
     "createProject":     "/projects",
