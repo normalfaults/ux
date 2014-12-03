@@ -1,6 +1,6 @@
 {
     "username": "Robin",
-    "userImage": "/images/avatar-26x26.png",
+    "email": "test@example.com",
     "cartCount": 3,
     "options": [
         {
