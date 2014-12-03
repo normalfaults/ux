@@ -18,7 +18,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       abstract: true,
       templateUrl: "/partials/base.html",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       resolve: {
         headerData: ["HeaderData", function(HeaderData) {
@@ -66,7 +66,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
     .state('base.solutionBase', {
       template: "<ui-view></ui-view>",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       controller: "SolutionBaseCtrl"
     })
@@ -75,7 +75,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       url: "^/dashboard",
       data: {
         wrapperCssClass: "dashboard-bg",
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       templateUrl: "/partials/dashboard.html",
       resolve: {
@@ -93,7 +93,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       url: "^/manage",
       templateUrl: "/partials/manage.html",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       resolve: {
         recentOrders: ["Order", function(Order) {
@@ -116,7 +116,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       url: "^/project/new",
       templateUrl: "/partials/new-project.html",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       resolve: {
         projectQuestions: ["DataService", function(DataService) {
@@ -144,7 +144,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       url: "^/service/:serviceId",
       templateUrl: "/partials/service.html",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       resolve: {
         service: ['Service', "$stateParams", function(Service, $stateParams) {
@@ -161,7 +161,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       url: "^/marketplace",
       templateUrl: "/partials/marketplace.html",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       resolve: {
         viewValues: ['DataService', function(DataService) {
@@ -177,19 +177,19 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
     .state('base.searchAndCompare', {
       url: "^/search-and-compare",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       }
     })
     .state('base.helpDesk', {
       url: "^/help-desk",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       }
     })
     .state('base.orderHistory', {
       url: "^/order-history",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       }
     })
     // create alert
@@ -197,7 +197,7 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       url: "^/create-alert",
       templateUrl: "/partials/create-alert.html",
       data: {
-        authorizedRoles: [USER_ROLES.user]
+        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       }
     });
   $locationProvider.html5Mode(true);
