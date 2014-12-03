@@ -7,7 +7,6 @@
     "manageValues":      "/manageValues",
     "marketplaceValues": "/marketplaceValues",
     "alerts":            "/alerts",
-    "alertPopup":        "/alertPopup",
     "usersById":         "/users/:id",
     "recentUsers":       "/users/recent",
     "ordersById":        "/orders/:id",

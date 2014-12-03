@@ -10,7 +10,7 @@ var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
   .factory('ApiResource', [function() {
-    
+
     return function(apiResourceKey) {
       if (_.isEmpty(apiResourceKey)) {
         return apiRoutes.basePath;
@@ -46,10 +46,6 @@ module.exports = angular.module('broker.factories', [])
         method: "GET",
         isArray: true,
         url: ApiResource('alerts')
-      },
-      getAlertPopup: {
-        method: "GET",
-        url: ApiResource('alertPopup')
       }
     });
   }])
