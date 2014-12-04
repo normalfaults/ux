@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter) {
+module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter, ROUTES) {
 
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -40,7 +40,8 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
     Session.create(data.email, data.role);
     $urlRouter.sync();
   }, function() {
-    $location.path('/');
+    $location.path(ROUTES.login);
+    $urlRouter.sync();
   });
 
   // Authorization and Authentication when switching Pages.

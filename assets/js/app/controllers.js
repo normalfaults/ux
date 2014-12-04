@@ -138,7 +138,7 @@ module.exports = angular.module('broker.controllers', [])
 
         // @todo Add optional to redirect back to where they were instead of always going to dashboard.
         AuthService.login(credentials).success(function() {
-          $location.path('/')
+          $location.path(ROUTES.default)
         });
 
       };
