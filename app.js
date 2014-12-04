@@ -23,8 +23,6 @@ var routes = require("./api/routes");
 var compression = require('compression');
 var app = express();
 
-var argv = require('minimist')(process.argv.slice(2));
-
 app.set('port', process.env.PORT || 5000);
 
 app.use(compression({
@@ -94,14 +92,6 @@ app.all("/api/*", function (req, res) {
 var fs = require('fs');
 var dirs = fs.readdirSync(path.join(__dirname, 'public'));
 
-/**
- * Setup the App Config Variables
- */
-var appConfigVariables = {};
-if (argv.apiBasePath) {
-  appConfigVariables.apiBasePath = argv.apiBasePath;
-}
-
 //redirect all other routes to angular
 app.get("*", function (req, res) {
 
@@ -119,7 +109,7 @@ app.get("*", function (req, res) {
   });
 
   // If not allow url to pass through and return the bootstrap html.
-  res.render("index.html", {'appConfig': JSON.stringify(appConfigVariables)});
+  res.render("index.html");
 });
 
 //start the app

@@ -46,6 +46,7 @@ var paths = {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
       partials: [appAssetSrc + '/templates/partials/**/*.html'],
       views: [appAssetSrc + '/templates/views/**/*.html'],
+      jsConfig: [appAssetSrc + '/js/appConfig.js'],
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
@@ -62,6 +63,7 @@ var paths = {
       scripts: appAssetDest + '/js',
       partials: appAssetDest + '/templates',
       views: appAssetDest + '/views',
+      jsConfig: appAssetDest + '/js',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
       fonts: appAssetDest + '/fonts'
@@ -133,6 +135,10 @@ gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
     return b.bundle();
   });
 
+  // Copy over App Config File
+  gulp.src(paths.src.jsConfig)
+    .pipe(gulp.dest(paths.dest.jsConfig));
+
   // Combine all the js, browserify it, uglify it, write out the bundle file.
   return gulp.src(paths.src.scripts)
     .pipe(plumber({
@@ -141,7 +147,7 @@ gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
     .pipe(browserified)
     .pipe(unpathify())
     .pipe(concat('bundle.js'))
-    .pipe(uglify({preserveComments: 'some'}))
+    //.pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
 });

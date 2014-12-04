@@ -9,11 +9,11 @@ var angular = require('angular');
 var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
-  .factory('ApiResource', ['AppConfig', function(AppConfig) {
+  .factory('ApiResource', ['APP_CONFIG', function(APP_CONFIG) {
 
     // Get the data from the config if it has been passed in, otherwise use the default
     // from the apiRoutes.json file.
-    var apiBasePath = AppConfig.get('apiBasePath') || apiRoutes.basePath;
+    var apiBasePath = APP_CONFIG.apiBasePath || apiRoutes.basePath;
 
     // Remove trailing slash if it exists.
     apiBasePath = apiBasePath.replace(/\/$/, "");
@@ -201,21 +201,4 @@ module.exports = angular.module('broker.factories', [])
       this.role = null;
     };
     return this;
-  })
-  .service('AppConfig', function() {
-
-    if (!this.appConfig) {
-      try {
-        this.appConfig = JSON.parse(window.appConfig);
-      } catch(error) {
-        $log.error('Error parsing appConfig: ' + error);
-      }
-    }
-
-    this.get = function(key) {
-      if (key in this.appConfig) {
-        return this.appConfig[key];
-      }
-      return undefined;
-    }
   });

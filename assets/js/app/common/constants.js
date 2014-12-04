@@ -7,7 +7,8 @@ module.exports = angular.module('broker.common.constants', [])
     all: '*',
     user: 'user',
     admin: 'admin'
-  });
+  })
+  .constant('APP_CONFIG', angular.copy(window.appConfig));
 
 
 
