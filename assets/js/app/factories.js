@@ -15,6 +15,9 @@ module.exports = angular.module('broker.factories', [])
     // from the apiRoutes.json file.
     var apiBasePath = AppConfig.get('apiBasePath') || apiRoutes.basePath;
 
+    // Remove trailing slash if it exists.
+    apiBasePath = apiBasePath.replace(/\/$/, "");
+
     return function(apiResourceKey) {
       if (_.isEmpty(apiResourceKey)) {
         return apiBasePath;
