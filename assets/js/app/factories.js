@@ -127,22 +127,23 @@ module.exports = angular.module('broker.factories', [])
       }
     };
   }])
-  .factory('httpInterceptor', ['$rootScope', '$q', '$location', function($rootScope, $q, $location) {
+  .factory('httpInterceptor', ['$rootScope', '$q', '$location', 'ROUTES',
+    function($rootScope, $q, $location, ROUTES) {
 
-    return function (promise) {
-      var success = function (response) {
-        return response;
-      };
+      return function (promise) {
+        var success = function (response) {
+          return response;
+        };
 
-      var error = function (response) {
-        if (response.status === 401) {
-          $location.path('/logout');
-        }
+        var error = function (response) {
+          if (response.status === 401) {
+            $location.path(ROUTES.logout);
+          }
 
-        return $q.reject(response);
-      };
+          return $q.reject(response);
+        };
 
-      return promise.then(success, error);
+        return promise.then(success, error);
     };
   }])
   .factory('AuthService', ['$rootScope', '$http', '$location', 'Session', 'ApiResource', 'USER_ROLES',

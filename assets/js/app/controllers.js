@@ -120,8 +120,13 @@ module.exports = angular.module('broker.controllers', [])
       $scope.services = services;
       $scope.viewValues = viewValues;
     }])
-  .controller('LoginController', ['$scope', '$location', 'AuthService',
-    function ($scope, $location, AuthService) {
+  .controller('LoginController', ['$scope', '$location', 'AuthService', 'ROUTES',
+    function ($scope, $location, AuthService, ROUTES) {
+
+      // If the user is already logged in, take them to the default route.
+      if (AuthService.isAuthenticated()) {
+        $location.path(ROUTES.default);
+      }
 
       $scope.login = function () {
         var credentials = {
@@ -142,12 +147,12 @@ module.exports = angular.module('broker.controllers', [])
     function (AuthService) {
       AuthService.logout();
     }])
-  .controller('RootController', ['AuthService', "$location",
-    function(AuthService, $location) {
+  .controller('RootController', ['AuthService', "$location", 'ROUTES',
+    function(AuthService, $location, ROUTES) {
       if (AuthService.isAuthenticated()) {
-        $location.path('/dashboard');
+        $location.path(ROUTES.default);
       } else {
-        $location.path('/login');
+        $location.path(ROUTES.login);
       }
     }
   ]);
