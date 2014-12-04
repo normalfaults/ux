@@ -146,8 +146,8 @@ module.exports = angular.module('broker.factories', [])
         return promise.then(success, error);
     };
   }])
-  .factory('AuthService', ['$rootScope', '$http', '$location', 'Session', 'ApiResource', 'USER_ROLES',
-    function ($rootScope, $http, $location, Session, ApiResource, USER_ROLES) {
+  .factory('AuthService', ['$rootScope', '$http', '$location', 'Session', 'ApiResource', 'USER_ROLES', 'ROUTES',
+    function ($rootScope, $http, $location, Session, ApiResource, USER_ROLES, ROUTES) {
       var authService = {};
 
       authService.login = function (credentials) {
@@ -161,14 +161,13 @@ module.exports = angular.module('broker.factories', [])
           })
       };
 
-      // @todo need to call sign_out endpoint.
       authService.logout = function() {
         return $http
           .delete(ApiResource('signOut'))
           .success(function() {
             $rootScope.headerData = null;
             Session.destroy();
-            $location.path('/');
+            $location.path(ROUTES.login);
           });
       };
 
