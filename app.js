@@ -23,6 +23,8 @@ var routes = require("./api/routes");
 var compression = require('compression');
 var app = express();
 
+var argv = require('minimist')(process.argv.slice(2));
+
 app.set('port', process.env.PORT || 5000);
 
 app.use(compression({
@@ -47,6 +49,9 @@ app.use(session({
   }
 }));
 
+
+// @todo Move this out.  Or compile this into app.js bundle.
+var apiRoutes = require('./assets/apiRoutes.json');
 
 app.set('views', path.join(__dirname, '/public/views'));
 app.engine('html', ejs.renderFile);
@@ -93,6 +98,11 @@ app.all("/api/*", function (req, res) {
 var fs = require('fs');
 var dirs = fs.readdirSync(path.join(__dirname, 'public'));
 
+
+var appConfigVariables = JSON.stringify({
+  "apiBasePath": argv.apiBasePath || apiRoutes.basePath
+});
+
 //redirect all other routes to angular
 app.get("*", function (req, res) {
 
@@ -110,7 +120,7 @@ app.get("*", function (req, res) {
   });
 
   // If not allow url to pass through and return the bootstrap html.
-  res.render("index.html");
+  res.render("index.html", {'appConfig': appConfigVariables});
 });
 
 //start the app

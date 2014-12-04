@@ -9,13 +9,14 @@ var angular = require('angular');
 var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
-  .factory('ApiResource', [function() {
-
+  .factory('ApiResource', ['AppConfig', function(AppConfig) {
     return function(apiResourceKey) {
+      var apiBasePath = AppConfig.get('apiBasePath') || apiRoutes.basePath;
+
       if (_.isEmpty(apiResourceKey)) {
-        return apiRoutes.basePath;
+        return apiBasePath;
       }
-      return apiRoutes.basePath + apiRoutes.routes[apiResourceKey];
+      return apiBasePath + apiRoutes.routes[apiResourceKey];
     };
   }])
   // resource for Solution
@@ -194,4 +195,21 @@ module.exports = angular.module('broker.factories', [])
       this.role = null;
     };
     return this;
+  })
+  .service('AppConfig', function() {
+
+    if (!this.appConfig) {
+      try {
+        this.appConfig = JSON.parse(window.appConfig);
+      } catch(error) {
+        $log.error('Error parsing appConfig: ' + error);
+      }
+    }
+
+    this.get = function(key) {
+      if (key in this.appConfig) {
+        return this.appConfig[key];
+      }
+      return undefined;
+    }
   });
