@@ -76,9 +76,6 @@ var marketplaceValues = require("../data/marketplace.json");
 // alerts for dashboard and manage
 var alerts = require("../data/alerts.json");
 
-// alerts with x icon for dashboard
-var alertPopup = require("../data/alert-popup.json");
-
 var staffSignIn = require("../data/staff/sign_in.json");
 
 /**
@@ -296,16 +293,6 @@ function getAlerts(req, res, next) {
 }
 
 /**
- * Get alert popup for dashboard.
- * @param {Object} req the request object
- * @param {Object} res the response object
- * @param {Function} next the callback function
- */
-function getAlertPopup(req, res, next) {
-    res.json(alertPopup);
-}
-
-/**
  * Staff Sign In.
  * @param {Object} req the request object
  * @param {Object} res the response object
@@ -355,7 +342,6 @@ module.exports = {
     getRecentOrders: getRecentOrders,
     getServices: getServices,
     getAlerts: getAlerts,
-    getAlertPopup: getAlertPopup,
     staffSignIn: postStaffSignIn,
     staffSignOut: deleteStaffSignOut,
     getCurrentMember: getStaffCurrentMember

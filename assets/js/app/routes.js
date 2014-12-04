@@ -81,9 +81,6 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
       resolve: {
         alerts: ["DataService", function(DataService) {
           return DataService.getAlerts();
-        }],
-        alertPopup: ["DataService", function(DataService) {
-          return DataService.getAlertPopup();
         }]
       },
       controller: "DashboardCtrl"

@@ -33,11 +33,10 @@ module.exports = angular.module('broker.controllers', [])
 
     }])
   // Controller for Dashboard view
-  .controller('DashboardCtrl', ["$scope", "alerts", "alertPopup",
-    function($scope, alerts, alertPopup) {
+  .controller('DashboardCtrl', ["$scope", "alerts",
+    function($scope, alerts) {
       $scope.tab = "projects";
       $scope.alerts = alerts;
-      $scope.alertPopup = alertPopup;
       $scope.showTab = function(tab) {
         $scope.tab = tab;
       };
