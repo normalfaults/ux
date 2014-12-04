@@ -49,10 +49,6 @@ app.use(session({
   }
 }));
 
-
-// @todo Move this out.  Or compile this into app.js bundle.
-var apiRoutes = require('./assets/apiRoutes.json');
-
 app.set('views', path.join(__dirname, '/public/views'));
 app.engine('html', ejs.renderFile);
 
@@ -98,10 +94,13 @@ app.all("/api/*", function (req, res) {
 var fs = require('fs');
 var dirs = fs.readdirSync(path.join(__dirname, 'public'));
 
-
-var appConfigVariables = JSON.stringify({
-  "apiBasePath": argv.apiBasePath || apiRoutes.basePath
-});
+/**
+ * Setup the App Config Variables
+ */
+var appConfigVariables = {};
+if (argv.apiBasePath) {
+  appConfigVariables.apiBasePath = argv.apiBasePath;
+}
 
 //redirect all other routes to angular
 app.get("*", function (req, res) {
@@ -120,7 +119,7 @@ app.get("*", function (req, res) {
   });
 
   // If not allow url to pass through and return the bootstrap html.
-  res.render("index.html", {'appConfig': appConfigVariables});
+  res.render("index.html", {'appConfig': JSON.stringify(appConfigVariables)});
 });
 
 //start the app
