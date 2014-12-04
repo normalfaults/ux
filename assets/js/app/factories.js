@@ -10,9 +10,12 @@ var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
   .factory('ApiResource', ['AppConfig', function(AppConfig) {
-    return function(apiResourceKey) {
-      var apiBasePath = AppConfig.get('apiBasePath') || apiRoutes.basePath;
 
+    // Get the data from the config if it has been passed in, otherwise use the default
+    // from the apiRoutes.json file.
+    var apiBasePath = AppConfig.get('apiBasePath') || apiRoutes.basePath;
+
+    return function(apiResourceKey) {
       if (_.isEmpty(apiResourceKey)) {
         return apiBasePath;
       }
