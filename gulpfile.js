@@ -5,6 +5,7 @@ var plumber = require('gulp-plumber');
 var bower = require('gulp-bower');
 var server = require( 'gulp-develop-server');
 var es = require('event-stream');
+var fs = require('fs');
 
 // JS Hint
 var jshint = require('gulp-jshint');
@@ -46,6 +47,7 @@ var paths = {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
       partials: [appAssetSrc + '/templates/partials/**/*.html'],
       views: [appAssetSrc + '/templates/views/**/*.html'],
+      jsConfig: appAssetSrc + '/appConfig.js',
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
@@ -62,6 +64,7 @@ var paths = {
       scripts: appAssetDest + '/js',
       partials: appAssetDest + '/templates',
       views: appAssetDest + '/views',
+      jsConfig: appAssetDest + '/',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
       fonts: appAssetDest + '/fonts'
@@ -133,6 +136,8 @@ gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
     return b.bundle();
   });
 
+
+
   // Combine all the js, browserify it, uglify it, write out the bundle file.
   return gulp.src(paths.src.scripts)
     .pipe(plumber({
@@ -144,6 +149,21 @@ gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
+});
+
+/**
+ * Copies over the app config from the assets folder to the public folder.
+ * This only happens when there is not already an appConfig file.
+ * Unlike other tasks, this file is not cleaned up from public.
+ *
+ * @future Could show the default differences in the output.
+ */
+gulp.task('config', function() {
+
+  if (!fs.existsSync(paths.src.jsConfig)) {
+    gulp.src(paths.src.jsConfig)
+      .pipe(gulp.dest(paths.dest.jsConfig));
+  }
 });
 
 gulp.task('clean-styles', function() {
@@ -253,6 +273,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['scripts', 'styles', 'images', 'fonts', 'watch']);
+gulp.task('default', ['config', 'scripts', 'styles', 'images', 'fonts', 'watch']);
 
-gulp.task('production', ['scripts', 'styles', 'images', 'fonts']);
+gulp.task('production', ['config', 'scripts', 'styles', 'images', 'fonts']);

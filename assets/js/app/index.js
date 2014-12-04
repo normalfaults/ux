@@ -28,6 +28,5 @@ var app = angular.module('broker', [
   .config(require('./routes'))
   .config(function ($httpProvider) {
     $httpProvider.responseInterceptors.push('httpInterceptor');
-
   })
   .run(require('./init'));

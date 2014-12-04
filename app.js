@@ -47,7 +47,6 @@ app.use(session({
   }
 }));
 
-
 app.set('views', path.join(__dirname, '/public/views'));
 app.engine('html', ejs.renderFile);
 
