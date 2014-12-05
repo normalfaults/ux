@@ -19,14 +19,15 @@ var app = angular.module('broker', [
   "ui.bootstrap",
   "templates",
   require('./common').name,
-  require('./controllers').name,
-  require('./directives').name,
-  require('./factories').name
+  require('./base').name,
+  require('./authentication').name,
+  require('./solutions').name,
+  require('./projects').name,
+  require('./services').name,
+  require('./marketplace').name,
+  require('./applications').name,
+  require('./bundles').name,
+  require('./orders').name,
+  require('./directives').name
 ])
-  // These are temporary until the app is fully refactored
-  // TODO refactor into modules
-  .config(require('./routes'))
-  .config(function ($httpProvider) {
-    $httpProvider.responseInterceptors.push('httpInterceptor');
-  })
   .run(require('./init'));
