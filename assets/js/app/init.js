@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter, ROUTES) {
+module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter, ROUTES, $state) {
 
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -51,8 +51,12 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
   // catch any error in resolve in state
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
-    $log.error(error);
-    alert('State Change Error occurred: ' + (error.statusText || error.message));
+    if (401 === error.status) {
+      $state.transitionTo('logout');
+    } else {
+      $log.error(error);
+      alert('Unhandled State Change Error occurred: ' + (error.statusText || error.message));
+    }
   });
 
   $rootScope.$on('$stateChangeSuccess', function() {
