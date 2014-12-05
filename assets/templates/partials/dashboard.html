@@ -53,9 +53,7 @@
         <div class="dashboard-tab">
         <div class="tabs">
             <ul>
-                <li ng-class="{active: tab == 'projects'}"><a href="javascript:;" class="icon-projects" ng-click="showTab('projects')"><i></i><span>PROJECTS ({{projects.length}})</span></a><span class="border-spacing"></span></li>
-                <li ng-class="{active: tab == 'solutions'}"><a href="javascript:;" class="icon-solutions" ng-click="showTab('solutions')"><i></i><span>SOLUTIONS ({{solutions.length}})</span></a><span class="border-spacing"></span></li>
-                <li ng-class="{active: tab == 'applications'}"><a href="javascript:;" class="icon-applications" ng-click="showTab('applications')"><i></i><span>SERVICE WIZARD ({{applications.length}})</span></a><span class="border-spacing"></span></li>
+                <li ng-class="{active: tab == 'projects'}"><a href="javascript:;" class="icon-projects" ng-click="showTab('projects')"><i></i><span>PROJECTS ({{projects.length}})</span></a><span class="border-spacing"></span></li>  
             </ul>
         </div>
         <!-- end .tabs -->
@@ -69,28 +67,7 @@
             </div>
             <!-- end .btn-box -->
         </div>
-        <!-- end .tab-content -->
 
-        <div class="tab-content company-content" ng-show="tab == 'solutions'">
-
-            <ng-include src="'ModuleBox.html'" ng-repeat="item in solutions"></ng-include>
-
-            <div class="btn-box">
-                <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW SOLUTIONS</span></a>
-            </div>
-            <!-- end .btn-box -->
-        </div>
-        <!-- end .tab-content -->
-
-        <div class="tab-content applications-content" ng-show="tab == 'applications'">
-
-            <ng-include src="'ModuleBox.html'" ng-repeat="item in applications"></ng-include>
-
-            <div class="btn-box">
-                <a href="javascript:;" class="add-btn icon-add add-applications"><i></i><span><span>ADD NEW</span> <span>SERVICE WIZARD</span></span></a>
-            </div>
-            <!-- end .btn-box -->
-        </div>
         <!-- end .tab-content -->
         </div>
         <!-- end .dashboard-tab -->
