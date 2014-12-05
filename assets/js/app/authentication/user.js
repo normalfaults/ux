@@ -1,8 +1,8 @@
 'use strict';
 
 /**@ngInject*/
-function User($resource, ApiResource) {
-  return $resource(ApiResource('usersById'), {}, {
+function UserFactory($resource, ApiResource) {
+  var User = $resource(ApiResource('usersById'), {}, {
     getRecentUsers: {
       method: "GET",
       isArray: true,
@@ -14,6 +14,12 @@ function User($resource, ApiResource) {
       url: ApiResource('currentMember')
     }
   });
+
+  User.prototype.fullName = function() {
+    return [this.first_name, this.last_name].join(' ');
+  }
+
+  return User;
 }
 
-module.exports = User;
+module.exports = UserFactory;
