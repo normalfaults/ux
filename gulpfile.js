@@ -112,8 +112,7 @@ gulp.task('templates', ['bower', 'clean-templates'], function() {
     .pipe(templates({
       root: '/partials/',
       module: 'templates',
-      standalone: true,
-      moduleSystem: "Browserify"
+      standalone: true
     }))
     .pipe(gulp.dest(paths.dest.partials));
 });
@@ -129,14 +128,12 @@ gulp.task('clean-scripts', function() {
  * Dependent on templates because template partials are wrapped into a
  * js file required here.
  */
-gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
+gulp.task('scripts', ['bower', 'clean-scripts'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
     return b.bundle();
   });
-
-
 
   // Combine all the js, browserify it, uglify it, write out the bundle file.
   return gulp.src(paths.src.scripts)
@@ -264,7 +261,7 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/js/**/*.js', ['jshint', 'scripts']);
 
   // Watch and recompile templates
-  gulp.watch(appAssetSrc + '/templates/**/*.html', ['scripts']);
+  gulp.watch(appAssetSrc + '/templates/**/*.html', ['templates']);
 
   // watches Sass files for changes
   gulp.watch(appAssetSrc + '/sass/**/*.s?ss', ['styles']);
@@ -273,6 +270,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['config', 'scripts', 'styles', 'images', 'fonts', 'watch']);
+gulp.task('default', ['config', 'templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
 
-gulp.task('production', ['config', 'scripts', 'styles', 'images', 'fonts']);
+gulp.task('production', ['config', 'templates', 'scripts', 'styles', 'images', 'fonts']);

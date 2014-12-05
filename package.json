@@ -117,7 +117,8 @@
         "angular-gravatar"
       ],
       "exports": "angular.module('md5').name"
-    }
+    },
+    "templates" : "global:templates"
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
