@@ -15,4 +15,4 @@ module.exports = function($stateProvider, USER_ROLES) {
       resolve: ServiceData,
       controller: "ServiceController as serviceCtrl"
     });
-}
+};

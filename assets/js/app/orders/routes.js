@@ -9,4 +9,4 @@ module.exports = function($stateProvider, USER_ROLES) {
         authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       }
     });
-}
+};

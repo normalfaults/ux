@@ -1,5 +1,8 @@
 'use strict';
 
+var DashboardData = require('./dashboard_controller').resolve,
+  ManageData = require('./manage_controller').resolve;
+
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
   $stateProvider
@@ -19,11 +22,7 @@ module.exports = function($stateProvider, USER_ROLES) {
         authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
       templateUrl: "/partials/dashboard.html",
-      resolve: {
-        alerts: ["DataService", function(DataService) {
-          return DataService.getAlerts();
-        }]
-      },
+      resolve: DashboardData,
       controller: "DashboardController as dashboardCtrl"
     })
     // solution manage page
@@ -33,20 +32,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       data: {
         authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
-      resolve: {
-        recentOrders: ["Order", function(Order) {
-          return Order.getRecentOrders();
-        }],
-        recentUsers: ["User", function(User) {
-          return User.getRecentUsers();
-        }],
-        manageValues: ["DataService", function(DataService) {
-          return DataService.getManageValues();
-        }],
-        alerts: ["DataService", function(DataService) {
-          return DataService.getAlerts();
-        }]
-      },
+      resolve: ManageData,
       controller: "ManageController as manageCtrl"
     })
-}
+};

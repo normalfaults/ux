@@ -14,4 +14,11 @@ DashboardController.prototype.showTab = function(tab) {
   self.$scope.tab = tab;
 };
 
+DashboardController.resolve = {
+  /**@ngInject*/
+  alerts: function(DataService) {
+    return DataService.getAlerts();
+  }
+};
+
 module.exports = DashboardController;

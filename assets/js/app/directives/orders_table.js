@@ -1,5 +1,6 @@
 'use strict';
 
+/**@ngInject*/
 function OrdersTable($templateCache) {
   return {
     restrict: 'E',

@@ -15,4 +15,4 @@ module.exports = function($stateProvider, USER_ROLES) {
       resolve: MarketplaceData,
       controller: "MarketplaceController as marketplaceCtrl"
     });
-}
+};
