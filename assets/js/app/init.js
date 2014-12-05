@@ -12,16 +12,6 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
   $rootScope.sideBarExpanded = true;
 
-  // catch any error in resolve in state
-  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
-    $log.error(error);
-    alert('Error occurred: ' + (error.statusText || error.message));
-  });
-
-  $rootScope.$on('$stateChangeSuccess', function() {
-    $("html, body").animate({scrollTop: 0}, 200);
-  });
-
   $(window).resize(fixSidebar);
 
   // auto close popup on body click
@@ -46,7 +36,6 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
   // Authorization and Authentication when switching Pages.
   $rootScope.$on('$stateChangeStart', function (event, next) {
-
     // Block all routing until the current user is loaded for the first time.
     // After authorization check because public routes do not need currentUser to verify.
     if (!currentMember.$resolved) {
@@ -56,7 +45,17 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
     var authorizedRoles = next.data.authorizedRoles;
     if (!AuthService.isAuthorized(authorizedRoles)) {
-      $location.path('/');
+      $location.path(ROUTES.dashboard);
     }
+  });
+
+  // catch any error in resolve in state
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+    $log.error(error);
+    alert('State Change Error occurred: ' + (error.statusText || error.message));
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function() {
+    $("html, body").animate({scrollTop: 0}, 200);
   });
 };

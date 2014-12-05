@@ -12,7 +12,6 @@ ProjectController.resolve = {
   project: function(Project, $stateParams) {
     return Project.get({id: $stateParams.projectId});
   }
-  // TODO: Are we missing solutions here?
 }
 
 module.exports = ProjectController;

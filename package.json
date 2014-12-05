@@ -117,8 +117,7 @@
         "angular-gravatar"
       ],
       "exports": "angular.module('md5').name"
-    },
-    "templates" : "global:templates"
+    }
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
@@ -133,7 +132,6 @@
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
     "md5": "./bower_components/angular-gravatar/build/md5.js",
     "lodash": "./bower_components/lodash/dist/lodash.js",
-    "templates": "./public/templates/templates.js",
     "apiRoutes": "./assets/apiRoutes.json"
   }
 }

@@ -28,5 +28,5 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
     });
   $locationProvider.html5Mode(true);
 
-  $httpProvider.responseInterceptors.push('httpInterceptor');
+  $httpProvider.interceptors.push('httpInterceptor');
 };
