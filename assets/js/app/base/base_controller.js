@@ -3,12 +3,13 @@
 // TODO: This controller is dealing with too much data
 
 /**@ngInject*/
-function BaseController($rootScope, $scope, $sce, $state, headerData, projects, bundles, applications, AuthService) {
+function BaseController($rootScope, $scope, $sce, $state, headerData, projects, bundles, applications, AuthService, currentUser) {
   $rootScope.$state = $state;
   $rootScope.headerData = headerData;
   $rootScope.projects = projects;
   $rootScope.bundles = bundles;
   $rootScope.applications = applications;
+  $rootScope.currentUser = currentUser;
 
   headerData.$promise.then(function() {
     angular.forEach(headerData.notifications, function(item) {
@@ -45,7 +46,11 @@ BaseController.resolve = {
   },
   /**@ngInject*/
   solutions: function(Solution) {
-    return Solution.query();
+    return Solution.query().$promise;
+  },
+  /**@ngInject*/
+  currentUser: function(User) {
+    return User.getCurrentMember().$promise;
   }
 };
 
