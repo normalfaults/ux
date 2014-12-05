@@ -53,6 +53,11 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     if (401 === error.status) {
       $state.transitionTo('logout');
+    } else if (403 === error.status) {
+      // This is the dashboard route.  Ugly.
+      // @todo Add message or notice on redirect to give access denied error.
+      //       Also a bit strange when a user already on dashboard, might need a scrollTop.
+      $state.transitionTo('base.solutionBase.dashboard');
     } else {
       $log.error(error);
       alert('Unhandled State Change Error occurred: ' + (error.statusText || error.message));
