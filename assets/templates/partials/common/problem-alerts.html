@@ -6,13 +6,13 @@
             <span class="exclamation"></span>
             <strong>NOTICES ({{alerts.length}})</strong>
             <div class="solution-menu right-position80">
-                <a href="javascript:;" class="icon-solution current" drop-down><span>Sort by Time</span><i></i></a>
+                <a  class="icon-solution current" drop-down><span>Sort by Time</span><i></i></a>
                 <div class="drop-down-box hide">
                     <span class="icon-arrow"></span>
                     <ul>
-                        <li><a href="javascript:;">Sort by Name</a></li>
-                        <li><a href="javascript:;">Sort by Weight</a></li>
-                        <li><a href="javascript:;">Sort by Category</a></li>
+                        <li><a>Sort by Name</a></li>
+                        <li><a>Sort by Weight</a></li>
+                        <li><a>Sort by Category</a></li>
                     </ul>
                 </div>
                 <!-- end .drop-down-box -->
@@ -28,22 +28,30 @@
     <div class="table-box">
         <table class="table-data">
             <colgroup>
+                <col>
                 <col class="col26">
                 <col>
                 <col class="col20">
             </colgroup>
             <thead>
             <tr>
+                <th></th>
                 <th class="text-left">PROJECT</th>
                 <th class="text-left" colspan="2">DESCRIPTION</th>
             </tr>
             </thead>
             <tbody>
             <tr ng-repeat="item in alerts">
-                <td class="blue-texts font15 col-title"><a href="javascript:;" class="blue-link">{{item.project.name}}</a></td>
+                <td ng-switch on="item.severity">
+                    <i ng-switch-when="ok" class="alert-ok fa fa-bell"></i>
+                    <i ng-switch-when="warning" class="alert-warningfa fa-bell"></i>
+                    <i ng-switch-when="critical" class="alert-critical fa fa-bell"></i>
+                    <i ng-switch-default class="alert-unknown fa fa-question-circle"></i>
+                </td>
+                <td class="blue-texts font15 col-title"><a class="blue-link">{{item.project.name}}</a></td>
 
                 <td class="gray-texts">{{item.description}}</td>
-                <td class="btn"> <a href="{{item.url}}" class="blue-btn height30 font12">RESOLVE</a></td>
+                <td class="button"> <a href="{{item.url}}" class="blue-btn height30 font12">RESOLVE</a></td>
             </tr>
 
 
