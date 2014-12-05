@@ -69,28 +69,27 @@ module.exports = angular.module('broker.controllers', [])
       $scope.manageValues = manageValues;
     }])
   // Controller for New Project View
-  .controller('NewProjectCtrl', ["$scope", "$location", "projectQuestions", "createProject",
-    function($scope, $location, projectQuestions, createProject) {
-      var _createProject = createProject;
-      var _projectQuestions = projectQuestions;
-      var _scope = $scope;
+  .controller('NewProjectCtrl', ["$scope", "$state", "projectQuestions", "DataService",
+    function($scope, $state, projectQuestions, DataService) {
+      var pQuestions = projectQuestions,
+          dataService = DataService,
+          scope = $scope;
 
       $scope.project = $scope.project || {};
 
-
-      _projectQuestions.$promise.then(function() {
-        _.each(_projectQuestions, function(projectQuestion){
-          $scope.project.project_answers = $scope.project.project_answers || [];
-          _scope.project.project_answers.push({
-            project_question_id: projectQuestion.id,
-            project_question: projectQuestion
+      pQuestions.$promise.then(function() {
+        _.each(pQuestions, function(pQuestion){
+          scope.project.project_answers = scope.project.project_answers || [];
+          scope.project.project_answers.push({
+            project_question_id: pQuestion.id,
+            project_question: pQuestion
           })
         });
       });
 
       $scope.createProject = function() {
-        _createProject({project: _scope.project}).$promise.then(function(){
-          $location.path('/dashboard');
+        dataService.createProject({project: scope.project}).$promise.then(function(){
+          $state.go('base.solutionBase.dashboard', {}, {reload: true});
         });
       }
     }])

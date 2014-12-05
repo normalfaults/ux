@@ -119,8 +119,8 @@ module.exports = function($stateProvider, $urlRouterProvider, $locationProvider,
         projectQuestions: ["DataService", function(DataService) {
           return DataService.getProjectQuestions();
         }],
-        createProject: ["DataService", function(DataService) {
-          return DataService.createProject;
+        DataService: ["DataService", function(DataService) {
+          return DataService;
         }]
       },
       controller: "NewProjectCtrl"
