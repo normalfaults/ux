@@ -45,7 +45,7 @@ BaseController.resolve = {
   },
   /**@ngInject*/
   solutions: function(Solution) {
-    return Solution.query();
+    return Solution.query().$promise;
   }
 };
 
