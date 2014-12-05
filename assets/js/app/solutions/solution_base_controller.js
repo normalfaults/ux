@@ -6,21 +6,9 @@ function SolutionBaseController($scope, solutions) {
 
   this.$scope = $scope;
 
-  solutions.$promise.then(function() {
-    var solution = solutions[0];
-
-    self.$scope.solutions = solutions;
-    self.$scope.solution = solutions[0];
-    self.$scope.selectedStatistic = solution.statistics[0];
-
-    //$scope.selectInterval = function(stats) {
-    //  $scope.selectedStatistic = stats;
-    //};
-    //$scope.showSolution = function(solution) {
-    //  $scope.solution = solution;
-    //  $scope.selectedStatistic = solution.statistics[0];
-    //};
-  });
+  $scope.solutions = solutions;
+  $scope.solution = solutions[0];
+  $scope.selectedStatistic = $scope.solution.statistics[0];
 }
 
 SolutionBaseController.prototype.selectInterval = function(stats) {
