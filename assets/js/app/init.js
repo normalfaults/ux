@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter) {
+module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter, ROUTES) {
 
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -40,22 +40,22 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
     Session.create(data.email, data.role);
     $urlRouter.sync();
   }, function() {
-    $location.path('/');
+    $location.path(ROUTES.login);
+    $urlRouter.sync();
   });
 
   // Authorization and Authentication when switching Pages.
   $rootScope.$on('$stateChangeStart', function (event, next) {
 
+    // Block all routing until the current user is loaded for the first time.
+    // After authorization check because public routes do not need currentUser to verify.
+    if (!currentMember.$resolved) {
+      event.preventDefault();
+      return;
+    }
+
     var authorizedRoles = next.data.authorizedRoles;
     if (!AuthService.isAuthorized(authorizedRoles)) {
-
-      // Block all routing until the current user is loaded for the first time.
-      // After authorization check because public routes do not need currentUser to verify.
-      if (!currentMember.$resolved) {
-        event.preventDefault();
-        return;
-      }
-
       $location.path('/');
     }
   });

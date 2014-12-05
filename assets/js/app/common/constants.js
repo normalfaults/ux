@@ -8,7 +8,12 @@ module.exports = angular.module('broker.common.constants', [])
     user: 'user',
     admin: 'admin'
   })
-  .constant('APP_CONFIG', angular.copy(window.appConfig));
+  .constant('APP_CONFIG', angular.copy(window.appConfig))
+  .constant('ROUTES', {
+    login: '/login',
+    logout: '/logout',
+    default: '/dashboard'
+  });
 
 
 
