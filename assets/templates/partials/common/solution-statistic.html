@@ -7,7 +7,7 @@
                   <a href="javascript:"
                      class="status-day {{item == selectedStatistic ? 'active' : ''}}"
                      ng-repeat="item in solution.statistics"
-                     ng-click="selectInterval(item)">{{item.interval}}</a>
+                     ng-click="solutionBaseCtrl.selectInterval(item)">{{item.interval}}</a>
                 </span>
     </h2>
 
