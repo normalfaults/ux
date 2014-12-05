@@ -1144,7 +1144,7 @@ body
     background: #3d4e5f
     &:hover
       background: #0a498a
-  .icon-notice, .icon-cart, .icon-arrow, .icon-dashboard, .icon-my-projects, .icon-bundles, .icon-application, .icon-order-history, .icon-service, .icon-marketplace, .icon-set, .icon-reload, .icon-chart, .icon-detailed, .icon-green-ok, .icon-red-error, .icon-list-btn, .icon-grid-btn, .icon-del, .icon-back, .icon-del-btn, .icon-up-btn, .icon-down-btn, .icon-help, .icon-round-error i, .icon-round-ok i, .logout-btn i, .icon-point i, .icon-projects i, .icon-solutions i, .icon-applications i, .icon-add i, .icon-map-help i, .links-right-arrow i
+  .icon-notice, .icon-cart, .icon-arrow, .icon-bundles, .icon-application, .icon-set, .icon-reload, .icon-chart, .icon-detailed, .icon-green-ok, .icon-red-error, .icon-list-btn, .icon-grid-btn, .icon-del, .icon-back, .icon-del-btn, .icon-up-btn, .icon-down-btn, .icon-help, .icon-round-error i, .icon-round-ok i, .logout-btn i, .icon-point i, .icon-projects i, .icon-solutions i, .icon-applications i, .icon-add i, .icon-map-help i, .links-right-arrow i
     background-image: url(../images/icon-sprites.png)
     background-repeat: no-repeat
   .icon-notice
@@ -1449,22 +1449,12 @@ body
       .active .li-links
         .icon-dashboard, &:hover .icon-dashboard
           background-position: -120px -143px
-        .icon-my-projects
-          background-position: -120px -192px
         .icon-bundles, &:hover .icon-bundles
           background-position: -120px -240px
-        .icon-application
-          background-position: -120px -288px
-        .icon-order-history, &:hover .icon-order-history
-          background-position: -120px -336px
-        .icon-service, &:hover .icon-service
-          background-position: -120px -384px
-        .icon-marketplace, &:hover .icon-marketplace
-          background-position: -120px -431px
         .texts
           font-size: 14px
       .current .li-links
-        .icon-dashboard, .icon-my-projects, .icon-bundles, .icon-application, .icon-order-history, .icon-service, .icon-marketplace
+        .icon-dashboard, .icon-bundles
           margin-top: 7px
         .number
           margin: 8px 5px 0 0
@@ -1476,39 +1466,15 @@ body
           float: left
         .texts
           white-space: nowrap
-        .icon-dashboard, .icon-my-projects, .icon-bundles, .icon-application, .icon-order-history, .icon-service, .icon-marketplace
+        .icon-bundles
           width: 24px
           height: 24px
           display: inline-block
           margin: 12px 10px 0 11px
-        .icon-dashboard
-          background-position: -120px -120px
-        &:hover .icon-dashboard
-          background-position: -120px -144px
-        .icon-my-projects
-          background-position: -120px -168px
-        &:hover .icon-my-projects
-          background-position: -120px -192px
         .icon-bundles
           background-position: -120px -215px
         &:hover .icon-bundles
           background-position: -120px -239px
-        .icon-application
-          background-position: -120px -264px
-        &:hover .icon-application
-          background-position: -120px -288px
-        .icon-order-history
-          background-position: -120px -310px
-        &:hover .icon-order-history
-          background-position: -120px -334px
-        .icon-service
-          background-position: -120px -358px
-        &:hover .icon-service
-          background-position: -120px -382px
-        .icon-marketplace
-          background-position: -120px -407px
-        &:hover .icon-marketplace
-          background-position: -120px -431px
         .number, .arrow-right, .arrow-down
           float: right
           display: inline-block
@@ -1620,7 +1586,7 @@ body
       li .li-links
         .texts, .number, .arrow-right, .arrow-down
           display: none
-        .icon-dashboard, .icon-my-projects, .icon-bundles, .icon-application, .icon-order-history, .icon-service, .icon-marketplace
+        .icon-dashboard, .icon-bundles
           margin: 12px 10px 0 22px
     nav.absolute-nav .logout-btn
       width: 74px
@@ -2464,7 +2430,7 @@ body
         a span
           color: #292e35
           font-family: "proximanova_semibold"
-      .icon-projects i, .icon-solutions i, .icon-applications i
+      .icon-projects i,
         width: 24px
         height: 24px
         display: inline-block
@@ -2483,13 +2449,6 @@ body
           background-position: -122px -552px
       .active .icon-solutions i
         background-position: -122px -552px
-      .icon-applications
-        i
-          background-position: -122px -576px
-        &:hover i
-          background-position: -122px -600px
-      .active .icon-applications i
-        background-position: -122px -600px
     .tab-content
       padding-bottom: 85px
       overflow: hidden
