@@ -5,6 +5,7 @@ var plumber = require('gulp-plumber');
 var bower = require('gulp-bower');
 var server = require( 'gulp-develop-server');
 var es = require('event-stream');
+var fs = require('fs');
 
 // JS Hint
 var jshint = require('gulp-jshint');
@@ -46,6 +47,7 @@ var paths = {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
       partials: [appAssetSrc + '/templates/partials/**/*.html'],
       views: [appAssetSrc + '/templates/views/**/*.html'],
+      jsConfig: appAssetSrc + '/appConfig.js',
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
@@ -60,8 +62,9 @@ var paths = {
     bower: bowerPath,
     dest: {
       scripts: appAssetDest + '/js',
-      partials: appAssetDest + '/js',
+      partials: appAssetDest + '/templates',
       views: appAssetDest + '/views',
+      jsConfig: appAssetDest + '/',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
       fonts: appAssetDest + '/fonts'
@@ -93,7 +96,9 @@ gulp.task('jshint', ['bower'], function() {
 });
 
 gulp.task('clean-templates', function() {
-  return gulp.src(paths.dest.views, {read: false})
+  gulp.src(paths.dest.views, {read: false})
+    .pipe(clean({force: true}));
+  gulp.src(paths.dest.partials, {read: false})
     .pipe(clean({force: true}));
 });
 
@@ -124,12 +129,14 @@ gulp.task('clean-scripts', function() {
  * Dependent on templates because template partials are wrapped into a
  * js file required here.
  */
-gulp.task('scripts', ['bower', 'clean-scripts', 'templates'], function() {
+gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
     return b.bundle();
   });
+
+
 
   // Combine all the js, browserify it, uglify it, write out the bundle file.
   return gulp.src(paths.src.scripts)
@@ -142,6 +149,21 @@ gulp.task('scripts', ['bower', 'clean-scripts', 'templates'], function() {
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
+});
+
+/**
+ * Copies over the app config from the assets folder to the public folder.
+ * This only happens when there is not already an appConfig file.
+ * Unlike other tasks, this file is not cleaned up from public.
+ *
+ * @future Could show the default differences in the output.
+ */
+gulp.task('config', function() {
+
+  if (!fs.existsSync(paths.src.jsConfig)) {
+    gulp.src(paths.src.jsConfig)
+      .pipe(gulp.dest(paths.dest.jsConfig));
+  }
 });
 
 gulp.task('clean-styles', function() {
@@ -242,7 +264,7 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/js/**/*.js', ['jshint', 'scripts']);
 
   // Watch and recompile templates
-  gulp.watch(appAssetSrc + '/templates/**/*.html', ['templates', 'scripts']);
+  gulp.watch(appAssetSrc + '/templates/**/*.html', ['scripts']);
 
   // watches Sass files for changes
   gulp.watch(appAssetSrc + '/sass/**/*.s?ss', ['styles']);
@@ -251,6 +273,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
+gulp.task('default', ['config', 'scripts', 'styles', 'images', 'fonts', 'watch']);
 
-gulp.task('production', ['templates', 'scripts', 'styles', 'images', 'fonts']);
+gulp.task('production', ['config', 'scripts', 'styles', 'images', 'fonts']);

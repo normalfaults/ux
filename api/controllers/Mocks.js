@@ -65,7 +65,7 @@ var bundles = {
 var header = require("../data/header.json");
 
 // dropdown values for new project
-var projectValues = require("../data/new-project.json");
+var projectQuestions = require("../data/project_questions.json");
 
 // dropdown values for manage view
 var manageValues = require("../data/manage.json");
@@ -76,9 +76,7 @@ var marketplaceValues = require("../data/marketplace.json");
 // alerts for dashboard and manage
 var alerts = require("../data/alerts.json");
 
-
-// alerts with x icon for dashboard
-var alertPopup = require("../data/alert-popup.json");
+var staffSignIn = require("../data/staff/sign_in.json");
 
 /**
  * Populate references.
@@ -124,6 +122,16 @@ function _returnItem(item, res, next) {
  */
 function getSolution(req, res, next) {
     _returnItem(solutions[req.params.id], res, next);
+}
+
+/**
+ * Post a project.
+ * @param {Object} req the request object
+ * @param {Object} res the response object
+ * @param {Function} next the callback function
+ */
+function createProject(req, res, next) {
+    res.json(req.params.project);
 }
 
 /**
@@ -202,8 +210,8 @@ function getHeader(req, res, next) {
  * @param {Object} res the response object
  * @param {Function} next the callback function
  */
-function getProjectValues(req, res, next) {
-    res.json(projectValues);
+function getProjectQuestions(req, res, next) {
+    res.json(projectQuestions);
 }
 
 /**
@@ -285,24 +293,47 @@ function getAlerts(req, res, next) {
 }
 
 /**
- * Get alert popup for dashboard.
+ * Staff Sign In.
  * @param {Object} req the request object
  * @param {Object} res the response object
  * @param {Function} next the callback function
  */
-function getAlertPopup(req, res, next) {
-    res.json(alertPopup);
+function postStaffSignIn(req, res, next) {
+  res.json(staffSignIn);
+}
+
+/**
+ * Staff Sign Out.
+ * @param req
+ * @param res
+ * @param next
+ */
+function deleteStaffSignOut(req, res, next) {
+  res.json();
+}
+
+/**
+ * Get Current User
+ *
+ * @param req
+ * @param res
+ * @param next
+ */
+function getStaffCurrentMember(req, res, next) {
+  // Reuse the staff/sign_in data since they are the same.
+  res.json(staffSignIn);
 }
 
 module.exports = {
     getSolution: getSolution,
+    createProject: createProject,
     getProject: getProject,
     getSolutions: getSolutions,
     getProjects: getProjects,
     getHeader: getHeader,
     getApplications: getApplications,
     getBundles: getBundles,
-    getProjectValues: getProjectValues,
+    getProjectQuestions: getProjectQuestions,
     getManageValues: getManageValues,
     getService: getService,
     getMarketplaceValues: getMarketplaceValues,
@@ -311,5 +342,7 @@ module.exports = {
     getRecentOrders: getRecentOrders,
     getServices: getServices,
     getAlerts: getAlerts,
-    getAlertPopup: getAlertPopup
+    staffSignIn: postStaffSignIn,
+    staffSignOut: deleteStaffSignOut,
+    getCurrentMember: getStaffCurrentMember
 };

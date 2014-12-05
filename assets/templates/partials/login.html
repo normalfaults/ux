@@ -1,0 +1,45 @@
+<div class="login-box table-container table-box" fix-sidebar>
+    <div class="contents">
+            <hr class="shadow-top">
+
+            <div class="titles-box">
+                <h2>
+                    <strong class="orange-texts">LOGIN</strong>
+                </h2>
+                <div class="titles-border-bar">
+                    <span class="blues width218"></span>
+                    <span class="whites width3"></span>
+                </div>
+            </div>
+            <!-- end .titles-box -->
+
+        <form class="pure-form" ng-submit="login()">
+            <table class="table-data">
+                <colgroup>
+                    <col class="col40">
+                    <col>
+                </colgroup>
+                <tbody>
+                <tr>
+                    <td class="left-text">Email</td>
+                    <td class="min-value">
+                           <span class="input-box">
+                            <input name="email" type="text" ng-model="email">
+                          </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="left-text">Password</td>
+                    <td class="min-value">
+                          <span class="input-box">
+                           <input name="password" type="password" ng-model="password">
+                         </span>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+            <input type="submit" value="Login" class="blue-btn height30 font12">
+        </form>
+    </div>
+</div>

@@ -20,6 +20,7 @@
     "ejs": "~1.0.0",
     "event-stream": "^3.1.7",
     "express": "^3.4.8",
+    "express-session": "^1.9.2",
     "gulp": "^3.8.9",
     "gulp-angular-templatecache": "^1.4.2",
     "gulp-autoprefixer": "^1.0.1",
@@ -131,6 +132,7 @@
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
     "md5": "./bower_components/angular-gravatar/build/md5.js",
     "lodash": "./bower_components/lodash/dist/lodash.js",
-    "templates": "./public/js/templates.js"
+    "templates": "./public/templates/templates.js",
+    "apiRoutes": "./assets/apiRoutes.json"
   }
 }

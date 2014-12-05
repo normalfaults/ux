@@ -1,6 +1,6 @@
 
 <aside class="left-sidebar">
-    <nav class="side-nav" fix-sidebar toggle-sidebar>
+    <nav class="side-nav" ng-if="headerData" fix-sidebar toggle-sidebar>
         <ul>
             <li class="dashboard-menu" ng-class="{active: $state.includes('base.solutionBase.dashboard')}">
                 <a href="javascript:;" class="side-arrow"><i></i></a>
@@ -74,6 +74,6 @@
                 </a>
             </li>
         </ul>
-        <a href="javascript:" class="logout-btn"><i></i><span>LOGOUT</span></a>
+        <a ng-click="logout()" class="logout-btn"><i></i><span>LOGOUT</span></a>
     </nav>
 </aside>

@@ -16,7 +16,7 @@
         </div>
         <!-- end .titles-box -->
 
-        <div class="app-project-box">
+        <div class="project-box box-shadow">
             <div class="app-project">
                 <div class="col40">
                     <div class="icon-boxes icon-boxes-2">
@@ -55,123 +55,73 @@
         </div>
         <!-- end .app-project-box -->
 
-        <div class="table-container table-box">
-            <table class="table-data">
-                <colgroup>
-                    <col class="col40">
-                    <col>
-                </colgroup>
-                <tbody>
-                <tr>
-                    <td class="left-text">Requestor Name</td>
-                    <td class="min-value">
-                         <span class="input-box">
-                          <input name="" type="text">
+        <div class="project-box">
+            <form class="form-horizontal padded horizontal-spanning" role="form">
+                <div class="form-group">
+                    <label for="name" class="col-sm-2 control-label">Name</label>
+                    <div class="col-sm-9">
+                        <input ng-model='project.name' class="form-control" id="name" placeholder="Project Name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget" class="col-sm-2 control-label">Budget</label>
+                    <div class="col-sm-9">
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="text" class="form-control" id="budget" ng-model='project.budget'>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="start-date" class="col-sm-2 control-label">Start Date</label>
+                    <div class="col-sm-5">
+                        <datepicker id="start-date" ng-model="project.start_date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="end-date" class="col-sm-2 control-label">End Date</label>
+                    <div class="col-sm-5">
+                        <datepicker id="end-date" ng-model="project.end_date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                    </div>
+                </div>
+
+                <div class="form-group" ng-repeat="answer in project.project_answers">
+                    <span ng-switch on="answer.project_question.field_type">
+                        <span ng-switch-when="text">
+                            <nf-form name="projectQuestionForm">
+                                <div class="form-group">
+                                    <label for="{{answer.project_question.id}}" class="col-sm-2 control-label">{{answer.project_question.question}}</label>
+                                    <div class="col-sm-9">
+                                        <input ng-model='answer.answer' class="form-control" id="{{answer.project_question.id}}" placeholder="{{answer.project_question.help_text}}">
+                                    </div>
+                                </div>
+                            </nf-form>
                         </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Requestor Date</td>
-                    <td class="min-value">
-                          <span class="calendar">
-                              <input name="from-date" type="text" class="from-date" datepicker-popup="MM/dd/yy" ng-model="dt" is-open="opened" show-weeks=false datepicker-append-to-body=true datepicker-options="dateOptions" close-text="Close" readonly />
-                              <a ng-click="open($event)" class="date-icon"><span>calendar</span></a>
-                          </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Team Name</td>
-                    <td class="min-value">
-                          <span class="input-box">
-                            <input name="" type="text">
-                          </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Project Name</td>
-                    <td class="min-value">
-                          <span class="input-box">
-                            <input name="" type="text">
-                          </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Charge Number</td>
-                    <td class="min-value">
-                          <span class="input-box">
-                            <input name="" type="text">
-                          </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">NTE budget</td>
-                    <td class="min-value">
-                          <span class="input-box">
-                            <input name="" type="text">
-                          </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Project Owner</td>
-                    <td class="min-value">
-                          <span class="selectsContainer form-container">
-                          <select class="select-def">
-                              <option ng-repeat="item in projectValues.owners" value="{{item.value}}">{{item.name}}</option>
-                          </select>
+                        <span ng-switch-when="select_option">
+                            <nf-form name="projectQuestionForm">
+                                <div class="form-group">
+                                    <label for="{{answer.project_question.id}}" class="col-sm-2 control-label">{{answer.project_question.question}}</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" ng-model="answer.answer" ng-options="option for option in answer.project_question.options">
+                                            <option value="">Please select an option.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </nf-form>
                         </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Sr. Associate</td>
-                    <td class="min-value">
-                          <span class="selectsContainer form-container">
-                          <select class="select-def">
-                              <option ng-repeat="item in projectValues.associates" value="{{item.value}}">{{item.name}}</option>
-                          </select>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Principal</td>
-                    <td class="min-value">
-                          <span class="selectsContainer form-container">
-                          <select class="select-def">
-                              <option ng-repeat="item in projectValues.principals" value="{{item.value}}">{{item.name}}</option>
-                          </select>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Estimated Project Termination Date</td>
-                    <td class="min-value">
-                          <span class="input-box">
-                            <input name="" type="text">
-                          </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Data Type</td>
-                    <td class="min-value">
-                          <span class="selectsContainer form-container">
-                          <select class="select-def">
-                              <option ng-repeat="item in projectValues.dataTypes" value="{{item.value}}">{{item.name}}</option>
-                          </select>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Others</td>
-                    <td class="min-value">
-                          <span class="input-box">
-                            <input name="" type="text">
-                          </span>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <a href="javascript:;" class="blue-btn height30 font12">SUBMIT</a>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-offset-11">
+                        <button type="submit" class="btn btn-default" ng-click="createProject()">Create</button>
+                    </div>
+                </div>
+            </form>
         </div>
-        <!-- end .table-box -->
     </div>
     <!-- end .main-content -->
 

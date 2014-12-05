@@ -4,40 +4,24 @@
 
 'use strict';
 
+var apiRoutes = require ('apiRoutes');
 var angular = require('angular');
 var _ = require('lodash');
 
 module.exports = angular.module('broker.factories', [])
-  .factory('ApiResource', [function() {
+  .factory('ApiResource', ['APP_CONFIG', function(APP_CONFIG) {
 
-    // @todo Move this to it's own JSON file.
-    var jsonRoutes = {
-      //'basePath': 'http://localhost:5000/api',
-      'basePath': '/api',
-      'routes': {
-        'solutions':         '/solutions/:id',
-        'projectValues':     '/projectValues',
-        'manageValues':      '/manageValues',
-        'marketplaceValues': '/marketplaceValues',
-        'alerts':            '/alerts',
-        'alertPopup':        '/alertPopup',
-        'usersById':         '/users/:id',
-        'recentUsers':       '/users/recent',
-        'ordersById':        '/orders/:id',
-        'recentOrders':      '/orders/recent',
-        'projectsById':      '/projects/:id',
-        'servicesById':      '/services/:id',
-        'applicationsById':  '/applications/:id',
-        'bundlesById':       '/bundles/:id',
-        'header':            '/header'
-      }
-    };
+    // Get the data from the config if it has been passed in, otherwise use the default
+    // from the apiRoutes.json file.
+    var apiBasePath = APP_CONFIG.apiBasePath || apiRoutes.basePath;
 
+    // Remove trailing slash if it exists.
+    apiBasePath = apiBasePath.replace(/\/$/, "");
     return function(apiResourceKey) {
       if (_.isEmpty(apiResourceKey)) {
-        return jsonRoutes.basePath;
+        return apiBasePath;
       }
-      return jsonRoutes.basePath + jsonRoutes.routes[apiResourceKey];
+      return apiBasePath + apiRoutes.routes[apiResourceKey];
     };
   }])
   // resource for Solution
@@ -47,9 +31,14 @@ module.exports = angular.module('broker.factories', [])
   // resource for general data
   .factory('DataService', ['$resource', 'ApiResource', function($resource, ApiResource) {
     return $resource(ApiResource(), {}, {
-      getProjectValues: {
+      getProjectQuestions: {
         method: "GET",
-        url: ApiResource('projectValues')
+        isArray: true,
+        url: ApiResource('projectQuestions')
+      },
+      createProject: {
+        method: "POST",
+        url: ApiResource('createProject')
       },
       getManageValues: {
         method: "GET",
@@ -63,10 +52,6 @@ module.exports = angular.module('broker.factories', [])
         method: "GET",
         isArray: true,
         url: ApiResource('alerts')
-      },
-      getAlertPopup: {
-        method: "GET",
-        url: ApiResource('alertPopup')
       }
     });
   }])
@@ -77,6 +62,11 @@ module.exports = angular.module('broker.factories', [])
         method: "GET",
         isArray: true,
         url: ApiResource('recentUsers')
+      },
+      getCurrentMember: {
+        method: 'GET',
+        isArray: false,
+        url: ApiResource('currentMember')
       }
     });
   }])
@@ -114,15 +104,100 @@ module.exports = angular.module('broker.factories', [])
   .factory('fixSidebar', [function() {
     return function() {
       var $nav = $('.side-nav');
-      $nav.height(500);
+      var $footer = $('footer');
 
-      var headerAndFooterHeight = $('header').outerHeight() + $('footer').outerHeight();
-      var mainContentEl = $('.main-content');
+      // If the nav is shown (only shown when logged in) we resize the nav to the correct size based
+      // on page content.
+      if ($nav && $nav.is(":visible")) {
+        $nav.height(500);
 
-      if ((mainContentEl.height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
-        $nav.height(document.documentElement.clientHeight - headerAndFooterHeight);
+        var headerAndFooterHeight = $('header').outerHeight() + $footer.outerHeight();
+        var mainContentEl = $('.main-content');
+
+        if ((mainContentEl.height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
+          $nav.height(document.documentElement.clientHeight - headerAndFooterHeight);
+        } else {
+          $nav.height(mainContentEl.height());
+          $footer.css('position', '');
+        }
       } else {
-        $nav.height(mainContentEl.height());
+        // If there is no visible sidebar, we set the footer to absolute to make sure it stays on the bottom.
+        $footer.css('position', 'absolute');
       }
     };
-  }]);
+  }])
+  .factory('httpInterceptor', ['$rootScope', '$q', '$location', 'ROUTES',
+    function($rootScope, $q, $location, ROUTES) {
+
+      return function (promise) {
+        var success = function (response) {
+          return response;
+        };
+
+        var error = function (response) {
+          if (response.status === 401) {
+            $location.path(ROUTES.logout);
+          }
+
+          return $q.reject(response);
+        };
+
+        return promise.then(success, error);
+    };
+  }])
+  .factory('AuthService', ['$rootScope', '$http', '$location', 'Session', 'ApiResource', 'USER_ROLES', 'ROUTES',
+    function ($rootScope, $http, $location, Session, ApiResource, USER_ROLES, ROUTES) {
+      var authService = {};
+
+      authService.login = function (credentials) {
+        return $http
+          .post(ApiResource('signIn'), credentials)
+          .success(function (data, statusCode) {
+            Session.create(data.email, data.role);
+          })
+          .error(function() {
+            // Do error here.
+          })
+      };
+
+      authService.logout = function() {
+        return $http
+          .delete(ApiResource('signOut'))
+          .success(function() {
+            $rootScope.headerData = null;
+            Session.destroy();
+            $location.path(ROUTES.login);
+          });
+      };
+
+      // @todo Need to check the cookie here and then regrab the session data.
+      authService.isAuthenticated = function () {
+        return !!Session.email;
+      };
+
+      authService.isAuthorized = function (authorizedRoles) {
+        if (!angular.isArray(authorizedRoles)) {
+          authorizedRoles = [authorizedRoles];
+        }
+
+        // If authorizedRoles contains 'all', then we allow it through.
+        if (authorizedRoles.indexOf(USER_ROLES.all) !== -1) {
+          return true;
+        } else {
+          return (authService.isAuthenticated() && authorizedRoles.indexOf(Session.role) !== -1);
+        }
+      };
+
+      return authService;
+    }])
+  .service('Session', function () {
+    this.create = function (email, role) {
+      this.email = email;
+      this.role = role;
+    };
+    this.destroy = function () {
+      this.email = null;
+      this.role = null;
+    };
+    return this;
+  });

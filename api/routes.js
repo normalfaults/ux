@@ -12,12 +12,13 @@
 module.exports = {
     "GET /api/solutions": "Mocks#getSolutions",
     "GET /api/solutions/:id": "Mocks#getSolution",
-    "GET /api/projectValues": "Mocks#getProjectValues",
+    "GET /api/project_questions": "Mocks#getProjectQuestions",
     "GET /api/manageValues": "Mocks#getManageValues",
     "GET /api/marketplaceValues": "Mocks#getMarketplaceValues",
     "GET /api/solutions/recent": "Mocks#getRecentSolutions",
     "GET /api/users/recent": "Mocks#getRecentUsers",
     "GET /api/orders/recent": "Mocks#getRecentOrders",
+    "POST /api/projects": "Mocks#createProject",
     "GET /api/projects": "Mocks#getProjects",
     "GET /api/projects/:id": "Mocks#getProject",
     "GET /api/services/:id": "Mocks#getService",
@@ -26,5 +27,7 @@ module.exports = {
     "GET /api/bundles": "Mocks#getBundles",
     "GET /api/header": "Mocks#getHeader",
     "GET /api/alerts": "Mocks#getAlerts",
-    "GET /api/alertPopup": "Mocks#getAlertPopup"
+    "POST /api/staff/sign_in": "Mocks#staffSignIn",
+    "DELETE /api/staff/sign_out": "Mocks#staffSignOut",
+    "GET /api/staff/current_member": "Mocks#getCurrentMember"
 };

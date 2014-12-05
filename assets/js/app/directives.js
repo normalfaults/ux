@@ -196,23 +196,6 @@ module.exports = angular.module('broker.directives', [])
       }
     };
   }])
-  // popup with X icon for dashboard
-  .directive('alertPopup', ["fixSidebar", function(fixSidebar) {
-    return {
-      restrict: 'E',
-      scope: {
-        msg: "="
-      },
-      transclude: true,
-      template: '<div class="notification-msg"><span ng-transclude></span><span class="close"><a href="javascript:"></a></span></div>',
-      link: function(scope, element) {
-        $(element).find('.close').click(function() {
-          $(element).remove();
-          fixSidebar();
-        });
-      }
-    };
-  }])
   // animate graphs
   .directive('animateKnob', ["$interval", function($interval) {
     return {
