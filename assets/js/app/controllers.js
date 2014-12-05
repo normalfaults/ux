@@ -44,7 +44,6 @@ module.exports = angular.module('broker.controllers', [])
   // Controller for Dashboard view
   .controller('SolutionBaseCtrl', ["$scope", "solutions",
     function($scope, solutions) {
-
       solutions.$promise.then(function() {
 
         var solution = solutions[0];
