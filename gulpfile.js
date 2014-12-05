@@ -112,8 +112,7 @@ gulp.task('templates', ['bower', 'clean-templates'], function() {
     .pipe(templates({
       root: '/partials/',
       module: 'templates',
-      standalone: true,
-      moduleSystem: "Browserify"
+      standalone: true
     }))
     .pipe(gulp.dest(paths.dest.partials));
 });
@@ -135,8 +134,6 @@ gulp.task('scripts', ['bower', 'templates', 'clean-scripts'], function() {
     var b = browserify(filename);
     return b.bundle();
   });
-
-
 
   // Combine all the js, browserify it, uglify it, write out the bundle file.
   return gulp.src(paths.src.scripts)
