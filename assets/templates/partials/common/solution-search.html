@@ -6,7 +6,7 @@
             <span class="icon-arrow"></span>
             <ul>
                 <li ng-repeat="item in solutions" ng-if="solution !== item">
-                    <a href="javascript:" ng-click="showSolution(item)">{{item.name | uppercase}}</a>
+                    <a href="javascript:" ng-click="solutionBaseCtrl.showSolution(item)">{{item.name | uppercase}}</a>
                 </li>
             </ul>
         </div>
