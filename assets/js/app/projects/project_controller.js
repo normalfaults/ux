@@ -10,8 +10,8 @@ function ProjectController($scope, project, solutions) {
 ProjectController.resolve = {
   /**@ngInject*/
   project: function(Project, $stateParams) {
-    return Project.get({id: $stateParams.projectId});
+    return Project.get({id: $stateParams.projectId}).$promise;
   }
-}
+};
 
 module.exports = ProjectController;

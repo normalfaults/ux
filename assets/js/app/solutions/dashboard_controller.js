@@ -17,7 +17,7 @@ DashboardController.prototype.showTab = function(tab) {
 DashboardController.resolve = {
   /**@ngInject*/
   alerts: function(DataService) {
-    return DataService.getAlerts();
+    return DataService.getAlerts().$promise;
   }
 };
 
