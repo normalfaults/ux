@@ -25,7 +25,6 @@ function AuthService($rootScope, $http, $location, Session, ApiResource, USER_RO
       });
   };
 
-  // @todo Need to check the cookie here and then regrab the session data.
   authService.isAuthenticated = function() {
     return !!Session.email;
   };

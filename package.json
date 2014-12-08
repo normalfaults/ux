@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node app"
   },
-  "author": "Sky_",
   "license": "All rights reserved",
   "repository": {},
   "dependencies": {
@@ -28,7 +27,6 @@
     "gulp-clean": "^0.3.1",
     "gulp-concat": "^2.4.1",
     "gulp-filter": "^1.0.2",
-    "gulp-imagemin": "^1.2.1",
     "gulp-jshint": "^1.8.6",
     "gulp-minify-css": "^0.3.11",
     "gulp-notify": "^2.0.0",
@@ -38,7 +36,6 @@
     "gulp-unpathify": "^0.1.1",
     "gulp-util": "^3.0.1",
     "gulp-watch": "^1.1.0",
-    "imagemin-pngquant": "^4.0.0",
     "jshint-stylish-recolor": "^0.2.0-a",
     "method-override": "~2.1.3",
     "underscore": "~1.7.0",
@@ -59,11 +56,6 @@
   "browserify-shim": {
     "jquery": "$",
     "jquery-knob": {
-      "depends": [
-        "jquery"
-      ]
-    },
-    "jquery-cookie": {
       "depends": [
         "jquery"
       ]
@@ -121,8 +113,6 @@
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
-    "jquery-knob": "./bower_components/jquery-knob/js/jquery.knob.js",
-    "jquery-cookie": "./bower_components/jquery-cookie/jquery.cookie.js",
     "angular": "./bower_components/angular/angular.js",
     "angular-animate": "./bower_components/angular-animate/angular-animate.js",
     "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",

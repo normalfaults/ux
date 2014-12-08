@@ -25,9 +25,6 @@ var sass = require('gulp-ruby-sass');
 var autoprefix = require('gulp-autoprefixer');
 var minifyCSS = require('gulp-minify-css');
 
-// Images
-var imagemin = require('gulp-imagemin');
-var pngquant = require('imagemin-pngquant');
 
 // Utils
 var clean = require('gulp-clean');
@@ -215,12 +212,6 @@ gulp.task('images', ['bower', 'clean-images'], function() {
     .pipe(plumber({
       errorHandler: errorHandler
     }))
-    //.pipe(imagemin({
-    //  optimizationLevel: 7,
-    //  progressive: true,
-    //  interlaced: true,
-    //  use: [pngquant()]
-    //}))
     .pipe(gulp.dest(paths.dest.images));
 });
 
