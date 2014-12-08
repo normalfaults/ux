@@ -111,8 +111,7 @@ gulp.task('templates', ['bower', 'clean-templates'], function() {
   gulp.src(paths.src.partials)
     .pipe(templates({
       root: '/partials/',
-      module: 'templates',
-      standalone: true
+      module: 'broker'
     }))
     .pipe(gulp.dest(paths.dest.partials));
 });
@@ -128,7 +127,7 @@ gulp.task('clean-scripts', function() {
  * Dependent on templates because template partials are wrapped into a
  * js file required here.
  */
-gulp.task('scripts', ['bower', 'clean-scripts'], function() {
+gulp.task('scripts', ['bower', 'clean-scripts', 'jshint'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
@@ -216,14 +215,13 @@ gulp.task('images', ['bower', 'clean-images'], function() {
     .pipe(plumber({
       errorHandler: errorHandler
     }))
-    .pipe(imagemin({
-      optimizationLevel: 7,
-      progressive: true,
-      interlaced: true,
-      use: [pngquant()]
-    }))
-    .pipe(gulp.dest(paths.dest.images))
-    .pipe(notify({message: 'Finished images task.'}));
+    //.pipe(imagemin({
+    //  optimizationLevel: 7,
+    //  progressive: true,
+    //  interlaced: true,
+    //  use: [pngquant()]
+    //}))
+    .pipe(gulp.dest(paths.dest.images));
 });
 
 gulp.task('clean-fonts', function() {

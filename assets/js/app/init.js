@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter, ROUTES) {
+module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter, ROUTES, $state) {
 
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -11,16 +11,6 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
   $http.defaults.withCredentials = true;
 
   $rootScope.sideBarExpanded = true;
-
-  // catch any error in resolve in state
-  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
-    $log.error(error);
-    alert('Error occurred: ' + (error.statusText || error.message));
-  });
-
-  $rootScope.$on('$stateChangeSuccess', function() {
-    $("html, body").animate({scrollTop: 0}, 200);
-  });
 
   $(window).resize(fixSidebar);
 
@@ -46,7 +36,6 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
   // Authorization and Authentication when switching Pages.
   $rootScope.$on('$stateChangeStart', function (event, next) {
-
     // Block all routing until the current user is loaded for the first time.
     // After authorization check because public routes do not need currentUser to verify.
     if (!currentMember.$resolved) {
@@ -56,7 +45,26 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
     var authorizedRoles = next.data.authorizedRoles;
     if (!AuthService.isAuthorized(authorizedRoles)) {
-      $location.path('/');
+      $location.path(ROUTES.dashboard);
     }
+  });
+
+  // catch any error in resolve in state
+  $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
+    if (401 === error.status) {
+      $state.transitionTo('logout');
+    } else if (403 === error.status) {
+      // This is the dashboard route.  Ugly.
+      // @todo Add message or notice on redirect to give access denied error.
+      //       Also a bit strange when a user already on dashboard, might need a scrollTop.
+      $state.transitionTo('base.solutionBase.dashboard');
+    } else {
+      $log.error(error);
+      alert('Unhandled State Change Error occurred: ' + (error.statusText || error.message));
+    }
+  });
+
+  $rootScope.$on('$stateChangeSuccess', function() {
+    $("html, body").animate({scrollTop: 0}, 200);
   });
 };

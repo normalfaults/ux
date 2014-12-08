@@ -3,20 +3,24 @@
 /**@ngInject*/
 function HttpInterceptor($q, $location, ROUTES) {
 
-  return function (promise) {
-    var success = function (response) {
-      return response;
-    };
-
-    var error = function (response) {
-      if (response.status === 401) {
+  return {
+    /**
+     * See also the stateChangeError method which handles state change for
+     * routes that have promises that need to be resolved first.
+     */
+    responseError: function(error) {
+      if (401 === error.status) {
         $location.path(ROUTES.logout);
       }
 
-      return $q.reject(response);
-    };
+      // @todo should at some point take them to an access denied page, or
+      //       at the very least the default with a message.
+      if (403 === error.status) {
+        $location.path(ROUTES.default);
+      }
 
-    return promise.then(success, error);
+      return $q.reject(error);
+    }
   };
 }
 
