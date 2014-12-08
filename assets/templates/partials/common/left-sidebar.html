@@ -5,13 +5,13 @@
             <li class="dashboard-menu" ng-class="{active: $state.includes('base.solutionBase.dashboard')}">
                 <a href="javascript:;" class="side-arrow"><i></i></a>
                 <a ui-sref="base.solutionBase.dashboard" class="li-links">
-                    <span class="icon-dashboard"></span>
+                    <span class="fa fa-bars left-tray-icon left-tray-title-icon"></span>
                     <span class="texts">DASHBOARD</span>
                 </a>
             </li>
             <li class="current li-my-projects" expand-arrow>
                 <a href="javascript:;" class="li-links">
-                    <span class="icon-my-projects"></span>
+                    <span class="fa fa-file-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">MY PROJECTS</span>
                     <span class="arrows arrow-down"></span>
                     <span class="number">{{projects.length}}</span>
@@ -38,7 +38,7 @@
           -->
             <li class="li-application" expand-arrow>
                 <a href="javascript:;" class="li-links">
-                    <span class="icon-application"></span>
+                    <span class="fa fa-cloud left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">SERVICE WIZARD</span>
                     <span class="arrows arrow-right"></span>
                     <!--<span class="number">{{applications.length}}</span>-->
@@ -51,29 +51,29 @@
             </li>
             <li ng-class="{active: $state.includes('base.orderHistory') || $state.includes('base.service') }">
                 <a ui-sref="base.orderHistory" class="li-links last">
-                    <span class="icon-order-history"></span>
+                    <span class="fa fa-clock-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">ORDER HISTORY</span>
                 </a>
             </li>
             <li ng-class="{active: $state.includes('base.helpDesk') || $state.includes('base.service') }">
                 <a ui-sref="base.helpDesk" class="li-links last">
-                    <span class="icon-service"></span>
+                    <span class="fa fa-wrench left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">HELP DESK</span>
                 </a>
             </li>
             <li ng-class="{active: $state.includes('base.marketplace') || $state.includes('base.service') }">
                 <a ui-sref="base.marketplace" class="li-links last">
-                    <span class="icon-marketplace"></span>
+                    <span class="fa fa-briefcase left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">MARKETPLACE</span>
                 </a>
             </li>
             <li ng-class="{active: $state.includes('base.searchAndCompare') || $state.includes('base.service') }">
                 <a ui-sref="base.searchAndCompare" class="li-links last">
-                    <span class="icon-bundles"></span>
+                    <span class="fa fa-lightbulb-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">SEARCH &amp; COMPARE</span>
                 </a>
             </li>
         </ul>
-        <a ng-click="logout()" class="logout-btn"><i></i><span>LOGOUT</span></a>
+        <a ng-click="logout()" class="logout-btn"><i class="fa fa-power-off left-tray-icon left-tray-menu-icon"></i><span>LOGOUT</span></a>
     </nav>
 </aside>

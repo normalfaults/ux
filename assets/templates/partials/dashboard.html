@@ -5,8 +5,8 @@
             <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
             <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
             <span  class="icons">
-              <a href="javascript:;" class="icon-set" title="Settings" tooltip-placement="bottom" tooltip="Settings"></a>
-              <a href="javascript:;" class="icon-reload" title="Refresh" tooltip-placement="bottom" tooltip="Refresh"></a>
+              <a href="javascript:;" class="fa fa-cog grey-icon top-icon" title="Settings" tooltip-placement="bottom" tooltip="Settings"></a>
+              <a href="javascript:;" class="fa fa-refresh grey-icon top-icon" title="Refresh" tooltip-placement="bottom" tooltip="Refresh"></a>
             </span>
         </h3>
         <div class="data-box">
@@ -31,11 +31,11 @@
         <div class="bottom-area">
                 <span class="fl">
                   <span class="blue-texts">{{item.state}}</span>
-                  <span ng-class="{'icon-green-ok': item.stateOk, 'icon-red-error' : !item.stateOk }"></span>
+                  <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
                 </span>
                 <span class="fr">
-                  <a href="javascript:;" class="icon-chart" title="Statistics" tooltip-placement="bottom" tooltip="Statistics"></a>
-                  <a href="javascript:;" class="icon-detailed" title="Play" tooltip-placement="bottom" tooltip="Play"></a>
+                  <a href="javascript:;" class="fa fa-bar-chart grey-icon bottom-icon" title="Statistics" tooltip-placement="bottom" tooltip="Statistics"></a>
+                  <a href="javascript:;" class="fa fa-play-circle-o grey-icon bottom-icon" title="Play" tooltip-placement="bottom" tooltip="Play"></a>
                 </span>
         </div>
         <!-- end .bottom-area -->
