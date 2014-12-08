@@ -8,15 +8,14 @@
     <div class="nav-user fr" ng-if="currentUser && headerData">
         <nav>
             <ul>
-                <li ng-class="{active: !$state.includes('base.solutionBase.manage')}">
+                <li ng-class="active">
                     <a ui-sref="base.solutionBase.dashboard">DASHBOARD</a>
                 </li>
-                <li><a href="javascript:">BROWSE</a></li>
-                <li><a href="javascript:">BUILD</a></li>
-                <li ng-class="{active: $state.includes('base.solutionBase.manage')}">
-                    <a ui-sref="base.solutionBase.manage">MANAGE</a>
+                <li><a>BROWSE</a></li>
+                <li><a>BUILD</a></li>
+                <li><a>MANAGE</a>
                 </li>
-                <li><a href="javascript:">PRICING</a></li>
+                <li><a>PRICING</a></li>
             </ul>
         </nav>
         <!-- end nav -->

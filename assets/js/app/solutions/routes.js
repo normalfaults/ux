@@ -1,7 +1,6 @@
 'use strict';
 
-var DashboardData = require('./dashboard_controller').resolve,
-  ManageData = require('./manage_controller').resolve;
+var DashboardData = require('./dashboard_controller').resolve;
 
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
@@ -24,15 +23,5 @@ module.exports = function($stateProvider, USER_ROLES) {
       templateUrl: "/partials/dashboard.html",
       resolve: DashboardData,
       controller: "DashboardController as dashboardCtrl"
-    })
-    // solution manage page
-    .state('base.solutionBase.manage', {
-      url: "^/manage",
-      templateUrl: "/partials/manage.html",
-      data: {
-        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
-      },
-      resolve: ManageData,
-      controller: "ManageController as manageCtrl"
     })
 };
