@@ -12,7 +12,6 @@ var DirectivesModule = angular.module('broker.directives', [])
   .directive('ordersTable', require('./orders_table'))
   .directive('serviceBox', require('./service_box'))
   .directive('switchViewButtons', require('./switch_view_buttons'))
-  .directive('marketplaceItems', require('./marketplace_items'))
-  .directive('animateKnob', require('./animate_knob'));
+  .directive('marketplaceItems', require('./marketplace_items'));
 
 module.exports = DirectivesModule;
