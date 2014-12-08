@@ -11,15 +11,12 @@ function BaseController($rootScope, $scope, $sce, $state, headerData, projects, 
   $rootScope.applications = applications;
   $rootScope.currentUser = currentUser;
 
-  headerData.$promise.then(function() {
-    angular.forEach(headerData.notifications, function(item) {
-      item.trustedHtml = $sce.trustAsHtml(item.text);
-    });
+  angular.forEach(headerData.notifications, function(item) {
+    item.trustedHtml = $sce.trustAsHtml(item.text);
   });
-  projects.$promise.then(function() {
-    angular.forEach(projects, function(project) {
-      project.sref = "base.project(" + angular.toJson({projectId: project.id}) + ")";
-    });
+
+  angular.forEach(projects, function(project) {
+    project.sref = "base.project(" + angular.toJson({projectId: project.id}) + ")";
   });
 
   $rootScope.logout = function() {
@@ -30,19 +27,19 @@ function BaseController($rootScope, $scope, $sce, $state, headerData, projects, 
 BaseController.resolve = {
   /**@ngInject*/
   headerData: function(HeaderData) {
-    return HeaderData.get();
+    return HeaderData.get().$promise;
   },
   /**@ngInject*/
   projects: function(Project) {
-    return Project.query();
+    return Project.query().$promise;
   },
   /**@ngInject*/
   bundles: function(Bundle) {
-    return Bundle.query();
+    return Bundle.query().$promise;
   },
   /**@ngInject*/
   applications: function(Application) {
-    return Application.query();
+    return Application.query().$promise;
   },
   /**@ngInject*/
   solutions: function(Solution) {

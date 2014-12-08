@@ -12,11 +12,11 @@ function MarketplaceController($scope, $filter, services, viewValues) {
 MarketplaceController.resolve = {
   /**@ngInject*/
   viewValues: function(DataService) {
-    return DataService.getMarketplaceValues();
+    return DataService.getMarketplaceValues().$promise;
   },
   /**@ngInject*/
   services: function(Service) {
-    return Service.query();
+    return Service.query().$promise;
   }
 };
 

@@ -11,19 +11,19 @@ function ManageController($scope, recentOrders, recentUsers, manageValues, alert
 ManageController.resolve = {
   /**@ngInject*/
   recentOrders: function(Order) {
-    return Order.getRecentOrders();
+    return Order.getRecentOrders().$promise;
   },
   /**@ngInject*/
   recentUsers: function(User) {
-    return User.getRecentUsers();
+    return User.getRecentUsers().$promise;
   },
   /**@ngInject*/
   manageValues: function(DataService) {
-    return DataService.getManageValues();
+    return DataService.getManageValues().$promise;
   },
   /**@ngInject*/
   alerts: function(DataService) {
-    return DataService.getAlerts();
+    return DataService.getAlerts().$promise;
   }
 };
 
