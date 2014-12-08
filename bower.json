@@ -1,9 +1,6 @@
 {
   "name": "cloud-broker",
   "version": "0.0.1",
-  "authors": [
-    "Sky_"
-  ],
   "description": "",
   "main": "index.html",
   "license": "All rights reserved",
