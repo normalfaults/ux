@@ -17,15 +17,15 @@
         <div class="project-box">
             <form class="form-horizontal padded horizontal-spanning" role="form">
                 <div class="form-group">
-                    <label for="name" class="col-sm-2 control-label">Name</label>
-                    <div class="col-sm-9">
+                    <label for="name" class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-8 control-input">
                         <input ng-model='project.name' class="form-control" id="name" placeholder="Project Name">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="budget" class="col-sm-2 control-label">Budget</label>
-                    <div class="col-sm-9">
+                    <label for="budget" class="col-sm-3 control-label">Budget</label>
+                    <div class="col-sm-8 control-input">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
                             <input type="text" class="form-control" id="budget" ng-model='project.budget'>
@@ -34,16 +34,22 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="start-date" class="col-sm-2 control-label">Start Date</label>
-                    <div class="col-sm-5">
-                        <datepicker id="start-date" ng-model="project.start_date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                    <label for="start-date" class="col-sm-3 control-label">Start Date</label>
+                    <div class="col-sm-8 control-input">
+                        <div class="input-group">
+                            <input name="start-date" type="text" ng-click="openStartDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.start_date" is-open="startDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                            <span class="input-group-addon" ng-click="openStartDate($event)"><i class="fa fa-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="end-date" class="col-sm-2 control-label">End Date</label>
-                    <div class="col-sm-5">
-                        <datepicker id="end-date" ng-model="project.end_date" min-date="minDate" show-weeks="true" class="well well-sm"></datepicker>
+                    <label for="end-date" class="col-sm-3 control-label">End Date</label>
+                    <div class="col-sm-8 control-input">
+                        <div class="input-group">
+                            <input name-="end-date" type="text" ng-click="openEndDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.end_date" is-open="endDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                            <span class="input-group-addon" ng-click="openEndDate($event)"><i class="fa fa-calendar"></i></span>
+                        </div>
                     </div>
                 </div>
 
@@ -53,7 +59,7 @@
                             <nf-form name="projectQuestionForm">
                                 <div class="form-group">
                                     <label for="{{answer.project_question.id}}" class="col-sm-2 control-label">{{answer.project_question.question}}</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-9 control-input">
                                         <input ng-model='answer.answer' class="form-control" id="{{answer.project_question.id}}" placeholder="{{answer.project_question.help_text}}">
                                     </div>
                                 </div>
@@ -63,7 +69,7 @@
                             <nf-form name="projectQuestionForm">
                                 <div class="form-group">
                                     <label for="{{answer.project_question.id}}" class="col-sm-2 control-label">{{answer.project_question.question}}</label>
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-9 control-input">
                                         <select class="form-control" ng-model="answer.answer" ng-options="option for option in answer.project_question.options">
                                             <option value="">Please select an option.</option>
                                         </select>
@@ -75,8 +81,8 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-sm-offset-11">
-                        <button type="submit" class="btn btn-default" ng-click="newProjectCtrl.createProject()">Create</button>
+                    <div class="col-sm-offset-11 control-submit">
+                        <button type="submit" class="btn btn-primary" ng-click="newProjectCtrl.createProject()">Create</button>
                     </div>
                 </div>
             </form>
