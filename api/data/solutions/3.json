@@ -14,7 +14,7 @@
             },
             "health": {
                 "percent": 100,
-                "isError": false,
+                "is_error": false,
                 "text": "3/3 HEALTHY"
             }
         },
@@ -30,7 +30,7 @@
             },
             "health": {
                 "percent": 20,
-                "isError": true,
+                "is_error": true,
                 "text": "2 PROBLEMS"
             }
         },
@@ -46,7 +46,7 @@
             },
             "health": {
                 "percent": 100,
-                "isError": false,
+                "is_error": false,
                 "text": "5/5 HEALTHY"
             }
         }
@@ -65,8 +65,8 @@
     "domain": "solution3.clouddealer.com",
     "url": "http://solution3.clouddealer.com",
     "state": "Stopped",
-    "stateOk": false,
+    "state_ok": false,
     "resources": 2048,
-    "resourcesUnit": "MB",
+    "resources_unit": "MB",
     "icon": "/images/assets/projects/5.png"
 }
