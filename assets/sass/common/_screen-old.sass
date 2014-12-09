@@ -2751,7 +2751,7 @@ body
         line-height: 20px
         min-height: 20px
         strong, .icon-back
-          float: left
+          //float: left
           display: inline-block
         strong
           font-family: "proximanova_semibold"
@@ -4298,7 +4298,7 @@ body
 
 // Problem Alerts Boxes (Needs some help...)
 .dashboard-pages
-  .dashboard-page .problem-alerts-box .titles-box, .manage-page .problem-alerts-box .titles-box, .project-detail-page .problem-alerts-box .titles-box
+  .dashboard-page .problem-alerts-box .titles-box, .project-detail-page .problem-alerts-box .titles-box
     margin: 10px 0px 0px
     padding: 0px 23px 0px 21px
   .problem-alerts-box .titles-box h2
@@ -4308,16 +4308,17 @@ body
     background-repeat: no-repeat
     background-position: 0 18px
     padding-left: 30px
-  .dashboard-page .problem-alerts-box .table-box, .manage-page .problem-alerts-box .table-box, .project-detail-page .problem-alerts-box .table-box
+  .dashboard-page .problem-alerts-box .table-box, .project-detail-page .problem-alerts-box .table-box
     margin: 25px 23px 20px 19px
-  // Only for dashboard, adds gray border color to match dashboard background (@todo why is this different...)
-  .dashboard-page .problem-alerts-box .table-box
+  .dashboard-page .problem-alerts-box .table-box, .project-detail-page .problem-alerts-box .table-box
     .col-title
       vertical-align: middle
       padding: 20px 12px
     .gray-texts
       color: #292e35
       font-family: "proximanova_regular"
+  // Only for dashboard, adds gray border color to match dashboard background (@todo why is this different...)
+  .dashboard-page .problem-alerts-box .table-box
     th, td
       border-color: #F2F2F3
   .column-box .titles-box .order-by
