@@ -9,7 +9,7 @@ module.exports = function($stateProvider, USER_ROLES) {
     // add new project for solution
     .state('base.newProject', {
       url: "^/project/new",
-      templateUrl: "/partials/new-project.html",
+      templateUrl: "/partials/projects/new-project.html",
       data: {
         authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
       },
@@ -19,7 +19,7 @@ module.exports = function($stateProvider, USER_ROLES) {
     // project details
     .state('base.project', {
       url: "^/project/:projectId",
-      templateUrl: "/partials/project.html",
+      templateUrl: "/partials/projects/project.html",
       resolve: ProjectData,
       controller: "ProjectController as projectCtrl"
     });
