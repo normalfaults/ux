@@ -1,7 +1,21 @@
 <div class="project-detail-page main-content" fix-sidebar set-width>
 
     <div class="contents">
-        <hr class="shadow-top"/>
+
+
+        <div class="top-notice-banner" ng-if="!project.isApproved()">
+            <div class="app-project">
+                <div class="col40">
+                    <div class="project-approval-icon">
+                        <i class="fa fa-asterisk"></i>
+                    </div>
+                    <h3>Project is Pending</h3>
+                    <div><a class="blue-button col10">Approve</a></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Box -->
 
         <div class="project-box box-shadow">
             <div class="app-project">
@@ -49,15 +63,18 @@
                 </div>
             </div>
         </div>
-        <!-- end .app-project-box -->
+
+        <!-- Problem Alerts -->
 
         <ng-include src="'/partials/common/problem-alerts.html'"></ng-include>
 
-        <div class="order-history-box column-box">
+        <!-- Order History -->
+
+        <div class="order-history-box column-box" ng-if="project.isApproved()">
             <div class="titles-box">
                 <h2>
                     <strong>ORDER HISTORY</strong>
-                    <a class="blue-link fr">VIEW ALL</a>
+                    <a href="javascript:;" class="blue-link fr">VIEW ALL</a>
                 </h2>
 
                 <div class="titles-border-bar">
@@ -69,9 +86,11 @@
 
             <orders-table orders="project.order_history"></orders-table>
         </div>
-        <!-- end .order-history-box -->
 
-        <div class="services-box column-box" ng-if="project.services">
+
+        <!-- Services -->
+
+        <div class="services-box column-box" ng-if="project.isApproved()">
             <div class="titles-box">
                 <h2>
                     <strong>SERVICES ({{project.services.length}})</strong>
@@ -91,7 +110,7 @@
                 <service-box ng-repeat="service in project.services" service="service"></service-box>
                 <div class="btn-new-box">
                     <div class="boxs">
-                        <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW SERVICES</span></a>
+                        <a class="add-btn icon-add"><i></i><span>ADD NEW SERVICES</span></a>
                     </div>
                 </div>
             </div>
@@ -120,15 +139,17 @@
                 </div>
 
                 <div class="btn-new-box fr">
-                    <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW SERVICES</span></a>
+                    <a class="add-btn icon-add"><i></i><span>ADD NEW SERVICES</span></a>
                 </div>
                 <span class="clearfix"></span>
             </div>
             <!-- end .container-list -->
         </div>
-        <!-- end .services-box -->
 
-        <div class="users-column-box column-box">
+
+        <!-- Users -->
+
+        <div class="users-column-box column-box" ng-if="project.isApproved()">
             <div class="titles-box">
                 <h2>
                     <strong>USERS ({{project.users.length}})</strong>
@@ -162,14 +183,14 @@
                             <span class="texts">{{item.allowed.join(", ")}}</span>
                         </div>
                         <div class="texts-box col20">
-                            <a href="javascript:;" class="blue-btn height30 font12">EDIT</a>
+                            <a class="blue-btn height30 font12">EDIT</a>
                         </div>
                         <div class="texts-box col17">
-                            <a href="javascript:;" class="light-blue-btn icon-less-btn height30"><i></i></a>
+                            <a class="light-blue-btn icon-less-btn height30"><i></i></a>
                         </div>
                     </div>
                     <div class="btn-box fr">
-                        <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
+                        <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
                     </div>
                     <span class="clearfix"></span>
                     <!-- end .btn-box -->
@@ -195,7 +216,8 @@
             </div>
             <!-- end .container-grid -->
         </div>
-        <!-- end .users-column-box -->
+
+        <!-- Project Details -->
 
         <div class="project-details-box column-box">
             <div class="titles-box">
@@ -273,92 +295,8 @@
                 <a ui-sref="base.newProject()" class="blue-btn height30 font12 fr">EDIT</a>
             </div>
         </div>
-        <!-- end .project-details-box -->
 
-        <div class="project-status-box column-box">
-            <div class="titles-box">
-                <h2>
-                    <strong>PROJECT STATUS</strong>
-                </h2>
 
-                <div class="titles-border-bar">
-                    <span class="blues width137"></span>
-                    <span class="whites width3"></span>
-                </div>
-            </div>
-            <!-- end .titles-box -->
 
-            <div class="progress-step">
-                <div class="step-box">
-                    <div class="step1"
-                         ng-class="{completed: project.status > 1, 'current-completed': project.status == 1, incomplete: project.status < 1}">
-                        <div class="boxs">
-                            <div class="round"><span><span>1</span></span></div>
-                            <p>
-                                <span>Provision</span>
-                                <span>Request</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end .step1 -->
-                    <div class="step2"
-                         ng-class="{completed: project.status > 2, 'current-completed': project.status == 2, incomplete: project.status < 2}">
-                        <div class="boxs">
-                            <div class="round"><span><span>2</span></span></div>
-                            <p>
-                                <span>Community</span>
-                                <span>Approved</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end .step2 -->
-                    <div class="step3"
-                         ng-class="{completed: project.status > 3, 'current-completed': project.status == 3, incomplete: project.status < 3}">
-                        <div class="boxs">
-                            <div class="round"><span><span>3</span></span></div>
-                            <p>
-                                <span>Alpha</span>
-                                <span>Approved</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end .step3 -->
-                    <div class="step4"
-                         ng-class="{completed: project.status > 4, 'current-completed': project.status == 4, incomplete: project.status < 4}">
-                        <div class="boxs">
-                            <div class="round"><span><span>4</span></span></div>
-                            <p>
-                                <span>Beta</span>
-                                <span>Approved</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end .step4 -->
-                    <div class="step5"
-                         ng-class="{completed: project.status > 5, 'current-completed': project.status == 5, incomplete: project.status < 5}">
-                        <div class="boxs">
-                            <div class="round"><span><span>5</span></span></div>
-                            <p>
-                                <span>Gold</span>
-                                <span>Release</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end .step5 -->
-                    <div class="step6"
-                         ng-class="{completed: project.status > 6, 'current-completed': project.status == 6, incomplete: project.status < 6}">
-                        <div class="boxs">
-                            <div class="round"><span><span>6</span></span></div>
-                            <p>
-                                <span>Comit</span>
-                            </p>
-                        </div>
-                    </div>
-                    <!-- end .step6 -->
-                </div>
-            </div>
-            <!-- end .progress-step -->
-        </div>
-        <!-- end .project-status-box -->
     </div>
 </div>
