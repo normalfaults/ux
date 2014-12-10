@@ -5,12 +5,13 @@ function ExpandArrow() {
     restrict: 'A',
     link: function(scope, element) {
       var $ele = $(element);
-      $ele.find(".arrows").click(function() {
+      // Allow clicking on the head link element instead of a tiny arrow
+      $ele.find('> a').click(function() {
         $ele.toggleClass("current");
         if ($ele.hasClass("current")) {
-          $(this).removeClass("arrow-right").addClass("arrow-down");
+          $(this).find('.arrows').removeClass("arrow-right").addClass("arrow-down");
         } else {
-          $(this).removeClass("arrow-down").addClass("arrow-right");
+          $(this).find('.arrows').removeClass("arrow-down").addClass("arrow-right");
         }
       });
     }
