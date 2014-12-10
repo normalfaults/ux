@@ -66,7 +66,6 @@ function NewProjectController($scope, $state, DataService, projectQuestions) {
 
 NewProjectController.prototype.createProject = function() {
   var self = this;
-  console.log(self.$scope)
   self.DataService.createProject({project: self.$scope.project}).$promise.then(function(){
     self.$state.go('base.solutionBase.dashboard', {}, {reload: true});
   });
@@ -75,7 +74,6 @@ NewProjectController.prototype.createProject = function() {
 NewProjectController.resolve = {
   /**@ngInject*/
   projectQuestions: function(DataService) {
-
     return DataService.getProjectQuestions().$promise;
   }
 };
