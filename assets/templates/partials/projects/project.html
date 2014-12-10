@@ -2,6 +2,7 @@
 
     <div class="contents">
 
+        <!-- Pending Approval Banner -->
 
         <div class="top-notice-banner" ng-if="!project.isApproved()">
             <div class="app-project">
@@ -95,8 +96,8 @@
                 <h2>
                     <strong>SERVICES ({{project.services.length}})</strong>
                     <switch-view-buttons
-                        grid-view="'.container-grid-project-detail-services'"
-                        list-view="'.container-list-project-detail-services'"></switch-view-buttons>
+                            grid-view="'.container-grid-project-detail-services'"
+                            list-view="'.container-list-project-detail-services'"></switch-view-buttons>
                 </h2>
 
                 <div class="titles-border-bar">
@@ -119,9 +120,8 @@
             <div class="container-list container-list-project-detail-services content-box-featured hide">
                 <div class="boxes" ng-repeat="item in project.services">
                     <div class="boxes-box col15">
-                <span class="icon-boxes orange-top-border">
-                    <a"><span class="center-image"></span><img class="center-image-img"
-                                                                                  ng-src="{{item.iconBig}}"/></a></span>
+                            <span class="icon-boxes orange-top-border">
+                                <a><span class="center-image"></span><img class="center-image-img" ng-src="{{item.iconBig}}"/></a></span>
                         </span>
                     </div>
                     <div class="texts-box col30">
@@ -155,8 +155,8 @@
                     <strong>USERS ({{project.users.length}})</strong>
 
                     <switch-view-buttons
-                        grid-view="'.container-grid-users'"
-                        list-view="'.users-list'"></switch-view-buttons>
+                            grid-view="'.container-grid-users'"
+                            list-view="'.users-list'"></switch-view-buttons>
                 </h2>
 
                 <div class="titles-border-bar">
@@ -170,10 +170,10 @@
                 <div class="container-list">
                     <div class="boxes" ng-repeat="item in project.users">
                         <div class="boxes-box col15">
-                        <span class="icon-boxes">
-                            <span class="center-image"></span><img class="center-image-img"
-                                                                   gravatar-src="item.email"/></a>
-                        </span>
+                                    <span class="icon-boxes">
+                                        <span class="center-image"></span><img class="center-image-img"
+                                                                               gravatar-src="item.email"/></a>
+                                    </span>
                         </div>
                         <div class="texts-box col20">
                             <span class="titles"><a>{{item.name}}</a></span>
@@ -201,10 +201,10 @@
             <div class="container-grid container-grid-users content-box-featured">
 
                 <div class="boxes" ng-repeat="item in project.users">
-                <span class="icon-boxes orange-top-border">
-                    <a><span class="center-image"></span><img class="center-image-img"
-                                                                                  gravatar-src="item.email"/></a>
-                </span>
+                            <span class="icon-boxes orange-top-border">
+                                <a><span class="center-image"></span><img class="center-image-img"
+                                                                          gravatar-src="item.email"/></a>
+                            </span>
                     <span class="titles"><span>{{item.name}}</span></span>
                     <span class="btn-box"><a>VIEW MORE</a></span>
                 </div>
@@ -238,54 +238,11 @@
                         <col class="col40">
                         <col>
                     </colgroup>
-                    <tbody>
+                    <tbody ng-repeat="answer in project.project_answers">
+
                     <tr>
-                        <td class="left-text">Requestor Name</td>
-                        <td class="min-value">{{project.details.requestor_name}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Requestor Date</td>
-                        <td class="min-value">{{project.details.requestor_date}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Team Name</td>
-                        <td class="min-value">{{project.details.team_name}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Project Name</td>
-                        <td class="min-value">{{project.name}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Charge Number</td>
-                        <td class="min-value">{{project.details.charge_number}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">NTE budget</td>
-                        <td class="min-value">{{project.details.nte_budget | currency}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Project Owner</td>
-                        <td class="min-value">{{project.details.project_owner}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Sr. Associate</td>
-                        <td class="min-value">{{project.details.sr_associate}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Principal</td>
-                        <td class="min-value">{{project.details.principal}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Estimated Project Termination Date</td>
-                        <td class="min-value">{{project.details.estimated_termination_date}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Data Type</td>
-                        <td class="min-value">{{project.details.data_type}}</td>
-                    </tr>
-                    <tr>
-                        <td class="left-text">Others</td>
-                        <td class="min-value">{{project.details.others}}</td>
+                        <td class="left-text">{{answer.project_question.question}}</td>
+                        <td class="min-value">{{answer.answer}}</td>
                     </tr>
                     </tbody>
                 </table>
