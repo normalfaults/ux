@@ -4,10 +4,6 @@
         <h3>
             <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
             <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
-            <span  class="icons">
-              <a class="fa fa-cog grey-icon top-icon" title="Settings" tooltip-placement="bottom" tooltip="Settings"></a>
-              <a class="fa fa-refresh grey-icon top-icon" title="Refresh" tooltip-placement="bottom" tooltip="Refresh"></a>
-            </span>
         </h3>
         <div class="data-box">
             <div class="info">
@@ -27,16 +23,12 @@
                 </a>
             </div>
         </div>
-        <!-- end .data-box -->
         <div class="bottom-area">
-                <span class="fl">
-                  <span class="blue-texts">{{item.state}}</span>
-                  <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
-                </span>
-                <span class="fr">
-                  <a class="fa fa-bar-chart grey-icon bottom-icon" title="Statistics" tooltip-placement="bottom" tooltip="Statistics"></a>
-                  <a class="fa fa-play-circle-o grey-icon bottom-icon" title="Play" tooltip-placement="bottom" tooltip="Play"></a>
-                </span>
+           <span class="fl">
+               <span class="blue-texts">{{item.state}}</span>
+               <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
+           </span>
+        <!-- end .data-box -->
         </div>
         <!-- end .bottom-area -->
     </div>
