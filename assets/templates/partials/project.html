@@ -3,6 +3,20 @@
     <div class="contents">
         <hr class="shadow-top"/>
 
+        <div class="project-box box-shadow" ng-if="!project.isApproved()">
+            <div class="app-project">
+                <div class="col40">
+                    <div class="project-approval-icon">
+                        <i class="fa fa-asterisk"></i>
+                    </div>
+                    <h3>Project is Pending</h3>
+                    <div><a class="blue-button col10">Approve</a></div>
+                </div>
+            </div>
+        </div>
+
+
+
         <div class="project-box box-shadow">
             <div class="app-project">
                 <div class="col40">
@@ -166,10 +180,10 @@
                             <span class="texts">{{item.allowed.join(", ")}}</span>
                         </div>
                         <div class="texts-box col20">
-                            <a href="javascript:;" class="blue-btn height30 font12">EDIT</a>
+                            <a class="blue-btn height30 font12">EDIT</a>
                         </div>
                         <div class="texts-box col17">
-                            <a href="javascript:;" class="light-blue-btn icon-less-btn height30"><i></i></a>
+                            <a class="light-blue-btn icon-less-btn height30"><i></i></a>
                         </div>
                     </div>
                     <div class="btn-box fr">
