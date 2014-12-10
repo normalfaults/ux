@@ -20,7 +20,7 @@
         <div class="project-box box-shadow">
             <div class="app-project">
                 <div class="col40">
-                    <div class="icon-boxes"><a href="javascript:;"><img ng-src="{{project.icon}}"/></a></div>
+                    <div class="icon-boxes"><a><img ng-src="{{project.icon}}"/></a></div>
                     <h3>{{project.name | uppercase}}</h3>
 
                     <p><a href="{{project.url}}">{{project.domain}}</a></p>
@@ -74,7 +74,7 @@
             <div class="titles-box">
                 <h2>
                     <strong>ORDER HISTORY</strong>
-                    <a href="javascript:;" class="blue-link fr">VIEW ALL</a>
+                    <a class="blue-link fr">VIEW ALL</a>
                 </h2>
 
                 <div class="titles-border-bar">
@@ -120,7 +120,7 @@
                 <div class="boxes" ng-repeat="item in project.services">
                     <div class="boxes-box col15">
                 <span class="icon-boxes orange-top-border">
-                    <a href="javascript:;"><span class="center-image"></span><img class="center-image-img"
+                    <a"><span class="center-image"></span><img class="center-image-img"
                                                                                   ng-src="{{item.iconBig}}"/></a></span>
                         </span>
                     </div>
@@ -176,7 +176,7 @@
                         </span>
                         </div>
                         <div class="texts-box col20">
-                            <span class="titles"><a href="javascript:;">{{item.name}}</a></span>
+                            <span class="titles"><a>{{item.name}}</a></span>
                         </div>
                         <div class="texts-box col28">
                             <span class="gray-texts">Allowed For</span>
@@ -202,15 +202,15 @@
 
                 <div class="boxes" ng-repeat="item in project.users">
                 <span class="icon-boxes orange-top-border">
-                    <a href="javascript:;"><span class="center-image"></span><img class="center-image-img"
+                    <a><span class="center-image"></span><img class="center-image-img"
                                                                                   gravatar-src="item.email"/></a>
                 </span>
                     <span class="titles"><span>{{item.name}}</span></span>
-                    <span class="btn-box"><a href="javascript:">VIEW MORE</a></span>
+                    <span class="btn-box"><a>VIEW MORE</a></span>
                 </div>
                 <div class="btn-new-box">
                     <div class="boxs">
-                        <a href="javascript:;" class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
+                        <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
                     </div>
                 </div>
             </div>
