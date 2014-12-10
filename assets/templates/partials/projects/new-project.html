@@ -15,20 +15,20 @@
         <!-- end .titles-box -->
 
         <div class="project-box">
-            <form class="form-horizontal padded horizontal-spanning" role="form">
-                <div class="form-group">
-                    <label for="name" class="col-sm-3 control-label">Name</label>
+            <form class="form-horizontal padded horizontal-spanning" role="form" name="projectForm" novalidate>
+                <div ng-class="projectForm.name.$invalid && projectForm.name.$dirty ? 'form-group has-error' : 'form-group'">
+                    <label for="name" class="col-sm-3 control-label" >Name</label>
                     <div class="col-sm-8 control-input">
-                        <input ng-model='project.name' class="form-control" id="name" placeholder="Project Name">
+                        <input name="name" ng-model='project.name | number: 2' class="form-control" id="name" placeholder="Project Name" required>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div ng-class="projectForm.budget.$invalid && projectForm.budget.$dirty ? 'form-group has-error' : 'form-group'" >
                     <label for="budget" class="col-sm-3 control-label">Budget</label>
                     <div class="col-sm-8 control-input">
                         <div class="input-group">
                             <span class="input-group-addon">$</span>
-                            <input type="text" class="form-control" id="budget" ng-model='project.budget'>
+                            <input name="budget" type="text" class="form-control" id="budget" ng-model='project.budget' required money>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     <label for="start-date" class="col-sm-3 control-label">Start Date</label>
                     <div class="col-sm-8 control-input">
                         <div class="input-group">
-                            <input name="start-date" type="text" ng-click="openStartDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.start_date" is-open="startDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                            <input name="start-date" type="text" ng-click="openStartDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.start_date" is-open="startDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
                             <span class="input-group-addon" ng-click="openStartDate($event)"><i class="fa fa-calendar"></i></span>
                         </div>
                     </div>
@@ -53,36 +53,34 @@
                     </div>
                 </div>
 
-                <div class="form-group" ng-repeat="answer in project.project_answers">
-                    <span ng-switch on="answer.project_question.field_type">
-                        <span ng-switch-when="text">
-                            <nf-form name="projectQuestionForm">
+                <nf-form name="projectQuestionForm">
+                    <div class="form-group" ng-repeat="answer in project.project_answers">
+                        <span ng-switch on="answer.project_question.field_type">
+                            <span ng-switch-when="text">
                                 <div class="form-group">
-                                    <label for="{{answer.project_question.id}}" class="col-sm-2 control-label">{{answer.project_question.question}}</label>
-                                    <div class="col-sm-9 control-input">
-                                        <input ng-model='answer.answer' class="form-control" id="{{answer.project_question.id}}" placeholder="{{answer.project_question.help_text}}">
+                                    <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
+                                    <div class="col-sm-8 control-input">
+                                        <input name="{{answer.project_question_name}}" ng-model='answer.answer' class="form-control" id="{{answer.project_question.id}}" placeholder="{{answer.project_question.help_text}}" ng-required="{{answer.project_question.required}}">
                                     </div>
                                 </div>
-                            </nf-form>
-                        </span>
-                        <span ng-switch-when="select_option">
-                            <nf-form name="projectQuestionForm">
+                            </span>
+                            <span ng-switch-when="select_option">
                                 <div class="form-group">
-                                    <label for="{{answer.project_question.id}}" class="col-sm-2 control-label">{{answer.project_question.question}}</label>
-                                    <div class="col-sm-9 control-input">
-                                        <select class="form-control" ng-model="answer.answer" ng-options="option for option in answer.project_question.options">
+                                    <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
+                                    <div class="col-sm-8 control-input">
+                                        <select name="{{answer.project_question_name}}" class="form-control" ng-model="answer.answer" ng-options="option for option in answer.project_question.options" ng-required="{{answer.project_question.required}}">
                                             <option value="">Please select an option.</option>
                                         </select>
                                     </div>
                                 </div>
-                            </nf-form>
+                            </span>
                         </span>
-                    </span>
-                </div>
+                    </div>
+                </nf-form>
 
                 <div class="form-group">
                     <div class="col-sm-offset-11 control-submit">
-                        <button type="submit" class="btn btn-primary" ng-click="newProjectCtrl.createProject()">Create</button>
+                        <button ng-click="createProject()" type="submit" ng-class="projectForm.$invalid ? 'btn btn-primary disabled' : 'btn btn-primary'">Create</button>
                     </div>
                 </div>
             </form>

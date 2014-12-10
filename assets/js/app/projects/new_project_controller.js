@@ -8,13 +8,21 @@ function NewProjectController($scope, $state, DataService, projectQuestions) {
   this.$state = $state;
   this.DataService = DataService;
 
+  $scope.createProject = function() {
+    console.log('should create')
+    self.DataService.createProject({project: self.$scope.project}).$promise.then(function(){
+      self.$state.go('base.solutionBase.dashboard', {}, {reload: true});
+    });
+  }
+
   $scope.project = $scope.project || {};
 
   _.each(projectQuestions, function(pQuestion){
     self.$scope.project.project_answers = self.$scope.project.project_answers || [];
     self.$scope.project.project_answers.push({
       project_question_id: pQuestion.id,
-      project_question: pQuestion
+      project_question: pQuestion,
+      project_question_name: 'project_question_' + pQuestion.id
     })
   });
 
@@ -63,13 +71,6 @@ function NewProjectController($scope, $state, DataService, projectQuestions) {
   $scope.formats = ['yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'dd-MMMM-yyyy' ];
   $scope.format = $scope.formats[0];
 }
-
-NewProjectController.prototype.createProject = function() {
-  var self = this;
-  self.DataService.createProject({project: self.$scope.project}).$promise.then(function(){
-    self.$state.go('base.solutionBase.dashboard', {}, {reload: true});
-  });
-};
 
 NewProjectController.resolve = {
   /**@ngInject*/
