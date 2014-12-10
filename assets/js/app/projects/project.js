@@ -1,8 +1,14 @@
 'use strict';
 
 /**@ngInject*/
-function Project($resource, ApiResource) {
-  return $resource(ApiResource('projectsById'));
-}
+var ProjectFactory = function($resource, ApiResource) {
+  var Project = $resource(ApiResource('projectsById'));
 
-module.exports = Project;
+  Project.prototype.isApproved = function() {
+    return this.approved;
+  };
+
+  return Project;
+};
+
+module.exports = ProjectFactory;

@@ -183,8 +183,8 @@ gulp.task('styles', ['bower', 'clean-styles', 'ie-styles'], function() {
   return es.concat(angularLoadingBarFiles, sassFiles)
     .pipe(concat('styles.css'))
     .pipe(autoprefix("last 2 version", "> 1%"))
-    .pipe(notify({message: 'Finished styles task.'}))
     .pipe(minifyCSS())
+    .pipe(notify({message: 'Finished styles task.'}))
     .pipe(gulp.dest(paths.dest.styles));
 });
 
