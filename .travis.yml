@@ -9,4 +9,4 @@ deploy:
   api_key:
     secure: r0eHefnPazYspJ7c9Jrf1QqO5fAfSiUU8wc/2fcqfEmR5BH2/VDoin3Z9TfYCW2k7vZ5OUSKzEX25oelyV6rOoaEEX/nC7gZ3U0IS6cyPgpAd9ApcfXwyZo8XwIAnGtkG+B9x+xE4aeoro9FdqSALDF2U5n8dUlOvf3OXKSMgoE=
   app: jellyfish-ux-dev
-  run: 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-build.dpi.bah.com\"}" >> public/appConfig.js'
+  run: 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}" >> public/appConfig.js'
