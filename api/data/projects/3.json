@@ -1,5 +1,6 @@
 {
     "id": 3,
+    "approved": true,
     "solution_id": 1,
     "name": "test app",
     "domain": "testapp1.clouddealer.com",

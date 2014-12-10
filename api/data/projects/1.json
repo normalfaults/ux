@@ -1,5 +1,6 @@
 {
     "id": 1,
+    "approved": true,
     "name": "Company app",
     "domain": "companyapp1.clouddealer.com",
     "url": "http://companyapp1.clouddealer.com",
