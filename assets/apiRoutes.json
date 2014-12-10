@@ -12,6 +12,8 @@
     "ordersById":        "/orders/:id",
     "recentOrders":      "/orders/recent",
     "projectsById":      "/projects/:id",
+    "productsById":      "/products/:id",
+    "productCategoriesById":      "/product_categories/:id",
     "servicesById":      "/services/:id",
     "applicationsById":  "/applications/:id",
     "bundlesById":       "/bundles/:id",

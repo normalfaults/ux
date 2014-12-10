@@ -17,7 +17,11 @@ function UserFactory($resource, ApiResource) {
 
   User.prototype.fullName = function() {
     return [this.first_name, this.last_name].join(' ');
-  }
+  };
+
+  User.prototype.isAdmin = function() {
+    return this.role === 'admin';
+  };
 
   return User;
 }

@@ -57,10 +57,19 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
       // This is the dashboard route.  Ugly.
       // @todo Add message or notice on redirect to give access denied error.
       //       Also a bit strange when a user already on dashboard, might need a scrollTop.
-      $state.transitionTo('base.solutionBase.dashboard');
+      if ('base.solutionBase.dashboard' !== fromData.name) {
+        $state.transitionTo('base.solutionBase.dashboard');
+      } else {
+        $log.error('Redirect to /dashboard loop halted.')
+        // Keep the app from being stuck in a loop requesting broken dashboard data.
+        event.preventDefault();
+        // TODO: Redirect instead to a "We're sorry." error page.
+      }
     } else {
-      $log.error(error);
-      alert('Unhandled State Change Error occurred: ' + (error.statusText || error.message));
+      //$log.error(error);
+      $log.error('Unhandled State Change Error occurred: ' + (error.statusText || error.message));
+      //event.preventDefault();
+      $state.transitionTo('base.solutionBase.dashboard');
     }
   });
 
