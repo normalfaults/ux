@@ -1,8 +1,15 @@
 'use strict';
 
 /**@ngInject*/
-function Project($resource, ApiResource) {
-  return $resource(ApiResource('projectsById'));
-}
+var ProjectFactory = function($resource, ApiResource) {
+  var Project = $resource(ApiResource('projectsById'));
 
-module.exports = Project;
+  Project.prototype.isApproved = function() {
+    // @todo This should actually return the approval status :)
+    return true;
+  };
+
+  return Project;
+};
+
+module.exports = ProjectFactory;
