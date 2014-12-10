@@ -1,5 +1,6 @@
 {
     "id": 2,
+    "approved": false,
     "name": "Emoticon app",
     "domain": "emoticonapp1.clouddealer.com",
     "url": "http://emoticonapp1.clouddealer.com",
