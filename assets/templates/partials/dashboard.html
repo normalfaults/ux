@@ -5,8 +5,8 @@
             <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
             <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
             <span  class="icons">
-              <a href="javascript:;" class="fa fa-cog grey-icon top-icon" title="Settings" tooltip-placement="bottom" tooltip="Settings"></a>
-              <a href="javascript:;" class="fa fa-refresh grey-icon top-icon" title="Refresh" tooltip-placement="bottom" tooltip="Refresh"></a>
+              <a class="fa fa-cog grey-icon top-icon" title="Settings" tooltip-placement="bottom" tooltip="Settings"></a>
+              <a class="fa fa-refresh grey-icon top-icon" title="Refresh" tooltip-placement="bottom" tooltip="Refresh"></a>
             </span>
         </h3>
         <div class="data-box">
@@ -34,8 +34,8 @@
                   <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
                 </span>
                 <span class="fr">
-                  <a href="javascript:;" class="fa fa-bar-chart grey-icon bottom-icon" title="Statistics" tooltip-placement="bottom" tooltip="Statistics"></a>
-                  <a href="javascript:;" class="fa fa-play-circle-o grey-icon bottom-icon" title="Play" tooltip-placement="bottom" tooltip="Play"></a>
+                  <a class="fa fa-bar-chart grey-icon bottom-icon" title="Statistics" tooltip-placement="bottom" tooltip="Statistics"></a>
+                  <a class="fa fa-play-circle-o grey-icon bottom-icon" title="Play" tooltip-placement="bottom" tooltip="Play"></a>
                 </span>
         </div>
         <!-- end .bottom-area -->
@@ -60,7 +60,7 @@
 
             <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
 
-            <div class="btn-box">
+            <div class="btn-box" ng-if="currentUser.isAdmin()">
                 <a ui-sref="base.newProject" class="add-btn icon-add"><i></i><span>ADD NEW PROJECT</span></a>
             </div>
             <!-- end .btn-box -->

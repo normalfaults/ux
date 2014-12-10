@@ -4,9 +4,9 @@
     "domain": "app3.clouddealer.com",
     "url": "http://app3.clouddealer.com",
     "state": "Stopped",
-    "stateOk": false,
+    "state_ok": false,
     "icon": "/images/assets/projects/3.png",
     "resources": 300,
-    "resourcesUnit": "MB",
+    "resources_unit": "MB",
     "services": [1, 2]
 }
