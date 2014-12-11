@@ -125,6 +125,6 @@
     "apiRoutes": "./assets/apiRoutes.json"
   },
   "scripts": {
-    "postinstall": "mkdir ./publc;./node_modules/.bin/gulp production"
+    "postinstall": "./node_modules/.bin/gulp production"
   }
 }
