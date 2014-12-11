@@ -4,6 +4,7 @@ before_install:
 - npm install
 install:
 - gulp production
+- 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}" >> /app/public/appConfig.js'
 node_js:
 - '0.10'
 deploy:
@@ -14,3 +15,4 @@ deploy:
 notifications:
   slack:
     secure: Rus6LY+m64yx9iBwfYneBozMiNVhjS4OfyfMI09ZrLhdxcWb3sU7AZeLMiuUbh64VwpqK1yb7Y8tZS/qosVafsI4kIbGMnEyMDLSnluabgIYXWBnpijvQ4u7n1IemlL5DWnSjGE3eGUeHAE9UlMjcGnvdA//TsAG0I1AGDyVctc=
+
