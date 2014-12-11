@@ -1,33 +1,48 @@
+<div class="table-box" ng-if="project.isApproved() && project.order_history">
+    <div class="title-box">
+        <h2>
+            <strong>ORDER HISTORY</strong>
+            <a class="blue-link fr">VIEW ALL</a>
+        </h2>
 
-<div class="table-box">
-    <table class="table-data">
-        <colgroup>
-            <col class="col17">
-            <col>
-            <col class="col10">
-            <col class="col15">
-            <col class="col15">
-            <col class="col20">
-        </colgroup>
-        <thead>
-        <tr>
-            <th class="text-left">ORDER ID</th>
-            <th class="text-left">PROJECT</th>
-            <th class="text-left">ITEMS</th>
-            <th class="text-left">TOTAL</th>
-            <th class="text-left">STATUS</th>
-            <th class="text-left">REQUEST DATE</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="item in orders" ng-class-even="'even'">
-            <td class="blue-texts font15"><a href="javascript:;" class="blue-link">{{item.orderId}}</a></td>
-            <td class="blue-texts font15"><a ui-sref="base.project({projectId: item.project.id})" class="blue-link">{{item.project.name}}</a></td>
-            <td class="item-texts">{{item.items}}</td>
-            <td class="green-texts">{{item.total | currency}}</td>
-            <td class="{{item.color}}-texts">{{item.status}}</td>
-            <td class="data-texts">{{item.requestDate}}</td>
-        </tr>
-        </tbody>
-    </table>
+        <div class="titles-border-bar">
+            <span class="blues width137"></span>
+            <span class="whites width3"></span>
+        </div>
+    </div>
+    <!-- end .titles-box -->
+
+    <div class="data-box">
+
+        <table class="table table-responsive table-striped">
+            <colgroup>
+                <col class="col17">
+                <col>
+                <col class="col10">
+                <col class="col15">
+                <col class="col15">
+                <col class="col20">
+            </colgroup>
+            <thead>
+            <tr>
+                <th class="text-left">ORDER ID</th>
+                <th class="text-left">PROJECT</th>
+                <th class="text-left">ITEMS</th>
+                <th class="text-left">TOTAL</th>
+                <th class="text-left">STATUS</th>
+                <th class="text-left">REQUEST DATE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in project.order_history">
+                <td class="blue-texts font15"><a class="blue-link">{{item.orderId}}</a></td>
+                <td class="blue-texts font15"><a ui-sref="base.project({projectId: item.project.id})" class="blue-link">{{item.project.name}}</a></td>
+                <td class="item-texts">{{item.items}}</td>
+                <td class="green-texts">{{item.total | currency}}</td>
+                <td class="{{item.color}}-texts">{{item.status}}</td>
+                <td class="data-texts">{{item.requestDate}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>

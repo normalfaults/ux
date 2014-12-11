@@ -9,7 +9,6 @@ var DirectivesModule = angular.module('broker.directives', [])
   .directive('setWidth', require('./set_width'))
   .directive('toggleSidebar', require('./toggle_sidebar'))
   .directive('fixBoxesHeight', require('./fix_boxes_height'))
-  .directive('ordersTable', require('./orders_table'))
   .directive('serviceBox', require('./service_box'))
   .directive('switchViewButtons', require('./switch_view_buttons'))
   .directive('marketplaceItems', require('./marketplace_items'));

@@ -24,6 +24,7 @@
     "angular-bootstrap": "~0.11.2",
     "jquery": "~2.1.1",
     "lodash": "~2.4.1",
-    "angular-dynforms": "~0.0.4"
+    "angular-dynforms": "~0.0.4",
+    "angular-smart-table": "~1.4.5"
   }
 }
