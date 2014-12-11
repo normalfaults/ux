@@ -9,6 +9,7 @@ To install. 
 
 Default port/host is http://localhost:5000
 
-Note: Requires custom buildpack (to do both Ruby and NodeJS)
+To configure.
 
-heroku config:add BUILDPACK_URL=https://github.com/bwhmather/heroku-buildpack-compose.git
+* Modify public/appConfig.js
+    * basePath: Base path to the 'core' server.
