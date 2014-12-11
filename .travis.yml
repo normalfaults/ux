@@ -1,12 +1,12 @@
 language: node_js
 before_install:
-- gem install sass
-- npm install
+  - gem install sass
+  - npm install
 install:
-- gulp production
-- 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}" >> /app/public/appConfig.js'
+  - gulp production
+  - 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}" >> /app/public/appConfig.js'
 node_js:
-- '0.10'
+  - '0.10'
 deploy:
   provider: heroku
   app: jellyfish-ux-dev
