@@ -126,6 +126,6 @@
     "apiRoutes": "./assets/apiRoutes.json"
   },
   "scripts": {
-    "postinstall": "./node_modules/.bin/gulp production; touch /app/public/appConfig.js; echo \"window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}\" >> /app/public/appConfig.js"
+    "postinstall": "./node_modules/.bin/gulp production"
   }
 }
