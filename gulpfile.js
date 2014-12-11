@@ -39,12 +39,13 @@ var appAssetSrc = 'assets';
 var appAssetDest = 'public';
 var bowerPath = './bower_components';
 var theme = 'pepper-grinder';
+var jsConfigFile = 'appConfig.js';
 var paths = {
     src: {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
       partials: [appAssetSrc + '/templates/partials/**/*.html'],
       views: [appAssetSrc + '/templates/views/**/*.html'],
-      jsConfig: appAssetSrc + '/appConfig.js',
+      jsConfig: appAssetSrc + '/' + jsConfigFile,
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
@@ -152,8 +153,7 @@ gulp.task('scripts', ['bower', 'clean-scripts', 'jshint'], function() {
  * @future Could show the default differences in the output.
  */
 gulp.task('config', function() {
-
-  if (!fs.existsSync(paths.src.jsConfig)) {
+  if (!fs.existsSync(paths.dest.jsConfig + '/' + jsConfigFile)) {
     gulp.src(paths.src.jsConfig)
       .pipe(gulp.dest(paths.dest.jsConfig));
   }
