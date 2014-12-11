@@ -1,6 +1,19 @@
 language: node_js
+before_install:
+  - gem install sass
+  - npm install
+install:
+  - gulp production
+  - 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}" >> ~/build/booz-allen-hamilton/jellyfish-ux/public/appConfig.js'
 node_js:
-  - 0.10
+  - '0.10'
+deploy:
+  provider: heroku
+  app: jellyfish-ux-dev
+  skip_cleanup: true
+  api_key:
+    secure: It6RgD34mScWklzk8NxRBLanqDjxFX/hR+knUG3g81EXID+5LJHnjw/yz1J1MvHzWcIW1bgjkHVcAclI5tPVqh9o6oJ2tp2CTr9rmHgzSRt7upZlIiYR06tOBSWwTk6et62VdiDIlYUDN4wX/kK90SW5HDASn+ATon13s3kjgLA=
 notifications:
   slack:
-    secure: lU71I+nRyzLBlFomd6XAHLEGwJhL6l4idw7jThVdyyFiWQbxI7KUryMgAWjU5YqZ0/POB0ou9a0cnsmnRC2Heuw3MibgBpbbwbfjhbgAc/vgQp04A/JGTYpky2OI7958SpFn3y89Uv8/CDKLnG1Hn8rHVwmj6RCOdf2WB8PUOB0=
+    secure: Rus6LY+m64yx9iBwfYneBozMiNVhjS4OfyfMI09ZrLhdxcWb3sU7AZeLMiuUbh64VwpqK1yb7Y8tZS/qosVafsI4kIbGMnEyMDLSnluabgIYXWBnpijvQ4u7n1IemlL5DWnSjGE3eGUeHAE9UlMjcGnvdA//TsAG0I1AGDyVctc=
+
