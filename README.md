@@ -8,3 +8,8 @@ To install. 
 * Run application: `node app`
 
 Default port/host is http://localhost:5000
+
+To configure.
+
+* Modify public/appConfig.js
+    * basePath: Base path to the 'core' server.
