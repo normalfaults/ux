@@ -28,7 +28,7 @@
                <span class="blue-texts">{{item.state}}</span>
                <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
            </span>
-        <!-- end .data-box -->
+            <!-- end .data-box -->
         </div>
         <!-- end .bottom-area -->
     </div>
@@ -37,29 +37,32 @@
 
 <div class="dashboard-page main-content" fix-sidebar set-width>
 
+    <div class="page">
         <ng-include src="'/partials/common/problem-alerts.html'"></ng-include>
 
 
         <div class="dashboard-tab">
-        <div class="tabs">
-            <ul>
-                <li ng-class="{active: tab == 'projects'}"><a class="icon-projects" ng-click="dashboardCtrl.showTab('projects')"><i></i><span>PROJECTS ({{projects.length}})</span></a><span class="border-spacing"></span></li>
-            </ul>
-        </div>
-        <!-- end .tabs -->
-
-        <div class="tab-content projects-content" ng-show="tab == 'projects'">
-
-            <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
-
-            <div class="btn-box" ng-if="currentUser.isAdmin()">
-                <a ui-sref="base.newProject" class="add-btn icon-add"><i></i><span>ADD NEW PROJECT</span></a>
+            <div class="tabs">
+                <ul>
+                    <li ng-class="{active: tab == 'projects'}"><a class="icon-projects" ng-click="dashboardCtrl.showTab('projects')"><i></i><span>PROJECTS ({{projects.length}})</span></a><span class="border-spacing"></span></li>
+                </ul>
             </div>
-            <!-- end .btn-box -->
-        </div>
 
-        <!-- end .tab-content -->
+            <!-- end .tabs -->
+
+            <div class="tab-content projects-content" ng-show="tab == 'projects'">
+
+                <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
+
+                <div class="btn-box" ng-if="currentUser.isAdmin()">
+                    <a ui-sref="base.newProject" class="add-btn icon-add"><i></i><span>ADD NEW PROJECT</span></a>
+                </div>
+                <!-- end .btn-box -->
+            </div>
+
+            <!-- end .tab-content -->
         </div>
         <!-- end .dashboard-tab -->
 
     </div>
+</div>
