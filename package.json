@@ -123,8 +123,5 @@
     "md5": "./bower_components/angular-gravatar/build/md5.js",
     "lodash": "./bower_components/lodash/dist/lodash.js",
     "apiRoutes": "./assets/apiRoutes.json"
-  },
-  "scripts": {
-    "postinstall": "./node_modules/.bin/gulp production"
   }
 }
