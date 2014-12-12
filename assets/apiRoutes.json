@@ -8,6 +8,7 @@
     "marketplaceValues": "/marketplaceValues",
     "alerts":            "/alerts",
     "usersById":         "/users/:id",
+    "staffSearch":       "/staff?query=",
     "recentUsers":       "/users/recent",
     "ordersById":        "/orders/:id",
     "recentOrders":      "/orders/recent",

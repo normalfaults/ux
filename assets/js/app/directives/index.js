@@ -11,6 +11,7 @@ var DirectivesModule = angular.module('broker.directives', [])
   .directive('fixBoxesHeight', require('./fix_boxes_height'))
   .directive('serviceBox', require('./service_box'))
   .directive('switchViewButtons', require('./switch_view_buttons'))
-  .directive('marketplaceItems', require('./marketplace_items'));
+  .directive('marketplaceItems', require('./marketplace_items'))
+  .directive('angucomplete', require('./angucomplete'));;
 
 module.exports = DirectivesModule;

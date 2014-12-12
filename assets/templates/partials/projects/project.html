@@ -137,6 +137,18 @@
 
 
         <!-- Users -->
+        
+        <script type="text/ng-template" id="projects/users-modal.html">
+            <div class="modal-header">
+                <h3 class="modal-title">New Project Users</h3>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </script>
 
         <div class="table-box" ng-if="project.isApproved()">
             <div class="title-box">
@@ -152,6 +164,19 @@
                     <span class="blues width112"></span>
                     <span class="whites width3"></span>
                 </div>
+
+                </br>
+
+                <angucomplete id="members"
+                              placeholder="Search staff"
+                              pause="400"
+                              selectedobject="testObj"
+                              url="{{searchURL}}"
+                              titlefield="first_name,last_name"
+                              descriptionfield="email"
+                              inputclass="form-control form-control-small"
+                              imagefield="gravatar"
+                              imageuri="http://www.gravatar.com/avatar/"/>
             </div>
             <!-- end .titles-box -->
 
