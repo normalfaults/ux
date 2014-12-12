@@ -1,88 +1,91 @@
 <div class="add-project-page main-content left-184" fix-sidebar set-width>
-    <div class="contents">
+    <div class="page">
 
-        <div class="titles-box">
-            <h2>
-                <span class="icon-projects"><i></i></span>
-                <strong class="orange-texts">ADD PROJECT DETAILS</strong>
-            </h2>
-            <div class="titles-border-bar">
-                <span class="blues width218"></span>
-                <span class="whites width3"></span>
+        <div class="table-box">
+
+            <div class="title-box">
+                <h2>
+                    <span class="icon-projects"><i></i></span>
+                    <strong class="orange-texts">ADD PROJECT DETAILS</strong>
+                </h2>
+                <div class="titles-border-bar">
+                    <span class="blues width218"></span>
+                    <span class="whites width3"></span>
+                </div>
             </div>
-        </div>
-        <!-- end .titles-box -->
+            <!-- end .titles-box -->
 
-        <div class="project-box">
-            <form class="form-horizontal padded horizontal-spanning" role="form" name="projectForm" novalidate>
-                <div ng-class="projectForm.name.$invalid && projectForm.name.$dirty ? 'form-group has-error' : 'form-group'">
-                    <label for="name" class="col-sm-3 control-label" >Name</label>
-                    <div class="col-sm-8 control-input">
-                        <input name="name" ng-model='project.name' class="form-control" id="name" placeholder="Project Name" required>
-                    </div>
-                </div>
-
-                <div ng-class="projectForm.budget.$invalid && projectForm.budget.$dirty ? 'form-group has-error' : 'form-group'" >
-                    <label for="budget" class="col-sm-3 control-label">Budget</label>
-                    <div class="col-sm-8 control-input">
-                        <div class="input-group">
-                            <span class="input-group-addon">$</span>
-                            <input name="budget" type="text" class="form-control" id="budget" ng-model='project.budget' required money>
+            <div class="project-box">
+                <form class="form-horizontal padded horizontal-spanning" role="form" name="projectForm" novalidate>
+                    <div ng-class="projectForm.name.$invalid && projectForm.name.$dirty ? 'form-group has-error' : 'form-group'">
+                        <label for="name" class="col-sm-3 control-label" >Name</label>
+                        <div class="col-sm-8 control-input">
+                            <input name="name" ng-model='project.name' class="form-control" id="name" placeholder="Project Name" required>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="start-date" class="col-sm-3 control-label">Start Date</label>
-                    <div class="col-sm-8 control-input">
-                        <div class="input-group">
-                            <input name="start-date" type="text" ng-click="openStartDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.start_date" is-open="startDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
-                            <span class="input-group-addon" ng-click="openStartDate($event)"><i class="fa fa-calendar"></i></span>
+                    <div ng-class="projectForm.budget.$invalid && projectForm.budget.$dirty ? 'form-group has-error' : 'form-group'" >
+                        <label for="budget" class="col-sm-3 control-label">Budget</label>
+                        <div class="col-sm-8 control-input">
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input name="budget" type="text" class="form-control" id="budget" ng-model='project.budget' required money>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <label for="end-date" class="col-sm-3 control-label">End Date</label>
-                    <div class="col-sm-8 control-input">
-                        <div class="input-group">
-                            <input name-="end-date" type="text" ng-click="openEndDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.end_date" is-open="endDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
-                            <span class="input-group-addon" ng-click="openEndDate($event)"><i class="fa fa-calendar"></i></span>
+                    <div class="form-group">
+                        <label for="start-date" class="col-sm-3 control-label">Start Date</label>
+                        <div class="col-sm-8 control-input">
+                            <div class="input-group">
+                                <input name="start-date" type="text" ng-click="openStartDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.start_date" is-open="startDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close"/>
+                                <span class="input-group-addon" ng-click="openStartDate($event)"><i class="fa fa-calendar"></i></span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <nf-form name="projectQuestionForm">
-                    <div class="form-group" ng-repeat="answer in project.project_answers">
-                        <span ng-switch on="answer.project_question.field_type">
-                            <span ng-switch-when="text">
-                                <div class="form-group">
-                                    <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
-                                    <div class="col-sm-8 control-input">
-                                        <input name="{{answer.project_question_name}}" ng-model='answer.answer' class="form-control" id="{{answer.project_question.id}}" placeholder="{{answer.project_question.help_text}}" ng-required="{{answer.project_question.required}}">
+                    <div class="form-group">
+                        <label for="end-date" class="col-sm-3 control-label">End Date</label>
+                        <div class="col-sm-8 control-input">
+                            <div class="input-group">
+                                <input name-="end-date" type="text" ng-click="openEndDate($event)" class="form-control" datepicker-popup="{{format}}" ng-model="project.end_date" is-open="endDateOpened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                                <span class="input-group-addon" ng-click="openEndDate($event)"><i class="fa fa-calendar"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <nf-form name="projectQuestionForm">
+                        <div ng-repeat="answer in project.project_answers">
+                            <span ng-switch on="answer.project_question.field_type">
+                                <span ng-switch-when="text">
+                                    <div class="form-group">
+                                        <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
+                                        <div class="col-sm-8 control-input">
+                                            <input name="{{answer.project_question_name}}" ng-model='answer.answer' class="form-control" id="{{answer.project_question.id}}" placeholder="{{answer.project_question.help_text}}" ng-required="{{answer.project_question.required}}">
+                                        </div>
                                     </div>
-                                </div>
-                            </span>
-                            <span ng-switch-when="select_option">
-                                <div class="form-group">
-                                    <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
-                                    <div class="col-sm-8 control-input">
-                                        <select name="{{answer.project_question_name}}" class="form-control" ng-model="answer.answer" ng-options="option for option in answer.project_question.options" ng-required="{{answer.project_question.required}}">
-                                            <option value="">Please select an option.</option>
-                                        </select>
+                                </span>
+                                <span ng-switch-when="select_option">
+                                    <div class="form-group">
+                                        <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
+                                        <div class="col-sm-8 control-input">
+                                            <select name="{{answer.project_question_name}}" class="form-control" ng-model="answer.answer" ng-options="option for option in answer.project_question.options" ng-required="{{answer.project_question.required}}">
+                                                <option value="">Please select an option.</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
+                                </span>
                             </span>
-                        </span>
-                    </div>
-                </nf-form>
+                        </div>
+                    </nf-form>
 
-                <div class="form-group">
-                    <div class="col-sm-offset-11 control-submit">
-                        <button ng-click="createProject()" type="submit" ng-class="projectForm.$invalid ? 'btn btn-primary disabled' : 'btn btn-primary'">Create</button>
+                    <div class="form-group">
+                        <div class="col-sm-offset-11 control-submit">
+                            <button ng-click="createProject()" type="submit" ng-class="projectForm.$invalid ? 'btn btn-primary disabled' : 'btn btn-primary'">Create</button>
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
     </div>
     <!-- end .main-content -->
