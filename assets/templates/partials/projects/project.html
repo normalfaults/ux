@@ -79,8 +79,8 @@
 
         <!-- Services -->
 
-        <div class="services-box column-box" ng-if="project.isApproved()">
-            <div class="titles-box">
+        <div class="table-box" ng-if="project.isApproved()">
+            <div class="title-box">
                 <h2>
                     <strong>SERVICES ({{project.services.length}})</strong>
                     <switch-view-buttons
@@ -137,8 +137,8 @@
 
         <!-- Users -->
 
-        <div class="users-column-box column-box" ng-if="project.isApproved()">
-            <div class="titles-box">
+        <div class="table-box" ng-if="project.isApproved()">
+            <div class="title-box">
                 <h2>
                     <strong>USERS ({{project.users.length}})</strong>
 
@@ -204,8 +204,8 @@
 
         <!-- Project Details -->
 
-        <div class="project-details-box column-box">
-            <div class="titles-box">
+        <div class="table-box">
+            <div class="title-box">
                 <h2>
                     <strong>PROJECT DETAILS</strong>
                 </h2>
@@ -218,7 +218,7 @@
             <!-- end .titles-box -->
 
             <div class="table-container table-box">
-                <table class="table-data">
+                <table st-table="rowCollection" class="table table-responsive table-data">
                     <colgroup>
                         <col class="col40">
                         <col>
