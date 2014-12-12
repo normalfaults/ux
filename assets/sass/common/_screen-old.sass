@@ -1710,8 +1710,6 @@ body
       .blue-link
         font-family: "proximanova_semibold"
         font-size: 12px
-    .latest-order .titles-box .blue-link
-      font-size: 13px
   .service-detail-container .deail-contents
     padding: 0 40px 0 32px
     /*  .clearfix
@@ -1949,8 +1947,6 @@ body
   .cart-container .contents
     .titles-box h2 strong
       font-size: 18px
-    .latest-order .titles-box h2 strong
-      font-size: 16px
   .contents .titles-box
     padding: 0 24px 0 24px
     h2 strong
@@ -2224,58 +2220,6 @@ body
       width: 100%
       border: none
       border-radius: 5px
-  .settlement-box
-    margin: 10px 27px 0 36px
-    padding-bottom: 25px
-    .discount-code
-      h3
-        font-family: "proximanova_regular"
-        font-size: 18px
-        color: #333
-        line-height: 28px
-        height: 28px
-        padding-top: 8px
-      p
-        font-family: "proximanova_semibold"
-        font-size: 13px
-        color: #666
-        line-height: 16px
-        height: 16px
-        padding: 5px 0 16px 0
-      .input-box
-        float: left
-    .height30
-      float: left
-    .discount-code .input-box
-      width: 125px
-    .height30
-      font-family: "proximanova_semibold"
-      text-align: center
-      line-height: 30px
-      width: 115px
-      margin-left: 13px
-      font-size: 12px
-    .total-order .price
-      font-family: "proximanova_semibold"
-      color: #2a4155
-      padding: 18px 0 0 0
-      line-height: 30px
-      text-align: right
-      min-height: 55px
-      span
-        font-size: 14px
-      strong
-        font-size: 18px
-        padding: 0 28px
-    .clearfix
-      display: inline-block
-      clear: none
-  .latest-order
-    padding-bottom: 75px
-    .titles-box h2
-      padding-bottom: 6px
-    .table-box
-      margin: 14px 25px 0 32px
   .table-box
     .table-data
       th, td
@@ -2398,8 +2342,6 @@ body
         vertical-align: top
       .min-texts
         border-bottom: 1px solid #ebf3fc
-        padding: 8px 0 0 10px
-        min-height: 86px
         font-family: "proximanova_regular"
         border-bottom: 1px solid #ebf3fc
         padding: 15px 0 0 10px
@@ -2422,9 +2364,9 @@ body
             display: inline-block
           .green-texts
             font-size: 14px
-      .assigned-services-info, .assigned-user-info
+      .assigned-services-info
         vertical-align: top
-      .assigned-services-info h3, .assigned-user-info h3
+      .assigned-services-info h3
         font-family: "proximanova_semibold"
         font-size: 15px
         color: #434445
@@ -2445,47 +2387,6 @@ body
       background-position: -86px -336px
       &:hover
         background-position: -86px -360px
-  .assigned-user-info
-    .icons
-      padding-top: 5px
-      padding-left: 12px
-    .icon-boxes
-      background: none
-      float: left
-      margin-left: 8px
-      a
-        background: #fff
-        width: 43px
-        height: 45px
-        text-align: center
-        border-radius: 4px
-        border: 1px solid #e6e6e6
-        display: block
-        cursor: pointer
-        &:hover
-          border: 1px solid #2E96DB
-        i
-          background-image: url(../images/icon-projects-sprites.png)
-          background-repeat: no-repeat
-          background-size: 78px
-          display: inline-block
-    .icon-boxes-1 a i, .icon-boxes-2 a i, .icon-boxes-3 a i, .icon-boxes-4 a i
-      width: 39px
-      height: 41px
-      margin-top: 2px
-    .icon-boxes-1 a i
-      background-position: -33px 1px
-    .icon-boxes-2 a i
-      background-position: -33px -42px
-    .icon-boxes-3 a i
-      background-position: -33px -85px
-    .icon-boxes-4 a i
-      background-position: -33px -128px
-    .icon-boxes-5 a i
-      background-position: -41px -176px
-      width: 25px
-      height: 30px
-      margin-top: 7px
   .projects-box
     .assigned-services-info .icons
       padding-left: 8px
@@ -2533,129 +2434,6 @@ body
             color: #0a4887
           i
             background-position: -154px -256px
-  .recent-orders-box
-    padding-bottom: 52px
-    .titles-box
-      margin: 10px 24px 0 24px
-      .gray-link
-        font-family: "SourceSansPro_Regular"
-        margin: 2px -4px 0 0
-    .table-box
-      margin: 24px 23px 0 18px
-  .recent-added-user-box
-    padding-bottom: 62px
-    .titles-box
-      margin: 10px 24px 0 24px
-      .gray-link
-        font-family: "SourceSansPro_Regular"
-        margin: 2px -3px 0 0
-    .container
-      margin: 30px 23px 0 0
-    .boxes
-      font-family: "proximanova_semibold"
-      float: left
-      padding: 12px 15px 10px 15px
-      min-height: 185px
-      margin: 0 4px 0 8px
-      &:hover
-        border: 1px solid #287de7
-        padding: 11px 14px 9px 14px
-        border-radius: 5px
-        box-shadow: 0 0 15px 1px #ddd
-    .icon-boxes, .btn-boxes
-      background: none
-      text-align: center
-      display: inline-block
-      width: 88px
-      height: 93px
-      box-shadow: 0 0 5px 1px #ccc
-      background: #fff
-      border-radius: 5px
-    .icon-boxes a
-      background-image: url(../images/icon-projects-sprites.png)
-      background-repeat: no-repeat
-      display: inline-block
-      cursor: pointer
-    .icon-boxes-1 a, .icon-boxes-2 a, .icon-boxes-3 a, .icon-boxes-4 a
-      width: 73px
-      height: 73px
-      margin-top: 10px
-    .icon-boxes-1 a
-      background-position: -65px 0
-    .icon-boxes-2 a
-      background-position: -65px -83px
-    .icon-boxes-3 a
-      background-position: -65px -166px
-    .icon-boxes-4 a
-      background-position: -65px -249px
-    .icon-boxes-5 a
-      background-position: -80px -343px
-      width: 44px
-      height: 53px
-      margin-top: 21px
-    .boxes
-      h3
-        padding: 12px 0 3px 4px
-        line-height: 25px
-        a
-          font-size: 15px
-          color: #0a4887
-      p
-        line-height: 17px
-        color: #353942
-        font-size: 14px
-        padding-left: 4px
-        .row-box
-          display: block
-      .font-weight
-        font-family: "proximanova_regular"
-        color: #4d4e4f
-    .btn-boxes a
-      display: inline-block
-      i, span
-        display: inline-block
-    .btn-new-box
-      font-family: "proximanova_semibold"
-      float: left
-      padding: 12px 15px 10px 15px
-      min-height: 185px
-      margin: 0 4px 0 8px
-    .btn-boxes
-      a
-        box-shadow: 0 0 5px 1px #ccc
-        background: #fff
-        border-radius: 5px
-        position: relative
-        display: block
-        width: 88px
-        height: 93px
-        cursor: pointer
-        &:hover
-          text-decoration: none
-      .icon-add
-        i
-          background-position: -254px -217px
-          width: 64px
-          height: 64px
-          margin: 8px 0 0 0
-        &:hover i
-          background-position: -254px -281px
-      a
-        span
-          font-family: "proximanova_semibold"
-          font-size: 13px
-          color: #2e96db
-          width: 88px
-          text-align: center
-          line-height: 14px
-          top: 58px
-          left: 0
-          position: absolute
-        &:hover span
-          color: #0A4887
-    .clearfix
-      clear: none
-      display: inline-block
   .app-project-box, .app-approval-box
     margin: 23px 24px 0 24px
     box-shadow: 0 0 5px 1px #ccc
@@ -2700,48 +2478,6 @@ body
       width: 233px
   .font12
     font-size: 12px
-  .calendar
-    position: relative
-    cursor: pointer
-    height: 20px
-    background: #fff
-    border: 1px solid #d0d0d0
-    border-radius: 5px
-    padding: 4px 0
-    display: inline-block
-    input[type='text']
-      font-family: "proximanova_regular"
-      cursor: pointer
-      float: left
-      color: #797b7e
-      height: 20px
-      line-height: 20px
-      background: none
-      border: 0
-      padding-left: 8px
-      border-radius: 5px
-      width: 70px
-    .date-icon
-      font-size: 0
-      line-height: 0
-      width: 150px
-      height: 30px
-      display: inline-block
-      position: absolute
-      top: 0
-      right: 0
-      span
-        background: url(../images/forms/calendar-icon.png) no-repeat 0 0
-        font-size: 0
-        line-height: 0
-        width: 16px
-        height: 16px
-        display: inline-block
-        position: absolute
-        top: 7px
-        right: 7px
-    &:hover .date-icon span
-      background-position: 0 -16px
   .table-container
     .table-data .left-text
       .icon-help
@@ -2760,37 +2496,6 @@ body
         color: #676869
         font-size: 13px
         line-height: 18px
-  .top10
-    margin-top: 10px
-  .autocomplete
-    position: relative
-    .autocomplete-down-box
-      background: #fff
-      width: 231px
-      border: 1px solid #ccc
-      border-top: 0
-      border-bottom-left-radius: 5px
-      border-bottom-right-radius: 5px
-      position: absolute
-      top: 27px
-      left: -1px
-      z-index: 10
-      span
-        height: 28px
-        line-height: 28px
-        border-top: 1px solid #ccc
-        display: block
-      a
-        color: #333
-        font-size: 12px
-        padding-left: 7px
-        display: block
-        &:hover
-          text-decoration: none
-          background: #f7f7f7
-      .later a
-        border-bottom-left-radius: 5px
-        border-bottom-right-radius: 5px
   .table-container .table-data .min-value .two-btns
     margin-top: 7px
     margin-bottom: 5px
@@ -2815,78 +2520,6 @@ body
         &:hover
           color: $error-color
           text-decoration: none
-  .custom-solution-page
-    .contents .titles-box h2 strong
-      color: #292e35
-    .table-box
-      margin: 15px 24px 0 24px
-    .table-container
-      .clearfix
-        clear: none
-        display: inline-block
-    .our-recommendation-title h2
-      padding-top: 0
-  .summary-box
-    margin: 26px 24px 20px 24px
-    box-shadow: 0 0 5px 1px #ccc
-    border-radius: 5px
-    .project-summary
-      width: 100%
-      display: table
-      padding: 12px
-      min-height: 88px
-      > div
-        display: table-cell
-        vertical-align: middle
-      .icon-boxes
-        float: left
-        margin-right: 20px
-      .title-box
-        font-family: "proximanova_semibold"
-        color: #0a4887
-        font-size: 16px
-        vertical-align: middle
-        float: left
-        margin-top: 16px
-        line-height: 20px
-        a
-          color: #0a4887
-          .row-box, &:hover .row-box
-            display: block
-            padding: 2px 0
-    .col18 div
-      font-size: 16px
-      font-family: "proximanova_regular"
-      color: #434445
-      line-height: 23px
-    .col20
-      font-family: "proximanova_regular"
-      color: #434445
-      font-size: 16px
-      p
-        margin-top: 10px
-      .price
-        background: $success-color
-        padding: 6px 7px
-        color: #fff
-        line-height: 18px
-        font-size: 15px
-        width: 86px
-        height: 16px
-        margin-top: 7px
-  .services-you-will-need
-    h2
-      font-family: "proximanova_semibold"
-      font-size: 14px
-      color: #292e35
-      border-bottom: 1px solid #e5e5e6
-      height: 22px
-      line-height: 22px
-      padding: 13px 0 10px 0
-      margin: 0 20px
-    .clearfix
-      clear: none
-      display: inline-block
   .project-detail-page
     .order-history-box
       padding-top: 13px
@@ -2923,23 +2556,6 @@ body
       background-size: auto
       display: inline-block
       cursor: pointer
-    .icon-boxes-1 a, .icon-boxes-2 a, .icon-boxes-3 a, .icon-boxes-4 a
-      width: 73px
-      height: 73px
-      margin-top: 10px
-    .icon-boxes-1 a
-      background-position: -65px 0
-    .icon-boxes-2 a
-      background-position: -65px -83px
-    .icon-boxes-3 a
-      background-position: -65px -166px
-    .icon-boxes-4 a
-      background-position: -65px -249px
-    .icon-boxes-5 a
-      background-position: -80px -343px
-      width: 44px
-      height: 53px
-      margin-top: 21px
     .texts-box
       .gray-texts, .texts
         font-size: 14px
@@ -3033,77 +2649,7 @@ body
     padding-bottom: 33px
     .progress-step
       padding-top: 42px
-  .progress-step
-    padding: 30px 30px 30px 24px
-    .step-box
-      width: 100%
-      display: table
-      > div
-        display: table-cell
-        position: relative
-        .round
-          color: #f6f8fa
-          font-size: 14px
-          font-family: "opensans_bold"
-          text-align: center
-          border-radius: 100%
-          display: block
-          span
-            color: #f6f8fa
-            font-size: 14px
-            font-family: "opensans_bold"
-            text-align: center
-            border-radius: 100%
-            display: block
-            height: 42px
-            width: 42px
-          height: 56px
-          width: 56px
-        p
-          font-family: "proximanova_semibold"
-          font-size: 14px
-          text-align: center
-          width: 75px
-          line-height: 18px
-          padding: 13px 0 0 0
-          span
-            display: block
-      .step6 .boxs
-        position: absolute
-        top: 0
-        right: -10px
-      .step1, .step2, .step3, .step4, .step5
-        width: 18.76%
-      .completed
-        background: url(../images/step-orange-border.png) repeat-x 0 33px
-        .round
-          background: #323f50
-          border: 6px solid #ce8318
-      .current-completed .round
-        background: #323f50
-        border: 6px solid #ce8318
-      .completed .round span, .current-completed .round span
-        border: 7px solid #4b5868
-      .completed .round span span, .current-completed .round span span
-        border: 0
-        box-shadow: inset 0px 0px 20px #252d38
-        line-height: 42px
-      .completed p, .current-completed p
-        color: #5d5d5d
-      .incomplete, .current-completed
-        background: url(../images/step-gray-border.png) repeat-x 0 33px
-      .incomplete
-        .round
-          background: #8e8d8c
-          border: 6px solid #cac9c8
-          span
-            border: 7px solid #adaba9
-            span
-              border: 0
-              box-shadow: inset 0px 0px 20px #8e8d8c
-              line-height: 42px
-        p
-          color: #b9b9b9
+
   footer
     font-family: "opensans_light"
     background: #292e35
@@ -3112,11 +2658,7 @@ body
     min-height: 58px
     width: 100%
     bottom: 0
-    /* footer .left
     .footer-content
-      /* footer .right
-      /* footer .right .links
-      /* footer .right .shape
       .left
         font-size: 13px
         color: #7d7d7d
@@ -3148,26 +2690,6 @@ body
     cursor: default
   .cart-page.main-content
     min-height: 848px
-
-.modal-content
-  position: relative
-  background-color: #fff
-  border-radius: 6px
-  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5)
-  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5)
-  background-clip: padding-box
-  outline: 0
-
-.modal-backdrop
-  position: fixed
-  top: 0
-  right: 0
-  bottom: 0
-  left: 0
-  z-index: 1040
-  background-color: #000
-  &.in
-    opacity: 0.7
 
 .break-all
   word-break: break-all
@@ -3213,36 +2735,6 @@ body
   font-size: 14px
 
 .dashboard-pages
-  .assigned-user-info
-    .icon-boxes a
-      border: none
-      &:hover
-        border: none
-        text-decoration: none
-      i
-        width: 45px
-        height: 47px
-        margin-top: 0
-        background-repeat: no-repeat
-        background-position: 0 0
-        background-size: auto auto
-    .icon-boxes
-      box-shadow: none
-    .boxes:hover
-      padding: 12px 15px 10px
-      border: none
-      box-shadow: none
-    .icon-boxes a
-      &:hover
-        /* border:none;
-        text-decoration: none
-      background-repeat: no-repeat
-      background-position: 0 0
-      background-size: auto auto
-      width: 90px
-      height: 95px
-      margin-top: 0
-      border: none
   .users-list .container-list
     .icon-boxes a
       background-repeat: no-repeat
@@ -3339,23 +2831,14 @@ body
     img
       max-height: 40px
       max-width: 40px
-  .assigned-user-info .icon-boxes a img
-    max-height: 40px
-    max-width: 40px
-  .recent-added-user-box .icon-boxes a, .projects-box .module .boxes .icon-info a
+  .projects-box .module .boxes .icon-info a
     width: 75px
     height: 75px
     display: inline-block
     background: none
-  .recent-added-user-box .icon-boxes a img, .projects-box .module .boxes .icon-info a img
+  .projects-box .module .boxes .icon-info a img
     max-height: 75px
     max-width: 75px
-  .recent-added-user-box .boxes
-    p .row-box
-      width: 84px
-    min-height: 201px
-  .assigned-user-info .icon-boxes
-    margin-bottom: 8px
   .deail-contents .deail-info .container-grid .boxes:hover
     min-height: 0
 
@@ -3363,12 +2846,8 @@ body
   display: none !important
 
 .dashboard-pages
-  .recent-added-user-box .icon-boxes a
-    margin-top: 10px
   .container-grid .boxes:hover .btn-box a
     width: 118px
-  .assigned-user-info .icons
-    padding-right: 12px
   .status-indicator .status-float-box .icon-round-ok
     width: 95px
   .container-grid-users .boxes
