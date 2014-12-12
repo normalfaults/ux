@@ -20,54 +20,55 @@
 
 
     <div class="page">
-        <!-- Project Box -->
 
-        <div>
-            <div class="app-project">
-                <div class="col40">
-                    <div class="icon-boxes"><a><img ng-src="{{project.icon}}"/></a></div>
-                    <h3>{{project.name | uppercase}}</h3>
+        <!-- Title & Url -->
 
-                    <p><a href="{{project.url}}">{{project.domain}}</a></p>
+        <div class="page-title">
+            <div class="page-title-icon">
+                <img ng-src="{{project.icon}}"/>
+            </div>
+            <div class="page-title-text">
+                <h3>{{project.name}}</h3>
+            </div>
+        </div>
 
-                    <div class="bottom-icons-box">
-                        <div class="fl" ng-class="{'ok-state': project.state_ok, 'error-state' : !project.state_ok }">
-                            <span ng-class="{'icon-green-ok': project.state_ok, 'icon-red-error' : !project.state_ok }"></span>
-                            <span class="texts">{{project.state}}</span>
-                        </div>
+        <!-- Metrics - Status, Budget, CPU, HDD, RAM -->
+
+        <div class="info-boxes">
+            <div class="info-box col18">
+                <div class="info-box-icon"></div>
+                <div class="info-box-data">
+                    <div class="info-box-number">
+                        Status: {{project.state}}
                     </div>
-                </div>
-                <div class="col21">
-                    <h4>
-                        <span>Account Number</span><br/>
-                        <span>{{project.account_number}}</span>
-                    </h4>
-                </div>
-                <div class="app-budget col20">
-                    <p>Budget</p>
-
-                    <div class="price">{{project.budget | currency}}</div>
-                </div>
-                <div class="app-resources col18">
-                    <p>Resources</p>
-
-                    <div class="size">
-                        <table border="0">
-                            <tbody>
-                            <tr>
-                                <td class="c1 r1">CPU &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{project.cpu}}</td>
-                                <td class="c2 r1">RAM &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{project.ram}}</td>
-                            </tr>
-                            <tr>
-                                <td class="c1 r2">HDD</td>
-                                <td class="c2 r2">{{project.hdd}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
+                    <div class="info-box-text">
+                        Pending
                     </div>
                 </div>
             </div>
+            <div class="info-box-split"></div>
+            <div class="info-box col18">
+                <p>Budget</p>
+                <div class="price">{{project.budget | currency}}</div>
+            </div>
+            <div class="info-box-split"></div>
+            <div class="info-box col18">
+                <p>CPU</p>
+                <div>100%</div>
+            </div>
+            <div class="info-box-split"></div>
+            <div class="info-box col18">
+                <p>HDD</p>
+                <div>100 out of 100</div>
+            </div>
+            <div class="info-box-split"></div>
+            <div class="info-box col18">
+                <p>RAM</p>
+                <div>1 out of 100</div>
+            </div>
         </div>
+
+
 
         <!-- Problem Alerts -->
 
