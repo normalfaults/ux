@@ -1,14 +1,12 @@
 'use strict';
 
 /**@ngInject*/
-function ProjectController($scope, $modal, project, solutions, alerts, ApiResource) {
+function ProjectController($scope, $modal, $state, project, solutions, alerts) {
   $scope.solution = solutions[0];
   $scope.solutions = solutions;
   $scope.project = project;
 
   $scope.alerts = alerts;
-
-  $scope.searchURL = ApiResource("staffSearch");
 
   $scope.openProjectUsersModal = function () {
 
@@ -17,10 +15,8 @@ function ProjectController($scope, $modal, project, solutions, alerts, ApiResour
       controller: 'ProjectUsersController'
     });
 
-    modalInstance.result.then(function (selectedItem) {
-      //might need to refresh users here
+    modalInstance.result.then(function (selectedItems) {
     }, function () {
-      //modal closed... might need to refresh users here
     });
   };
 }

@@ -3,6 +3,7 @@
   "routes": {
     "solutions":         "/solutions/:id",
     "createProject":     "/projects",
+    "projectUser":       "/projects/:id/staff/:staff_id",
     "projectQuestions":  "/project_questions",
     "manageValues":      "/manageValues",
     "marketplaceValues": "/marketplaceValues",
@@ -14,7 +15,7 @@
     "recentOrders":      "/orders/recent",
     "projectsById":      "/projects/:id",
     "productsById":      "/products/:id",
-    "productCategoriesById":      "/product_categories/:id",
+    "productCategoriesById": "/product_categories/:id",
     "servicesById":      "/services/:id",
     "applicationsById":  "/applications/:id",
     "bundlesById":       "/bundles/:id",

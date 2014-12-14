@@ -7,6 +7,7 @@ var ProjectsModule = angular.module('broker.projects', [])
   .controller('ProjectController', require('./project_controller'))
   .controller('ProjectUsersController', require('./project_users_controller'))
   .factory('Project', require('./project'))
+  .factory('ProjectUser', require('./project_user'))
   .config(require('./routes'));
 
 module.exports = ProjectsModule;
