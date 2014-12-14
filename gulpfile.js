@@ -167,6 +167,7 @@ gulp.task('clean-styles', function() {
 gulp.task('styles', ['bower', 'clean-styles', 'ie-styles'], function() {
   // Vendor Angular Loading Bar CSS
   var angularLoadingBarFiles = gulp.src(paths.bower + '/angular-loading-bar/build/loading-bar.css');
+  var angucompleteFile = gulp.src(paths.bower + '/angucomplete/angucomplete.css');
 
   // App Sass files and Vendor Sass Files
   var sassFiles = gulp.src(paths.src.styles)
@@ -180,7 +181,7 @@ gulp.task('styles', ['bower', 'clean-styles', 'ie-styles'], function() {
     })));
 
   // Combine the output from Sass/Vendor, Concat, minify, autprefix.
-  return es.concat(angularLoadingBarFiles, sassFiles)
+  return es.concat(angularLoadingBarFiles, angucompleteFile ,sassFiles)
     .pipe(concat('styles.css'))
     .pipe(autoprefix("last 2 version", "> 1%"))
     .pipe(minifyCSS())

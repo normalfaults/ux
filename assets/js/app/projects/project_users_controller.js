@@ -57,7 +57,7 @@ function ProjectUsersController($scope, $modalInstance, $q, $state, ProjectUser,
             if (criticalError) {
                 alert("There was a problem adding these users. Please try again.");
             }
-            
+
             self.modalInstance.close();
             self.state.go('base.project', {}, {reload: true});
         });

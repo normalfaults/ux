@@ -2,6 +2,8 @@
 
 var angular = require('angular');
 
+require('angucomplete');
+
 var DirectivesModule = angular.module('broker.directives', [])
   .directive('dropDown', require('./drop_down'))
   .directive('expandArrow', require('./expand_arrow'))
@@ -11,7 +13,6 @@ var DirectivesModule = angular.module('broker.directives', [])
   .directive('fixBoxesHeight', require('./fix_boxes_height'))
   .directive('serviceBox', require('./service_box'))
   .directive('switchViewButtons', require('./switch_view_buttons'))
-  .directive('marketplaceItems', require('./marketplace_items'))
-  .directive('angucomplete', require('./angucomplete'));;
+  .directive('marketplaceItems', require('./marketplace_items'));
 
 module.exports = DirectivesModule;

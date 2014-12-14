@@ -7,8 +7,11 @@ require('angular-bootstrap');
 require('angular-gravatar');
 require('angular-loading-bar');
 require('angular-smart-table');
+require('angucomplete');
 
 var angular = require('angular');
+
+
 
 var app = angular.module('broker', [
   "ui.router",
@@ -17,6 +20,7 @@ var app = angular.module('broker', [
   "smart-table",
   'ngAnimate',
   "ui.gravatar",
+  "angucomplete",
   "ui.bootstrap",
   require('./common').name,
   require('./base').name,
