@@ -2,6 +2,7 @@
   "basePath": "/api",
   "routes": {
     "solutions":         "/solutions/:id",
+    "projectQuestions": "project_questions",
     "createProject":     "/projects",
     "projectUser":       "/projects/:id/staff/:staff_id",
     "projectQuestions":  "/project_questions",

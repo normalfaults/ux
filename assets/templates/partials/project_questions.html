@@ -1,0 +1,32 @@
+<div class="project-questions-page main-content" fix-sidebar set-width>
+    <div class="table-box">
+        <div class="title-box">
+            <h2>
+                <strong>PROJECT QUESTIONS</strong>
+            </h2>
+
+            <div class="titles-border-bar">
+                <span class="blues width137"></span>
+                <span class="whites width3"></span>
+            </div>
+        </div>
+        <!-- end .titles-box -->
+
+        <div class="table-container table-box">
+            <table st-table="rowCollection" class="table table-responsive table-data">
+                <colgroup>
+                    <col class="col40">
+                    <col>
+                </colgroup>
+                <tbody ng-repeat="projectQuestion in projectQuestions">
+                <tr>
+                    <td class="left-text">{{projectQuestion.question}}</td>
+                    <td class="min-value">{{projectQuestion.field_type}}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- end .table-box -->
+    </div>
+<span class="clearfix"></span>
+</div>
