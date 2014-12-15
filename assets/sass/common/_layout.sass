@@ -1,17 +1,72 @@
-.project-box
-  margin: 23px 24px 0 24px
-  border-radius: 5px
-  .paddeded
-    padding: 10px
-  .horizontal-spanning
-    float: right
-    width: 100%
 
+// Generic Header + Table Layout
+.table-box
+  font-family: proximanova_semibold
+
+  line-height: 17px
+  width: 100%
+  max-width: 100%
+  color: #7d7d7d
+
+  .table-striped
+    tbody
+      tr:nth-child(odd)
+        background-color: #f5f9fd
+
+  .title-box
+    padding: 20px 0
+    color: #292e35
+    font-size: 16px
+    h2
+      margin-bottom: 5px
+  thead
+    tr
+      th
+        background-color: #ebf3fc
+        border: 1px solid #ffffff
+        font-size: 12px
+        font-family: proximanova_regular
+        padding: 9px 12px
+  tbody
+    tr
+      background-color: #f8fbfe
+    td
+      border: 1px solid #ffffff
+      line-height: 17px
+      font-size: 14px
+      padding: 9px 12px
+
+// Specific table-box for login.
 .login-box
   width: 50%
   margin: 0 auto
   form
     padding: 10px 24px
+
+
+.info-boxes
+  display: table
+  width: 100%
+  padding: 20px 0
+
+  .info-box
+    display: table-cell
+    border: 2px solid #cbcccd
+    padding: 10px
+    .info-box-icon
+      width: 40px
+      display: inline-block
+      vertical-align: top
+
+    .info-box-data
+
+      .info-box-number
+
+      .info-box-description
+  .info-box-split
+    display: table-cell
+    width: 2%
+
 
 .box-shadow
   box-shadow: 0 0 5px 1px #ccc
@@ -43,5 +98,42 @@
 .alert-unknown
   color: #0a4887
 
+.top-notice-banner
+  border-bottom: 1px solid #cbcccd
+  background: #F2F2F3
 
+.blue-button
+  color: $button-white-color
+  text-align: center
+  border-radius: 4px
+  display: inline-block
+  background: #0a498a
+  font-family: "proximanova_semibold"
+  font-size: 12px
+  line-height: 30px
+  border: 0 none
+  margin-top: 13px
+  margin-bottom: 40px
+  padding-left: 25px
+  padding-right: 25px
+  &:hover
+    text-decoration: none
+    background: #2e96db
 
+.page
+  margin-left: 20px
+  margin-right: 20px
+
+  .page-title
+    padding: 20px 0
+    div
+      display: inline-block
+      vertical-align: middle
+    .page-title-icon
+      img
+        height: 60px
+    .page-title-text
+      padding-left: 15px
+      h3
+        font-family: "proximanova_semibold"
+        font-size: 36px

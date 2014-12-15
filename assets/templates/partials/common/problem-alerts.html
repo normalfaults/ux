@@ -1,46 +1,36 @@
-<div class="problem-alerts-box column-box" ng-if="alerts">
-    <div class="titles-box">
+<div class="table-box" ng-if="alerts">
+    <div class="title-box">
         <h2>
-            <span class="fa fa-exclamation-circle"></span>
             <strong>NOTICES ({{alerts.length}})</strong>
         </h2>
+
         <div class="titles-border-bar">
-            <span class="blues width157"></span>
+            <span class="blues width137"></span>
             <span class="whites width3"></span>
         </div>
     </div>
-    <!-- end .titles-box -->
 
-    <div class="table-box">
-        <table class="table-data">
-            <colgroup>
-                <col>
-                <col class="col26">
-                <col>
-            </colgroup>
+    <div class="data-box">
+        <table st-table="rowCollection" class="table table-responsive table-striped">
             <thead>
             <tr>
                 <th></th>
-                <th class="text-left">PROJECT</th>
-                <th class="text-left">DESCRIPTION</th>
+                <th>PROJECT</th>
+                <th>DESCRIPTION</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in alerts">
-                <td ng-switch on="item.severity">
+            <tr ng-repeat="row in alerts">
+                <td ng-switch on="row.severity">
                     <i ng-switch-when="ok" class="alert-ok fa fa-bell"></i>
                     <i ng-switch-when="warning" class="alert-warningfa fa-bell"></i>
                     <i ng-switch-when="critical" class="alert-critical fa fa-bell"></i>
                     <i ng-switch-default class="alert-unknown fa fa-question-circle"></i>
                 </td>
-                <td class="blue-texts font15 col-title"><a class="blue-link">{{item.project.name}}</a></td>
-
-                <td class="gray-texts">{{item.description}}</td>
+                <td>{{row.project.name}}</td>
+                <td>{{row.description}}</td>
             </tr>
-
-
             </tbody>
         </table>
     </div>
-    <!-- end .table-box -->
 </div>

@@ -6,6 +6,7 @@ require('angular-resource');
 require('angular-bootstrap');
 require('angular-gravatar');
 require('angular-loading-bar');
+require('angular-smart-table');
 
 var angular = require('angular');
 
@@ -13,6 +14,7 @@ var app = angular.module('broker', [
   "ui.router",
   "ngResource",
   "angular-loading-bar",
+  "smart-table",
   'ngAnimate',
   "ui.gravatar",
   "ui.bootstrap",

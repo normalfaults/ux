@@ -11,11 +11,13 @@ function FixSidebar() {
     if ($nav && $nav.is(":visible")) {
       $nav.height(500);
 
+
       var headerAndFooterHeight = $('header').outerHeight() + $footer.outerHeight();
       var mainContentEl = $('.main-content');
 
       if ((mainContentEl.height() + headerAndFooterHeight) < document.documentElement.clientHeight) {
         $nav.height(document.documentElement.clientHeight - headerAndFooterHeight);
+        $footer.css('position', 'absolute');
       } else {
         $nav.height(mainContentEl.height());
         $footer.css('position', '');

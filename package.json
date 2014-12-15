@@ -101,6 +101,11 @@
       ],
       "exports": "angular.module('ui.gravatar').name"
     },
+    "angular-smart-table": {
+      "depends": [
+        "angular"
+      ]
+    },
     "md5": {
       "depends": [
         "angular-gravatar"
@@ -114,6 +119,7 @@
     "angular-animate": "./bower_components/angular-animate/angular-animate.js",
     "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
     "angular-resource": "./bower_components/angular-resource/angular-resource.js",
+    "angular-smart-table": "./bower_components/angular-smart-table/dist/smart-table.min.js",
     "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
     "angular-loading-bar": "./bower_components/angular-loading-bar/build/loading-bar.js",
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
