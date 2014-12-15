@@ -85,13 +85,12 @@ body
 .dashboard-pages
   .blue-link
     color: #0a498a
-  .icon-arrow, .icon-bundles, .icon-detailed, .icon-list-btn, .icon-grid-btn, .icon-del, .icon-back, .icon-del-btn, .icon-up-btn, .icon-down-btn, .icon-help, .icon-round-ok i, .icon-add i, .icon-map-help i, .links-right-arrow i
+  .icon-arrow, .icon-list-btn, .icon-grid-btn, .icon-back, .icon-del-btn, .icon-add i, .icon-map-help i, .links-right-arrow i
     background-image: url(../images/icon-sprites.png)
     background-repeat: no-repeat
   .icon-projects-emoticon
     background-image: url(../images/icon-projects-sprites.png)
     background-repeat: no-repeat
-  .icon-projects-emoticon
     background-position: -65px 0
   .icon-boxes a
     background-image: url(../images/icon-boxes-sprites.png)
@@ -263,6 +262,18 @@ body
         background: no-repeat
       .active .side-arrow
         background: no-repeat
+      width: 74px
+      overflow: hidden
+      .current ul
+        display: none
+      li .li-links
+        .texts, .number, .arrow-right, .arrow-down
+          display: none
+    nav.absolute-nav .logout-btn
+      width: 74px
+      overflow: hidden
+      span
+        display: none
     nav
       .active .side-arrow
         background: #5B5F68
@@ -292,8 +303,6 @@ body
       .dashboard-menu .li-links
         height: 52px
         line-height: 52px
-        .icon-dashboard
-          margin: 13px 10px 0 11px
       .li-links:hover
         color: #fff
         background: #494d56
@@ -317,15 +326,9 @@ body
           padding-top: 9px
           padding-bottom: 1px
       .active .li-links
-        .icon-dashboard, &:hover .icon-dashboard
-          background-position: -120px -143px
-        .icon-bundles, &:hover .icon-bundles
-          background-position: -120px -240px
         .texts
           font-size: 14px
       .current .li-links
-        .icon-dashboard, .icon-bundles
-          margin-top: 7px
         .number
           margin: 8px 5px 0 0
       .li-links
@@ -333,15 +336,6 @@ body
           float: left
         .texts
           white-space: nowrap
-        .icon-bundles
-          width: 24px
-          height: 24px
-          display: inline-block
-          margin: 12px 10px 0 11px
-        .icon-bundles
-          background-position: -120px -215px
-        &:hover .icon-bundles
-          background-position: -120px -239px
         .number, .arrow-right, .arrow-down
           float: right
           display: inline-block
@@ -391,7 +385,6 @@ body
           display: block
         li
           border-top: none
-          margin-top: 0
           position: relative
           height: 26px
           line-height: 26px
@@ -434,22 +427,6 @@ body
     &:hover
       text-decoration: none
       background: #2872bf
-  .left-sidebar
-    .absolute-nav
-      width: 74px
-      overflow: hidden
-      .current ul
-        display: none
-      li .li-links
-        .texts, .number, .arrow-right, .arrow-down
-          display: none
-        .icon-dashboard, .icon-bundles
-          margin: 12px 10px 0 22px
-    nav.absolute-nav .logout-btn
-      width: 74px
-      overflow: hidden
-      span
-        display: none
   .main-content
     min-width: 816px
   .blue-texts
