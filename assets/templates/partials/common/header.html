@@ -20,7 +20,7 @@
         </nav>
         <!-- end nav -->
         <div class="icons-box">
-            <a href="javascript:;" class="fa fa-bell-o top-bar-icon" drop-down><i ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
+            <a class="fa fa-bell-o top-bar-icon" drop-down><i ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
             <div class="drop-down-box hide keep-drop-down-open">
                 <span class="icon-arrow"></span>
                 <ul>
@@ -41,15 +41,16 @@
         </div>
         <!-- end .icons-box -->
         <div class="user-info">
-            <a href="javascript:;" class="user-info-dwwn" drop-down>
+            <a class="user-info-dwwn" drop-down>
                 <span class="texts">Welcome<span class="name">{{currentUser.fullName()}}</span></span>
                 <span class="avatar"><img gravatar-src="currentUser.email" gravatar-size="26" alt="Avatar"></span>
                 <span class="icon-arrow"></span>
             </a>
             <div class="drop-down-box hide">
                 <span class="icon-arrow"></span>
-                <ul ng-repeat="item in headerData.options">
-                    <li><a ng-href="{{item.url}}">{{item.text}}</a></li>
+                <ul>
+                    <li><a>Edit Profile</a></li>
+                    <li><a href="/logout">Logout</a></li>
                 </ul>
             </div>
             <!-- end .drop-down-box -->
