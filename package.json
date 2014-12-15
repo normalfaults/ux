@@ -104,8 +104,7 @@
     "angular-smart-table": {
       "depends": [
         "angular"
-      ],
-      "exports": "angular.module('angular-smart-table').name"
+      ]
     },
     "angucomplete": {
       "depends": [
