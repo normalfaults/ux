@@ -2,6 +2,7 @@
 
 /**@ngInject*/
 function RootController(AuthService, $location, ROUTES) {
+
   if (AuthService.isAuthenticated()) {
     $location.path(ROUTES.default);
   } else {

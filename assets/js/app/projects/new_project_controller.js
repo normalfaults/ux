@@ -10,7 +10,7 @@ function NewProjectController($scope, $state, DataService, projectQuestions) {
 
   $scope.createProject = function() {
     self.DataService.createProject({project: self.$scope.project}).$promise.then(function(){
-      self.$state.go('base.solutionBase.dashboard', {}, {reload: true});
+      self.$state.go('base.dashboard', {}, {reload: true});
     });
   };
 

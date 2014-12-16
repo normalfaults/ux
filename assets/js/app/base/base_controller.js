@@ -30,10 +30,6 @@ BaseController.resolve = {
   /**@ngInject*/
   applications: function(Application) {
     return Application.query().$promise;
-  },
-  /**@ngInject*/
-  solutions: function(Solution) {
-    return Solution.query().$promise;
   }
 };
 

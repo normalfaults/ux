@@ -18,6 +18,7 @@ module.exports = function($stateProvider, USER_ROLES) {
         templateUrl: "/partials/common/header.html",
         controller: "HeaderController as headerCtrl",
         resolve: HeaderData
+
       },
       main : {
         templateUrl: "/partials/base.html",
@@ -28,10 +29,16 @@ module.exports = function($stateProvider, USER_ROLES) {
     data: {
       authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
     }
-
   }).state('publicbase', {
     abstract: true,
-    templateUrl: "/partials/base.html",
+    views: {
+      header : {
+        templateUrl: "/partials/common/header.html"
+      },
+      main: {
+        templateUrl: "/partials/base.html"
+      }
+    },
     data: {
       authorizedRoles: [USER_ROLES.all]
     }
