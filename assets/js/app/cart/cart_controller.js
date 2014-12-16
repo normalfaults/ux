@@ -18,10 +18,7 @@ CartController.prototype = {
   },
 
   cartItems: function() {
-    return {
-      'cow': 'whee',
-      'chicken': 'moo'
-    }
+    return this.Cart.getItems();
   }
 
 
