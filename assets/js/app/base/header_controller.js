@@ -6,9 +6,8 @@
 /**@ngInject*/
 var HeaderController = function($rootScope, $scope, Cart) {
 
-
   $scope.cartModal = function() {
-    console.warn('cart modal');
+    
   };
 
   $scope.cartCount = function() {
