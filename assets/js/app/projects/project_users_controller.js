@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function ProjectUsersController($scope, $modalInstance, $q, $state, ProjectUser, ApiResource) {
+var ProjectUsersController = function($scope, $modalInstance, $q, $state, ProjectUser, ApiResource) {
 
   $scope.searchURL = ApiResource("staffSearch");
   $scope.search = "";

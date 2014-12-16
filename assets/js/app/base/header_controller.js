@@ -4,10 +4,15 @@
 //       controller for headerData and currentUser
 
 /**@ngInject*/
-var HeaderController = function($rootScope, $scope, Cart) {
+var HeaderController = function($rootScope, $scope, $modal, Cart) {
 
-  $scope.cartModal = function() {
-    
+
+  $scope.cartModal = function () {
+    var modalInstance = $modal.open({
+      templateUrl: 'cart/cart-modal.html',
+      controller: 'CartController as cartCtrl',
+      size: 'lg'
+    });
   };
 
   $scope.cartCount = function() {
