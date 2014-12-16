@@ -6,7 +6,6 @@
 /**@ngInject*/
 var HeaderController = function($rootScope, $scope, $modal, Cart) {
 
-
   $scope.cartModal = function () {
     var modalInstance = $modal.open({
       templateUrl: 'cart/cart-modal.html',

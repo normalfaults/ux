@@ -1,9 +1,10 @@
 'use strict';
 
 /**@ngInject*/
-var CartController = function($scope, $modalInstance) {
+var CartController = function($scope, $modalInstance, Cart) {
 
   this.$modalInstance = $modalInstance;
+  this.Cart = Cart;
 
 };
 
@@ -14,6 +15,13 @@ CartController.prototype = {
 
   close: function() {
     this.$modalInstance.close();
+  },
+
+  cartItems: function() {
+    return {
+      'cow': 'whee',
+      'chicken': 'moo'
+    }
   }
 
 
