@@ -36,35 +36,75 @@
 
         <div class="info-boxes">
             <div class="info-box col18">
-                <div class="info-box-icon"></div>
+                <div class="info-box-icon fa fa-check-square-o"></div>
                 <div class="info-box-data">
-                    <div class="info-box-number">
-                        Status: {{project.state}}
+                    <div class="info-box-title">
+                        Status
                     </div>
                     <div class="info-box-text">
-                        Pending
+                        {{project.state}}
                     </div>
                 </div>
             </div>
             <div class="info-box-split"></div>
             <div class="info-box col18">
-                <p>Budget</p>
-                <div class="price">{{project.budget | currency}}</div>
+                <div class="info-box-icon fa fa-money"></div>
+                <div class="info-box-data">
+                    <div class="info-box-title">
+                        Budget
+                    </div>
+                    <div class="info-box-text">
+                        {{project.budget ? "$" + project.budget : "N/A"}}
+                    </div>
+                    <div ng-init="percentBudget = 25" class="info-box-percent-outer">
+                        <div class="info-box-percent-inner" ng-style="{ width: percentBudget + '%' }"></div>
+                    </div>
+                </div>
             </div>
             <div class="info-box-split"></div>
             <div class="info-box col18">
-                <p>CPU</p>
-                <div>100%</div>
+                <div class="info-box-icon fa fa-desktop"></div>
+                <div class="info-box-data">
+                    <div class="info-box-title">
+                        CPU
+                    </div>
+                    <div class="info-box-text">
+                        {{project.cpu}} Cores
+                    </div>
+                    <div ng-init="percentCpu = 90" class="info-box-percent-outer">
+                        <div class="info-box-percent-inner" ng-style="{ width: percentCpu + '%' }"></div>
+                    </div>
+                </div>
             </div>
             <div class="info-box-split"></div>
             <div class="info-box col18">
-                <p>HDD</p>
-                <div>100 out of 100</div>
+                <div class="info-box-icon fa fa-database"></div>
+                <div class="info-box-data">
+                    <div class="info-box-title">
+                        HDD
+                    </div>
+                    <div class="info-box-text">
+                        {{project.hdd}}
+                    </div>
+                    <div ng-init="percentHdd = 90" class="info-box-percent-outer">
+                        <div class="info-box-percent-inner" ng-style="{ width: percentHdd + '%' }"></div>
+                    </div>
+                </div>
             </div>
             <div class="info-box-split"></div>
             <div class="info-box col18">
-                <p>RAM</p>
-                <div>1 out of 100</div>
+                <div class="info-box-icon fa fa-tachometer"></div>
+                <div class="info-box-data">
+                    <div class="info-box-title">
+                        RAM
+                    </div>
+                    <div class="info-box-text">
+                        {{project.ram}}
+                    </div>
+                    <div ng-init="percentRam = 90" class="info-box-percent-outer">
+                        <div class="info-box-percent-inner" ng-style="{ width: percentRam + '%' }"></div>
+                    </div>
+                </div>
             </div>
         </div>
 
