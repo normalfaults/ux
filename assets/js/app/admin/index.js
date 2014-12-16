@@ -7,7 +7,7 @@ var AdminModule = angular.module('broker.admin', [
 ])
   .controller('AdminController', require('./admin_controller'))
   .controller('ProductAdminController', require('./product_admin_controller'))
-  .controller('ProjectQuestionController', require('./project_questions_controller'))
+  .controller('ProjectQuestionsController', require('./project_questions_controller'))
   .factory('ProjectQuestion', require('./project_question'))
   .config(require('./routes'));
 
