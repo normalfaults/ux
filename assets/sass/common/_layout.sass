@@ -50,6 +50,8 @@
   padding: 20px 0
 
   .info-box
+    // @todo These should be colored by type/alert level
+    color: $dark-grey-color
     background-color: #fcfcfc
     border-radius: 5px
     display: table-cell
@@ -73,10 +75,10 @@
         font-size: 22px
       .info-box-percent-outer
         margin-top: 10px
-        border: 1px solid black
+        border: 1px solid $dark-grey-color
       .info-box-percent-inner
         height: 5px
-        background-color: #333
+        background-color: $dark-grey-color
   .info-box-split
     display: table-cell
     width: 2%
@@ -133,3 +135,4 @@
       h3
         font-family: "proximanova_semibold"
         font-size: 36px
+        color: $dark-grey-color
