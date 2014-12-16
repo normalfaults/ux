@@ -36,7 +36,7 @@
         </nav>
         <!-- end nav -->
         <div class="icons-box">
-            <a class="fa fa-bell-o top-bar-icon" drop-down><i ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
+            <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
             <div class="drop-down-box hide keep-drop-down-open">
                 <span class="icon-arrow"></span>
                 <ul>
@@ -53,7 +53,7 @@
         </div>
         <!-- end .drop-down-box -->
         <div class="icons-box">
-            <a ng-click="cartModal()" class="fa fa-shopping-cart top-bar-icon"><i ng-if="cartCount()">{{cartCount()}}</i></a>
+            <a ng-click="cartModal()" class="fa fa-shopping-cart top-bar-icon"><i class="info" ng-if="cartCount()">{{cartCount()}}</i></a>
         </div>
         <!-- end .icons-box -->
         <div class="user-info">
