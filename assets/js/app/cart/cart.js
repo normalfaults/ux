@@ -11,6 +11,10 @@ var Cart = function() {
     });
   };
 
+  this.count = function() {
+    return this.cart.length;
+  }
+
 };
 
 module.exports = Cart;
