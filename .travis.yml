@@ -4,7 +4,7 @@ before_install:
   - npm install
 install:
   - gulp production
-  - 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}" >> ~/build/booz-allen-hamilton/jellyfish-ux/public/appConfig.js'
+  - 'echo "window.appConfig = {apiBasePath: \"http://jellyfish-core-dev.dpi.bah.com\"}" > ~/build/booz-allen-hamilton/jellyfish-ux/public/appConfig.js'
 node_js:
   - '0.10'
 deploy:
