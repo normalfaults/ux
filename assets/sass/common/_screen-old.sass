@@ -85,37 +85,13 @@ body
 .dashboard-pages
   .blue-link
     color: #0a498a
-  .light-blue-btn, .dark-blue-btn
-    color: $button-white-color
-    text-align: center
-    border-radius: 4px
-    display: inline-block
-  .light-blue-btn:hover, .dark-blue-btn:hover
-    text-decoration: none
-  .light-blue-btn
-    background: #4d94eb
-    &:hover
-      background: #0a498a
-  .dark-blue-btn
-    background: #3d4e5f
-    &:hover
-      background: #0a498a
-  .icon-arrow, .icon-bundles, .icon-detailed, .icon-list-btn, .icon-grid-btn, .icon-del, .icon-back, .icon-del-btn, .icon-up-btn, .icon-down-btn, .icon-help, .icon-round-ok i, .icon-add i, .icon-map-help i, .links-right-arrow i
+  .icon-arrow, .icon-list-btn, .icon-grid-btn, .icon-back, .icon-del-btn, .icon-add i, .icon-map-help i, .links-right-arrow i
     background-image: url(../images/icon-sprites.png)
     background-repeat: no-repeat
-  .icon-projects-emoticon, .icon-projects-company, .icon-projects-projectBlue, .icon-projects-round-1, .icon-projects-round-2, .icon-projects-round-3, .icon-projects-round-4, .icon-projects-round-5, .icon-projects-round-6, .icon-projects-round-7, .icon-projects-round-8, .icon-projects-round-9, .icon-projects-round-10, .icon-projects-round-11
+  .icon-projects-emoticon
     background-image: url(../images/icon-projects-sprites.png)
     background-repeat: no-repeat
-  .icon-projects-emoticon
     background-position: -65px 0
-  .icon-projects-company
-    background-position: -65px -83px
-  .icon-projects-projectBlue
-    background-position: -65px -166px
-  .icon-projects-emoticon, .icon-projects-company, .icon-projects-projectBlue
-    width: 73px
-    height: 73px
-    display: inline-block
   .icon-boxes a
     background-image: url(../images/icon-boxes-sprites.png)
     background-repeat: no-repeat
@@ -202,7 +178,6 @@ body
       line-height: 26px
       padding-top: 25px
       position: relative
-      /* header .arrow-box .drop-down-box
       .texts, .avatar, .icon-arrow
         float: left
       .texts
@@ -230,7 +205,6 @@ body
           background-position: -60px -64px
         padding-right: 8px
         display: block
-        /* header .arrow-box .drop-down-box
       .drop-down-box
         background: #fff
         width: 200px
@@ -288,6 +262,18 @@ body
         background: no-repeat
       .active .side-arrow
         background: no-repeat
+      width: 74px
+      overflow: hidden
+      .current ul
+        display: none
+      li .li-links
+        .texts, .number, .arrow-right, .arrow-down
+          display: none
+    nav.absolute-nav .logout-btn
+      width: 74px
+      overflow: hidden
+      span
+        display: none
     nav
       .active .side-arrow
         background: #5B5F68
@@ -317,8 +303,6 @@ body
       .dashboard-menu .li-links
         height: 52px
         line-height: 52px
-        .icon-dashboard
-          margin: 13px 10px 0 11px
       .li-links:hover
         color: #fff
         background: #494d56
@@ -342,15 +326,9 @@ body
           padding-top: 9px
           padding-bottom: 1px
       .active .li-links
-        .icon-dashboard, &:hover .icon-dashboard
-          background-position: -120px -143px
-        .icon-bundles, &:hover .icon-bundles
-          background-position: -120px -240px
         .texts
           font-size: 14px
       .current .li-links
-        .icon-dashboard, .icon-bundles
-          margin-top: 7px
         .number
           margin: 8px 5px 0 0
       .li-links
@@ -358,15 +336,6 @@ body
           float: left
         .texts
           white-space: nowrap
-        .icon-bundles
-          width: 24px
-          height: 24px
-          display: inline-block
-          margin: 12px 10px 0 11px
-        .icon-bundles
-          background-position: -120px -215px
-        &:hover .icon-bundles
-          background-position: -120px -239px
         .number, .arrow-right, .arrow-down
           float: right
           display: inline-block
@@ -416,7 +385,6 @@ body
           display: block
         li
           border-top: none
-          margin-top: 0
           position: relative
           height: 26px
           line-height: 26px
@@ -459,22 +427,6 @@ body
     &:hover
       text-decoration: none
       background: #2872bf
-  .left-sidebar
-    .absolute-nav
-      width: 74px
-      overflow: hidden
-      .current ul
-        display: none
-      li .li-links
-        .texts, .number, .arrow-right, .arrow-down
-          display: none
-        .icon-dashboard, .icon-bundles
-          margin: 12px 10px 0 22px
-    nav.absolute-nav .logout-btn
-      width: 74px
-      overflow: hidden
-      span
-        display: none
   .main-content
     min-width: 816px
   .blue-texts
@@ -698,7 +650,6 @@ body
   .container-grid
     overflow: hidden
     padding-top: 6px
-    /* .container-grid .boxes
     .boxes
       font-family: "proximanova_semibold"
       float: left
@@ -707,11 +658,6 @@ body
       width: 150px
       height: 197px
       overflow: hidden
-      /* .container-grid .boxes .icon-boxes
-      /* .container-grid .boxes .titles
-      /* .container-grid .boxes .texts
-      /* .container-grid .boxes .btn-box
-      /* .container-grid .boxes:hover
       span
         text-align: center
         width: 145px
@@ -722,8 +668,6 @@ body
         height: 121px
         border-radius: 4px
         margin: 10px 0 12px 16px
-      .blue-top-border
-        background: url(../images/boxes-blue-top-border-bg.png) no-repeat 0 0
       .orange-top-border
         background: url(../images/boxes-orange-top-border-bg.png) no-repeat 0 0
       .green-top-border
@@ -781,7 +725,6 @@ body
           color: #353942
           line-height: 12px
           font-size: 12px
-          height: auto
           padding: 4px 0 0 0
           height: 41px
         .btn-box
@@ -828,8 +771,6 @@ body
           background-position: -154px -256px
   .banner-transverse
     padding-bottom: 34px
-    /* .banner-transverse .left-box
-    /* .banner-transverse .right-box
     .containers
       background: #c0e9ec url(../images/banner-transverse-left-bg.png) no-repeat 0 0
       margin-right: 24px
@@ -865,8 +806,6 @@ body
           line-height: 16px
           width: 280px
           padding-bottom: 8px
-        links-box
-          display: block
         .links-right-arrow
           font-family: "proximanova_semibold"
           font-size: 16px
@@ -900,7 +839,6 @@ body
       height: 50px
       margin: 0 24px
       background: url(../images/gray-border-bg.png) repeat-x 0 bottom
-      /* .dashboard-tab icons
       li
         float: left
         padding: 12px 6px 8px 0
@@ -982,15 +920,13 @@ body
               display: inline-block
         .data-box
           height: 220px
-          /* .dashboard-tab .tab-content .module .bottom-area .info
           .info
             text-align: center
             min-height: 153px
             border-bottom: 1px solid #f5f8fc
-      .icon-projects-emoticon, .icon-projects-company, .icon-projects-projectBlue
+      .icon-projects-emoticon
         margin: 20px 0 0 0
       .data-box
-        /* .dashboard-tab .tab-content .module .bottom-area .icons
         .info p
           font-family: "proximanova_regular"
           font-size: 14px
@@ -1073,8 +1009,6 @@ body
             background-position: -154px -256px
         .add-applications span
           margin-top: -10px
-  .column-blue-print, .column-web-services, .column-applications
-    min-height: 310px
   .container-list
     padding: 5px 20px 0 20px
     margin-bottom: -8px
@@ -1085,8 +1019,6 @@ body
       padding: 15px 0
       display: table
       width: 100%
-      /* .container-list .boxes .icon-boxes
-      /* .container-list .boxes .texts-box
       .boxes-box, .texts-box
         display: table-cell
         vertical-align: middle
@@ -1101,13 +1033,11 @@ body
         a
           display: inline-block
           background-size: 98px
-      .blue-top-border
-        background: url(../images/boxes-blue-top-border-bg.png) no-repeat 0 0
       .orange-top-border
         background: url(../images/boxes-orange-top-border-bg.png) no-repeat 0 0
       .green-top-border
         background: url(../images/boxes-green-top-border-bg.png) no-repeat 0 0
-      .blue-top-border, .orange-top-border, .green-top-border
+      .orange-top-border, .green-top-border
         background-size: 62px
       .texts-box
         line-height: 21px
@@ -1131,7 +1061,6 @@ body
     width: 220px
   .service-detail-container
     margin-top: -3px
-    /* .service-detail-container .right-bar .titles-box
     .right-bar
       .titles-box
         padding: 0 13px 0 10px
@@ -1146,12 +1075,8 @@ body
       .add-service-forms .select-def
         width: 100%
   .right-bar
-    /* .right-bar .build-custom-box
-    /* .service-detail-container .right-bar .banner-vertical
-    /* .right-bar .links-right-arrow
     .add-service-forms
       padding: 0 13px 62px 19px
-      /*  .add-service-forms .btn-box
       li
         padding-bottom: 10px
         strong
@@ -1267,12 +1192,10 @@ body
         font-size: 12px
   .service-detail-container .deail-contents
     padding: 0 40px 0 32px
-    /*  .clearfix
     .clearfix
       display: inline-block
       clear: none
   .deail-contents
-    /* .service-detail-container .deail-contents .deail-boxs
     .deail-info
       font-family: "proximanova_semibold"
       padding-top: 27px
@@ -1319,8 +1242,6 @@ body
             cursor: default
             &:hover
               cursor: default
-          .blue-top-border
-            background: url(../images/boxes-blue-top-border-bg.png) no-repeat 0 0
           .orange-top-border
             background: url(../images/boxes-orange-top-border-bg.png) no-repeat 0 0
           .green-top-border
@@ -1343,16 +1264,9 @@ body
         color: #0a498a
       dd
         color: #4c4d4e
-    .deail-info .dark-blue-btn
-      line-height: 30px
-      width: 125px
-      margin-top: 15px
-      font-size: 12px
     .deail-boxs
       font-family: "proximanova_semibold"
       margin-left: 160px
-      /* .deail-boxs .top-texts
-      /* .deail-boxs .table-texts
       .top-texts
         padding: 15px 0 0 0
         overflow: hidden
