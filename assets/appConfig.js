@@ -1,3 +1,3 @@
 window.appConfig = {
-  //apiBasePath: "http://localhost:3000"
+  apiBasePath: "http://localhost:3000"
 };
