@@ -6,12 +6,27 @@
 /**@ngInject*/
 var HeaderController = function($rootScope, $scope, $modal, Cart) {
 
+  var isModalOpen = false;
+
   $scope.cartModal = function () {
-    var modalInstance = $modal.open({
+
+    if (isModalOpen) {
+      return;
+    }
+
+    isModalOpen = true;
+
+    var modalInstance = $modal({
       templateUrl: 'cart/cart-modal.html',
       controller: 'CartController as cartCtrl',
       size: 'lg'
     });
+
+    var setModalStatusClosed = function() {
+      isModalOpen = false;
+    };
+
+    modalInstance.result.finally(setModalStatusClosed, setModalStatusClosed);
   };
 
   $scope.cartCount = function() {

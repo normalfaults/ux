@@ -56,8 +56,8 @@
                     <div class="info-box-text">
                         {{project.budget ? "$" + project.budget : "N/A"}}
                     </div>
-                    <div ng-init="percentBudget = 25" class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: percentBudget + '%' }"></div>
+                    <div class="info-box-percent-outer">
+                        <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().usedPercent + '%' }"></div>
                     </div>
                 </div>
             </div>
