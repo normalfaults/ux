@@ -1,7 +1,7 @@
 'use strict';
 
+/**@ngInject*/
 function AdminController($scope) {
-
 }
 
 AdminController.resolve = {
