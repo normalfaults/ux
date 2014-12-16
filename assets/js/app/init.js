@@ -37,14 +37,12 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
   // Authorization and Authentication when switching Pages.
   $rootScope.$on('$stateChangeStart', function (event, next) {
 
-    console.warn(event, next);
     // Block all routing until the current user is loaded for the first time.
     // After authorization check because public routes do not need currentUser to verify.
     if (!currentMember.$resolved) {
       event.preventDefault();
       return;
     }
-
     var authorizedRoles = next.data.authorizedRoles;
     if (!AuthService.isAuthorized(authorizedRoles)) {
       $location.path(ROUTES.dashboard);

@@ -34,6 +34,7 @@ var app = angular.module('broker', [
   require('./applications').name,
   require('./bundles').name,
   require('./orders').name,
-  require('./directives').name
+  require('./directives').name,
+  require('./dashboard').name
 ])
   .run(require('./init'));

@@ -9,7 +9,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       authorizedRoles: [USER_ROLES.all]
     },
     controller: "LoginController as loginCtrl"
-  }).state('logout', {
+  }).state('publicbase.logout', {
     url: "^/logout",
     controller: "LogoutController as logoutCtrl"
   })

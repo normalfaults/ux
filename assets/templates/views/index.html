@@ -15,7 +15,11 @@
 <div class="dashboard-pages" ng-cloak>
 
     <div ui-view="header"></div>
-    <div ui-view="main"></div>
+    <div class="wrapper">
+        <div ui-view="left-sidebar"></div>
+        <ui-view></ui-view>
+        <span class="clearfix"></span>
+    </div>
 
     <footer>
         <div class="footer-content">

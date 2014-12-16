@@ -14,15 +14,18 @@ module.exports = function($stateProvider, USER_ROLES) {
   }).state('base', {
     abstract: true,
     views: {
-      header : {
+      header: {
         templateUrl: "/partials/common/header.html",
         controller: "HeaderController as headerCtrl",
         resolve: HeaderData
 
       },
-      main : {
-        templateUrl: "/partials/base.html",
+      "left-sidebar" : {
+        templateUrl: "/partials/common/left-sidebar.html"
+      },
+      "" : {
         controller: "BaseController as baseCtrl",
+        template: "<div ui-view></div>",
         resolve: BaseData
       }
     },
@@ -35,8 +38,8 @@ module.exports = function($stateProvider, USER_ROLES) {
       header : {
         templateUrl: "/partials/common/header.html"
       },
-      main: {
-        templateUrl: "/partials/base.html"
+      "" : {
+        template: "<div ui-view></div>"
       }
     },
     data: {
