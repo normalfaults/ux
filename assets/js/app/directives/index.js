@@ -2,6 +2,8 @@
 
 var angular = require('angular');
 
+require('angucomplete');
+
 var DirectivesModule = angular.module('broker.directives', [])
   .directive('dropDown', require('./drop_down'))
   .directive('expandArrow', require('./expand_arrow'))

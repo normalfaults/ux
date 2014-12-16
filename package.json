@@ -106,6 +106,12 @@
         "angular"
       ]
     },
+    "angucomplete": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('angucomplete').name"
+    },
     "md5": {
       "depends": [
         "angular-gravatar"
@@ -123,6 +129,7 @@
     "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
     "angular-loading-bar": "./bower_components/angular-loading-bar/build/loading-bar.js",
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
+    "angucomplete": "./bower_components/angucomplete/angucomplete.js",
     "md5": "./bower_components/angular-gravatar/build/md5.js",
     "lodash": "./bower_components/lodash/dist/lodash.js",
     "apiRoutes": "./assets/apiRoutes.json"

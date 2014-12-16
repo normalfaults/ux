@@ -1,12 +1,24 @@
 'use strict';
 
 /**@ngInject*/
-function ProjectController($scope, project, solutions, alerts) {
+function ProjectController($scope, $modal, $state, project, solutions, alerts) {
   $scope.solution = solutions[0];
   $scope.solutions = solutions;
   $scope.project = project;
 
   $scope.alerts = alerts;
+
+  $scope.openProjectUsersModal = function () {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'projects/users-modal.html',
+      controller: 'ProjectUsersController'
+    });
+
+    modalInstance.result.then(function (selectedItems) {
+    }, function () {
+    });
+  };
 }
 
 ProjectController.resolve = {
