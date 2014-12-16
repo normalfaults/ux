@@ -54,7 +54,7 @@
                         Budget
                     </div>
                     <div class="info-box-text">
-                        $1,000,000
+                        {{project.budget ? "$" + project.budget : "N/A"}}
                     </div>
                     <div ng-init="percentBudget = 25" class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: percentBudget + '%' }"></div>
@@ -69,7 +69,7 @@
                         CPU
                     </div>
                     <div class="info-box-text">
-                        100%
+                        {{project.cpu}} Cores
                     </div>
                     <div ng-init="percentCpu = 90" class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: percentCpu + '%' }"></div>
@@ -84,7 +84,7 @@
                         HDD
                     </div>
                     <div class="info-box-text">
-                        1 TB
+                        {{project.hdd}}
                     </div>
                     <div ng-init="percentHdd = 90" class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: percentHdd + '%' }"></div>
@@ -99,7 +99,7 @@
                         RAM
                     </div>
                     <div class="info-box-text">
-                        8 GB
+                        {{project.ram}}
                     </div>
                     <div ng-init="percentRam = 90" class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: percentRam + '%' }"></div>
