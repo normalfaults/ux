@@ -11,9 +11,6 @@ module.exports = function($stateProvider, USER_ROLES) {
     controller: "LoginController as loginCtrl"
   }).state('logout', {
     url: "^/logout",
-    data: {
-      authorizedRoles: [USER_ROLES.all]
-    },
     controller: "LogoutController as logoutCtrl"
   })
 };

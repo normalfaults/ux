@@ -1,10 +1,7 @@
 'use strict';
 
-var _ = require('underscore');
 var BaseData = require('./base_controller').resolve;
 var HeaderData = require('./header_controller').resolve;
-
-var AllData = _.extend({}, BaseData, HeaderData);
 
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
@@ -16,12 +13,22 @@ module.exports = function($stateProvider, USER_ROLES) {
     controller: 'RootController'
   }).state('base', {
     abstract: true,
-    templateUrl: "/partials/base.html",
+    views: {
+      header : {
+        templateUrl: "/partials/common/header.html",
+        controller: "HeaderController as headerCtrl",
+        resolve: HeaderData
+      },
+      main : {
+        templateUrl: "/partials/base.html",
+        controller: "BaseController as baseCtrl",
+        resolve: BaseData
+      }
+    },
     data: {
       authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
-    },
-    resolve: AllData,
-    controller: "BaseController as baseCtrl"
+    }
+
   }).state('publicbase', {
     abstract: true,
     templateUrl: "/partials/base.html",

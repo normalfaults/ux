@@ -10,9 +10,6 @@ module.exports = function($stateProvider, USER_ROLES) {
     .state('base.newProject', {
       url: "^/project/new",
       templateUrl: "/partials/projects/new-project.html",
-      data: {
-        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
-      },
       resolve: NewProjectData,
       controller: "NewProjectController as newProjectCtrl"
     })

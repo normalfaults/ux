@@ -13,9 +13,9 @@
 </head>
 <body>
 <div class="dashboard-pages" ng-cloak>
-    <ng-include ng-controller="HeaderController" src="'/partials/common/header.html'"></ng-include>
 
-    <ui-view></ui-view>
+    <div ui-view="header"></div>
+    <div ui-view="main"></div>
 
     <footer>
         <div class="footer-content">

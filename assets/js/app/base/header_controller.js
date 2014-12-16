@@ -1,38 +1,63 @@
 'use strict';
 
-// @todo Ideally these should be prototyped, but with how it's included it gets added right to the scope, and relies on parent
-//       controller for headerData and currentUser
+var _ = require('lodash');
 
 /**@ngInject*/
-var HeaderController = function($rootScope, $scope, $modal, Cart) {
+var HeaderController = function($rootScope, $scope, $sce, $modal, Cart, headerData, currentUser) {
 
-  var isModalOpen = false;
+  this.$modal = $modal;
+  this.Cart = Cart;
 
-  $scope.cartModal = function () {
+  $scope.headerData = headerData;
+  $scope.currentUser = currentUser;
 
-    if (isModalOpen) {
-      return;
-    }
+  angular.forEach(headerData.notifications, function(item) {
+    item.trustedHtml = $sce.trustAsHtml(item.text);
+   });
 
-    isModalOpen = true;
+  this.isModalOpen = false;
+};
 
-    var modalInstance = $modal({
-      templateUrl: 'cart/cart-modal.html',
-      controller: 'CartController as cartCtrl',
-      size: 'lg'
-    });
-
-    var setModalStatusClosed = function() {
-      isModalOpen = false;
-    };
-
-    modalInstance.result.finally(setModalStatusClosed, setModalStatusClosed);
-  };
-
-  $scope.cartCount = function() {
-    return Cart.count();
+HeaderController.resolve = {
+  /**@ngInject*/
+  headerData: function(HeaderData) {
+    return HeaderData.get().$promise;
+  },
+  /**@ngInject*/
+  currentUser: function(User) {
+    return User.getCurrentMember().$promise;
   }
+};
 
+HeaderController.prototype = {
+
+  cartModal: function () {
+
+      if (this.isModalOpen) {
+        return;
+      }
+
+      this.isModalOpen = true;
+
+      var modalInstance = $modal({
+        templateUrl: 'cart/cart-modal.html',
+        controller: 'CartController as cartCtrl',
+        size: 'lg'
+      });
+
+      var setModalStatusClosed = _.bind(function() {
+        this.isModalOpen = false;
+      }, this);
+
+      modalInstance.result.finally(setModalStatusClosed, setModalStatusClosed);
+    },
+
+  cartCount: function() {
+    return this.Cart.count();
+  }
 };
 
 module.exports = HeaderController;
+
+
+

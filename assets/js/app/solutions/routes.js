@@ -16,10 +16,6 @@ module.exports = function($stateProvider, USER_ROLES) {
     // solution dashboard
     .state('base.solutionBase.dashboard', {
       url: "^/dashboard",
-      data: {
-        wrapperCssClass: "dashboard-bg",
-        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
-      },
       templateUrl: "/partials/dashboard.html",
       resolve: DashboardData,
       controller: "DashboardController as dashboardCtrl"
