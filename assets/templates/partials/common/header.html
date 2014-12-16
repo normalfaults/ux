@@ -1,5 +1,21 @@
 
 <header class="header">
+    <script type="text/ng-template" id="cart/cart-modal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Shopping Cart</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in cartCtrl.cartItems()">
+                    <a>{{item.productName}}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="cartCtrl.ok()">Checkout</button>
+            <button class="btn btn-warning" ng-click="cartCtrl.close()">Close</button>
+        </div>
+    </script>
 
     <div class="logo fl">
         <a href="/app/solution"><img src="/images/logo.png" alt="Project Jellyfish"></a>
@@ -9,7 +25,7 @@
         <nav>
             <ul>
                 <li ng-class="active">
-                    <a ui-sref="base.solutionBase.dashboard">DASHBOARD</a>
+                    <a ui-sref="base.dashboard">DASHBOARD</a>
                 </li>
                 <li><a>BROWSE</a></li>
                 <li><a>BUILD</a></li>
@@ -20,7 +36,7 @@
         </nav>
         <!-- end nav -->
         <div class="icons-box">
-            <a class="fa fa-bell-o top-bar-icon" drop-down><i ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
+            <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
             <div class="drop-down-box hide keep-drop-down-open">
                 <span class="icon-arrow"></span>
                 <ul>
@@ -30,14 +46,14 @@
                     </li>
                 </ul>
                 <div class="view-all">
-                    <a href="javascript:;">View all notifications</a>
+                    <a>View all notifications</a>
                 </div>
             </div>
             <!-- end nav -->
         </div>
         <!-- end .drop-down-box -->
         <div class="icons-box">
-            <a href="javascript:" class="fa fa-shopping-cart top-bar-icon"><i ng-if="headerData.cartCount">{{headerData.cartCount}}</i></a>
+            <a ng-click="headerCtrl.cartModal()" class="fa fa-shopping-cart top-bar-icon"><i class="info" ng-if="headerCtrl.cartCount()">{{headerCtrl.cartCount()}}</i></a>
         </div>
         <!-- end .icons-box -->
         <div class="user-info">

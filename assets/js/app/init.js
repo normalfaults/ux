@@ -36,13 +36,13 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
   // Authorization and Authentication when switching Pages.
   $rootScope.$on('$stateChangeStart', function (event, next) {
+
     // Block all routing until the current user is loaded for the first time.
     // After authorization check because public routes do not need currentUser to verify.
     if (!currentMember.$resolved) {
       event.preventDefault();
       return;
     }
-
     var authorizedRoles = next.data.authorizedRoles;
     if (!AuthService.isAuthorized(authorizedRoles)) {
       $location.path(ROUTES.dashboard);
@@ -57,8 +57,8 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
       // This is the dashboard route.  Ugly.
       // @todo Add message or notice on redirect to give access denied error.
       //       Also a bit strange when a user already on dashboard, might need a scrollTop.
-      if ('base.solutionBase.dashboard' !== fromData.name) {
-        $state.transitionTo('base.solutionBase.dashboard');
+      if ('base.dashboard' !== fromData.name) {
+        $state.transitionTo('base.dashboard');
       } else {
         $log.error('Redirect to /dashboard loop halted.')
         // Keep the app from being stuck in a loop requesting broken dashboard data.
@@ -69,7 +69,7 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
       //$log.error(error);
       $log.error('Unhandled State Change Error occurred: ' + (error.statusText || error.message));
       //event.preventDefault();
-      $state.transitionTo('base.solutionBase.dashboard');
+      $state.transitionTo('base.dashboard');
     }
   });
 

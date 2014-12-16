@@ -13,9 +13,13 @@
 </head>
 <body>
 <div class="dashboard-pages" ng-cloak>
-    <ng-include src="'/partials/common/header.html'"></ng-include>
 
-    <ui-view></ui-view>
+    <div ui-view="header"></div>
+    <div class="wrapper">
+        <div ui-view="left-sidebar"></div>
+        <div ui-view></div>
+        <span class="clearfix"></span>
+    </div>
 
     <footer>
         <div class="footer-content">
@@ -26,17 +30,17 @@
             <!-- end .left -->
             <div class="right fr">
                 <nav class="links">
-                    <a href="javascript:;">ABOUT US</a>
-                    <a href="javascript:;">PRODUCT &amp; SOLUTION</a>
-                    <a href="javascript:;">SUPPORT</a>
-                    <a href="javascript:;">CONTACT</a>
+                    <a>ABOUT US</a>
+                    <a>PRODUCT &amp; SOLUTION</a>
+                    <a>SUPPORT</a>
+                    <a>CONTACT</a>
                 </nav>
                 <!-- end .links -->
                 <div class="shape">
-                    <a href="javascript:;" class="fa fa-facebook footer-icon"></a>
-                    <a href="javascript:;" class="fa fa-twitter footer-icon"></a>
-                    <a href="javascript:;" class="fa fa-linkedin footer-icon"></a>
-                    <a href="javascript:;" class="fa fa-google-plus footer-icon"></a>
+                    <a class="fa fa-facebook footer-icon"></a>
+                    <a class="fa fa-twitter footer-icon"></a>
+                    <a class="fa fa-linkedin footer-icon"></a>
+                    <a class="fa fa-google-plus footer-icon"></a>
                 </div>
                 <!-- end .shape -->
             </div>

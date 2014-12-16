@@ -1,10 +1,5 @@
 <div class="service-detail-page main-content" fix-sidebar set-width>
 
-
-<ng-include src="'/partials/common/search-marketplace.html'"></ng-include>
-
-<!-- end .search-top -->
-
 <div class="service-detail-container">
 <div class="right-bar">
 
@@ -45,7 +40,6 @@
 <div class="contents">
     <div class="titles-box">
         <h2>
-            <a ui-sref="base.marketplace" class="icon-back"></a>
             <strong>SERVICE DETAIL</strong>
         </h2>
         <div class="titles-border-bar">
@@ -72,7 +66,7 @@
                     <dt>TYPE</dt>
                     <dd>{{service.type | uppercase}}</dd>
                 </dl>
-                <a href="javascript:;" class="blue-button">VIEW DOCS</a>
+                <a class="btn btn-primary">VIEW DOCS</a>
             </div>
         </div>
         <!-- end .deail-info -->
@@ -84,7 +78,7 @@
                     {{service.fullDescription}}
                 </p>
                 <div class="btn-box">
-                    <a href="javascript:" class="blue-button">ADD TO CART</a>
+                    <a href="javascript:" class="btn btn-primary">ADD TO CART</a>
                 </div>
             </div>
             <!-- end .top-texts -->

@@ -11,7 +11,7 @@ function LoginController($scope, $location, AuthService, ROUTES) {
   if (AuthService.isAuthenticated()) {
     $location.path(ROUTES.default);
   }
-};
+}
 
 LoginController.prototype.login = function() {
   var self = this;

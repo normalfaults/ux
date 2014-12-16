@@ -9,9 +9,6 @@ module.exports = function($stateProvider, USER_ROLES) {
     .state('base.marketplace', {
       url: "^/marketplace",
       templateUrl: "/partials/marketplace.html",
-      data: {
-        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
-      },
       resolve: MarketplaceData,
       controller: "MarketplaceController as marketplaceCtrl"
     });

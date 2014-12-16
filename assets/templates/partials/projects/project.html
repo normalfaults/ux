@@ -11,7 +11,7 @@
                         <i class="fa fa-asterisk"></i>
                     </div>
                     <h3>Project is Pending</h3>
-                    <div><a class="blue-button col10">Approve</a></div>
+                    <div><a class="btn btn-primary">Approve</a></div>
                 </div>
             </div>
         </div>
@@ -56,8 +56,8 @@
                     <div class="info-box-text">
                         {{project.budget ? "$" + project.budget : "N/A"}}
                     </div>
-                    <div ng-init="percentBudget = 25" class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: percentBudget + '%' }"></div>
+                    <div class="info-box-percent-outer">
+                        <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().usedPercent + '%' }"></div>
                     </div>
                 </div>
             </div>
@@ -177,11 +177,11 @@
 
 
         <!-- Users -->
-        
+
         <script type="text/ng-template" id="projects/users-modal.html">
             <div class="new-user-modal">
                 <div class="modal-header">
-                    <h3 class="modal-title">New Project Users</h3>
+                    <h3 class="modal-title">Add Users</h3>
                 </div>
                 <div class="modal-body">
                     <p class="section-header">
@@ -201,10 +201,7 @@
                                   imagefield="gravatar"
                                   imageuri="http://www.gravatar.com/avatar/"/>
 
-                    <a href="#">Show me all users.</a>
-
-                    </br>
-                    </br>
+                    <br>
 
                     <p class="section-header">
                         Users to add: ({{userAdditonCount}})
@@ -224,13 +221,13 @@
                                 <p class="list-group-item-text">{{userAddition.description}}</p>
                             </div>
                             <div class="right-most">
-                                <i class="fa fa-minus"></i>
+                                <i class="fa fa-remove"></i>
                             </div>
                         </a>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button ng-class="updateing ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updateing ? 'Adding ...' : 'Add'}}</button>
+                    <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updateing ? 'Adding ...' : 'Add'}}</button>
                     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                 </div>
             </div>
@@ -273,7 +270,7 @@
                             <span class="texts">{{item.allowed.join(", ")}}</span>
                         </div>
                         <div class="texts-box col20">
-                            <a class="blue-button">EDIT</a>
+                            <a class="btn btn-primary">EDIT</a>
                         </div>
                     </div>
                     <div class="btn-box fr">
@@ -336,7 +333,7 @@
             </div>
             <!-- end .table-box -->
             <div class="bottom-btn-box">
-                <a ui-sref="base.newProject()" class="blue-button">EDIT</a>
+                <a ui-sref="base.newProject()" class="btn btn-primary">EDIT</a>
             </div>
         </div>
 

@@ -50,6 +50,8 @@
   padding: 20px 0
 
   .info-box
+    // @todo These should be colored by type/alert level
+    color: $dark-grey-color
     background-color: #fcfcfc
     border-radius: 5px
     display: table-cell
@@ -73,10 +75,10 @@
         font-size: 22px
       .info-box-percent-outer
         margin-top: 10px
-        border: 1px solid black
+        border: 1px solid $dark-grey-color
       .info-box-percent-inner
         height: 5px
-        background-color: #333
+        background-color: $dark-grey-color
   .info-box-split
     display: table-cell
     width: 2%
@@ -116,24 +118,6 @@
   border-bottom: 1px solid #cbcccd
   background: #F2F2F3
 
-.blue-button
-  color: $button-white-color
-  text-align: center
-  border-radius: 4px
-  display: inline-block
-  background: #0a498a
-  font-family: "proximanova_semibold"
-  font-size: 12px
-  line-height: 30px
-  border: 0 none
-  margin-top: 13px
-  margin-bottom: 40px
-  padding-left: 25px
-  padding-right: 25px
-  &:hover
-    text-decoration: none
-    background: #2e96db
-
 .page
   margin-left: 20px
   margin-right: 20px
@@ -151,3 +135,4 @@
       h3
         font-family: "proximanova_semibold"
         font-size: 36px
+        color: $dark-grey-color

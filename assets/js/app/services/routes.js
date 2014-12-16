@@ -9,9 +9,6 @@ module.exports = function($stateProvider, USER_ROLES) {
     .state('base.service', {
       url: "^/service/:serviceId",
       templateUrl: "/partials/service.html",
-      data: {
-        authorizedRoles: [USER_ROLES.user, USER_ROLES.admin]
-      },
       resolve: ServiceData,
       controller: "ServiceController as serviceCtrl"
     });
