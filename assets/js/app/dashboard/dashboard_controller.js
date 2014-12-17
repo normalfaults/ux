@@ -1,11 +1,12 @@
 'use strict';
 
 /**@ngInject*/
-function DashboardController($scope, alerts) {
+function DashboardController($scope, alerts, currentUser) {
   this.$scope = $scope;
 
   $scope.tab = "projects";
   $scope.alerts = alerts;
+  $scope.currentUser = currentUser;
 }
 
 DashboardController.prototype.showTab = function(tab) {

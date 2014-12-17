@@ -9,7 +9,6 @@ var ejs = require('ejs');
 var http = require('http');
 var _ = require('underscore');
 var winston = require('winston');
-//var routes = require("./api/routes");
 var compression = require('compression');
 var app = express();
 
@@ -30,6 +29,9 @@ app.engine('html', ejs.renderFile);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(app.router);
 
+app.all("/api/*", function (req, res) {
+  res.send("Not found", 404);
+});
 
 // Get all the public directories.
 var fs = require('fs');
@@ -48,6 +50,7 @@ app.get("*", function (req, res) {
   _.any(dirs, function(dir) {
     if (url.match('^/' + dir)) {
       res.status(404).send('Not found');
+      return;
     }
   });
 
