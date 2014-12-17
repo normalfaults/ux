@@ -9,7 +9,7 @@ var ejs = require('ejs');
 var http = require('http');
 var _ = require('underscore');
 var winston = require('winston');
-var routes = require("./api/routes");
+//var routes = require("./api/routes");
 var compression = require('compression');
 var app = express();
 
