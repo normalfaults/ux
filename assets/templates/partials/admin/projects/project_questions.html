@@ -1,0 +1,59 @@
+<div fix-sidebar set-width>
+    <div class="page">
+        <div class="page-title">
+            <div class="page-title-text">
+                <h3>Project Questions</h3>
+            </div>
+        </div>
+
+        <div class="table-box">
+            <div class="title-box">
+                <h2>
+                    <strong>EXISTING QUESTIONS</strong>
+                </h2>
+
+                <div class="titles-border-bar">
+                    <span class="blues width137"></span>
+                    <span class="whites width3"></span>
+                </div>
+            </div>
+            <!-- end .titles-box -->
+
+            <div>
+                <a ui-sref="base.admin.projects.new_project_questions">Create a new question.</a>
+            </div>
+
+            <br/>
+
+            <div class="table-container table-box">
+                <table st-table="rowCollection" class="table table-responsive table-data">
+                    <colgroup>
+                        <col class="col40">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>Question</th>
+                            <th>Type</th>
+                            <th>Help Text</th>
+                            <th>Load Order</th>
+                            <th>Options</th>
+                            <th>Required</th>
+                            <th>Actions</th>
+                        </tr>
+                        <tr ng-repeat="projectQuestion in projectQuestions">
+                            <td>{{projectQuestion.question}}</td>
+                            <td>{{projectQuestion.field_type}}</td>
+                            <td>{{projectQuestion.help_text}}</td>
+                            <td>{{projectQuestion.load_order}}</td>
+                            <td>{{projectQuestion.options}}</td>
+                            <th>{{projectQuestion.required}}</th>
+                            <td><a class="fa fa-trash-o" ng-click="deleteProjectQuestion(projectQuestion)"></a> <a class="fa fa-edit"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- end .table-box -->
+        </div>
+    </div>
+</div>

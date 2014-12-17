@@ -2,7 +2,7 @@
 
 /**@ngInject*/
 var ProjectQuestion = function($resource, ApiResource) {
-    var projectQuestion = $resource(ApiResource('projectQuestions'));
+    var projectQuestion = $resource(ApiResource('projectQuestions'), { id: '@id' });
     return projectQuestion;
 };
 
