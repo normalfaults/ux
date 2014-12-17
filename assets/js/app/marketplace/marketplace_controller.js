@@ -1,22 +1,27 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
-function MarketplaceController($scope, $filter, services, viewValues) {
-  $scope.applicationServices = $filter('filter')(services, {isApplication: true});
-  $scope.webServices = $filter('filter')(services, {isWebService: true});
-  $scope.blueprintServices = $filter('filter')(services, {isBlueprint: true});
-  $scope.services = services;
-  $scope.viewValues = viewValues;
+function MarketplaceController($scope, products, categories) {
+  this.products = products;
+  this.categories = categories;
+
+  _.each(this.categories, _.bind(function(category) {
+    category.products = _.filter(this.products, function(product) {
+      return product.product_category_id == category.id;
+    });
+  }, this));
 }
 
 MarketplaceController.resolve = {
   /**@ngInject*/
-  viewValues: function(DataService) {
-    return DataService.getMarketplaceValues().$promise;
+  categories: function(ProductCategory) {
+    return ProductCategory.query().$promise;
   },
   /**@ngInject*/
-  services: function(Service) {
-    return Service.query().$promise;
+  products: function(Product) {
+    return Product.query({"includes[]": ["cloud"]}).$promise;
   }
 };
 
