@@ -22,10 +22,6 @@ HeaderController.resolve = {
   /**@ngInject*/
   headerData: function(HeaderData) {
     return HeaderData.get().$promise;
-  },
-  /**@ngInject*/
-  currentUser: function(User) {
-    return User.getCurrentMember().$promise;
   }
 };
 

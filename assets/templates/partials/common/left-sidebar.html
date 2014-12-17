@@ -2,14 +2,14 @@
     <nav class="side-nav" fix-sidebar toggle-sidebar>
         <ul>
             <li class="dashboard-menu" ng-class="{active: $state.includes('base.dashboard')}">
-                <a href="javascript:;" class="side-arrow"><i></i></a>
+                <a class="side-arrow"><i></i></a>
                 <a ui-sref="base.dashboard" class="li-links">
                     <span class="fa fa-bars left-tray-icon left-tray-title-icon"></span>
                     <span class="texts">DASHBOARD</span>
                 </a>
             </li>
             <li class="li-my-projects" expand-arrow>
-                <a href="javascript:;" class="li-links">
+                <a class="li-links">
                     <span class="fa fa-file-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">MY PROJECTS</span>
                     <span class="arrows arrow-right"></span>
@@ -35,7 +35,7 @@
                 </a>
             </li>
             <li ng-show="currentUser.isAdmin()" ng-class="{active: $state.includes('base.admin')}" expand-arrow>
-                <a href="javascript:;" class="li-links">
+                <a class="li-links">
                     <span class="fa fa-cubes left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">ADMIN</span>
                     <span class="arrows arrow-right"></span>
