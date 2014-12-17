@@ -8,7 +8,8 @@ function ProductsDirective() {
     scope: {
       category: '=',
       products: '=',
-      allowAdd: '='
+      allowAdd: '=',
+      allowEdit: '='
     },
     link: function(scope, $element) {
       scope.showGrid = function() {

@@ -5,7 +5,8 @@ function ProductBox() {
   return {
     restrict: 'E',
     scope: {
-      product: "="
+      product: "=",
+      allowEdit: "="
     },
     templateUrl: '/partials/products/product_box.html'
   };
