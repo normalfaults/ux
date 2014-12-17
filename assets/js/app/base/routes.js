@@ -21,12 +21,19 @@ module.exports = function($stateProvider, USER_ROLES) {
 
       },
       "left-sidebar" : {
-        templateUrl: "/partials/common/left-sidebar.html"
+        templateUrl: "/partials/common/left-sidebar.html",
+        controller: "LeftSidebarController as leftSidebarCtrl"
       },
       "" : {
         controller: "BaseController as baseCtrl",
         template: "<div ui-view></div>",
         resolve: BaseData
+      }
+    },
+    resolve: {
+      /**@ngInject*/
+      currentUser: function(User) {
+        return User.getCurrentMember().$promise;
       }
     },
     data: {
