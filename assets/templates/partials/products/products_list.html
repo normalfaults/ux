@@ -1,39 +1,39 @@
-<div class="grid-view">
-	<div class="titles-box">
-		<div class="col-sm-6">
-			<h2>{{category.name}}</h2>
+<div ng-if="allowAdd || products.length > 0" class="grid-view">
+  <div class="titles-box">
+    <div class="col-sm-6">
+      <h2>{{category.name}}</h2>
 
-			<!-- TODO: Add descriptions to product_categories -->
-			<p>Product category description goes here</p>
-		</div>
-		<div class="switch-buttons col-sm-6 text-right">
-			<a ng-click="showGrid()" class="btn btn-link grid-switch active" href="javascript:;">
-				<i class="fa fa-fw fa-lg fa-th"></i>
-			</a>
-			<a ng-click="showList()" class="btn btn-link list-switch" href="javascript:;">
-				<i class="fa fa-fw fa-lg fa-bars"></i>
-			</a>
-		</div>
-		<div class="clearfix"></div>
-		<div class="titles-border-bar">
-			<span class="blues width137"></span>
-			<span class="whites width3"></span>
-		</div>
-	</div>
-	<div class="products-listing">
-		<product-box class="product-box" ng-repeat="product in products" product="product"></product-box>
+      <!-- TODO: Add descriptions to product_categories -->
+      <p>Product category description goes here</p>
+    </div>
+    <div class="switch-buttons col-sm-6 text-right">
+      <a ng-click="showGrid()" class="btn btn-link grid-switch active">
+        <i class="fa fa-fw fa-lg fa-th"></i>
+      </a>
+      <a ng-click="showList()" class="btn btn-link list-switch">
+        <i class="fa fa-fw fa-lg fa-bars"></i>
+      </a>
+    </div>
+    <div class="clearfix"></div>
+    <div class="titles-border-bar">
+      <span class="blues width137"></span>
+      <span class="whites width3"></span>
+    </div>
+  </div>
+  <div class="products-listing">
+    <product-box class="product-box" ng-repeat="product in products" product="product" allow-edit="allowEdit"></product-box>
 
-		<div class="add-product-box">
-			<div class="product-box-shadow">
-				<a ui-sref="base.admin.products.create">
-					<div class="fa-stack">
-						<i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
-						<i class="fa fa-fw fa-stack-1x fa-plus"></i>
-					</div>
-					<div class="title">Add new product</div>
-				</a>
-			</div>
-		</div>
+    <div ng-if="allowAdd" class="add-product-box">
+      <div class="product-box-shadow">
+        <a ui-sref="base.admin.products.create">
+          <div class="fa-stack">
+            <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
+            <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+          </div>
+          <div class="title">Add new product</div>
+        </a>
+      </div>
+    </div>
 
-	</div>
+  </div>
 </div>

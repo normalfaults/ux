@@ -1,17 +1,17 @@
 <div class="product-img product-box-cell">
-	<div class="icon-boxes orange-top-border product-box-shadow">
-		<img ng-src="/images/assets/{{product.img}}"/>
-	</div>
+  <div class="icon-boxes orange-top-border product-box-shadow">
+    <img ng-src="/images/assets/{{product.img}}"/>
+  </div>
 </div>
 <div class="product-title product-box-cell">
-	<div class="title">{{product.name}}</div>
+  <div class="title">{{product.name}}</div>
 </div>
 <div class="product-info product-box-cell">
-	<div class="texts">{{product.cloud.name}}</div>
-	<div class="description">{{product.description}}</div>
+  <div class="texts">{{product.cloud.name}}</div>
+  <div class="description">{{product.description}}</div>
 </div>
-<div class="product-actions product-box-cell">
-	<div class="btn-box">
-		<a ui-sref="base.admin.products.edit({id: product.id})">Edit</a>
-	</div>
+<div ng-if="allowEdit" class="product-actions product-box-cell">
+  <div class="btn-box">
+    <a ui-sref="base.admin.products.edit({id: product.id})">Edit</a>
+  </div>
 </div>

@@ -20,6 +20,7 @@ ListProductsController.resolve = {
   /**@ngInject*/
   products: function(Product) {
     return Product.query({"includes[]": ["cloud"]}).$promise;
-  }};
+  }
+};
 
 module.exports = ListProductsController;
