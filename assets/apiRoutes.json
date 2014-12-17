@@ -2,9 +2,9 @@
   "basePath": "/api",
   "routes": {
     "solutions":         "/solutions/:id",
+    "projectQuestions": "/project_questions/:id",
     "createProject":     "/projects",
     "projectUser":       "/projects/:id/staff/:staff_id",
-    "projectQuestions":  "/project_questions",
     "manageValues":      "/manageValues",
     "marketplaceValues": "/marketplaceValues",
     "alerts":            "/alerts",

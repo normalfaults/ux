@@ -1,0 +1,99 @@
+<div fix-sidebar set-width>
+  <div class="page">
+    <div class="page-title">
+      <div class="page-title-text">
+        <h3>Project Questions</h3>
+      </div>
+    </div>
+
+    <div class="table-box">
+      <div class="title-box">
+        <h2>
+          <strong>NEW QUESTION</strong>
+        </h2>
+
+        <div class="titles-border-bar">
+          <span class="blues width137"></span>
+          <span class="whites width3"></span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <a ui-sref="base.admin.projects.project_questions">Take me back to the questions.</a>
+    </div>
+
+    <br/>
+
+    <form class="form-horizontal" role="form" name="projectQuestionForm">
+      <div class="form-group">
+        <label for="question" class="col-sm-3 control-label">Question</label>
+
+        <div class="col-sm-8 control-input">
+          <input class="form-control" id="question" name="question" ng-model='newProjectQuestion.question'
+                 placeholder="Enter question here" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="helpText" class="col-sm-3 control-label">Help Text</label>
+
+        <div class="col-sm-8 control-input">
+          <input class="form-control" id="helpText" name="helpText" ng-model='newProjectQuestion.help_text'
+                 placeholder="Enter help text" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="loadOrder" class="col-sm-3 control-label">Load Order</label>
+
+        <div class="col-sm-8 control-input">
+          <input type="number" class="form-control" id="loadOrder" name="loadOrder"
+                 ng-model='newProjectQuestion.load_order' placeholder="Enter order number" required>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="required" class="col-sm-3 control-label">Required</label>
+
+        <div class="col-sm-8 control-input">
+          <input type="checkbox" ng-model='newProjectQuestion.required'>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fieldType" class="col-sm-3 control-label">Field Type</label>
+
+        <div class="col-sm-8 control-input">
+          <select name="fieldType" class="form-control" ng-model='newProjectQuestion.field_type' required>
+            <option value="select_option">Select Option</option>
+            <option value="text">Text</option>
+          </select>
+        </div>
+      </div>
+
+      <div ng-repeat="option in newProjectQuestion.options track by $index">
+        <div class="form-group" ng-if="newProjectQuestion.options.length !== 0">
+          <label class="col-sm-3 control-label">Option</label>
+
+          <div class="col-sm-8 control-input">
+            <input ng-model='newProjectQuestion.options[$index]' class="form-control" placeholder="Enter option">
+          </div>
+        </div>
+      </div>
+
+      <br/>
+
+      <a class="fa fa-plus" ng-if="newProjectQuestion.options && newProjectQuestion.options.length !== 0"
+         ng-click="addOption()"> Add Option</a>
+
+      <div class="form-group">
+        <div class="col-sm-offset-11 control-submit">
+          <button type="submit" ng-click="createProjectQuestion()"
+                  ng-class="projectQuestionForm.$invalid ? 'btn btn-primary disabled' : 'btn btn-primary'">Create
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

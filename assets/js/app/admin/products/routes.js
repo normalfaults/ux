@@ -1,9 +1,9 @@
 'use strict';
 
 var ProductsData = require('./products_admin_controller').resolve,
-  ProductsListData = require('./list_products_controller').resolve,
-  ProductEditData = require('./edit_product_controller').resolve,
-  ProductCreateData = require('./create_product_controller').resolve;
+    ProductsListData = require('./list_products_controller').resolve,
+    ProductEditData = require('./edit_product_controller').resolve,
+    ProductCreateData = require('./create_product_controller').resolve;
 
 /**@ngInject*/
 module.exports = function($stateProvider) {

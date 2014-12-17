@@ -1,6 +1,6 @@
 'use strict';
 
-var AdminData = require('./admin_controller').resolve;
+var AdminData = require('./admin_controller').resolve
 
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
@@ -14,5 +14,5 @@ module.exports = function($stateProvider, USER_ROLES) {
         authorizedRoles: [USER_ROLES.admin]
       },
       resolve: AdminData
-    });
-};
+    })
+}
