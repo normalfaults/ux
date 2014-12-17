@@ -7,7 +7,8 @@ function ProductsDirective() {
     templateUrl: '/partials/products/products_list.html',
     scope: {
       category: '=',
-      products: '='
+      products: '=',
+      allowAdd: '='
     },
     link: function(scope, $element) {
       scope.showGrid = function() {
