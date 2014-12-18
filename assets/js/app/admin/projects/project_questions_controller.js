@@ -3,24 +3,23 @@
 /**@ngInject*/
 function ProjectQuestionsController($scope, $state, projectQuestions, ProjectQuestion) {
     $scope.projectQuestions = projectQuestions
-    $scope.newProjectQuestion = {}
+    $scope.projectQuestion = {}
 
     $scope.addOption = function() {
-        $scope.newProjectQuestion.options.push('')
+        $scope.projectQuestion.options.push('')
     }
 
-    $scope.$watch('newProjectQuestion.field_type', function(newType, lastType) {
+    $scope.$watch('projectQuestion.field_type', function(newType, lastType) {
         if(newType != lastType && newType === 'select_option') {
-            $scope.newProjectQuestion.options = ['']
-        } else if(newType != lastType && $scope.newProjectQuestion.options) {
-            delete $scope.newProjectQuestion[options]
+            $scope.projectQuestion.options = [''];
+        } else if(newType != lastType && $scope.projectQuestion.options) {
+            delete $scope.projectQuestion[options];
         }
     });
 
     $scope.createProjectQuestion = function(){
         if (scope.projectQuestionForm.$valid) {
-
-            ProjectQuestion.save($scope.newProjectQuestion, function() {
+            ProjectQuestion.save($scope.projectQuestion, function() {
                 $state.go('base.admin.projects.project_questions', {}, {reload: true});
             });
         }
@@ -31,8 +30,11 @@ function ProjectQuestionsController($scope, $state, projectQuestions, ProjectQue
             $state.go('base.admin.projects.project_questions', {}, {reload: true});
         });
     }
-}
 
+    $scope.editProjectQuestion = function(question){
+        $state.go('base.admin.projects.edit_project_questions', {id: question.id}, {reload: true});
+    }
+}
 
 ProjectQuestionsController.resolve = {
     /**@ngInject*/

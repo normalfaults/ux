@@ -9,7 +9,7 @@
     <div class="table-box">
       <div class="title-box">
         <h2>
-          <strong>EXISTING QUESTIONS</strong>
+          <strong>QUESTIONS</strong>
         </h2>
 
         <div class="titles-border-bar">
@@ -48,8 +48,10 @@
             <td>{{projectQuestion.load_order}}</td>
             <td>{{projectQuestion.options}}</td>
             <th>{{projectQuestion.required}}</th>
-            <td><a class="fa fa-trash-o" ng-click="deleteProjectQuestion(projectQuestion)"></a> <a
-                    class="fa fa-edit"></a></td>
+            <td>
+              <a class="fa fa-edit" ng-click="editProjectQuestion(projectQuestion)"></a>
+              <a class="fa fa-trash-o" ng-click="deleteProjectQuestion(projectQuestion)"></a>
+            </td>
           </tr>
           </tbody>
         </table>
