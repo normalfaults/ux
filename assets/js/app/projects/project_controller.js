@@ -6,21 +6,10 @@ var _ = require('lodash');
 function ProjectController($scope, $modal, project, alerts) {
 
   this.project = project;
+  this.$modal = $modal;
+
   $scope.project = this.project;
-
   $scope.alerts = alerts;
-
-  $scope.openProjectUsersModal = function () {
-
-    var modalInstance = $modal.open({
-      templateUrl: 'projects/users-modal.html',
-      controller: 'ProjectUsersController'
-    });
-
-    modalInstance.result.then(function (selectedItems) {
-    }, function () {
-    });
-  };
 }
 
 ProjectController.resolve = {
@@ -37,6 +26,20 @@ ProjectController.resolve = {
 
 ProjectController.prototype = {
 
+  openAddServicesModal: function() {
+    var modalInstance = this.$modal.open({
+      templateUrl: 'projects/add-services-modal.html',
+      controller: 'ProjectServicesController'
+    });
+  },
+
+  openAddUsersModal: function () {
+
+    var modalInstance = this.$modal.open({
+      templateUrl: 'projects/users-modal.html',
+      controller: 'ProjectUsersController'
+    });
+  },
 
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;

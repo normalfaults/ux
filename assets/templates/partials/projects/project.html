@@ -120,6 +120,20 @@
 
         <!-- Services -->
 
+        <script type="text/ng-template" id="projects/add-services-modal.html">
+            <div class="add-services-modal">
+                <div class="modal-header">
+                    <h3 class="modal-title">Add Service</h3>
+                </div>
+                <div class="modal-body">
+                    Products Go Here
+                </div>
+                <div class="modal-footer">
+                    <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updating ? 'Adding ...' : 'Add'}}</button>
+                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+                </div>
+            </div>
+        </script>
         <div class="table-box" ng-if="project.isApproved()">
             <div class="title-box">
                 <h2>
@@ -140,7 +154,7 @@
                 <service-box ng-repeat="service in project.services" service="service"></service-box>
                 <div class="btn-new-box">
                     <div class="boxs">
-                        <a class="add-btn icon-add"><i></i><span>ADD NEW SERVICES</span></a>
+                        <a class="add-btn icon-add" ng-click="projectCtrl.openAddServicesModal()"><i></i><span>ADD NEW SERVICES</span></a>
                     </div>
                 </div>
             </div>
@@ -227,7 +241,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updateing ? 'Adding ...' : 'Add'}}</button>
+                    <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updating ? 'Adding ...' : 'Add'}}</button>
                     <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
                 </div>
             </div>
@@ -291,7 +305,7 @@
                     <span class="titles"><span>{{item.name}}</span></span>
                     <span class="btn-box"><a>VIEW MORE</a></span>
                 </div>
-                <div class="btn-new-box" ng-click="openProjectUsersModal()">
+                <div class="btn-new-box" ng-click="projectCtrl.openAddUsersModal()">
                     <div class="boxs">
                         <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
                     </div>
