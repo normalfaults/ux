@@ -29,7 +29,8 @@ ProjectController.prototype = {
   openAddServicesModal: function() {
     var modalInstance = this.$modal.open({
       templateUrl: 'projects/add-services-modal.html',
-      controller: 'ProjectServicesController'
+      controller: 'ProjectServicesController',
+      size: 'lg'
     });
   },
 
