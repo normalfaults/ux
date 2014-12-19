@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
 function EditProjectQuestionController($scope, $state, projectQuestion, ProjectQuestion) {
     $scope.projectQuestion = projectQuestion;
