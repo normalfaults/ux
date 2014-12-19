@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function AuthService($rootScope, $http, $location, Session, ApiResource, USER_ROLES, ROUTES) {
+function AuthService($http, $location, Session, ApiResource, USER_ROLES, ROUTES) {
   var authService = {};
 
   authService.login = function(credentials) {
@@ -19,7 +19,6 @@ function AuthService($rootScope, $http, $location, Session, ApiResource, USER_RO
     return $http
       .delete(ApiResource('signOut'))
       .success(function() {
-        $rootScope.headerData = null;
         Session.destroy();
         $location.path(ROUTES.login);
       });
