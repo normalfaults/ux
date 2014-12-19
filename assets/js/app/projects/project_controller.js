@@ -15,7 +15,7 @@ function ProjectController($scope, $modal, $state, Project, project, alerts, pro
 
   $scope.editProject = function(shouldEdit) {
     $scope.editingProject = shouldEdit;
-  }
+  };
 
   $scope.updateProject = function() {
     var filteredProject = _.omit($scope.project, 'created_at', 'updated_at', 'deleted_at', 'id', 'services', 'domain',
@@ -31,7 +31,7 @@ function ProjectController($scope, $modal, $state, Project, project, alerts, pro
     Project.update({id: $scope.project.id, project: filteredProject} , function() {
       $state.go('base.project', {id: $scope.project.id}, {reload: true});
     });
-  }
+  };
 
   $scope.openProjectUsersModal = function () {
 
