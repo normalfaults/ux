@@ -129,7 +129,7 @@
                     <products-list ng-repeat="category in projectServicesCtrl.categories" category="category" hide-empty="true" view-type="list-view" allow-view-type-toggle="false">
                       <product-box class="product-box" ng-repeat="product in category.products" product="product">
                         <a ui-sref="base.products.show({id: product.id})">View More</a>
-                        <a ng-click="projectServicesCtrl.addToCart(project.id ,product.id, product.name)">Add to Cart</a>
+                        <a ng-click="projectServicesCtrl.addToCart(project.id, product.id, product.name)">Add to Cart ({{projectServicesCtrl.cartCount(project.id, product.id)}})</a>
                       </product-box>
                     </products-list>
 

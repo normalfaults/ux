@@ -31,6 +31,16 @@ ProjectsServicesController.prototype = {
 
   addToCart: function(projectId, productId, productName) {
     this.Cart.add(projectId, productId, productName);
+  },
+
+  cartCount: function(projectId, productId) {
+    var cartItems = this.Cart.getItems();
+
+    var filtered = _.filter(cartItems, function(item) {
+      return (item.productId == productId && item.projectId == projectId);
+    });
+
+    return filtered.length;
   }
 };
 
