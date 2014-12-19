@@ -8,7 +8,6 @@ module.exports = angular.module('broker.common', [
 ])
   .factory('ApiResource', require('./api_resource'))
   .factory('DataService', require('./data_service'))
-  .factory('HeaderData', require('./header_data'))
   .factory('fixSidebar', require('./fix_sidebar'))
   .factory('httpInterceptor', require('./http_interceptor'))
   .config(require('./routes'));

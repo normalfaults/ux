@@ -21,7 +21,7 @@
         <a href="/app/solution"><img src="/images/logo.png" alt="Project Jellyfish"></a>
     </div>
     <!-- end .logo -->
-    <div class="nav-user fr" ng-if="currentUser && headerData">
+    <div class="nav-user fr" ng-if="headerCtrl.currentUser">
         <nav>
             <ul>
                 <li ng-class="active">
@@ -36,11 +36,11 @@
         </nav>
         <!-- end nav -->
         <div class="icons-box">
-            <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
+            <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerCtrl.alerts.length">{{headerCtrl.alerts.length}}</i></a>
             <div class="drop-down-box hide keep-drop-down-open">
                 <span class="icon-arrow"></span>
                 <ul>
-                    <li ng-repeat="item in headerData.notifications">
+                    <li ng-repeat="item in headerCtrl.alerts">
                         <span class="texts" ng-bind-html="item.trustedHtml"></span>
                         <span class="ago">{{item.ago}}</span>
                     </li>
@@ -58,8 +58,8 @@
         <!-- end .icons-box -->
         <div class="user-info">
             <a class="user-info-dwwn" drop-down>
-                <span class="texts">Welcome<span class="name">{{currentUser.fullName()}}</span></span>
-                <span class="avatar"><img gravatar-src="currentUser.email" gravatar-size="26" alt="Avatar"></span>
+                <span class="texts">Welcome<span class="name">{{headerCtrl.currentUser.fullName()}}</span></span>
+                <span class="avatar"><img gravatar-src="headerCtrl.currentUser.email" gravatar-size="26" alt="Avatar"></span>
                 <span class="icon-arrow"></span>
             </a>
             <div class="drop-down-box hide">
