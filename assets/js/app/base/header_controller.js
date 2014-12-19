@@ -3,26 +3,23 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var HeaderController = function($rootScope, $scope, $sce, $modal, Cart, headerData, currentUser) {
+var HeaderController = function($rootScope, $scope, $sce, $modal, Cart, currentUser, alerts) {
 
   this.$modal = $modal;
   this.Cart = Cart;
+  this.alerts = alerts;
+  this.currentUser = currentUser;
 
-  $scope.headerData = headerData;
-  $scope.currentUser = currentUser;
-
-  angular.forEach(headerData.notifications, function(item) {
+  // @todo This is in the wrong format, does not match the problem-alerts.html partial format.
+  angular.forEach(this.alerts, function(item) {
     item.trustedHtml = $sce.trustAsHtml(item.text);
-   });
+  });
 
   this.isModalOpen = false;
 };
 
 HeaderController.resolve = {
-  /**@ngInject*/
-  headerData: function(HeaderData) {
-    return HeaderData.get().$promise;
-  }
+
 };
 
 HeaderController.prototype = {

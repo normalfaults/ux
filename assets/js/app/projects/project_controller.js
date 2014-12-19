@@ -5,6 +5,8 @@ var _ = require('lodash');
 /**@ngInject*/
 function ProjectController($scope, $modal, $state, Project, project, alerts, projectQuestions) {
   this.project = project;
+  this.$modal = $modal;
+
   $scope.project = this.project;
   $scope.alerts = alerts;
   $scope.questions = projectQuestions;
@@ -13,7 +15,7 @@ function ProjectController($scope, $modal, $state, Project, project, alerts, pro
 
   $scope.editProject = function(shouldEdit) {
     $scope.editingProject = shouldEdit;
-  }
+  };
 
   $scope.updateProject = function() {
     var filteredProject = _.omit($scope.project, 'created_at', 'updated_at', 'deleted_at', 'id', 'services', 'domain',
@@ -29,7 +31,7 @@ function ProjectController($scope, $modal, $state, Project, project, alerts, pro
     Project.update({id: $scope.project.id, project: filteredProject} , function() {
       $state.go('base.project', {id: $scope.project.id}, {reload: true});
     });
-  }
+  };
 
   $scope.openProjectUsersModal = function () {
 
@@ -62,6 +64,32 @@ ProjectController.resolve = {
 };
 
 ProjectController.prototype = {
+
+  openAddServicesModal: function() {
+    var modalInstance = this.$modal.open({
+      templateUrl: 'projects/add-services-modal.html',
+      controller: 'ProjectServicesController as projectServicesCtrl',
+      size: 'lg',
+      resolve: {
+        /**@ngInject*/
+        categories: function(ProductCategory) {
+          return ProductCategory.query().$promise;
+        },
+        /**@ngInject*/
+        products: function(Product) {
+          return Product.query({"includes[]": ["cloud"]}).$promise;
+        }
+      }
+    });
+  },
+
+  openAddUsersModal: function () {
+    var modalInstance = this.$modal.open({
+      templateUrl: 'projects/users-modal.html',
+      controller: 'ProjectUsersController'
+    });
+  },
+
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;
     var usedBudget = 0;
@@ -72,10 +100,18 @@ ProjectController.prototype = {
 
     });
 
+    var usedPercent = 0;
+    if (projectBudget > 0) {
+      usedPercent = Math.round(((usedBudget / projectBudget) * 100));
+      if (usedPercent > 100) {
+        usedPercent = 100;
+      }
+    }
+
     return {
       'total' : projectBudget,
       'used'    : usedBudget,
-      'usedPercent' : Math.round(((usedBudget / projectBudget) * 100))
+      'usedPercent' : usedPercent
     };
   }
 };

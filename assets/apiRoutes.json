@@ -19,7 +19,6 @@
     "servicesById":      "/services/:id",
     "applicationsById":  "/applications/:id",
     "bundlesById":       "/bundles/:id",
-    "header":            "/header",
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
     "currentMember":     "/staff/current_member",

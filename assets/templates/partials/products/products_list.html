@@ -1,4 +1,4 @@
-<div ng-hide="hideEmpty && 0 >= category.products.length" class="grid-view">
+<div ng-hide="hideEmpty && 0 >= category.products.length" ng-class="viewType || 'grid-view'">
   <div class="titles-box">
     <div class="col-sm-6">
       <h2>{{category.name}}</h2>
@@ -6,7 +6,7 @@
       <!-- TODO: Add descriptions to product_categories -->
       <p>Product category description goes here</p>
     </div>
-    <div class="switch-buttons col-sm-6 text-right">
+    <div ng-if="allowViewTypeToggle === undefined || allowViewTypeToggle" class="switch-buttons col-sm-6 text-right">
       <a ng-click="showGrid()" class="btn btn-link grid-switch active">
         <i class="fa fa-fw fa-lg fa-th"></i>
       </a>

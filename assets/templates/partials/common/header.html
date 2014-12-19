@@ -5,11 +5,14 @@
             <h3 class="modal-title">Shopping Cart</h3>
         </div>
         <div class="modal-body">
-            <ul>
+            <ul ng-if="cartCtrl.cartItems().length > 0">
                 <li ng-repeat="item in cartCtrl.cartItems()">
                     <a>{{item.productName}}</a>
                 </li>
             </ul>
+            <div ng-if="cartCtrl.cartItems().length == 0">
+                Your Cart is Empty
+            </div>
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary" ng-click="cartCtrl.ok()">Checkout</button>
@@ -21,7 +24,7 @@
         <a href="/app/solution"><img src="/images/logo.png" alt="Project Jellyfish"></a>
     </div>
     <!-- end .logo -->
-    <div class="nav-user fr" ng-if="currentUser && headerData">
+    <div class="nav-user fr" ng-if="headerCtrl.currentUser">
         <nav>
             <ul>
                 <li ng-class="active">
@@ -36,16 +39,21 @@
         </nav>
         <!-- end nav -->
         <div class="icons-box">
-            <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerData.notifications.length">{{headerData.notifications.length}}</i></a>
+            <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerCtrl.alerts.length">{{headerCtrl.alerts.length}}</i></a>
             <div class="drop-down-box hide keep-drop-down-open">
                 <span class="icon-arrow"></span>
-                <ul>
-                    <li ng-repeat="item in headerData.notifications">
+                <ul ng-if="headerCtrl.alerts.length > 0">
+                    <li ng-repeat="item in headerCtrl.alerts | limitTo:5">
                         <span class="texts" ng-bind-html="item.trustedHtml"></span>
                         <span class="ago">{{item.ago}}</span>
                     </li>
                 </ul>
-                <div class="view-all">
+                <ul ng-if="headerCtrl.alerts.length == 0">
+                    <li>
+                        <span>No Alerts</span>
+                    </li>
+                </ul>
+                <div ng-if="headerCtrl.alerts.length > 5" class="view-all">
                     <a>View all notifications</a>
                 </div>
             </div>
@@ -58,8 +66,8 @@
         <!-- end .icons-box -->
         <div class="user-info">
             <a class="user-info-dwwn" drop-down>
-                <span class="texts">Welcome<span class="name">{{currentUser.fullName()}}</span></span>
-                <span class="avatar"><img gravatar-src="currentUser.email" gravatar-size="26" alt="Avatar"></span>
+                <span class="texts">Welcome<span class="name">{{headerCtrl.currentUser.fullName()}}</span></span>
+                <span class="avatar"><img gravatar-src="headerCtrl.currentUser.email" gravatar-size="26" alt="Avatar"></span>
                 <span class="icon-arrow"></span>
             </a>
             <div class="drop-down-box hide">
