@@ -2,10 +2,7 @@
 
 var Cart = function() {
 
-  this.cart = [
-    {'projectId': '100', 'productName': 'Product in Cart 1'},
-    {'projectId': '100', 'productName': 'Product in Cart 2'}
-  ];
+  this.cart = [];
 
 };
 

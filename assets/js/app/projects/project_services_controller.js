@@ -1,7 +1,9 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectsServicesController = function($scope, $modalInstance, products, categories) {
+var ProjectsServicesController = function($scope, $modalInstance, Cart, products, categories) {
+
+  this.Cart = Cart;
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
@@ -27,8 +29,8 @@ var ProjectsServicesController = function($scope, $modalInstance, products, cate
 
 ProjectsServicesController.prototype = {
 
-  addToCart: function() {
-    console.warn('cow');
+  addToCart: function(projectId, productId, productName) {
+    this.Cart.add(projectId, productId, productName);
   }
 };
 
