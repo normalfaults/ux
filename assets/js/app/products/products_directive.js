@@ -10,7 +10,8 @@ function ProductsDirective() {
       products: '=',
       allowAdd: '=',
       allowEdit: '=',
-      viewType:  '@viewType'
+      viewType:  '@viewType',
+      allowViewTypeToggle: '='
     },
     link: function($scope, $element) {
       $scope.showGrid = function() {
