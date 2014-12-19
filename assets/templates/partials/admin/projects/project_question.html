@@ -25,75 +25,8 @@
 
     <br/>
 
-    <form class="form-horizontal" role="form" name="projectQuestionForm">
-      <div class="form-group">
-        <label for="question" class="col-sm-3 control-label">Question</label>
+    <project-question-form button-label="'Submit'" project-question="projectQuestion" submit-function="submitProject()">
+    </project-question-form>
 
-        <div class="col-sm-8 control-input">
-          <input class="form-control" id="question" name="question" ng-model='projectQuestion.question'
-                 placeholder="Enter question here" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="helpText" class="col-sm-3 control-label">Help Text</label>
-
-        <div class="col-sm-8 control-input">
-          <input class="form-control" id="helpText" name="helpText" ng-model='projectQuestion.help_text'
-                 placeholder="Enter help text" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="loadOrder" class="col-sm-3 control-label">Load Order</label>
-
-        <div class="col-sm-8 control-input">
-          <input type="number" class="form-control" id="loadOrder" name="loadOrder"
-                 ng-model='projectQuestion.load_order' placeholder="Enter order number" required>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="required" class="col-sm-3 control-label">Required</label>
-
-        <div class="col-sm-8 control-input">
-          <input type="checkbox" ng-model='projectQuestion.required'>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="fieldType" class="col-sm-3 control-label">Field Type</label>
-
-        <div class="col-sm-8 control-input">
-          <select name="fieldType" class="form-control" ng-model='projectQuestion.field_type' required>
-            <option value="select_option">Select Option</option>
-            <option value="text">Text</option>
-          </select>
-        </div>
-      </div>
-
-      <div ng-repeat="option in projectQuestion.options track by $index">
-        <div class="form-group" ng-if="projectQuestion.options.length !== 0">
-          <label class="col-sm-3 control-label">Option</label>
-
-          <div class="col-sm-8 control-input">
-            <input ng-model='projectQuestion.options[$index]' class="form-control" placeholder="Enter option">
-          </div>
-        </div>
-      </div>
-
-      <br/>
-
-      <a class="fa fa-plus" ng-if="projectQuestion.options && projectQuestion.options.length !== 0"
-         ng-click="addOption()"> Add Option</a>
-
-      <div class="form-group">
-        <div class="col-sm-offset-11 control-submit">
-          <button type="submit" ng-click="createProjectQuestion()"
-                  ng-class="projectQuestionForm.$invalid ? 'btn btn-primary disabled' : 'btn btn-primary'">Submit
-          </button>
-        </div>
-      </div>
-    </form>
   </div>
 </div>

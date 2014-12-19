@@ -9,22 +9,6 @@ function ProjectQuestionsController($scope, $state, projectQuestions, ProjectQue
         $scope.projectQuestion.options.push('')
     }
 
-    $scope.$watch('projectQuestion.field_type', function(newType, lastType) {
-        if(newType != lastType && newType === 'select_option') {
-            $scope.projectQuestion.options = [''];
-        } else if(newType != lastType && $scope.projectQuestion.options) {
-            delete $scope.projectQuestion[options];
-        }
-    });
-
-    $scope.createProjectQuestion = function(){
-        if (scope.projectQuestionForm.$valid) {
-            ProjectQuestion.save($scope.projectQuestion, function() {
-                $state.go('base.admin.projects.project_questions', {}, {reload: true});
-            });
-        }
-    }
-
     $scope.deleteProjectQuestion = function(question){
         question.$delete(function() {
             $state.go('base.admin.projects.project_questions', {}, {reload: true});
