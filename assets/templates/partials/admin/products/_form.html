@@ -24,6 +24,32 @@
 	<div class="col-sm-4"></div>
 </div>
 
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceCatalog')}">
+	<label class="col-sm-2 control-label" for="productName">ManageIQ Catalog ID:</label>
+
+	<div class="col-sm-6 controls">
+		<input id="productServiceCatalog" name="productServiceCatalog" type="number" ng-model="productForm.product.service_catalog_id" class="form-control" required/>
+
+		<div class="help-block">
+			<div class="help-text" ng-show="productForm.hasError('productServiceCatalog', 'required')">A ManageIQ catalog id is required for all products</div>
+		</div>
+	</div>
+	<div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceType')}">
+	<label class="col-sm-2 control-label" for="productName">ManageIQ Type ID:</label>
+
+	<div class="col-sm-6 controls">
+		<input id="productServiceType" name="productServiceType" type="number" ng-model="productForm.product.service_type_id" class="form-control" required/>
+
+		<div class="help-block">
+			<div class="help-text" ng-show="productForm.hasError('productServiceType', 'required')">A ManageIQ type id is required for all products</div>
+		</div>
+	</div>
+	<div class="col-sm-4"></div>
+</div>
+
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productCategory')}">
 	<label class="col-sm-2 control-label" for="productCategory">Category:</label>
 
