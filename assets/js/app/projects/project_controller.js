@@ -100,10 +100,18 @@ ProjectController.prototype = {
 
     });
 
+    var usedPercent = 0;
+    if (projectBudget > 0) {
+      usedPercent = Math.round(((usedBudget / projectBudget) * 100));
+      if (usedPercent > 100) {
+        usedPercent = 100;
+      }
+    }
+
     return {
       'total' : projectBudget,
       'used'    : usedBudget,
-      'usedPercent' : Math.round(((usedBudget / projectBudget) * 100))
+      'usedPercent' : usedPercent
     };
   }
 };
