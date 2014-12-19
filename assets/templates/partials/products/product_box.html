@@ -10,8 +10,8 @@
   <div class="texts">{{product.cloud.name}}</div>
   <div class="description">{{product.description}}</div>
 </div>
-<div ng-if="allowEdit" class="product-actions product-box-cell">
+<div class="product-actions product-box-cell">
   <div class="btn-box">
-    <a ui-sref="base.admin.products.edit({id: product.id})">Edit</a>
+    <div ng-transclude></div>
   </div>
 </div>
