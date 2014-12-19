@@ -39,13 +39,18 @@
             <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerCtrl.alerts.length">{{headerCtrl.alerts.length}}</i></a>
             <div class="drop-down-box hide keep-drop-down-open">
                 <span class="icon-arrow"></span>
-                <ul>
-                    <li ng-repeat="item in headerCtrl.alerts">
+                <ul ng-if="headerCtrl.alerts.length > 0">
+                    <li ng-repeat="item in headerCtrl.alerts | limitTo:5">
                         <span class="texts" ng-bind-html="item.trustedHtml"></span>
                         <span class="ago">{{item.ago}}</span>
                     </li>
                 </ul>
-                <div class="view-all">
+                <ul ng-if="headerCtrl.alerts.length == 0">
+                    <li>
+                        <span>No Alerts</span>
+                    </li>
+                </ul>
+                <div ng-if="headerCtrl.alerts.length > 5" class="view-all">
                     <a>View all notifications</a>
                 </div>
             </div>

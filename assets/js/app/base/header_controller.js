@@ -9,7 +9,7 @@ var HeaderController = function($rootScope, $scope, $sce, $modal, Cart, currentU
   this.Cart = Cart;
   this.alerts = alerts;
   this.currentUser = currentUser;
-  
+
   // @todo This is in the wrong format, does not match the problem-alerts.html partial format.
   angular.forEach(this.alerts, function(item) {
     item.trustedHtml = $sce.trustAsHtml(item.text);
