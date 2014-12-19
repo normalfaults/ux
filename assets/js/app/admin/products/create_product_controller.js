@@ -3,17 +3,14 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function CreateProductController(product, categories) {
-  var self = this;
-
+function CreateProductController(product) {
   this.product = product;
-  this.categories = categories;
 }
 
 CreateProductController.resolve = {
   /**@ngInject*/
   product: function(Product, $stateParams) {
-    return new Product();
+    return new Product($stateParams);
   }
 };
 

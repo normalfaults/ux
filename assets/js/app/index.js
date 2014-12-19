@@ -3,15 +3,15 @@
 require('angular-ui-router');
 require('angular-animate');
 require('angular-resource');
+require('angular-sanitize');
 require('angular-bootstrap');
 require('angular-gravatar');
 require('angular-loading-bar');
 require('angular-smart-table');
+require('angular-ui-select');
 require('angucomplete');
 
 var angular = require('angular');
-
-
 
 var app = angular.module('broker', [
   "ui.router",
@@ -22,6 +22,7 @@ var app = angular.module('broker', [
   "ui.gravatar",
   "angucomplete",
   "ui.bootstrap",
+  "ui.select",
   require('./common').name,
   require('./base').name,
   require('./admin').name,
@@ -29,6 +30,7 @@ var app = angular.module('broker', [
   require('./cart').name,
   require('./projects').name,
   require('./products').name,
+  require('./clouds').name,
   require('./services').name,
   require('./marketplace').name,
   require('./applications').name,

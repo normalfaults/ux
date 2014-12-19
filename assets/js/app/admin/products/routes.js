@@ -17,17 +17,17 @@ module.exports = function($stateProvider) {
     }).state('base.admin.products.list', {
       url: '/list',
       templateUrl: '/partials/admin/products/list_products.html',
-      controller: 'ListProductsController as productsListCtrl',
+      controller: 'ListProductsController as listCtrl',
       resolve: ProductsListData
     }).state('base.admin.products.edit', {
       url: '/edit/:id',
       templateUrl: '/partials/admin/products/edit_product.html',
-      controller: 'EditProductController as productEditCtrl',
+      controller: 'EditProductController as editCtrl',
       resolve: ProductEditData
     }).state('base.admin.products.create', {
-      url: '/create',
+      url: '/create?{product_category_id:int}',
       templateUrl: '/partials/admin/products/create_product.html',
-      controller: 'CreateProductController as productCreateCtrl',
+      controller: 'CreateProductController as createCtrl',
       resolve: ProductCreateData
     });
 };
