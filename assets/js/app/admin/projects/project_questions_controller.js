@@ -3,27 +3,10 @@
 /**@ngInject*/
 function ProjectQuestionsController($scope, $state, projectQuestions, ProjectQuestion) {
     $scope.projectQuestions = projectQuestions
-    $scope.newProjectQuestion = {}
+    $scope.projectQuestion = {}
 
     $scope.addOption = function() {
-        $scope.newProjectQuestion.options.push('')
-    }
-
-    $scope.$watch('newProjectQuestion.field_type', function(newType, lastType) {
-        if(newType != lastType && newType === 'select_option') {
-            $scope.newProjectQuestion.options = ['']
-        } else if(newType != lastType && $scope.newProjectQuestion.options) {
-            delete $scope.newProjectQuestion[options]
-        }
-    });
-
-    $scope.createProjectQuestion = function(){
-        if (scope.projectQuestionForm.$valid) {
-
-            ProjectQuestion.save($scope.newProjectQuestion, function() {
-                $state.go('base.admin.projects.project_questions', {}, {reload: true});
-            });
-        }
+        $scope.projectQuestion.options.push('')
     }
 
     $scope.deleteProjectQuestion = function(question){
@@ -31,8 +14,11 @@ function ProjectQuestionsController($scope, $state, projectQuestions, ProjectQue
             $state.go('base.admin.projects.project_questions', {}, {reload: true});
         });
     }
-}
 
+    $scope.editProjectQuestion = function(question){
+        $state.go('base.admin.projects.edit_project_questions', {id: question.id}, {reload: true});
+    }
+}
 
 ProjectQuestionsController.resolve = {
     /**@ngInject*/

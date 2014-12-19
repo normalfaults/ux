@@ -1,6 +1,7 @@
 'use strict';
 
-var ProjectQuestionData = require('./project_questions_controller').resolve;
+var ProjectQuestionsData = require('./project_questions_controller').resolve,
+    ProjectQuestionData = require('./edit_project_question_controller').resolve;
 
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
@@ -15,11 +16,17 @@ module.exports = function($stateProvider, USER_ROLES) {
             url: '/questions',
             templateUrl: "/partials/admin/projects/project_questions.html",
             controller: 'ProjectQuestionsController as projectQuestion',
-            resolve: ProjectQuestionData
+            resolve: ProjectQuestionsData
         })
         .state('base.admin.projects.new_project_questions', {
             url: '/questions/new',
-            templateUrl: "/partials/admin/projects/new_project_question.html",
+            templateUrl: "/partials/admin/projects/project_question.html",
             controller: 'NewProjectQuestionController as newProjectQuestion'
+        })
+        .state('base.admin.projects.edit_project_questions', {
+            url: '/questions/:id',
+            templateUrl: "/partials/admin/projects/project_question.html",
+            controller: 'EditProjectQuestionController as editProjectQuestion',
+            resolve: ProjectQuestionData
         })
 }
