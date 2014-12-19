@@ -9,7 +9,7 @@
     <div class="table-box">
       <div class="title-box">
         <h2>
-          <strong>EXISTING QUESTIONS</strong>
+          <strong>QUESTIONS</strong>
         </h2>
 
         <div class="titles-border-bar">
@@ -18,12 +18,6 @@
         </div>
       </div>
       <!-- end .titles-box -->
-
-      <div>
-        <a ui-sref="base.admin.projects.new_project_questions">Create a new question.</a>
-      </div>
-
-      <br/>
 
       <div class="table-container table-box">
         <table st-table="rowCollection" class="table table-responsive table-data">
@@ -48,13 +42,22 @@
             <td>{{projectQuestion.load_order}}</td>
             <td>{{projectQuestion.options}}</td>
             <th>{{projectQuestion.required}}</th>
-            <td><a class="fa fa-trash-o" ng-click="deleteProjectQuestion(projectQuestion)"></a> <a
-                    class="fa fa-edit"></a></td>
+            <td>
+              <a class="fa fa-edit" ng-click="editProjectQuestion(projectQuestion)"></a>
+              <a class="fa fa-trash-o" ng-click="deleteProjectQuestion(projectQuestion)"></a>
+            </td>
           </tr>
           </tbody>
         </table>
       </div>
+
       <!-- end .table-box -->
+
+      <br/>
+
+      <div>
+        <a class="fa fa-plus" ui-sref="base.admin.projects.new_project_questions"> Add question</a>
+      </div>
     </div>
   </div>
 </div>
