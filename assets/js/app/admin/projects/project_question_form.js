@@ -11,8 +11,6 @@ function ProjectQuestionForm() {
             submitFunction: "&submitFunction"
         },
         controller: [ '$scope', function ($scope) {
-            console.log($scope.submitFunction)
-
             $scope.addOption = function() {
                 $scope.projectQuestion.options.push('')
             }
