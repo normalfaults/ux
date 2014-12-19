@@ -8,7 +8,9 @@ function ProductsDirective() {
     transclude: true,
     scope: {
       category: '=',
-      hideEmpty: '='
+      hideEmpty: '=',
+      allowViewTypeToggle: '=',
+      viewType: '@'
     },
     link: function($scope, $element) {
       $scope.showGrid = function() {

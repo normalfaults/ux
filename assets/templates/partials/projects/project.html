@@ -126,12 +126,13 @@
                     <h3 class="modal-title">Add Service</h3>
                 </div>
                 <div class="modal-body">
-                    <products-list ng-repeat="category in projectServicesCtrl.categories"
-                                   category="category" products="category.products" allow-add="false"
-                                   allow-edit="false" view-type="list-view" allow-view-type-toggle="false"
-                                   add-to-cart-callback="projectServicesCtrl.addToCart()">
-
+                    <products-list ng-repeat="category in projectServicesCtrl.categories" category="category" hide-empty="true" view-type="list-view" allow-view-type-toggle="false">
+                      <product-box class="product-box" ng-repeat="product in category.products" product="product">
+                        <a ui-sref="base.products.show({id: product.id})">View More</a>
+                        <a ng-click="projectServicesCtrl.addToCart()">Add to Cart</a>
+                      </product-box>
                     </products-list>
+
                 </div>
                 <div class="modal-footer">
                     <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updating ? 'Adding ...' : 'Add'}}</button>
