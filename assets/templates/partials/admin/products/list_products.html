@@ -1,8 +1,7 @@
 <div class="products-list-page main-content" fix-sidebar set-width>
   <div class="content">
 
-    <products-list ng-repeat="category in productsListCtrl.categories" category="category">
-
+    <products-list ng-repeat="category in listCtrl.categories" category="category">
       <product-box class="product-box" ng-repeat="product in category.products" product="product">
         <a ui-sref="base.admin.products.edit({id: product.id})">Edit</a>
       </product-box>

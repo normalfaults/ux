@@ -334,27 +334,35 @@
                 </div>
             </div>
             <!-- end .titles-box -->
+            <div ng-show="!editingProject">
+                <div class="table-container table-box" ng-if="!editingProject">
+                    <table st-table="rowCollection" class="table table-responsive table-data">
+                        <colgroup>
+                            <col class="col40">
+                            <col>
+                        </colgroup>
+                        <tbody ng-repeat="answer in project.project_answers">
 
-            <div class="table-container table-box">
-                <table st-table="rowCollection" class="table table-responsive table-data">
-                    <colgroup>
-                        <col class="col40">
-                        <col>
-                    </colgroup>
-                    <tbody ng-repeat="answer in project.project_answers">
-
-                    <tr>
-                        <td class="left-text">{{answer.project_question.question}}</td>
-                        <td class="min-value">{{answer.answer}}</td>
-                    </tr>
-                    </tbody>
-                </table>
+                        <tr>
+                            <td class="left-text">{{answer.project_question.question}}</td>
+                            <td class="min-value">{{answer.answer}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- end .table-box -->
+                <div class="bottom-btn-box">
+                    <a ng-click="editProject(true)" class="btn btn-primary">EDIT</a>
+                </div>
             </div>
-            <!-- end .table-box -->
-            <div class="bottom-btn-box">
-                <a ui-sref="base.newProject()" class="btn btn-primary">EDIT</a>
+
+            <div ng-show="editingProject">
+                <a ng-click="editProject(false)" class="edit-cancel fa fa-times"> I don't want to update this now.</a>
+                <project-form button-label="'Update'" project="project" questions="questions" submit-function="updateProject()">
+                </project-form>
             </div>
         </div>
+
 
 
 

@@ -81,6 +81,12 @@
       ],
       "exports": "angular.module('ngResource').name"
     },
+    "angular-sanitize": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ngSanitize').name"
+    },
     "angular-bootstrap": {
       "depends": [
         "angular"
@@ -116,18 +122,24 @@
         "angular-gravatar"
       ],
       "exports": "angular.module('md5').name"
+    },
+    "angular-ui-select": {
+      "depends": ["angular", "angular-sanitize"],
+      "exports": "angular.module('ui.select').name"
     }
   },
   "browser": {
     "jquery": "./bower_components/jquery/dist/jquery.js",
     "angular": "./bower_components/angular/angular.js",
     "angular-animate": "./bower_components/angular-animate/angular-animate.js",
+    "angular-sanitize": "./bower_components/angular-sanitize/angular-sanitize.js",
     "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
     "angular-resource": "./bower_components/angular-resource/angular-resource.js",
     "angular-smart-table": "./bower_components/angular-smart-table/dist/smart-table.min.js",
     "angular-bootstrap": "./bower_components/angular-bootstrap/ui-bootstrap-tpls.js",
     "angular-loading-bar": "./bower_components/angular-loading-bar/build/loading-bar.js",
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
+    "angular-ui-select": "./bower_components/angular-ui-select/dist/select.js",
     "angucomplete": "./bower_components/angucomplete/angucomplete.js",
     "md5": "./bower_components/angular-gravatar/build/md5.js",
     "lodash": "./bower_components/lodash/dist/lodash.js",
