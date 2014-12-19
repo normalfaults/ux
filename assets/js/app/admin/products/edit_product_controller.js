@@ -3,17 +3,14 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function EditProductController(product, categories) {
-  var self = this;
-
+function EditProductController(product) {
   this.product = product;
-  this.categories = categories;
 }
 
 EditProductController.resolve = {
   /**@ngInject*/
   product: function(Product, $stateParams) {
-    return Product.get({id: $stateParams.id, "includes[]": ["cloud"]}).$promise;
+    return Product.get({id: $stateParams.id}).$promise;
   }
 };
 

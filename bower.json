@@ -24,8 +24,10 @@
     "angular-bootstrap": "~0.11.2",
     "jquery": "~2.1.1",
     "lodash": "~2.4.1",
-    "angular-dynforms": "~0.0.4",
     "angular-smart-table": "~1.4.5",
-    "angucomplete": "*"
+    "angucomplete": "*",
+    "angular-ui-select": "~0.9.5",
+    "angular-sanitize": "~1.3.7",
+    "selectize": "~0.11.2"
   }
 }
