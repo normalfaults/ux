@@ -23,7 +23,13 @@ var ProjectsServicesController = function($scope, $modalInstance, products, cate
       return product.product_category_id == category.id;
     });
   }, this));
+};
 
+ProjectsServicesController.prototype = {
+
+  addToCart: function() {
+    console.warn('cow');
+  }
 };
 
 module.exports = ProjectsServicesController;

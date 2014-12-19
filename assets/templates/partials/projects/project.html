@@ -129,7 +129,7 @@
                     <products-list ng-repeat="category in projectServicesCtrl.categories"
                                    category="category" products="category.products" allow-add="false"
                                    allow-edit="false" view-type="list-view" allow-view-type-toggle="false"
-                                   allow-add-to-cart="true">
+                                   add-to-cart-callback="projectServicesCtrl.addToCart()">
 
                     </products-list>
                 </div>

@@ -7,10 +7,13 @@ function ProductBox() {
     scope: {
       product: "=",
       allowEdit: "=",
-      allowAddToCart: "="
+      addToCartCallback: "&addToCartCallback"
     },
-    templateUrl: '/partials/products/product_box.html'
-  };
+    templateUrl: '/partials/products/product_box.html',
+    link: function($scope, $element) {
+      console.warn($scope.addToCartCallback);
+    }
+  }
 }
 
 module.exports = ProductBox;
