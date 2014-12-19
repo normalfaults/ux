@@ -1,4 +1,4 @@
-<div ng-if="allowAdd || products.length > 0" ng-class="viewType || 'grid-view'">
+<div ng-hide="hideEmpty && 0 >= category.products.length" ng-class="viewType || 'grid-view'">
   <div class="titles-box">
     <div class="col-sm-6">
       <h2>{{category.name}}</h2>
@@ -21,19 +21,6 @@
     </div>
   </div>
   <div class="products-listing">
-    <product-box class="product-box" ng-repeat="product in products" product="product" allow-edit="allowEdit" add-to-cart-callback="addToCartCallback()"></product-box>
-
-    <div ng-if="allowAdd" class="add-product-box">
-      <div class="product-box-shadow">
-        <a ui-sref="base.admin.products.create">
-          <div class="fa-stack">
-            <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
-            <i class="fa fa-fw fa-stack-1x fa-plus"></i>
-          </div>
-          <div class="title">Add new product</div>
-        </a>
-      </div>
-    </div>
-
+    <div ng-transclude></div>
   </div>
 </div>
