@@ -21,11 +21,12 @@
     </div>
   </div>
   <div class="products-listing">
-    <product-box class="product-box" ng-repeat="product in products" product="product" allow-edit="allowEdit"></product-box>
+    <product-box class="product-box" ng-repeat="product in products" product="product"
+                 allow-edit="allowEdit"></product-box>
 
     <div ng-if="allowAdd" class="add-product-box">
       <div class="product-box-shadow">
-        <a ui-sref="base.admin.products.create">
+        <a ui-sref="base.admin.products.create({product_category_id: category.id})">
           <div class="fa-stack">
             <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
             <i class="fa fa-fw fa-stack-1x fa-plus"></i>
