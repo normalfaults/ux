@@ -1,32 +1,32 @@
 <div class="edit-product-page main-content" fix-sidebar set-width>
-	<div class="content container">
-		<h2>Edit Product</h2>
+  <div class="content container">
+    <h2>Edit Product</h2>
 
-		<div class="titles-border-bar">
-			<span class="blues width137"></span>
-			<span class="whites width3"></span>
-		</div>
+    <div class="titles-border-bar">
+      <span class="blues width137"></span>
+      <span class="whites width3"></span>
+    </div>
 
-		<form name="productForm.form" class="form-horizontal product-form" role="form"
-		      ng-controller="ProductFormController as productForm"
-		      ng-init="productForm.initForm(editCtrl)"
-		      ng-submit="productForm.update()"
-		      novalidate>
-			<div class="row">
-				<div class="col-sm-6">
-					<a ui-sref="base.admin.products.list" class="btn btn-link">
-						<i class="fa fa-long-arrow-left"></i>
-						Back to products list
-					</a>
-				</div>
-				<div class="col-sm-6 text-right">
-					<button type="button" class="btn btn-danger" ng-click="productForm.destroy()">Delete</button>
-					<button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Update</button>
-				</div>
-			</div>
+    <form name="productForm.form" class="form-horizontal product-form" role="form"
+          ng-controller="ProductFormController as productForm"
+          ng-init="productForm.initForm(editCtrl)"
+          ng-submit="productForm.update()"
+          novalidate>
+      <div class="row">
+        <div class="col-sm-6">
+          <a ui-sref="base.admin.products.list" class="btn btn-link">
+            <i class="fa fa-long-arrow-left"></i>
+            Back to products list
+          </a>
+        </div>
+        <div class="col-sm-6 text-right">
+          <button type="button" class="btn btn-danger" ng-click="productForm.destroy()">Delete</button>
+          <button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Update</button>
+        </div>
+      </div>
 
-			<div ng-include src="'/partials/admin/products/_form.html'"></div>
-		</form>
+      <div ng-include src="'/partials/admin/products/_form.html'"></div>
+    </form>
 
-	</div>
+  </div>
 </div>

@@ -1,116 +1,134 @@
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productName')}">
-	<label class="col-sm-2 control-label" for="productName">Name:</label>
+  <label class="col-sm-2 control-label" for="productName">Name:</label>
 
-	<div class="col-sm-6 controls">
-		<input id="productName" name="productName" type="text" ng-model="productForm.product.name" class="form-control" required/>
+  <div class="col-sm-6 controls">
+    <input id="productName" name="productName" type="text" ng-model="productForm.product.name" class="form-control"
+           required/>
 
-		<div class="help-block">
-			<div class="help-text" ng-show="productForm.hasError('productName', 'required')">A name is required for all products</div>
-		</div>
-	</div>
-	<div class="col-sm-4"></div>
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productName', 'required')">A name is required for all
+        products
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
 </div>
 
 <div class="form-group">
-	<label class="col-sm-2 control-label" for="productDescription">Description:</label>
+  <label class="col-sm-2 control-label" for="productDescription">Description:</label>
 
-	<div class="col-sm-6 controls">
-		<textarea id="productDescription" name="productDescription" ng-model="productForm.product.description" class="form-control" rows="3"></textarea>
+  <div class="col-sm-6 controls">
+    <textarea id="productDescription" name="productDescription" ng-model="productForm.product.description"
+              class="form-control" rows="3"></textarea>
 
-		<div class="help-block">
-			<div class="help-text" ng-show=""></div>
-		</div>
-	</div>
-	<div class="col-sm-4"></div>
+    <div class="help-block">
+      <div class="help-text" ng-show=""></div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceCatalog')}">
-	<label class="col-sm-2 control-label" for="productName">ManageIQ Catalog ID:</label>
+  <label class="col-sm-2 control-label" for="productName">ManageIQ Catalog ID:</label>
 
-	<div class="col-sm-6 controls">
-		<input id="productServiceCatalog" name="productServiceCatalog" type="number" ng-model="productForm.product.service_catalog_id" class="form-control" required/>
+  <div class="col-sm-6 controls">
+    <input id="productServiceCatalog" name="productServiceCatalog" type="number"
+           ng-model="productForm.product.service_catalog_id" class="form-control" required/>
 
-		<div class="help-block">
-			<div class="help-text" ng-show="productForm.hasError('productServiceCatalog', 'required')">A ManageIQ catalog id is required for all products</div>
-		</div>
-	</div>
-	<div class="col-sm-4"></div>
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productServiceCatalog', 'required')">A ManageIQ catalog id
+        is required for all products
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceType')}">
-	<label class="col-sm-2 control-label" for="productName">ManageIQ Type ID:</label>
+  <label class="col-sm-2 control-label" for="productName">ManageIQ Type ID:</label>
 
-	<div class="col-sm-6 controls">
-		<input id="productServiceType" name="productServiceType" type="number" ng-model="productForm.product.service_type_id" class="form-control" required/>
+  <div class="col-sm-6 controls">
+    <input id="productServiceType" name="productServiceType" type="number"
+           ng-model="productForm.product.service_type_id" class="form-control" required/>
 
-		<div class="help-block">
-			<div class="help-text" ng-show="productForm.hasError('productServiceType', 'required')">A ManageIQ type id is required for all products</div>
-		</div>
-	</div>
-	<div class="col-sm-4"></div>
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productServiceType', 'required')">A ManageIQ type id is
+        required for all products
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productCategory')}">
-	<label class="col-sm-2 control-label" for="productCategory">Category:</label>
+  <label class="col-sm-2 control-label" for="productCategory">Category:</label>
 
-	<div class="col-sm-6 controls">
-		<select id="productCategory" name="productCategory" class="form-control" ng-model="productForm.product.product_category_id"
-		        ng-options="category.id as category.name for category in productsAdminCtrl.categories" required></select>
+  <div class="col-sm-6 controls">
+    <select id="productCategory" name="productCategory" class="form-control"
+            ng-model="productForm.product.product_category_id"
+            ng-options="category.id as category.name for category in productsAdminCtrl.categories" required></select>
 
-		<div class="help-block">
-			<div class="help-text" ng-show="productForm.hasError('productCategory', 'required')">A category is required for all products</div>
-		</div>
-	</div>
-	<div class="col-sm-4"></div>
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productCategory', 'required')">A category is required for
+        all products
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productCloud')}">
-	<label class="col-sm-2 control-label" for="productCloud">Cloud Provider:</label>
+  <label class="col-sm-2 control-label" for="productCloud">Cloud Provider:</label>
 
-	<div class="col-sm-6 controls">
-		<select id="productCloud" name="productCloud" class="form-control" ng-model="productForm.product.cloud_id"
-		        ng-options="cloud.id as cloud.name for cloud in productsAdminCtrl.clouds" required></select>
+  <div class="col-sm-6 controls">
+    <select id="productCloud" name="productCloud" class="form-control" ng-model="productForm.product.cloud_id"
+            ng-options="cloud.id as cloud.name for cloud in productsAdminCtrl.clouds" required></select>
 
-		<div class="help-block">
-			<div class="help-text" ng-show="productForm.hasError('productCloud', 'required')">A cloud provider is required for all products</div>
-		</div>
-	</div>
-	<div class="col-sm-4"></div>
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productCloud', 'required')">A cloud provider is required for
+        all products
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productImg')}">
-	<label class="col-sm-2 control-label">Icon:</label>
+  <label class="col-sm-2 control-label">Icon:</label>
 
-	<div class="col-sm-6 controls">
-		<ui-select id="productImg" name="productImg" ng-model="productForm.product.img" theme="selectize" required>
-			<ui-select-match>
-				<img ng-src="/images/assets/{{$select.selected}}"/>
-			</ui-select-match>
-			<ui-select-choices repeat="image in productsAdminCtrl.productImages">
-				<img ng-src="/images/assets/{{image}}"/>
-			</ui-select-choices>
-		</ui-select>
+  <div class="col-sm-6 controls">
+    <ui-select id="productImg" name="productImg" ng-model="productForm.product.img" theme="selectize" required>
+      <ui-select-match>
+        <img ng-src="/images/assets/{{$select.selected}}"/>
+      </ui-select-match>
+      <ui-select-choices repeat="image in productsAdminCtrl.productImages">
+        <img ng-src="/images/assets/{{image}}"/>
+      </ui-select-choices>
+    </ui-select>
 
-		<div class="help-block">
-			<div class="help-text" ng-show="productForm.hasError('productImg', 'required')">An icon is required for all products</div>
-		</div>
-	</div>
-	<div class="col-sm-4"></div>
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productImg', 'required')">An icon is required for all
+        products
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
 </div>
 
 <div class="form-group">
-	<label class="col-sm-2 control-label" for="productActive">Active?:</label>
+  <label class="col-sm-2 control-label" for="productActive">Active?:</label>
 
-	<div class="col-sm-6 controls">
-		<input id="productActive" name="productActive" type="checkbox" ng-model="productForm.product.active" class="form-control"/>
+  <div class="col-sm-6 controls">
+    <input id="productActive" name="productActive" type="checkbox" ng-model="productForm.product.active"
+           class="form-control"/>
 
-		<div class="help-block">
-			<div class="help-text" ng-show=""></div>
-		</div>
-	</div>
-	<div class="col-sm-4">
-		<div class="help-block">
-			<div class="help-text">Only active products are displayed in the marketplace.</div>
-		</div>
-	</div>
+    <div class="help-block">
+      <div class="help-text" ng-show=""></div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="help-block">
+      <div class="help-text">Only active products are displayed in the marketplace.</div>
+    </div>
+  </div>
 </div>
