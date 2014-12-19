@@ -29,8 +29,18 @@ ProjectController.prototype = {
   openAddServicesModal: function() {
     var modalInstance = this.$modal.open({
       templateUrl: 'projects/add-services-modal.html',
-      controller: 'ProjectServicesController',
-      size: 'lg'
+      controller: 'ProjectServicesController as projectServicesCtrl',
+      size: 'lg',
+      resolve: {
+        /**@ngInject*/
+        categories: function(ProductCategory) {
+          return ProductCategory.query().$promise;
+        },
+        /**@ngInject*/
+        products: function(Product) {
+          return Product.query({"includes[]": ["cloud"]}).$promise;
+        }
+      }
     });
   },
 
