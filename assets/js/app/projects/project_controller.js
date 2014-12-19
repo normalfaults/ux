@@ -26,8 +26,6 @@ function ProjectController($scope, $modal, $state, Project, project, alerts, pro
               'project_question')); return pas;}, []);
     }
 
-    console.log(filteredProject)
-
     Project.update({id: $scope.project.id, project: filteredProject} , function() {
       $state.go('base.project', {id: $scope.project.id}, {reload: true});
     });
