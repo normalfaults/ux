@@ -5,11 +5,10 @@ function ProductsDirective() {
   return {
     restrict: 'E',
     templateUrl: '/partials/products/products_list.html',
+    transclude: true,
     scope: {
       category: '=',
-      products: '=',
-      allowAdd: '=',
-      allowEdit: '='
+      hideEmpty: '='
     },
     link: function(scope, $element) {
       scope.showGrid = function() {
