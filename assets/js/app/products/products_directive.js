@@ -9,6 +9,7 @@ function ProductsDirective() {
       category: '=',
       products: '=',
       allowAdd: '=',
+      allowAddToCart: '=',
       allowEdit: '=',
       viewType:  '@viewType',
       allowViewTypeToggle: '='

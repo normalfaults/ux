@@ -6,7 +6,8 @@ function ProductBox() {
     restrict: 'E',
     scope: {
       product: "=",
-      allowEdit: "="
+      allowEdit: "=",
+      allowAddToCart: "="
     },
     templateUrl: '/partials/products/product_box.html'
   };

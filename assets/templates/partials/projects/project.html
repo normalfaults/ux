@@ -128,7 +128,10 @@
                 <div class="modal-body">
                     <products-list ng-repeat="category in projectServicesCtrl.categories"
                                    category="category" products="category.products" allow-add="false"
-                                   allow-edit="false" view-type="list-view" allow-view-type-toggle="false"></products-list>
+                                   allow-edit="false" view-type="list-view" allow-view-type-toggle="false"
+                                   allow-add-to-cart="true">
+
+                    </products-list>
                 </div>
                 <div class="modal-footer">
                     <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updating ? 'Adding ...' : 'Add'}}</button>
