@@ -57,7 +57,7 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
       // This is the dashboard route.  Ugly.
       // @todo Add message or notice on redirect to give access denied error.
       //       Also a bit strange when a user already on dashboard, might need a scrollTop.
-      if ('base.dashboard' !== fromData.name) {
+      if ('base.dashboard' !== fromState.name) {
         $state.transitionTo('base.dashboard');
       } else {
         $log.error('Redirect to /dashboard loop halted.')
