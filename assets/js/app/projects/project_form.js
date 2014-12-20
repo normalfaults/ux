@@ -12,16 +12,19 @@ function ProjectForm() {
             submitFunction: "&submitFunction"
         },
         controller: [ '$scope', function ($scope) {
-            if ($scope.project.project_answers === undefined) {
-                _.each($scope.questions, function(question){
-                    $scope.project.project_answers = $scope.project.project_answers || [];
+            $scope.project.project_answers = $scope.project.project_answers || [];
+
+            _.each($scope.questions, function(question){
+                var existingAnswer = _.find($scope.project.project_answers, function(answer) {return answer.project_question_id === question.id});
+
+                if (existingAnswer === undefined) {
                     $scope.project.project_answers.push({
                         project_question_id: question.id,
                         project_question: question,
                         project_question_name: 'project_question_' + question.id
-                    })
-                });
-            }
+                    });
+                }
+            });
 
             $scope.todayEndDate = function() {
                 $scope.project.end_date = new Date();
