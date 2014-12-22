@@ -1,0 +1,39 @@
+<div class="show-product-page main-content" fix-sidebar set-width>
+  <div class="content container">
+    <h2>Product Detail</h2>
+
+    <div class="titles-border-bar">
+      <span class="blues width137"></span>
+      <span class="whites width3"></span>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <a ui-sref="base.marketplace.list" class="btn btn-link">
+          <i class="fa fa-long-arrow-left"></i>
+          Back to marketplace
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-2 product-sidebar">
+        <div class="icon-boxes green-top-border product-box-shadow">
+          <img ng-src="/images/assets/{{showCtrl.product.img}}"/>
+        </div>
+
+        <p class="text-uppercase text-center">Third Party</p>
+
+        <dl>
+          <dt>Publish Data</dt><dd>{{showCtrl.product.created_at | date: 'shortDate'}}</dd>
+          <dt>Type</dt><dd>{{showCtrl.product.product_category.name}}</dd>
+        </dl>
+      </div>
+
+      <div class="col-sm-10">
+        <h1 class="product-title">{{showCtrl.product.name}}</h1>
+        <p>{{showCtrl.product.description}}</p>
+      </div>
+    </div>
+  </div>
+</div>

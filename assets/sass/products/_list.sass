@@ -1,4 +1,4 @@
-.add-services-modal, .products-list-page, .marketplace-page
+.add-services-modal, .products-list-page, .marketplace
 
   .titles-box
     padding: 15px 0
@@ -30,6 +30,9 @@
 
   .orange-top-border
     background: url($images-path +'/boxes-orange-top-border-bg.png') no-repeat scroll 0 0 rgba(0, 0, 0, 0)
+
+  .green-top-border
+    background: url($images-path +'/boxes-green-top-border-bg.png') no-repeat scroll 0 0 rgba(0, 0, 0, 0)
 
   img
     position: relative
@@ -77,6 +80,12 @@
       padding: 9px 0 7px
       text-transform: uppercase
 
+  .icon-boxes
+    text-align: center
+
+  .product-box-shadow
+    height: 121px
+    width: 115px
 
   .btn-box
     text-align: center
@@ -101,10 +110,6 @@
 
     a.grid-switch
       color: $active-color
-
-    .product-box-shadow
-      height: 121px
-      width: 115px
 
     .product-box, .add-product-box
       height: 196px
@@ -167,6 +172,8 @@
 
     .product-box-shadow
       margin-left: 60%
+      height: initial
+      width: initial
 
       > div
         display: inline-block
@@ -188,7 +195,6 @@
       display: inline-block
       height: 64px
       margin: 0 55px 0 6px
-      text-align: center
       width: 60px
 
       img

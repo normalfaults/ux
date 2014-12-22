@@ -1,35 +1,33 @@
-<div class="marketplace">
-  <div class="marketplace-page main-content" fix-sidebar set-width>
-    <div class="content">
-      <products-list ng-repeat="category in marketplaceCtrl.categories" category="category" hide-empty="true">
-        <product-box class="product-box" ng-repeat="product in category.products" product="product">
-          <a ui-sref="base.products.show({id: product.id})">View More</a>
-        </product-box>
-      </products-list>
+<div class="marketplace-page main-content" fix-sidebar set-width>
+  <div class="content">
+    <products-list ng-repeat="category in marketplaceCtrl.categories" category="category" hide-empty="true">
+      <product-box class="product-box" ng-repeat="product in category.products" product="product">
+        <a ui-sref="base.marketplace.show({id: product.id})">View More</a>
+      </product-box>
+    </products-list>
 
-      <div class="banner-transverse top60">
-        <div class="containers">
-          <div class="boxs">
-            <div class="left-box fl">
-              <div class="icon-map-help"><i></i></div>
-              <div class="texts-box">
-                <h3>NEED HELP BUILDING CLOUD SOLUTION ?</h3>
+    <div class="banner-transverse top60">
+      <div class="containers">
+        <div class="boxs">
+          <div class="left-box fl">
+            <div class="icon-map-help"><i></i></div>
+            <div class="texts-box">
+              <h3>NEED HELP BUILDING CLOUD SOLUTION ?</h3>
 
-                <p>
-                  Confused where to start? We’re here to help,
-                  simply tell us what is you need
-                </p>
+              <p>
+                Confused where to start? We’re here to help,
+                simply tell us what is you need
+              </p>
               <span class="links-box">
               <a class="links-right-arrow"><span>Get Started</span><i></i></a>
               </span>
-              </div>
             </div>
-            <!-- end .left-box -->
-            <div class="right-box fr">
-              <span class="shape-photo"></span>
-            </div>
-            <!-- end .right-box -->
           </div>
+          <!-- end .left-box -->
+          <div class="right-box fr">
+            <span class="shape-photo"></span>
+          </div>
+          <!-- end .right-box -->
         </div>
       </div>
     </div>

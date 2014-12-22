@@ -1,9 +1,9 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($stateProvider, USER_ROLES) {
+module.exports = function($stateProvider) {
   $stateProvider
-    .state('base.orderHistory', {
-      url: "^/order-history"
+    .state('base.orders', {
+      url: "/order-history"
     });
 };
