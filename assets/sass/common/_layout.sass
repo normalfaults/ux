@@ -1,3 +1,14 @@
+html, body
+  height: 100%
+
+body
+  font-family: "proximanova_light", Arial, Helvetica
+  font-size: 13px
+  color: $text-color
+  line-height: 1
+  background: #fff
+  /* BREAK LONG WORDS
+  word-break: break-word
 
 // Generic Header + Table Layout
 .table-box
@@ -136,3 +147,17 @@
         font-family: "proximanova_semibold"
         font-size: 36px
         color: $dark-grey-color
+
+.under-fixed-header
+  box-sizing: border-box
+  padding-top: $header-height
+
+.dashboard-pages
+  margin-bottom: -1 * $footer-height
+  height: auto
+  width: 100%
+  min-height: 100%
+  position: absolute
+
+.wrapper
+  min-height: 100%

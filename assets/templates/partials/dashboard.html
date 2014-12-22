@@ -1,77 +1,78 @@
-
 <script type="text/ng-template" id="ModuleBox.html">
-    <div class="module">
-        <h3>
-            <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
-            <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
-        </h3>
-        <div class="data-box">
-            <div class="info">
-                <a ng-if="item.sref" ui-sref="{{item.sref}}" class="icon-projects-emoticon">
-                    <img ng-src="{{item.icon}}"/>
-                </a>
-                <a ng-if="!item.sref" href="javascript:" class="icon-projects-emoticon">
-                    <img ng-src="{{item.icon}}"/>
-                </a>
-                <p>
-                    <a href="{{item.url}}" class="blue-texts">{{item.domain}}</a>
-                </p>
-            </div>
-            <div class="icons">
-                <a>
-                    <span class="fa fa-money"></span>
-                </a>
-                <a>
-                    <span class="fa fa-desktop"></span>
-                </a>
-                <a>
-                    <span class="fa fa-database"></span>
-                </a>
-                <a>
-                    <span class="fa fa-tachometer"></span>
-                </a>
-            </div>
-        </div>
-        <div class="bottom-area">
-           <span class="fl">
-               <span class="blue-texts">{{item.state}}</span>
-               <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
-           </span>
-            <!-- end .data-box -->
-        </div>
-        <!-- end .bottom-area -->
+  <div class="module">
+    <h3>
+      <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
+      <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
+    </h3>
+
+    <div class="data-box">
+      <div class="info">
+        <a ng-if="item.sref" ui-sref="{{item.sref}}" class="icon-projects-emoticon">
+          <img ng-src="{{item.icon}}"/>
+        </a>
+        <a ng-if="!item.sref" href="javascript:" class="icon-projects-emoticon">
+          <img ng-src="{{item.icon}}"/>
+        </a>
+
+        <p>
+          <a href="{{item.url}}" class="blue-texts">{{item.domain}}</a>
+        </p>
+      </div>
+      <div class="icons">
+        <a>
+          <span class="fa fa-money"></span>
+        </a>
+        <a>
+          <span class="fa fa-desktop"></span>
+        </a>
+        <a>
+          <span class="fa fa-database"></span>
+        </a>
+        <a>
+          <span class="fa fa-tachometer"></span>
+        </a>
+      </div>
     </div>
+    <div class="bottom-area">
+      <span class="fl">
+         <span class="blue-texts">{{item.state}}</span>
+         <span
+           ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
+      </span>
+      <!-- end .data-box -->
+    </div>
+    <!-- end .bottom-area -->
+  </div>
 </script>
 
-
 <div class="dashboard-page main-content" fix-sidebar set-width>
+  <div class="page">
+    <ng-include src="'/partials/common/problem-alerts.html'"></ng-include>
+    <div class="dashboard-tab">
+      <div class="tabs">
+        <ul>
+          <li ng-class="{active: tab == 'projects'}">
+            <a class="icon-projects" ng-click="dashboardCtrl.showTab('projects')">
+              <i></i>
+              <span>PROJECTS ({{projects.length}})</span>
+            </a>
+            <span class="border-spacing"></span>
+          </li>
+        </ul>
+      </div>
+      <!-- end .tabs -->
 
-    <div class="page">
-        <ng-include src="'/partials/common/problem-alerts.html'"></ng-include>
-
-
-        <div class="dashboard-tab">
-            <div class="tabs">
-                <ul>
-                    <li ng-class="{active: tab == 'projects'}"><a class="icon-projects" ng-click="dashboardCtrl.showTab('projects')"><i></i><span>PROJECTS ({{projects.length}})</span></a><span class="border-spacing"></span></li>
-                </ul>
-            </div>
-
-            <!-- end .tabs -->
-
-            <div class="tab-content projects-content" ng-show="tab == 'projects'">
-
-                <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
-
-                <div class="btn-box">
-                    <a ui-sref="base.newProject" class="add-btn icon-add"><i></i><span>ADD NEW PROJECT</span></a>
-                </div>
-                <!-- end .btn-box -->
-            </div>
-
-            <!-- end .tab-content -->
+      <div class="tab-content projects-content" ng-show="tab == 'projects'">
+        <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
+        <div class="btn-box">
+          <a ui-sref="base.newProject" class="add-btn icon-add"><i></i><span>ADD NEW PROJECT</span></a>
         </div>
-        <!-- end .dashboard-tab -->
+        <!-- end .btn-box -->
+      </div>
 
+      <!-- end .tab-content -->
     </div>
+    <!-- end .dashboard-tab -->
+
+  </div>
 </div>

@@ -1,0 +1,138 @@
+.header
+  background: #0a498a
+  min-height: $header-height
+  width: 100%
+  min-width: 1000px
+  position: fixed
+  top: 0
+  left: 0
+  z-index: 9999
+  .logo
+    width: 205px
+    padding: 15px 0 0 50px
+    min-height: 43px
+    img
+      width: 205px
+  nav
+    float: left
+    li
+      float: left
+      padding-top: 30px
+      padding-left: 32px
+      a
+        font-family: "SourceSansPro_Regular"
+        font-size: 15px
+        color: #fff
+        &:hover
+          text-decoration: underline
+    .active a
+      color: $light-blue-color
+      text-decoration: none
+      &:hover
+        color: $light-blue-color
+  .icons-box
+    float: left
+    position: relative
+    .icon-notice:hover, .icon-cart:hover
+      text-decoration: none
+    .drop-down-box
+      font-family: "proximanova_regular"
+      background: #fff
+      width: 298px
+      height: 230px
+      padding: 0 9px 0 11px
+      box-shadow: 0 2px 6px 1px rgba(102, 102, 102, 0.5)
+      position: absolute
+      top: 64px
+      right: -34px
+      z-index: 10
+      .icon-arrow
+        background-position: -157px -230px
+        width: 27px
+        height: 15px
+        display: inline-block
+        position: absolute
+        top: -15px
+        right: 38px
+        z-index: 3
+      ul
+        padding: 13px 0 0 0
+      li
+        font-size: 14px
+        border-bottom: 1px solid #e5e1e1
+        line-height: 20px
+        padding: 7px
+        span
+          display: block
+          color: #353942
+        a
+          font-family: "proximanova_semibold"
+          color: #0a498a
+      .view-all
+        font-family: "proximanova_semibold"
+        padding: 20px 7px 0 7px
+        a
+          color: #0a498a
+          font-size: 14px
+  .user-info
+    font-family: "opensans_regular"
+    float: left
+    line-height: 26px
+    padding-top: 25px
+    position: relative
+    .texts, .avatar, .icon-arrow
+      float: left
+    .texts
+      font-size: 14px
+      color: #fff
+      padding: 0 14px
+      display: inline-block
+      .name
+        color: #74bff4
+        padding-left: 8px
+    .avatar img
+      width: 26px
+      height: 26px
+      border-radius: 3px
+      vertical-align: middle
+      margin-top: -3px
+    .user-info-dwwn
+      .icon-arrow
+        background-position: -60px -32px
+        width: 16px
+        height: 16px
+        display: inline-table
+        margin: 6px 0 0 3px
+      &:hover .icon-arrow
+        background-position: -60px -64px
+      padding-right: 8px
+      display: block
+    .drop-down-box
+      background: #fff
+      width: 200px
+      box-shadow: 0 2px 6px 1px rgba(102, 102, 102, 0.5)
+      position: absolute
+      top: 60px
+      right: 4px
+      z-index: 10
+      .icon-arrow
+        background-position: -70px -104px
+        background-size: 142px
+        width: 14px
+        height: 8px
+        display: inline-block
+        position: absolute
+        top: -4px
+        right: 4px
+        z-index: 3
+      li
+        border: 1px  solid #dadada
+        border-bottom: 0
+      a
+        color: #353942
+        font-size: 12px
+        padding-left: 7px
+        display: block
+        &:hover
+          text-decoration: none
+          background: #f7f7f7
