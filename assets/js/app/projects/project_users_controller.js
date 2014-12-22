@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectUsersController = function($scope, $modalInstance, $q, $state, ProjectUser, ApiResource) {
+var ProjectUsersController = function($scope, $modalInstance, $q, $state, project, ProjectUser, ApiResource) {
 
   $scope.searchURL = ApiResource("staffSearch");
   $scope.search = "";
@@ -12,7 +12,7 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, Projec
   $scope.$watch('lastSelected', function(newUser, lastUser) {
     if (newUser && newUser != lastUser) {
       $scope.userAdditons[newUser.originalObject.email] = newUser;
-      $scope.userAdditonCount = Object.keys($scope.userAdditons).length
+      $scope.userAdditonCount = Object.keys($scope.userAdditons).length;
     }
   });
 
@@ -31,14 +31,14 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, Projec
 
     userInserts = _.map(Object.keys($scope.userAdditons), function(key) {
       var user = $scope.userAdditons[key].originalObject;
-      return ProjectUser.addUserToProject({id: 2, staff_id: user.id}).$promise.then(
+      return ProjectUser.addUserToProject({id: project.id, staff_id: user.id}).$promise.then(
         function(data){
         }, function(error) {
           // @todo We should use a code here not a string match.
           if (error.data.error === "Duplicate record.") {
-            duplicateRecord = true
+            duplicateRecord = true;
           } else {
-            criticalError = true
+            criticalError = true;
           }
         });
     });
@@ -57,7 +57,7 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, Projec
 
   $scope.removeUser = function(email) {
     delete $scope.userAdditons[email];
-    $scope.userAdditonCount = Object.keys($scope.userAdditons).length
+    $scope.userAdditonCount = Object.keys($scope.userAdditons).length;
   }
 }
 

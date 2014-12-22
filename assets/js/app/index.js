@@ -9,6 +9,7 @@ require('angular-gravatar');
 require('angular-loading-bar');
 require('angular-smart-table');
 require('angular-ui-select');
+require('angular-money-directive');
 require('angucomplete');
 
 var angular = require('angular');
@@ -23,6 +24,7 @@ var app = angular.module('broker', [
   "angucomplete",
   "ui.bootstrap",
   "ui.select",
+  "fiestah.money",
   require('./common').name,
   require('./base').name,
   require('./admin').name,

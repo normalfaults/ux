@@ -333,7 +333,7 @@
                 </div>
             </div>
             <!-- end .titles-box -->
-            <div ng-show="!editingProject">
+            <div>
                 <div class="table-container table-box" ng-if="!editingProject">
                     <table st-table="rowCollection" class="table table-responsive table-data">
                         <colgroup>
@@ -351,19 +351,9 @@
                 </div>
                 <!-- end .table-box -->
                 <div class="bottom-btn-box">
-                    <a ng-click="editProject(true)" class="btn btn-primary">EDIT</a>
+                    <a ng-click="editProject()" class="btn btn-primary">EDIT</a>
                 </div>
             </div>
-
-            <div ng-show="editingProject">
-                <a ng-click="editProject(false)" class="edit-cancel fa fa-times"> I don't want to update this now.</a>
-                <project-form button-label="'Update'" project="project" questions="questions" submit-function="updateProject()">
-                </project-form>
-            </div>
         </div>
-
-
-
-
     </div>
 </div>

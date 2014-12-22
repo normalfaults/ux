@@ -63,6 +63,12 @@
       ],
       "exports": "angular"
     },
+    "angular-money-directive": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('fiestah.money').name"
+    },
     "angular-animate": {
       "depends": [
         "angular"
@@ -140,6 +146,7 @@
     "angular-loading-bar": "./bower_components/angular-loading-bar/build/loading-bar.js",
     "angular-gravatar": "./bower_components/angular-gravatar/build/angular-gravatar.js",
     "angular-ui-select": "./bower_components/angular-ui-select/dist/select.js",
+    "angular-money-directive": "./bower_components/angular-money-directive/angular-money-directive.js",
     "angucomplete": "./bower_components/angucomplete/angucomplete.js",
     "md5": "./bower_components/angular-gravatar/build/md5.js",
     "lodash": "./bower_components/lodash/dist/lodash.js",
