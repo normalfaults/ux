@@ -52,7 +52,7 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
   // catch any error in resolve in state
   $rootScope.$on('$stateChangeError', function(event, toState, toParams, fromState, fromParams, error) {
     if (401 === error.status) {
-      $state.transitionTo('logout');
+      $state.transitionTo('publicbase.logout');
     } else if (403 === error.status) {
       // This is the dashboard route.  Ugly.
       // @todo Add message or notice on redirect to give access denied error.
