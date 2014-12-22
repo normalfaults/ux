@@ -10,6 +10,12 @@ function ProductsAdminController(categories, clouds) {
     'products/aws_ec2.png',
     'products/aws_rds.png',
     'products/aws_s3.png',
+	'products/redhat.png',
+	'products/ubuntu.png',
+	'products/jira.png',
+	'products/windows.png',
+	'products/exchange.png',
+	'products/confluence.png',
     // Filling in with the project images
     'projects/1.png',
     'projects/2.png',
