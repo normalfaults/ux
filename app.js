@@ -1,5 +1,10 @@
 "use strict";
 
+var defaults = {
+  'port': 5000,
+  'apiBasePath': 'http://localhost:3000'
+};
+
 var express = require('express');
 var path = require('path');
 var methodOverride = require('method-override');
@@ -11,8 +16,11 @@ var _ = require('underscore');
 var winston = require('winston');
 var compression = require('compression');
 var app = express();
+var fs = require('fs');
 
-app.set('port', process.env.PORT || 5000);
+var appConfigPath = './public/appConfig.js';
+
+app.set('port', process.env.PORT || defaults.port);
 
 app.use(compression({
   threshold: 512
@@ -33,8 +41,16 @@ app.all("/api/*", function (req, res) {
   res.send("Not found", 404);
 });
 
+var apiBasePath = defaults.apiBasePath;
+if (process.env.API_BASE_PATH) {
+  apiBasePath = process.env.API_BASE_PATH;
+}
+
+var appConfigContents = 'window.appConfig = {apiBasePath: "' + apiBasePath + '"};';
+
+fs.writeFileSync(appConfigPath, appConfigContents);
+
 // Get all the public directories.
-var fs = require('fs');
 var dirs = fs.readdirSync(path.join(__dirname, 'public'));
 
 //redirect all other routes to angular

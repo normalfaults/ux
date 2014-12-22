@@ -39,13 +39,11 @@ var appAssetSrc = 'assets';
 var appAssetDest = 'public';
 var bowerPath = './bower_components';
 var theme = 'pepper-grinder';
-var jsConfigFile = 'appConfig.js';
 var paths = {
     src: {
       scripts: ['./' + appAssetSrc + '/js/main.js'],
       partials: [appAssetSrc + '/templates/partials/**/*.html'],
       views: [appAssetSrc + '/templates/views/**/*.html'],
-      jsConfig: appAssetSrc + '/' + jsConfigFile,
       styles: [
         appAssetSrc + '/sass/styles.sass'
       ],
@@ -62,7 +60,6 @@ var paths = {
       scripts: appAssetDest + '/js',
       partials: appAssetDest + '/templates',
       views: appAssetDest + '/views',
-      jsConfig: appAssetDest + '/',
       styles: appAssetDest + '/css',
       images: appAssetDest + '/images',
       fonts: appAssetDest + '/fonts'
@@ -70,7 +67,10 @@ var paths = {
   };
 
 gulp.task('bower', function() {
-  return bower()
+
+  bower({'cmd': 'prune'});
+
+  return bower({'cmd': 'install'})
     .pipe(gulp.dest(paths.bower));
 });
 
@@ -143,20 +143,6 @@ gulp.task('scripts', ['bower', 'clean-scripts', 'jshint'], function() {
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
-});
-
-/**
- * Copies over the app config from the assets folder to the public folder.
- * This only happens when there is not already an appConfig file.
- * Unlike other tasks, this file is not cleaned up from public.
- *
- * @future Could show the default differences in the output.
- */
-gulp.task('config', function() {
-  if (!fs.existsSync(paths.dest.jsConfig + '/' + jsConfigFile)) {
-    gulp.src(paths.src.jsConfig)
-      .pipe(gulp.dest(paths.dest.jsConfig));
-  }
 });
 
 gulp.task('clean-styles', function() {
@@ -262,6 +248,6 @@ gulp.task('watch', function() {
   gulp.watch(appAssetSrc + '/images/**/*', ['images']);
 });
 
-gulp.task('default', ['config', 'templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
+gulp.task('default', ['templates', 'scripts', 'styles', 'images', 'fonts', 'watch']);
 
-gulp.task('production', ['config', 'templates', 'scripts', 'styles', 'images', 'fonts']);
+gulp.task('production', ['templates', 'scripts', 'styles', 'images', 'fonts']);
