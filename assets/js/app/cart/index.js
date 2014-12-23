@@ -4,7 +4,7 @@ var angular = require('angular');
 
 var AuthenticationModule = angular.module('broker.cart', [])
   .controller('CartController', require('./cart_controller'))
-  .service('Cart', require('./cart'))
+  .service('CartService', require('./cart_service'))
   .config(require('./routes'));
 
 

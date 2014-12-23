@@ -1,16 +1,16 @@
 'use strict';
 
 /**@ngInject*/
-var CartController = function($scope, $modalInstance, Cart) {
+var CartController = function($scope, $modalInstance, CartService) {
 
   this.$modalInstance = $modalInstance;
-  this.Cart = Cart;
+  this.CartService = CartService;
 
 };
 
 CartController.prototype = {
   checkout : function() {
-    this.Cart.checkout();
+    this.CartService.checkout();
   },
 
   close: function() {
@@ -18,7 +18,7 @@ CartController.prototype = {
   },
 
   cartItems: function() {
-    return this.Cart.getItems();
+    return this.CartService.getItems();
   }
 
 

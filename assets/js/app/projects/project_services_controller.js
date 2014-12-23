@@ -1,9 +1,9 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectServicesController = function($scope, $modalInstance, Cart, Project, products, categories, currentUser) {
-  this.Cart = Cart;
-  this.Project = Project;
+var ProjectServicesController = function($scope, $modalInstance, CartService, project, products, categories, currentUser) {
+  this.CartService = CartService;
+  this.Project = project;
   this.CurrentUser = currentUser;
 
   $scope.cancel = function () {
@@ -43,12 +43,11 @@ ProjectServicesController.resolve = {
 ProjectServicesController.prototype = {
 
   addToCart: function(product) {
-    console.warn(this.CurrentUser, this.Project, product);
-    this.Cart.add(this.CurrentUser, this.Project, product);
+    this.CartService.add(this.CurrentUser, this.Project, product);
   },
 
   cartCount: function(projectId, productId) {
-    var cartItems = this.Cart.getItems();
+    var cartItems = this.CartService.getItems();
 
     var filtered = _.filter(cartItems, function(item) {
       return (item.productId == productId && item.projectId == projectId);

@@ -3,10 +3,10 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var HeaderController = function($rootScope, $scope, $sce, $modal, Cart, currentUser, alerts) {
+var HeaderController = function($rootScope, $scope, $sce, $modal, CartService, currentUser, alerts) {
 
   this.$modal = $modal;
-  this.Cart = Cart;
+  this.CartService = CartService;
   this.alerts = alerts;
   this.currentUser = currentUser;
 
@@ -24,6 +24,9 @@ HeaderController.resolve = {
 
 HeaderController.prototype = {
 
+  /**
+   * Move this to a state.
+   */
   cartModal: function () {
 
       if (this.isModalOpen) {
@@ -46,7 +49,7 @@ HeaderController.prototype = {
     },
 
   cartCount: function() {
-    return this.Cart.getCount();
+    return this.CartService.getCount();
   }
 };
 

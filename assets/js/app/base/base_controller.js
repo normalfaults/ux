@@ -28,8 +28,8 @@ BaseController.resolve = {
     return Bundle.query().$promise;
   },
   /**@ngInject*/
-  applications: function(Application) {
-    return Application.query().$promise;
+  applications: function(ApplicationResource) {
+    return ApplicationResource.query().$promise;
   }
 };
 

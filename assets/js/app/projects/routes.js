@@ -33,7 +33,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       url: "^/project/:projectId/add-service",
       resolve: ProjectServicesData,
       /**@ngInject**/
-      onEnter: function($stateParams, $state, $modal, currentUser, Project, products, categories) {
+      onEnter: function($stateParams, $state, $modal, currentUser, project, products, categories) {
         $modal.open({
           templateUrl: 'projects/add-services-modal.html',
           controller: 'ProjectServicesController as projectServicesCtrl',
@@ -47,8 +47,8 @@ module.exports = function($stateProvider, USER_ROLES) {
             currentUser: function() {
               return currentUser;
             },
-            Project: function() {
-              return Project;
+            project: function() {
+              return project;
             },
             products: function() {
               return products;

@@ -2,12 +2,12 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var Cart = function(Order) {
+var CartService = function(Order) {
   this.cart = [];
   this.OrderResource = Order;
 };
 
-Cart.prototype = {
+CartService.prototype = {
 
   /**
    * Get Cart Count
@@ -33,7 +33,7 @@ Cart.prototype = {
    * @param key
    */
   removeItemByKey: function(key) {
-
+    this.cart.splice(key, 1);
   },
 
   /**
@@ -58,13 +58,12 @@ Cart.prototype = {
    */
   checkout: function() {
     _.each(this.cart, _.bind(function(item, key, cart) {
+      console.warn(item);
       var response = this.OrderResource.save({
-        order: {
           product_id: item.product.id,
           project_id: item.project.id,
-          staff_id: this.CurrentUser.id,
+          staff_id: item.requestedBy.id,
           cloud_id: item.product.cloud.id
-        }
       });
 
       response.$promise.then(_.bind(function() {
@@ -79,4 +78,4 @@ Cart.prototype = {
 
 };
 
-module.exports = Cart;
+module.exports = CartService;
