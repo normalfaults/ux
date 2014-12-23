@@ -2,9 +2,11 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var CartService = function(OrderResource) {
-  this.cart = [];
+var CartService = function($q, OrderResource) {
+  this.$q = $q;
   this.OrderResource = OrderResource;
+
+  this.cart = [];
 };
 
 CartService.prototype = {
@@ -27,9 +29,16 @@ CartService.prototype = {
     return this.cart;
   },
 
+  /**
+   * Clear Cart
+   */
+  clearCart: function() {
+    this.cart = [];
+  },
 
   /**
    * Remove Item from Cart by Cart Index
+   *
    * @param key
    */
   removeItemByKey: function(key) {
@@ -38,9 +47,8 @@ CartService.prototype = {
 
   /**
    * Add item to cart
-   * @todo Needs different parameters
    *
-   * @param requestedBy
+   * @param requestedBy (User)
    * @param project
    * @param product
    */
@@ -55,25 +63,32 @@ CartService.prototype = {
   /**
    * Checkout
    * Creates order for each of the items
+   *
+   * @param checkoutCallback (optional)
    */
-  checkout: function() {
+  checkout: function(checkoutCallback) {
+
+    var cartPromises = [];
+
     _.each(this.cart, _.bind(function(item, key, cart) {
-      console.warn(item);
       var response = this.OrderResource.save({
           product_id: item.product.id,
           project_id: item.project.id,
-          staff_id: item.requestedBy.id,
-          cloud_id: item.product.cloud.id
+          staff_id:   item.requestedBy.id,
+          cloud_id:   item.product.cloud.id
       });
 
-      response.$promise.then(_.bind(function() {
-        // If successful, we remove it from the cart.
-        // @todo Might want to revist as this causes items to be removed from the cart one by one
-        //       which can be a bit odd.  But allows for retry on failure of individual items.
-        this.removeItemByKey(key);
-      }, this));
-
+      cartPromises.push(response.$promise);
     }, this));
+
+    this.$q.all(cartPromises).then(_.bind(function() {
+      this.clearCart();
+      if (_.isFunction(checkoutCallback)) {
+        checkoutCallback();
+      }
+    }, this), function() {
+      // @todo Error/Reject case.
+    });
   }
 
 };
