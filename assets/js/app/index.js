@@ -26,6 +26,7 @@ var app = angular.module('broker', [
   "ui.select",
   "fiestah.money",
   require('./common').name,
+  require('./staff').name,
   require('./base').name,
   require('./admin').name,
   require('./authentication').name,

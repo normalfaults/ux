@@ -19,9 +19,11 @@
     "servicesById":      "/services/:id",
     "applicationsById":  "/applications/:id",
     "bundlesById":       "/bundles/:id",
+    "header":            "/header",
+    "staffById":         "/staff/:id",
+    "staffProjects":     "/staff/:id/projects/:project_id",
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
-    "currentMember":     "/staff/current_member",
-    "cloudsById":        "/clouds/:id"
+    "currentMember":     "/staff/current_member"
   }
 }

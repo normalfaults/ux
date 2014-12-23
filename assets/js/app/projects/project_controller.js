@@ -16,9 +16,9 @@ function ProjectController($scope, $modal, $state, $stateParams ,Project, projec
     $state.go('base.editProject', {id: $scope.project.id}, {reload: true});
   };
 
-  $scope.openProjectUsersModal = function () {
-
-  };
+  $scope.reload = function() {
+    $state.go('base.project', {id: $scope.project.id}, {reload: true});
+  }
 }
 
 ProjectController.resolve = {
