@@ -18,7 +18,6 @@
     "productCategoriesById": "/product_categories/:id",
     "servicesById":      "/services/:id",
     "applicationsById":  "/applications/:id",
-    "bundlesById":       "/bundles/:id",
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
     "currentMember":     "/staff/current_member",
