@@ -1,8 +1,7 @@
 'use strict';
-
 var _ = require('lodash');
 
-/**ngInject**/
+/**@ngInject*/
 var Cart = function(Order) {
   this.cart = [];
   this.OrderResource = Order;
@@ -59,9 +58,11 @@ Cart.prototype = {
    */
   checkout: function() {
     _.each(this.cart, _.bind(function(item, key, cart) {
-      this.OrderResource.post({
+      var response = this.OrderResource.save({
 
-      }).then(_.bind(function() {
+      });
+
+      response.$promise.then(_.bind(function() {
         // If successful, we remove it from the cart.
         // @todo Might want to revist as this causes items to be removed from the cart one by one
         //       which can be a bit odd.  But allows for retry on failure of individual items.

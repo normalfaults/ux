@@ -10,7 +10,7 @@ var CartController = function($scope, $modalInstance, Cart) {
 
 CartController.prototype = {
   checkout : function() {
-
+    this.Cart.checkout();
   },
 
   close: function() {
