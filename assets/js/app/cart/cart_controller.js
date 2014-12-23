@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
 var CartController = function($scope, $modalInstance, CartService) {
 
@@ -9,8 +11,16 @@ var CartController = function($scope, $modalInstance, CartService) {
 };
 
 CartController.prototype = {
-  checkout : function() {
-    this.CartService.checkout();
+  checkout : function(checkoutCallback) {
+
+    var wrappedCallback = _.bind(function() {
+      this.$modalInstance.close();
+      if (_.isFunction(checkoutCallback)) {
+        checkoutCallback();
+      }
+    }, this);
+
+    this.CartService.checkout(wrappedCallback);
   },
 
   close: function() {
