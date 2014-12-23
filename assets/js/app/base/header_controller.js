@@ -46,7 +46,7 @@ HeaderController.prototype = {
     },
 
   cartCount: function() {
-    return this.Cart.count();
+    return this.Cart.getCount();
   }
 };
 

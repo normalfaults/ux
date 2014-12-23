@@ -11,7 +11,7 @@
     "usersById":         "/users/:id",
     "staffSearch":       "/staff?query=",
     "recentUsers":       "/users/recent",
-    "ordersById":        "/orders/:id",
+    "orders":            "/orders",
     "recentOrders":      "/orders/recent",
     "projectsById":      "/projects/:id",
     "productsById":      "/products/:id",
