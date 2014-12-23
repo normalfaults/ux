@@ -1,9 +1,10 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectsServicesController = function($scope, $modalInstance, Cart, products, categories) {
-
+var ProjectServicesController = function($scope, $modalInstance, Cart, Project, products, categories, currentUser) {
   this.Cart = Cart;
+  this.Project = Project;
+  this.CurrentUser = currentUser;
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
@@ -27,10 +28,23 @@ var ProjectsServicesController = function($scope, $modalInstance, Cart, products
   }, this));
 };
 
-ProjectsServicesController.prototype = {
+ProjectServicesController.resolve = {
+  /**@ngInject*/
+  categories: function(ProductCategory) {
+    return ProductCategory.query().$promise;
+  },
+  /**@ngInject*/
+  products: function(Product) {
+    return Product.query({"includes[]": ["cloud"]}).$promise;
+  }
+};
 
-  addToCart: function(projectId, productId, productName) {
-    this.Cart.add(projectId, productId, productName);
+
+ProjectServicesController.prototype = {
+
+  addToCart: function(product) {
+    console.warn(this.CurrentUser, this.Project, product);
+    this.Cart.add(this.CurrentUser, this.Project, product);
   },
 
   cartCount: function(projectId, productId) {
@@ -44,4 +58,4 @@ ProjectsServicesController.prototype = {
   }
 };
 
-module.exports = ProjectsServicesController;
+module.exports = ProjectServicesController;

@@ -7,7 +7,7 @@
         <div class="modal-body">
             <ul ng-if="cartCtrl.cartItems().length > 0">
                 <li ng-repeat="item in cartCtrl.cartItems()">
-                    <a>{{item.productName}}</a>
+                    <a>{{item.product.name}}</a>
                 </li>
             </ul>
             <div ng-if="cartCtrl.cartItems().length == 0">

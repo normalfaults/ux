@@ -40,15 +40,15 @@ Cart.prototype = {
    * Add item to cart
    * @todo Needs different parameters
    *
-   * @param projectId
-   * @param productId
-   * @param productName
+   * @param requestedBy
+   * @param project
+   * @param product
    */
-  add: function (projectId, productId, productName) {
+  add: function (requestedBy, project, product) {
     this.cart.push({
-      projectId: projectId,
-      productId: productId,
-      productName: productName
+      requestedBy: requestedBy,
+      project:     project,
+      product:     product
     });
   },
 
@@ -59,7 +59,12 @@ Cart.prototype = {
   checkout: function() {
     _.each(this.cart, _.bind(function(item, key, cart) {
       var response = this.OrderResource.save({
-
+        order: {
+          product_id: item.product.id,
+          project_id: item.project.id,
+          staff_id: this.CurrentUser.id,
+          cloud_id: item.product.cloud.id
+        }
       });
 
       response.$promise.then(_.bind(function() {
