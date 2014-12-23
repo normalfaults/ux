@@ -3,9 +3,10 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, $state, $stateParams ,Project, project, alerts, projectQuestions) {
+function ProjectController($scope, $modal, $state, $stateParams ,Project, ProjectUser, project, alerts, projectQuestions) {
   this.project = project;
   this.$modal = $modal;
+  this.ProjectUser = ProjectUser;
 
   $scope.project = this.project;
   $scope.alerts = alerts;
@@ -39,6 +40,18 @@ ProjectController.resolve = {
 };
 
 ProjectController.prototype = {
+
+  removeUserFromProject: function(index){
+    var self = this;
+    self.ProjectUser.delete({id: self.project.id, staff_id: self.project.users[index].id}).$promise.then(
+      function(data){
+        self.project.users.splice(index, 1);
+      },
+      function(error) {
+        alert("There was an error removing this user. Please try again later");
+      }
+    );
+  },
 
   openAddUsersModal: function() {
     var self = this;

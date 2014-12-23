@@ -24,6 +24,7 @@
     "staffProjects":     "/staff/:id/projects/:project_id",
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
-    "currentMember":     "/staff/current_member"
+    "currentMember":     "/staff/current_member",
+    "cloudsById":        "/clouds/:id"
   }
 }
