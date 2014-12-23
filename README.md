@@ -1,7 +1,7 @@
-jellyfish-ux
+##jellyfish-ux
 ============
 
-To install. 
+### To install. 
 
 * Install dependencies: `sudo npm install` 
 * Build application: `gulp production`
@@ -9,7 +9,6 @@ To install. 
 
 Default port/host is http://localhost:5000
 
-To configure.
-
-* Modify public/appConfig.js
-    * basePath: Base path to the 'core' server.
+### Configuration
+* process.env.PORT -- NodeJS server port (optional, defaults to 300)
+* process.env.API_BASE_PATH -- Core API Base Path (optional, defaults to http://localhost:3000);
