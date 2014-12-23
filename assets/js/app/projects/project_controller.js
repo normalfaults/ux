@@ -16,10 +16,6 @@ function ProjectController($scope, $modal, $state, $stateParams ,Project, Projec
   $scope.editProject = function() {
     $state.go('base.editProject', {id: $scope.project.id}, {reload: true});
   };
-
-  $scope.reload = function() {
-    $state.go('base.project', {id: $scope.project.id}, {reload: true});
-  }
 }
 
 ProjectController.resolve = {
