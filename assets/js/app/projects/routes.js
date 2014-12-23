@@ -34,8 +34,15 @@ module.exports = function($stateProvider, USER_ROLES) {
       resolve: ProjectServicesData,
       /**@ngInject**/
       onEnter: function($stateParams, $state, $modal, currentUser, project, products, categories) {
+
+        // When the modal is resolved or rejected we want to transition
+        // back to the project page.
+        var onClose = function() {
+          return $state.transitionTo("base.project", $stateParams);
+        };
+
         $modal.open({
-          templateUrl: 'projects/add-services-modal.html',
+          templateUrl: '/partials/projects/add-services-modal.html',
           controller: 'ProjectServicesController as projectServicesCtrl',
           size: 'lg',
           /**
@@ -58,11 +65,7 @@ module.exports = function($stateProvider, USER_ROLES) {
             }
 
           }
-        }).result.then(function(result) {
-            if (result) {
-              return $state.transitionTo("base.project");
-            }
-          });
+        }).result.then(onClose, onClose);
       }
     });
 };

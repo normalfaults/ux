@@ -54,10 +54,6 @@ ProjectController.prototype = {
     });
   },
 
-  openAddServicesModal: _.bind(function() {
-
-  }, this),
-
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;
     var usedBudget = 0;
