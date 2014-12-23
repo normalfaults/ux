@@ -36,7 +36,6 @@ var app = angular.module('broker', [
   require('./services').name,
   require('./marketplace').name,
   require('./applications').name,
-  require('./bundles').name,
   require('./orders').name,
   require('./directives').name,
   require('./dashboard').name
