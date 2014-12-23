@@ -29,8 +29,8 @@ ProjectController.resolve = {
     return DataService.getProjectQuestions().$promise;
   },
   /**@ngInject*/
-  project: function(Project, $stateParams) {
-    return Project.get({id: $stateParams.projectId}).$promise;
+  project: function(ProjectResource, $stateParams) {
+    return ProjectResource.get({id: $stateParams.projectId}).$promise;
   },
   /**@ngInject*/
   alerts: function(DataService) {

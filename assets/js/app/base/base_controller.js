@@ -19,8 +19,8 @@ var BaseController = function($rootScope, $scope, $state, projects, applications
 
 BaseController.resolve = {
   /**@ngInject*/
-  projects: function(Project) {
-    return Project.query().$promise;
+  projects: function(ProjectResource) {
+    return ProjectResource.query().$promise;
   },
   /**@ngInject*/
   applications: function(ApplicationResource) {
