@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, UserResource, Session, $urlRouter, ROUTES, $state) {
+module.exports = function($http, $rootScope, $log, $location, AuthService, UserResource, Session, $urlRouter, ROUTES, $state) {
 
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -11,8 +11,6 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
   $http.defaults.withCredentials = true;
 
   $rootScope.sideBarExpanded = true;
-
-  $(window).resize(fixSidebar);
 
   // auto close popup on body click
   $("body").click(function(e) {
