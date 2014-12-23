@@ -61,7 +61,6 @@ ProjectController.prototype = {
     _.each(this.project.order_history, function(item, key, all) {
       // @todo In the future we can split this off to complete/pending
       usedBudget += item.total;
-
     });
 
     var usedPercent = 0;

@@ -3,7 +3,7 @@
 /**@ngInject*/
 var ProjectServicesController = function($scope, $modalInstance, CartService, project, products, categories, currentUser) {
   this.CartService = CartService;
-  this.Project = project;
+  this.project = project;
   this.CurrentUser = currentUser;
 
   $scope.cancel = function () {
@@ -39,18 +39,17 @@ ProjectServicesController.resolve = {
   }
 };
 
-
 ProjectServicesController.prototype = {
 
   addToCart: function(product) {
-    this.CartService.add(this.CurrentUser, this.Project, product);
+    this.CartService.add(this.CurrentUser, this.project, product);
   },
 
   cartCount: function(projectId, productId) {
     var cartItems = this.CartService.getItems();
 
     var filtered = _.filter(cartItems, function(item) {
-      return (item.productId == productId && item.projectId == projectId);
+      return (item.product.id == productId && item.project.id == projectId);
     });
 
     return filtered.length;
