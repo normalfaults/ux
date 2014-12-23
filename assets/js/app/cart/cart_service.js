@@ -2,9 +2,9 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var CartService = function(Order) {
+var CartService = function(OrderResource) {
   this.cart = [];
-  this.OrderResource = Order;
+  this.OrderResource = OrderResource;
 };
 
 CartService.prototype = {

@@ -9,8 +9,8 @@ function EditProductController(product) {
 
 EditProductController.resolve = {
   /**@ngInject*/
-  product: function(Product, $stateParams) {
-    return Product.get({id: $stateParams.id}).$promise;
+  product: function(ProductResource, $stateParams) {
+    return ProductResource.get({id: $stateParams.id}).$promise;
   }
 };
 

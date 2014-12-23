@@ -30,12 +30,12 @@ var ProjectServicesController = function($scope, $modalInstance, CartService, pr
 
 ProjectServicesController.resolve = {
   /**@ngInject*/
-  categories: function(ProductCategory) {
-    return ProductCategory.query().$promise;
+  categories: function(ProductCategoryResource) {
+    return ProductCategoryResource.query().$promise;
   },
   /**@ngInject*/
-  products: function(Product) {
-    return Product.query({"includes[]": ["cloud"]}).$promise;
+  products: function(ProductResource) {
+    return ProductResource.query({"includes[]": ["cloud"]}).$promise;
   }
 };
 

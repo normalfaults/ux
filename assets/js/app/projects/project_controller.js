@@ -47,8 +47,7 @@ ProjectController.prototype = {
       templateUrl: 'projects/users-modal.html',
       controller: 'ProjectUsersController',
       resolve: {
-        /**@ngInject*/
-        project: function(ProductCategory) {
+        project: function() {
           return self.project;
         }
       }

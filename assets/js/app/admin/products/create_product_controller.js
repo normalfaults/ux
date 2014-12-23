@@ -9,8 +9,8 @@ function CreateProductController(product) {
 
 CreateProductController.resolve = {
   /**@ngInject*/
-  product: function(Product, $stateParams) {
-    return new Product($stateParams);
+  product: function(ProductResource, $stateParams) {
+    return new ProductResource($stateParams);
   }
 };
 
