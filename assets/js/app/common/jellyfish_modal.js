@@ -53,7 +53,6 @@ var JellyfishModal = function($modal) {
 
       modal.result.finally(onClose, onClose);
       return modal;
-
     }
   };
 };

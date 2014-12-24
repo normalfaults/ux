@@ -14,8 +14,6 @@ var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartSe
   angular.forEach(this.alerts, function(item) {
     item.trustedHtml = $sce.trustAsHtml(item.text);
   });
-
-  this.isModalOpen = false;
 };
 
 HeaderController.resolve = {
@@ -28,13 +26,13 @@ HeaderController.prototype = {
    * Move this to a state.
    */
   cartModal: function () {
-      this.JellyfishModal.open({
-        id: 'cart',
-        templateUrl: '/partials/cart/cart-modal.html',
-        controller: 'CartController as cartCtrl',
-        size: 'lg'
-      });
-    },
+    this.JellyfishModal.open({
+      id: 'cart',
+      templateUrl: '/partials/cart/cart-modal.html',
+      controller: 'CartController as cartCtrl',
+      size: 'lg'
+    });
+  },
 
   cartCount: function() {
     return this.CartService.getCount();
