@@ -41,7 +41,6 @@
         <div class="icons-box">
             <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerCtrl.alerts.length">{{headerCtrl.alerts.length}}</i></a>
             <div class="drop-down-box hide keep-drop-down-open">
-                <span class="icon-arrow"></span>
                 <ul ng-if="headerCtrl.alerts.length > 0">
                     <li ng-repeat="item in headerCtrl.alerts | limitTo:5">
                         <span class="texts" ng-bind-html="item.trustedHtml"></span>
@@ -68,10 +67,8 @@
             <a class="user-info-dwwn" drop-down>
                 <span class="texts">Welcome<span class="name">{{headerCtrl.currentUser.fullName()}}</span></span>
                 <span class="avatar"><img gravatar-src="headerCtrl.currentUser.email" gravatar-size="26" alt="Avatar"></span>
-                <span class="icon-arrow"></span>
             </a>
             <div class="drop-down-box hide">
-                <span class="icon-arrow"></span>
                 <ul>
                     <li><a>Edit Profile</a></li>
                     <li><a href="/logout">Logout</a></li>

@@ -79,13 +79,9 @@ textarea, input, select
 .dashboard-pages
   .blue-link
     color: #0a498a
-  .icon-arrow, .icon-list-btn, .icon-grid-btn, .icon-back, .icon-del-btn, .icon-add i, .icon-map-help i, .links-right-arrow i
+  .icon-del-btn
     background-image: url(../images/icon-sprites.png)
     background-repeat: no-repeat
-  .icon-projects-emoticon
-    background-image: url(../images/icon-projects-sprites.png)
-    background-repeat: no-repeat
-    background-position: -65px 0
   .icon-boxes a
     background-image: url(../images/icon-boxes-sprites.png)
     background-repeat: no-repeat
@@ -104,6 +100,7 @@ textarea, input, select
     padding-top: $header-height
     min-height: 100%
     .side-arrow
+      padding-left: 5px
       width: 27px
       background: #2F333C
       height: 51px
@@ -126,14 +123,14 @@ textarea, input, select
       .current ul
         display: none
       li .li-links
-        .texts, .number, .arrow-right, .arrow-down
+        .texts, .number
           display: none
     nav.absolute-nav .logout-btn
       width: 74px
       overflow: hidden
       span
         display: none
-    .absolute-nav .active .side-arrow:hover
+    .absolute-nav .active
       background: #727683
     nav
       background: $sidebar-background-color
@@ -153,8 +150,6 @@ textarea, input, select
         margin-top: -1px
         position: relative
       .side-arrow i
-        background-image: url(../images/icon-sprites.png)
-        background-repeat: no-repeat
         background-position: -86px -240px
         width: 24px
         height: 24px
@@ -196,9 +191,6 @@ textarea, input, select
           float: left
         .texts
           white-space: nowrap
-        .number, .arrow-right, .arrow-down
-          float: right
-          display: inline-block
         .number
           color: #fff
           font-size: 12px
@@ -211,23 +203,6 @@ textarea, input, select
           line-height: 18px
           border-radius: 20px
           margin: 13px 5px 0 0
-        .arrow-right, .arrow-down
-          background-image: url(../images/icon-sprites.png)
-          background-repeat: no-repeat
-          width: 16px
-          height: 16px
-        .arrow-right
-          margin: 15px 4px 0 0
-        .arrow-down
-          margin: 10px 4px 0 0
-        .arrow-right
-          background-position: -60px -128px
-          &:hover
-            background-position: -60px -421px
-        .arrow-down
-          background-position: -60px -112px
-          &:hover
-            background-position: -60px -405px
       .current
         border-top: 0
         .li-links
@@ -644,14 +619,6 @@ textarea, input, select
       min-height: 121px
       position: relative
     .left-box
-      .icon-map-help
-        float: left
-        padding: 15px 13px 0 18px
-        i
-          background-position: -254px -128px
-          width: 64px
-          height: 90px
-          display: inline-block
       .texts-box
         padding: 20px 0 0 0
         float: left
@@ -668,24 +635,6 @@ textarea, input, select
           line-height: 16px
           width: 280px
           padding-bottom: 8px
-        .links-right-arrow
-          font-family: "proximanova_semibold"
-          font-size: 16px
-          color: #1a93e3
-          line-height: 20px
-          height: 20px
-          display: inline-block
-          &:hover span
-            text-decoration: underline
-          span
-            float: left
-          i
-            float: left
-            background-position: -60px -144px
-            width: 16px
-            height: 16px
-            margin: 1px 0 0 2px
-            display: inline-block
     .right-box .shape-photo
       background: url(../images/shape-banner.png) no-repeat 0 0
       width: 160px
@@ -739,18 +688,6 @@ textarea, input, select
         a span
           color: #292e35
           font-family: "proximanova_semibold"
-      .icon-projects i,
-        width: 24px
-        height: 24px
-        display: inline-block
-        margin: 2px 6px 0 0
-      .icon-projects
-        i
-          background-position: -122px -480px
-        &:hover i
-          background-position: -122px -504px
-      .active .icon-projects i
-        background-position: -122px -504px
     .tab-content
       padding-bottom: 85px
       overflow: hidden
@@ -786,8 +723,6 @@ textarea, input, select
             text-align: center
             min-height: 153px
             border-bottom: 1px solid #f5f8fc
-      .icon-projects-emoticon
-        margin: 20px 0 0 0
       .data-box
         .info p
           font-family: "proximanova_regular"
@@ -969,8 +904,6 @@ textarea, input, select
         color: #292e35
         font-size: 14px
         line-height: 18px
-      .links-right-arrow
-        margin: 5px 0
       .build-custom-img
         background: url(../images/build-custom-img.png) no-repeat 0 0
         width: 143px
@@ -993,41 +926,11 @@ textarea, input, select
         color: #292e35
         font-size: 14px
         line-height: 18px
-      .links-right-arrow
-        margin: 5px 0
       .shape-banner-img
         background: url(../images/shape-banner.png) no-repeat 0 0
         width: 160px
         height: 135px
-        margin: 18px 0 0 2px
-        display: inline-block
-      .icon-map-help
-        display: inline-block
-        padding: 0 0 0 58px
-        i
-          background-position: -150px -77px
-          background-size: 191px
-          width: 42px
-          height: 52px
-          display: inline-block
-          margin-top: -24px
-    .links-right-arrow
-      font-family: "proximanova_semibold"
-      font-size: 16px
-      color: #1a93e3
-      line-height: 20px
-      height: 20px
-      display: inline-block
-      &:hover span
-        text-decoration: underline
-      span
-        float: left
-      i
-        float: left
-        background-position: -60px -144px
-        width: 16px
-        height: 16px
-        margin: 1px 0 0 2px
+        margin: -10px 0 0 2px
         display: inline-block
   .service-detail-container .contents .titles-box
     padding: 3px 40px 0 36px
@@ -1038,21 +941,11 @@ textarea, input, select
         margin-bottom: 3px
         line-height: 20px
         min-height: 20px
-        strong, .icon-back
-          //float: left
-          display: inline-block
         strong
           font-family: "proximanova_semibold"
           font-weight: normal
           font-size: 18px
           color: #4c4d4e
-        .icon-back
-          background-position: -154px -160px
-          width: 32px
-          height: 32px
-          margin: -8px 10px 0 -9px
-          &:hover
-            background-position: -154px -192px
       .blue-link
         font-family: "proximanova_semibold"
         font-size: 12px
@@ -1227,14 +1120,6 @@ textarea, input, select
     padding: 0 24px 0 24px
     h2 strong
       font-size: 16px
-    .icon-projects
-      float: left
-      i
-        width: 24px
-        height: 24px
-        display: inline-block
-        margin: -2px 6px 0 0
-        background-position: -122px -504px
   .right-bar .users-box
     font-family: "proximanova_semibold"
     color: #4c4d4e
@@ -1512,9 +1397,6 @@ textarea, input, select
       border: none none
 
 /** MODIFIED BY DEVELOPER *
-
-.dashboard-pages .icon-projects-emoticon
-  background: none
 
 .center-image
   display: inline-block
