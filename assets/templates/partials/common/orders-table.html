@@ -26,7 +26,6 @@
             <tr>
                 <th class="text-left">ORDER ID</th>
                 <th class="text-left">PROJECT</th>
-                <th class="text-left">ITEMS</th>
                 <th class="text-left">TOTAL</th>
                 <th class="text-left">STATUS</th>
                 <th class="text-left">REQUEST DATE</th>
@@ -34,12 +33,11 @@
             </thead>
             <tbody>
             <tr ng-repeat="item in project.order_history">
-                <td class="blue-texts font15"><a class="blue-link">{{item.orderId}}</a></td>
-                <td class="blue-texts font15"><a ui-sref="base.project({projectId: item.project.id})" class="blue-link">{{item.project.name}}</a></td>
-                <td class="item-texts">{{item.items}}</td>
+                <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
+                <td class="blue-texts font15"><a class="blue-link">{{item.product_id}}</a></td>
                 <td class="green-texts">{{item.total | currency}}</td>
-                <td class="{{item.color}}-texts">{{item.status}}</td>
-                <td class="data-texts">{{item.requestDate}}</td>
+                <td class="{{item.color}}-texts">{{item.provision_status}}</td>
+                <td class="data-texts">{{item.created_at}}</td>
             </tr>
             </tbody>
         </table>
