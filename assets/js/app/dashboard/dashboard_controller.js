@@ -3,16 +3,14 @@
 /**@ngInject*/
 function DashboardController($scope, alerts, currentUser) {
   this.$scope = $scope;
+  this.alerts = alerts;
 
   $scope.tab = "projects";
-  $scope.alerts = alerts;
   $scope.currentUser = currentUser;
 }
 
 DashboardController.prototype.showTab = function(tab) {
-  var self = this;
-
-  self.$scope.tab = tab;
+  this.$scope.tab = tab;
 };
 
 DashboardController.resolve = {

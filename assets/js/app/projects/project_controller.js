@@ -7,15 +7,22 @@ function ProjectController($scope, $modal, $state, $stateParams, project, alerts
 
   this.project = project;
   this.$modal = $modal;
+  this.alerts =  alerts;
 
-  $scope.project = this.project;
-  $scope.alerts = alerts;
-  $scope.questions = projectQuestions;
+  /**
+   * On creation/transition to scope, start refresh interval if
+   * we need to to reload unfinished service data.
+   */
 
+  $scope.$on('$stateChangeSuccess', _.bind(function () {
+    this.startRefreshInterval();
+  }, this));
 
-  $scope.editProject = function() {
-    $state.go('base.editProject', {id: $scope.project.id}, {reload: true});
-  };
+  $scope.$on('$stateChangeStart', _.bind(function() {
+    this.stopRefreshInterval();
+  }, this));
+
+  // @todo View uses 'answers' but it is not hooked up here
 }
 
 ProjectController.resolve = {
@@ -36,6 +43,31 @@ ProjectController.resolve = {
 };
 
 ProjectController.prototype = {
+
+  /**
+   * Setup refresh interval if not all services are complete.
+   * Will automatically stop polling after all services are complete.
+   * Polls Every 30 Seconds.
+   */
+  startRefreshInterval: function() {
+    if (!this._areAllServicesComplete()) {
+      this.interval = window.setInterval(_.bind(function () {
+        this.project.$get().then(_.bind(function () {
+
+          if (this._areAllServicesComplete()) {
+            this.stopRefreshInterval();
+          }
+        }, this));
+      }, this), 30000);
+    }
+  },
+
+  /**
+   * Clear/Stop the polling.
+   */
+  stopRefreshInterval: function() {
+    window.clearInterval(this.interval);
+  },
 
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;
@@ -59,6 +91,27 @@ ProjectController.prototype = {
       'used':        usedBudget,
       'usedPercent': usedPercent
     };
+  },
+
+  /**
+   * Loops through the resolved order history on the project
+   * If any of these orders are not completed, we return false.
+   * A completed order is currently equivelent to a service.
+   *
+   * @private
+   */
+  _areAllServicesComplete: function() {
+
+    // This short circuits on the first non complete item.
+    var anyNotComplete = _.some(this.project.order_history, function(item, key) {
+      // @todo Who nows if this will be the final status.
+      return item.provision_status !== 'Complete';
+    });
+
+    // We return the reverse here.
+    // Are all services complete
+    return !anyNotComplete;
+
   }
 };
 

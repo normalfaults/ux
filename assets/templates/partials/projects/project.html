@@ -4,7 +4,7 @@
 
         <!-- Pending Approval Banner -->
 
-        <div class="top-notice-banner" ng-if="!project.isApproved()">
+        <div class="top-notice-banner" ng-if="!projectCtrl.project.isApproved()">
             <div class="app-project">
                 <div class="col40">
                     <div class="project-approval-icon">
@@ -25,10 +25,10 @@
 
         <div class="page-title">
             <div class="page-title-icon">
-                <img ng-src="{{project.icon}}"/>
+                <img ng-src="{{projectCtrl.project.icon}}"/>
             </div>
             <div class="page-title-text">
-                <h3>{{project.name}}</h3>
+                <h3>{{projectCtrl.project.name}}</h3>
             </div>
         </div>
 
@@ -42,7 +42,7 @@
                         Status
                     </div>
                     <div class="info-box-text">
-                        {{project.state}}
+                        {{projectCtrl.project.state}}
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@
                         Budget
                     </div>
                     <div class="info-box-text">
-                        {{project.budget ? "$" + project.budget : "N/A"}}
+                        {{projectCtrl.project.budget ? "$" + projectCtrl.project.budget : "N/A"}}
                     </div>
                     <div class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().usedPercent + '%' }"></div>
@@ -69,7 +69,7 @@
                         CPU
                     </div>
                     <div class="info-box-text">
-                        {{project.cpu}} Cores
+                        {{projectCtrl.project.cpu}} Cores
                     </div>
                     <div ng-init="percentCpu = 90" class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: percentCpu + '%' }"></div>
@@ -84,7 +84,7 @@
                         HDD
                     </div>
                     <div class="info-box-text">
-                        {{project.hdd}}
+                        {{projectCtrl.project.hdd}}
                     </div>
                     <div ng-init="percentHdd = 90" class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: percentHdd + '%' }"></div>
@@ -99,7 +99,7 @@
                         RAM
                     </div>
                     <div class="info-box-text">
-                        {{project.ram}}
+                        {{projectCtrl.project.ram}}
                     </div>
                     <div ng-init="percentRam = 90" class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: percentRam + '%' }"></div>
@@ -112,18 +112,18 @@
 
         <!-- Problem Alerts -->
 
-        <ng-include src="'/partials/common/problem-alerts.html'"></ng-include>
+        <alerts-table alerts="projectCtrl.alerts"></alerts-table>
 
         <!-- Order History -->
 
-        <ng-include src="'/partials/common/orders-table.html'"></ng-include>
+        <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
 
         <!-- Services -->
 
-        <div class="table-box" ng-if="project.isApproved()">
+        <div class="table-box" ng-if="projectCtrl.project.isApproved()">
             <div class="title-box">
                 <h2>
-                    <strong>SERVICES ({{project.services.length}})</strong>
+                    <strong>SERVICES ({{projectCtrl.project.services.length}})</strong>
                     <switch-view-buttons
                             grid-view="'.container-grid-project-detail-services'"
                             list-view="'.container-list-project-detail-services'"></switch-view-buttons>
@@ -137,17 +137,17 @@
             <!-- end .titles-box -->
 
             <div class="container-grid container-grid-project-detail-services content-box-featured">
-                <service-box ng-repeat="service in project.order_history" service="service"></service-box>
+                <service-box ng-repeat="service in projectCtrl.project.order_history" service="service"></service-box>
                 <div class="btn-new-box">
                     <div class="boxs">
-                        <a class="add-btn icon-add" ui-sref="base.project.addService({projectId: project.id})"><i></i><span>ADD NEW SERVICES</span></a>
+                        <a class="add-btn icon-add" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i></i><span>ADD NEW SERVICES</span></a>
                     </div>
                 </div>
             </div>
             <!-- end .container-grid -->
 
             <div class="container-list container-list-project-detail-services content-box-featured hide">
-                <div class="boxes" ng-repeat="item in project.order_history">
+                <div class="boxes" ng-repeat="item in projectCtrl.project.order_history">
                     <div class="boxes-box col15">
                             <span class="icon-boxes orange-top-border">
                                 <a><span class="center-image"></span><img class="center-image-img" ng-src="{{item.iconBig}}"/></a></span>
@@ -168,7 +168,7 @@
                 </div>
 
                 <div class="btn-new-box fr">
-                    <a class="add-btn icon-add" ui-sref="base.project.addService({projectId: project.id})"><i></i><span>ADD NEW SERVICES</span></a>
+                    <a class="add-btn icon-add" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i></i><span>ADD NEW SERVICES</span></a>
                 </div>
                 <span class="clearfix"></span>
             </div>
@@ -178,10 +178,10 @@
 
         <!-- Users -->
 
-        <div class="table-box" ng-if="project.isApproved()">
+        <div class="table-box" ng-if="projectCtrl.project.isApproved()">
             <div class="title-box">
                 <h2>
-                    <strong>USERS ({{project.users.length}})</strong>
+                    <strong>USERS ({{projectCtrl.project.users.length}})</strong>
 
                     <switch-view-buttons
                             grid-view="'.container-grid-users'"
@@ -199,7 +199,7 @@
 
             <div class="users-list hide">
                 <div class="container-list">
-                    <div class="boxes" ng-repeat="item in project.users">
+                    <div class="boxes" ng-repeat="item in projectCtrl.project.users">
                         <div class="boxes-box col15">
                             <span class="icon-boxes">
                                 <span class="center-image"></span><img class="center-image-img"
@@ -217,7 +217,7 @@
                             <a class="btn btn-primary">EDIT</a>
                         </div>
                     </div>
-                    <div class="btn-box fr" ui-sref="base.project.addUser({projectId: project.id})">
+                    <div class="btn-box fr" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
                         <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
                     </div>
                     <span class="clearfix"></span>
@@ -228,7 +228,7 @@
 
             <div class="container-grid container-grid-users content-box-featured">
 
-                <div class="boxes" ng-repeat="item in project.users">
+                <div class="boxes" ng-repeat="item in projectCtrl.project.users">
                             <span class="icon-boxes orange-top-border">
                                 <a><span class="center-image"></span><img class="center-image-img"
                                                                           gravatar-src="item.email"/></a>
@@ -236,7 +236,7 @@
                     <span class="titles"><span>{{item.name}}</span></span>
                     <span class="btn-box"><a>VIEW MORE</a></span>
                 </div>
-                <div class="btn-new-box" ui-sref="base.project.addUser({projectId: project.id})">
+                <div class="btn-new-box" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
                     <div class="boxs">
                         <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
                     </div>
@@ -266,7 +266,7 @@
                             <col class="col40">
                             <col>
                         </colgroup>
-                        <tbody ng-repeat="answer in project.project_answers">
+                        <tbody ng-repeat="answer in projectCtrl.project.project_answers">
 
                         <tr>
                             <td class="left-text">{{answer.project_question.question}}</td>
@@ -277,7 +277,7 @@
                 </div>
                 <!-- end .table-box -->
                 <div class="bottom-btn-box">
-                    <a ng-click="editProject()" class="btn btn-primary">EDIT</a>
+                    <a ui-sref="base.projet.edit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
                 </div>
             </div>
         </div>
