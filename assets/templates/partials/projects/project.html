@@ -137,7 +137,7 @@
             <!-- end .titles-box -->
 
             <div class="container-grid container-grid-project-detail-services content-box-featured">
-                <service-box ng-repeat="service in project.services" service="service"></service-box>
+                <service-box ng-repeat="service in project.order_history" service="service"></service-box>
                 <div class="btn-new-box">
                     <div class="boxs">
                         <a class="add-btn icon-add" ui-sref="base.project.addService({projectId: project.id})"><i></i><span>ADD NEW SERVICES</span></a>
@@ -147,7 +147,7 @@
             <!-- end .container-grid -->
 
             <div class="container-list container-list-project-detail-services content-box-featured hide">
-                <div class="boxes" ng-repeat="item in project.services">
+                <div class="boxes" ng-repeat="item in project.order_history">
                     <div class="boxes-box col15">
                             <span class="icon-boxes orange-top-border">
                                 <a><span class="center-image"></span><img class="center-image-img" ng-src="{{item.iconBig}}"/></a></span>
