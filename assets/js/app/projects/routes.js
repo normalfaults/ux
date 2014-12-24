@@ -33,7 +33,7 @@ module.exports = function($stateProvider, USER_ROLES) {
     .state('base.project.addUser', {
       url: "^/project/:projectId/add-user",
       /**@ngInject**/
-      onEnter: function($stateParams, $state, $modal, project) {
+      onEnter: function($stateParams, $state, JellyfishModal, project) {
 
         // When the modal is resolved or rejected we want to transition
         // back to the project page.
@@ -41,7 +41,8 @@ module.exports = function($stateProvider, USER_ROLES) {
           return $state.transitionTo("base.project", $stateParams);
         };
 
-        $modal.open({
+        JellyfishModal.open({
+          id: 'add-users',
           templateUrl: '/partials/projects/add-users-modal.html',
           controller: 'ProjectUsersController as projectUsersCtrl',
           /**
@@ -63,7 +64,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       url: "^/project/:projectId/add-service",
       resolve: ProjectServicesData,
       /**@ngInject**/
-      onEnter: function($stateParams, $state, $modal, currentUser, project, products, categories) {
+      onEnter: function($stateParams, $state, JellyfishModal, currentUser, project, products, categories) {
 
         // When the modal is resolved or rejected we want to transition
         // back to the project page.
@@ -71,7 +72,8 @@ module.exports = function($stateProvider, USER_ROLES) {
           return $state.transitionTo("base.project", $stateParams);
         };
 
-        $modal.open({
+        JellyfishModal.open({
+          id: 'app-services',
           templateUrl: '/partials/projects/add-services-modal.html',
           controller: 'ProjectServicesController as projectServicesCtrl',
           size: 'lg',

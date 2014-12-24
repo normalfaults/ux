@@ -3,9 +3,9 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var HeaderController = function($rootScope, $scope, $sce, $modal, CartService, currentUser, alerts) {
+var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartService, currentUser, alerts) {
 
-  this.$modal = $modal;
+  this.JellyfishModal = JellyfishModal;
   this.CartService = CartService;
   this.alerts = alerts;
   this.currentUser = currentUser;
@@ -28,24 +28,12 @@ HeaderController.prototype = {
    * Move this to a state.
    */
   cartModal: function () {
-
-      if (this.isModalOpen) {
-        return;
-      }
-
-      this.isModalOpen = true;
-
-      var modalInstance = this.$modal.open({
+      this.JellyfishModal.open({
+        id: 'cart',
         templateUrl: '/partials/cart/cart-modal.html',
         controller: 'CartController as cartCtrl',
         size: 'lg'
       });
-
-      var setModalStatusClosed = _.bind(function() {
-        this.isModalOpen = false;
-      }, this);
-
-      modalInstance.result.finally(setModalStatusClosed, setModalStatusClosed);
     },
 
   cartCount: function() {
