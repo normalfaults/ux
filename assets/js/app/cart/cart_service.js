@@ -2,9 +2,10 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var CartService = function($q, OrderResource) {
+var CartService = function($q, $state, OrderResource) {
   this.$q = $q;
   this.OrderResource = OrderResource;
+  this.$state = $state;
 
   this.cart = this._getResource();
 };
@@ -85,10 +86,26 @@ CartService.prototype = {
     }, this));
 
     this.$q.all(cartPromises).then(_.bind(function() {
+
+      // Empty the Cart.
       this.clearCart();
+
+      /**
+       * If the state we are on is a project, reload it to get the new data.
+       * If we are not on a project, when the user goes back to it, it will be reloaded
+       * on state change.
+       * @todo This is probably not the best way to handle this, but since the cart can be launched
+       *       from anywhere, it's hard to pass in a callback without making an equally ugly global one.
+       */
+      if (this.$state.is('base.project')) {
+        this.$state.reload();
+      }
+
+      // Call defined callback if exists.
       if (_.isFunction(checkoutCallback)) {
         checkoutCallback();
       }
+
     }, this), function() {
       // @todo Error/Reject case.
     });
