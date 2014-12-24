@@ -6,7 +6,7 @@ var CartService = function($q, OrderResource) {
   this.$q = $q;
   this.OrderResource = OrderResource;
 
-  this.cart = [];
+  this.cart = this._getResource();
 };
 
 CartService.prototype = {
@@ -34,6 +34,7 @@ CartService.prototype = {
    */
   clearCart: function() {
     this.cart = [];
+    this._updateResource();
   },
 
   /**
@@ -43,6 +44,7 @@ CartService.prototype = {
    */
   removeItemByKey: function(key) {
     this.cart.splice(key, 1);
+    this._updateResource();
   },
 
   /**
@@ -58,6 +60,7 @@ CartService.prototype = {
       project:     project,
       product:     product
     });
+    this._updateResource();
   },
 
   /**
@@ -89,6 +92,32 @@ CartService.prototype = {
     }, this), function() {
       // @todo Error/Reject case.
     });
+  },
+
+  /**
+   * Update Cart Resource
+   *
+   * @private
+   */
+  _updateResource: function() {
+    if (window.localStorage) {
+      localStorage.setItem('cart', JSON.stringify(this.cart));
+    }
+  },
+
+  /**
+   * Get Cart Resource
+   *
+   * @returns {*|Array}
+   * @private
+   */
+  _getResource: function() {
+    if (window.localStorage) {
+      var data = localStorage.getItem('cart');
+      return data ? JSON.parse(data) : [];
+    }
+
+    return [];
   }
 
 };

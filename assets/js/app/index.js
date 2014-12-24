@@ -11,6 +11,7 @@ require('angular-smart-table');
 require('angular-ui-select');
 require('angular-money-directive');
 require('angucomplete');
+require('angular-cookies');
 
 var angular = require('angular');
 
@@ -25,6 +26,7 @@ var app = angular.module('broker', [
   "ui.bootstrap",
   "ui.select",
   "fiestah.money",
+  "ngCookies",
   require('./common').name,
   require('./base').name,
   require('./admin').name,
