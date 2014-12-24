@@ -36,7 +36,7 @@ HeaderController.prototype = {
       this.isModalOpen = true;
 
       var modalInstance = this.$modal.open({
-        templateUrl: 'cart/cart-modal.html',
+        templateUrl: '/partials/cart/cart-modal.html',
         controller: 'CartController as cartCtrl',
         size: 'lg'
       });
