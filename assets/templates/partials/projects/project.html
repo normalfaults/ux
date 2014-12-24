@@ -178,61 +178,6 @@
 
         <!-- Users -->
 
-        <script type="text/ng-template" id="projects/users-modal.html">
-            <div class="new-user-modal">
-                <div class="modal-header">
-                    <h3 class="modal-title">Add Users</h3>
-                </div>
-                <div class="modal-body">
-                    <p class="section-header">
-                        Enter user's name or email:
-                    </p>
-
-                    </br>
-
-                    <angucomplete id="members"
-                                  placeholder="User Search"
-                                  pause="400"
-                                  selectedobject="lastSelected"
-                                  url="{{searchURL}}"
-                                  titlefield="first_name,last_name"
-                                  descriptionfield="email"
-                                  inputclass="form-control form-control-small"
-                                  imagefield="gravatar"
-                                  imageuri="http://www.gravatar.com/avatar/"/>
-
-                    <br>
-
-                    <p class="section-header">
-                        Users to add: ({{userAdditonCount}})
-                    </p>
-
-                    </br>
-
-                    <p ng-if="userAdditonCount === 0">
-                        No users selected.
-                    </p>
-
-                    <div class="list-group">
-                        <a href="#" class="list-group-item" ng-repeat="(email, userAddition) in userAdditons" ng-click="removeUser(email)">
-                            <img src="{{userAddition.image}}"/>
-                            <div class="left-most">
-                                <h4 class="list-group-item-heading">{{userAddition.title}}</h4>
-                                <p class="list-group-item-text">{{userAddition.description}}</p>
-                            </div>
-                            <div class="right-most">
-                                <i class="fa fa-remove"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updating ? 'Adding ...' : 'Add'}}</button>
-                    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-                </div>
-            </div>
-        </script>
-
         <div class="table-box" ng-if="project.isApproved()">
             <div class="title-box">
                 <h2>
@@ -272,7 +217,7 @@
                             <a class="btn btn-primary">EDIT</a>
                         </div>
                     </div>
-                    <div class="btn-box fr">
+                    <div class="btn-box fr" ui-sref="base.project.addUser({projectId: project.id})">
                         <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
                     </div>
                     <span class="clearfix"></span>
@@ -291,7 +236,7 @@
                     <span class="titles"><span>{{item.name}}</span></span>
                     <span class="btn-box"><a>VIEW MORE</a></span>
                 </div>
-                <div class="btn-new-box" ng-click="projectCtrl.openAddUsersModal()">
+                <div class="btn-new-box" ui-sref="base.project.addUser({projectId: project.id})">
                     <div class="boxs">
                         <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
                     </div>

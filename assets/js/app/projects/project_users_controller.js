@@ -59,6 +59,6 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, projec
     delete $scope.userAdditons[email];
     $scope.userAdditonCount = Object.keys($scope.userAdditons).length;
   }
-}
+};
 
 module.exports = ProjectUsersController;

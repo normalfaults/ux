@@ -4,6 +4,7 @@ var ProjectData = require('./project_controller').resolve;
 var EditProjectData = require('./edit_project_controller').resolve;
 var ProjectServicesData = require('./project_services_controller').resolve;
 
+
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
   $stateProvider
@@ -27,6 +28,35 @@ module.exports = function($stateProvider, USER_ROLES) {
       templateUrl: "/partials/projects/project.html",
       resolve: ProjectData,
       controller: "ProjectController as projectCtrl"
+    })
+    // Add User to Project
+    .state('base.project.addUser', {
+      url: "^/project/:projectId/add-user",
+      /**@ngInject**/
+      onEnter: function($stateParams, $state, $modal, project) {
+
+        // When the modal is resolved or rejected we want to transition
+        // back to the project page.
+        var onClose = function() {
+          return $state.transitionTo("base.project", $stateParams);
+        };
+
+        $modal.open({
+          templateUrl: '/partials/projects/add-users-modal.html',
+          controller: 'ProjectUsersController as projectUsersCtrl',
+          /**
+           * This is somewhat of a hack, because of using string based controller instantiation in the modal
+           * the ui-router scope does not cascade into onEnter.  We use resolve to effectively inject the data
+           * back in.
+           */
+          resolve: {
+            project: function() {
+              return project;
+            }
+
+          }
+        }).result.then(onClose, onClose);
+      }
     })
     // Add Service to Project
     .state('base.project.addService', {

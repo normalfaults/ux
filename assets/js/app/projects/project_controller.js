@@ -16,10 +16,6 @@ function ProjectController($scope, $modal, $state, $stateParams, project, alerts
   $scope.editProject = function() {
     $state.go('base.editProject', {id: $scope.project.id}, {reload: true});
   };
-
-  $scope.openProjectUsersModal = function () {
-
-  };
 }
 
 ProjectController.resolve = {
@@ -41,19 +37,6 @@ ProjectController.resolve = {
 
 ProjectController.prototype = {
 
-  openAddUsersModal: function() {
-    var self = this;
-    var modalInstance = self.$modal.open({
-      templateUrl: 'projects/users-modal.html',
-      controller: 'ProjectUsersController',
-      resolve: {
-        project: function() {
-          return self.project;
-        }
-      }
-    });
-  },
-
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;
     var usedBudget = 0;
@@ -72,9 +55,9 @@ ProjectController.prototype = {
     }
 
     return {
-      'total' : projectBudget,
-      'used'    : usedBudget,
-      'usedPercent' : usedPercent
+      'total':       projectBudget,
+      'used':        usedBudget,
+      'usedPercent': usedPercent
     };
   }
 };
