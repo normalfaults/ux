@@ -29,6 +29,10 @@ CartController.prototype = {
 
   cartItems: function() {
     return this.CartService.getItems();
+  },
+
+  removeItem: function(key) {
+    return this.CartService.removeItemByKey(key);
   }
 
 

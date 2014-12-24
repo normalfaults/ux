@@ -3,8 +3,8 @@
 </div>
 <div class="modal-body">
     <ul ng-if="cartCtrl.cartItems().length > 0">
-        <li ng-repeat="item in cartCtrl.cartItems()">
-            <a>{{item.product.name}}</a>
+        <li ng-repeat="(key,item) in cartCtrl.cartItems()">
+            <a>{{item.product.name}}</a><span ng-click="cartCtrl.removeItem(key)" class="fa fa-remove"></span>
         </li>
     </ul>
     <div ng-if="cartCtrl.cartItems().length == 0">
