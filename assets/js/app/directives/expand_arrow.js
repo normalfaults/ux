@@ -9,9 +9,9 @@ function ExpandArrow() {
       $ele.find('> a').click(function() {
         $ele.toggleClass("current");
         if ($ele.hasClass("current")) {
-          $(this).find('.arrows').removeClass("arrow-right").addClass("arrow-down");
+          $(this).find('.arrows').removeClass("fa-caret-right").addClass("fa-caret-down");
         } else {
-          $(this).find('.arrows').removeClass("arrow-down").addClass("arrow-right");
+          $(this).find('.arrows').removeClass("fa-caret-down").addClass("fa-caret-right");
         }
       });
     }

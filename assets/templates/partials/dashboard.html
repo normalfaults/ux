@@ -7,10 +7,10 @@
 
     <div class="data-box">
       <div class="info">
-        <a ng-if="item.sref" ui-sref="{{item.sref}}" class="icon-projects-emoticon">
+        <a ng-if="item.sref" ui-sref="{{item.sref}}">
           <img ng-src="{{item.icon}}"/>
         </a>
-        <a ng-if="!item.sref" href="javascript:" class="icon-projects-emoticon">
+        <a ng-if="!item.sref" href="javascript:">
           <img ng-src="{{item.icon}}"/>
         </a>
 
@@ -51,10 +51,13 @@
     <div class="dashboard-tab">
       <div class="tabs">
         <ul>
-          <li ng-class="{active: tab == 'projects'}">
-            <a class="icon-projects" ng-click="dashboardCtrl.showTab('projects')">
-              <i></i>
-              <span>PROJECTS ({{projects.length}})</span>
+          <li ng-class="{active: tab == 'projects'} ">
+            <a ng-click="dashboardCtrl.showTab('projects')">
+              <div class="title-box">
+              <h2>
+                <strong>PROJECTS ({{projects.length}})</strong>
+              </h2>
+              </div>
             </a>
             <span class="border-spacing"></span>
           </li>
@@ -65,7 +68,7 @@
       <div class="tab-content projects-content" ng-show="tab == 'projects'">
         <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
         <div class="btn-box">
-          <a ui-sref="base.newProject" class="add-btn icon-add"><i></i><span>ADD NEW PROJECT</span></a>
+          <a ui-sref="base.newProject" class="add-btn add-icon"><i class="fa fa-plus-circle"></i><span>ADD NEW PROJECT</span></a>
         </div>
         <!-- end .btn-box -->
       </div>

@@ -2,7 +2,7 @@
     <nav class="side-nav" fix-sidebar toggle-sidebar>
         <ul>
             <li class="dashboard-menu" ng-class="{active: $state.includes('base.dashboard')}">
-                <a class="side-arrow"><i></i></a>
+                <a class="side-arrow"> <i class="minimize-icon grey-icon fa fa-angle-left"></i></a>
                 <a ui-sref="base.dashboard" class="li-links">
                     <span class="fa fa-bars left-tray-icon left-tray-title-icon"></span>
                     <span class="texts">DASHBOARD</span>
@@ -11,9 +11,9 @@
             <li class="li-my-projects" expand-arrow>
                 <a class="li-links">
                     <span class="fa fa-file-o left-tray-icon left-tray-menu-icon"></span>
-                    <span class="texts">MY PROJECTS</span>
-                    <span class="arrows arrow-right"></span>
-                    <span class="number">{{projects.length}}</span>
+                    <span class="texts">MY PROJECTS </span>
+                    <span class="number side-bar-space">{{projects.length}}</span>
+                    <span class="arrows-container"><i class="arrows fa fa-caret-right"></i></span>
                 </a>
                 <ul>
                     <li ng-class="{first: $first}"
@@ -38,7 +38,7 @@
                 <a class="li-links">
                     <span class="fa fa-cubes left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">ADMIN</span>
-                    <span class="arrows arrow-right"></span>
+                    <span class="arrows-container"><i class="arrows fa fa-caret-right"></i></span>
                 </a>
                 <ul>
                     <li class="first">
