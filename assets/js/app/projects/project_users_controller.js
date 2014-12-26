@@ -31,7 +31,7 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, projec
 
     userInserts = _.map(Object.keys($scope.userAdditons), function(key) {
       var user = $scope.userAdditons[key].originalObject;
-      return ProjectUser.addUserToProject({id: project.id, staff_id: user.id}).$promise.then(
+      return ProjectUser.save({id: project.id, staff_id: user.id}).$promise.then(
         function(data){
         }, function(error) {
           // @todo We should use a code here not a string match.

@@ -273,26 +273,26 @@
 
             <div class="users-list hide">
                 <div class="container-list">
-                    <div class="boxes" ng-repeat="item in project.users">
+                    <div class="boxes" ng-repeat="user in project.users">
                         <div class="boxes-box col15">
                             <span class="icon-boxes">
-                                <span class="center-image"></span><img class="center-image-img"
-                                                                       gravatar-src="item.email"/></a>
+                                <span class="center-image"></span>
+                                <img class="center-image-img" gravatar-src="user.email"/>
                             </span>
                         </div>
                         <div class="texts-box col20">
-                            <span class="titles"><a>{{item.name}}</a></span>
+                            <span class="titles"><a>{{user.name}}</a></span>
                         </div>
                         <div class="texts-box col28">
                             <span class="gray-texts">Allowed For</span>
-                            <span class="texts">{{item.allowed.join(", ")}}</span>
+                            <span class="texts">{{user.allowed.join(", ")}}</span>
                         </div>
                         <div class="texts-box col20">
-                            <a class="btn btn-primary">EDIT</a>
+                            <a class="btn btn-primary" ng-if="project" ng-click="projectCtrl.removeUserFromProject($index)" >DELETE</a>
                         </div>
                     </div>
                     <div class="btn-box fr">
-                        <a class="add-btn add-icon"><i class="fa fa-plus-circle"></i><span>ADD NEW USER</span></a>
+                        <a class="add-btn icon-add" ng-click="projectCtrl.openAddUsersModal()"><i></i><span>ADD NEW USER</span></a>
                     </div>
                     <span class="clearfix"></span>
                     <!-- end .btn-box -->
@@ -301,14 +301,16 @@
             </div>
 
             <div class="container-grid container-grid-users content-box-featured">
-
-                <div class="boxes" ng-repeat="item in project.users">
-                            <span class="icon-boxes orange-top-border">
-                                <a><span class="center-image"></span><img class="center-image-img"
-                                                                          gravatar-src="item.email"/></a>
-                            </span>
-                    <span class="titles"><span>{{item.name}}</span></span>
+                <div class="boxes" ng-repeat="user in project.users">
+                    <span class="icon-boxes orange-top-border">
+                        <a>
+                            <span class="center-image"></span>
+                            <img class="center-image-img" gravatar-src="user.email"/>
+                        </a>
+                    </span>
+                    <span class="titles"><span>{{user.name}}</span></span>
                     <span class="btn-box"><a>VIEW MORE</a></span>
+                    <span ng-if="project" ng-click="projectCtrl.removeUserFromProject($index)" class="btn-box"><a>DELETE</a></span>
                 </div>
                 <div class="btn-new-box" ng-click="projectCtrl.openAddUsersModal()">
                     <div class="boxs">
