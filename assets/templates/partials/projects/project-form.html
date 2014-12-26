@@ -39,6 +39,25 @@
   <nf-form name="projectQuestionForm">
     <div ng-repeat="answer in project.project_answers">
       <span ng-switch on="answer.project_question.field_type">
+        <span ng-switch-when="check_box">
+          <div class="form-group">
+            <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
+            <div class="col-sm-8 control-input">
+              <input type="checkbox" name="{{answer.project_question_name}}" ng-model='answer.answer' id="{{answer.project_question.id}}" ng-true-value="'true'" ng-false-value="'false'">
+            </div>
+          </div>
+        </span>
+        <span ng-switch-when="date">
+          <div class="form-group">
+            <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>
+            <div class="col-sm-8 control-input">
+              <div class="input-group">
+                <span class="input-group-addon" ng-click="openAnswerDate($event, $index)"><i class="fa fa-calendar"></i></span>
+                <input name="{{answer.project_question_name}}" ng-click="openAnswerDate($event, $index)" ng-model='answer.answer' class="form-control" id="{{answer.project_question.id}}" placeholder="{{answer.project_question.help_text}}" ng-required="{{answer.project_question.required}}" datepicker-popup="{{format}}" is-open="answerDateOpened[$index]" datepicker-options="dateOptions" close-text="Close">
+              </div>
+            </div>
+          </div>
+        </span>
         <span ng-switch-when="text">
           <div class="form-group">
             <label for="{{answer.project_question.id}}" class="col-sm-3 control-label">{{answer.project_question.question}}</label>

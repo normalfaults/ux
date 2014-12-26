@@ -26,34 +26,16 @@ function ProjectForm() {
                 }
             });
 
-            $scope.todayEndDate = function() {
-                $scope.project.end_date = new Date();
-            };
-
-            $scope.todayEndDate();
-
-            $scope.todayStartDate = function() {
-                $scope.project.start_date = new Date();
-            };
-
-            $scope.todayStartDate();
-
-            $scope.clearStartDate = function () {
-                $scope.project.start_date = null;
-            };
-
-            $scope.clearEndDate = function () {
-                $scope.project.end_date = null;
-            };
-
             $scope.startDateOpened = false;
             $scope.endDateOpened = false;
+            $scope.answerDateOpened = [];
 
             $scope.openStartDate = function($event) {
                 $event.preventDefault();
                 $event.stopPropagation();
                 $scope.endDateOpened = false;
                 $scope.startDateOpened = true;
+                $scope.answerDateOpened = [];
             };
 
             $scope.openEndDate = function($event) {
@@ -61,6 +43,16 @@ function ProjectForm() {
                 $event.stopPropagation();
                 $scope.startDateOpened = false;
                 $scope.endDateOpened = true;
+                $scope.answerDateOpened = [];
+            };
+
+            $scope.openAnswerDate = function($event, index) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.startDateOpened = false;
+                $scope.endDateOpened = false;
+                $scope.answerDateOpened[index] = [];
+                $scope.answerDateOpened[index] = true;
             };
 
             $scope.dateOptions = {
@@ -68,8 +60,7 @@ function ProjectForm() {
                 startingDay: 1
             };
 
-            $scope.formats = ['yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate', 'dd-MMMM-yyyy' ];
-            $scope.format = $scope.formats[0];
+            $scope.format = 'yyyy-MM-dd';
         }]
     };
 }
