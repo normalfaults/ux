@@ -5,28 +5,29 @@ function SwitchViewButtons(fixSidebar) {
   return {
     restrict: 'E',
     template: [
-      '<span class="switch-btns fr">',
-      '<span class="btn-active js-grid-btn"><a href="javascript:;" class="icon-list-btn" ng-click="showGrid()"></a></span>',
-      '<span class="btn-def js-list-btn"><a href="javascript:;" class="icon-grid-btn" ng-click="showList()"></a></span>',
-      '</span>'
+      '<div class="switch-buttons text-right">',
+      '<a class="btn btn-link grid-switch active" ng-click="showGrid()"><i class="fa fa-fw fa-lg fa-th"></i></a>',
+      '<a class="btn btn-link list-switch" ng-click="showList()"><i class="fa fa-fw fa-lg fa-bars"></a>',
+      '</div>'
     ].join(""),
     scope: {
       gridView: "=",
       listView: "="
     },
+    replace: true,
     link: function(scope, element) {
       scope.showList = function() {
         $(scope.gridView).addClass('hide');
         $(scope.listView).removeClass('hide');
-        $(element).find(".js-list-btn").addClass('btn-active');
-        $(element).find(".js-grid-btn").removeClass('btn-active');
+        $(element).find(".list-switch").addClass('active');
+        $(element).find(".grid-switch").removeClass('active');
         fixSidebar();
       };
       scope.showGrid = function() {
         $(scope.gridView).removeClass('hide');
         $(scope.listView).addClass('hide');
-        $(element).find(".js-grid-btn").addClass('btn-active');
-        $(element).find(".js-list-btn").removeClass('btn-active');
+        $(element).find(".grid-switch").addClass('active');
+        $(element).find(".list-switch").removeClass('active');
         fixSidebar();
       };
     }

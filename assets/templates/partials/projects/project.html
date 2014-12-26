@@ -141,12 +141,17 @@
         </script>
         <div class="table-box" ng-if="project.isApproved()">
             <div class="title-box">
-                <h2>
-                    <strong>SERVICES ({{project.services.length}})</strong>
-                    <switch-view-buttons
-                            grid-view="'.container-grid-project-detail-services'"
-                            list-view="'.container-list-project-detail-services'"></switch-view-buttons>
-                </h2>
+                <div class="title">
+                    <h2>
+                        <strong>SERVICES ({{project.services.length}})</strong>
+                    </h2>
+                </div>
+
+                <switch-view-buttons
+                        grid-view="'.container-grid-project-detail-services'"
+                        list-view="'.container-list-project-detail-services'"></switch-view-buttons>
+
+                <div class="clearfix"></div>
 
                 <div class="titles-border-bar">
                     <span class="blues width112"></span>
@@ -254,13 +259,17 @@
 
         <div class="table-box" ng-if="project.isApproved()">
             <div class="title-box">
-                <h2>
-                    <strong>USERS ({{project.users.length}})</strong>
+                <div class="title">
+                    <h2>
+                        <strong>USERS ({{project.users.length}})</strong>
+                    </h2>
+                </div>
 
-                    <switch-view-buttons
-                            grid-view="'.container-grid-users'"
-                            list-view="'.users-list'"></switch-view-buttons>
-                </h2>
+                <switch-view-buttons
+                        grid-view="'.container-grid-users'"
+                        list-view="'.users-list'"></switch-view-buttons>
+
+                <div class="clearfix"></div>
 
                 <div class="titles-border-bar">
                     <span class="blues width112"></span>
@@ -292,7 +301,7 @@
                         </div>
                     </div>
                     <div class="btn-box fr">
-                        <a class="add-btn icon-add" ng-click="projectCtrl.openAddUsersModal()"><i></i><span>ADD NEW USER</span></a>
+                        <a class="add-btn add-icon" ng-click="projectCtrl.openAddUsersModal()"><i class="fa fa-plus-circle"></i><span>ADD NEW USER</span></a>
                     </div>
                     <span class="clearfix"></span>
                     <!-- end .btn-box -->
