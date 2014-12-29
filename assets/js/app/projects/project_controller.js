@@ -72,7 +72,6 @@ ProjectController.prototype = {
   },
 
   removeUserFromProject: function(index){
-
     this.ProjectUserResource.delete({id: this.project.id, staff_id: this.project.users[index].id}).$promise.then(
       _.bind(function(data){
         this.project.users.splice(index, 1);
@@ -117,7 +116,7 @@ ProjectController.prototype = {
   _areAllServicesComplete: function() {
 
     // This short circuits on the first non complete item.
-    var anyNotComplete = _.some(this.project.order_history, function(item, key) {
+    var anyNotComplete = _.some(this.project.services, function(item, key) {
       // @todo Who nows if this will be the final status.
       return item.provision_status !== 'Complete';
     });
