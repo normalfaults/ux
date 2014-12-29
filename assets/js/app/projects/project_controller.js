@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, $state, $stateParams, project, ProjectUserResource, alerts, projectQuestions) {
+function ProjectController($scope, $modal, $location, $anchorScroll, $state, project, ProjectUserResource, alerts, projectQuestions) {
 
   this.project = project;
   this.$modal = $modal;
