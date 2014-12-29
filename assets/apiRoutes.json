@@ -18,6 +18,8 @@
     "productCategoriesById": "/product_categories/:id",
     "servicesById":      "/services/:id",
     "applicationsById":  "/applications/:id",
+    "staffById":         "/staff/:id",
+    "staffProjects":     "/staff/:id/projects/:project_id",
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
     "currentMember":     "/staff/current_member",

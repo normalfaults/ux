@@ -122,12 +122,17 @@
 
         <div class="table-box" ng-if="projectCtrl.project.isApproved()">
             <div class="title-box">
-                <h2>
-                    <strong>SERVICES ({{projectCtrl.project.services.length}})</strong>
-                    <switch-view-buttons
-                            grid-view="'.container-grid-project-detail-services'"
-                            list-view="'.container-list-project-detail-services'"></switch-view-buttons>
-                </h2>
+                <div class="title">
+                    <h2>
+                        <strong>SERVICES ({{projectCtrl.project.services.length}})</strong>
+                    </h2>
+                </div>
+
+                <switch-view-buttons
+                        grid-view="'.container-grid-project-detail-services'"
+                        list-view="'.container-list-project-detail-services'"></switch-view-buttons>
+
+                <div class="clearfix"></div>
 
                 <div class="titles-border-bar">
                     <span class="blues width112"></span>
@@ -140,7 +145,7 @@
                 <service-box ng-repeat="service in projectCtrl.project.order_history" service="service"></service-box>
                 <div class="btn-new-box">
                     <div class="boxs">
-                        <a class="add-btn icon-add" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i></i><span>ADD NEW SERVICES</span></a>
+                        <a class="add-btn add-icon" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i class="fa fa-plus-circle"></i><span>ADD NEW SERVICES</span></a>
                     </div>
                 </div>
             </div>
@@ -168,7 +173,7 @@
                 </div>
 
                 <div class="btn-new-box fr">
-                    <a class="add-btn icon-add" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i></i><span>ADD NEW SERVICES</span></a>
+                    <a class="add-btn add-icon" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i class="fa fa-plus-circle"></i><span>ADD NEW SERVICES</span></a>
                 </div>
                 <span class="clearfix"></span>
             </div>
@@ -180,13 +185,17 @@
 
         <div class="table-box" ng-if="projectCtrl.project.isApproved()">
             <div class="title-box">
-                <h2>
-                    <strong>USERS ({{projectCtrl.project.users.length}})</strong>
+                <div class="title">
+                    <h2>
+                        <strong>USERS ({{projectCtrl.project.users.length}})</strong>
+                    </h2>
+                </div>
 
-                    <switch-view-buttons
-                            grid-view="'.container-grid-users'"
-                            list-view="'.users-list'"></switch-view-buttons>
-                </h2>
+                <switch-view-buttons
+                        grid-view="'.container-grid-users'"
+                        list-view="'.users-list'"></switch-view-buttons>
+
+                <div class="clearfix"></div>
 
                 <div class="titles-border-bar">
                     <span class="blues width112"></span>
@@ -199,26 +208,26 @@
 
             <div class="users-list hide">
                 <div class="container-list">
-                    <div class="boxes" ng-repeat="item in projectCtrl.project.users">
+                    <div class="boxes" ng-repeat="user in projectCtrl.project.users">
                         <div class="boxes-box col15">
                             <span class="icon-boxes">
-                                <span class="center-image"></span><img class="center-image-img"
-                                                                       gravatar-src="item.email"/></a>
+                                <span class="center-image"></span>
+                                <img class="center-image-img" gravatar-src="user.email"/>
                             </span>
                         </div>
                         <div class="texts-box col20">
-                            <span class="titles"><a>{{item.name}}</a></span>
+                            <span class="titles"><a>{{user.name}}</a></span>
                         </div>
                         <div class="texts-box col28">
                             <span class="gray-texts">Allowed For</span>
-                            <span class="texts">{{item.allowed.join(", ")}}</span>
+                            <span class="texts">{{user.allowed.join(", ")}}</span>
                         </div>
                         <div class="texts-box col20">
-                            <a class="btn btn-primary">EDIT</a>
+                            <a class="btn btn-primary" ng-if="project" ng-click="projectCtrl.removeUserFromProject($index)" >DELETE</a>
                         </div>
                     </div>
                     <div class="btn-box fr" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
-                        <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
+                        <a class="add-btn add-icon""><i class="fa fa-plus-circle"></i><span>ADD NEW USER</span></a>
                     </div>
                     <span class="clearfix"></span>
                     <!-- end .btn-box -->
@@ -227,18 +236,20 @@
             </div>
 
             <div class="container-grid container-grid-users content-box-featured">
-
-                <div class="boxes" ng-repeat="item in projectCtrl.project.users">
-                            <span class="icon-boxes orange-top-border">
-                                <a><span class="center-image"></span><img class="center-image-img"
-                                                                          gravatar-src="item.email"/></a>
-                            </span>
-                    <span class="titles"><span>{{item.name}}</span></span>
+                <div class="boxes" ng-repeat="user in projectCtrl.project.users">
+                    <span class="icon-boxes orange-top-border">
+                        <a>
+                            <span class="center-image"></span>
+                            <img class="center-image-img" gravatar-src="user.email"/>
+                        </a>
+                    </span>
+                    <span class="titles"><span>{{user.name}}</span></span>
                     <span class="btn-box"><a>VIEW MORE</a></span>
+                    <span ng-if="project" ng-click="projectCtrl.removeUserFromProject($index)" class="btn-box"><a>DELETE</a></span>
                 </div>
                 <div class="btn-new-box" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
                     <div class="boxs">
-                        <a class="add-btn icon-add"><i></i><span>ADD NEW USER</span></a>
+                        <a class="add-btn add-icon"><i class="fa fa-plus-circle"></i><span>ADD NEW USER</span></a>
                     </div>
                 </div>
             </div>

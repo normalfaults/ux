@@ -9,12 +9,14 @@ function ToggleSidebar($rootScope) {
       $ele.find(".side-arrow").click(function() {
         $ele.toggleClass('absolute-nav');
         if ($ele.hasClass("absolute-nav")) {
-          $ele.find("ul li").removeClass("current");
-          $ele.find("ul li a.li-links span.arrow-down")
-            .removeClass("arrow-down")
-            .addClass("arrow-right");
+          $ele.find(".arrows-container").hide();
+          $ele.find(".minimize-icon").removeClass("fa-angle-left")
+              .addClass("fa-angle-right");
           $rootScope.sideBarExpanded = false;
         } else {
+          $ele.find(".arrows-container").show();
+          $ele.find(".minimize-icon").removeClass("fa-angle-right")
+              .addClass("fa-angle-left");
           $rootScope.sideBarExpanded = true;
         }
         $rootScope.$apply();

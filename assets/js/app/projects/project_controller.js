@@ -3,11 +3,12 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, $state, $stateParams, project, alerts, projectQuestions) {
+function ProjectController($scope, $modal, $state, $stateParams, project, ProjectUserResource, alerts, projectQuestions) {
 
   this.project = project;
   this.$modal = $modal;
-  this.alerts =  alerts;
+  this.alerts = alerts;
+  this.ProjectUserResource = ProjectUserResource;
 
   /**
    * On creation/transition to scope, start refresh interval if
@@ -60,6 +61,7 @@ ProjectController.prototype = {
         }, this));
       }, this), 30000);
     }
+
   },
 
   /**
@@ -67,6 +69,18 @@ ProjectController.prototype = {
    */
   stopRefreshInterval: function() {
     window.clearInterval(this.interval);
+  },
+
+  removeUserFromProject: function(index){
+
+    this.ProjectUserResource.delete({id: this.project.id, staff_id: this.project.users[index].id}).$promise.then(
+      _.bind(function(data){
+        this.project.users.splice(index, 1);
+      }, this),
+      function(error) {
+        alert("There was an error removing this user. Please try again later");
+      }
+    );
   },
 
   getBudgetData: function() {

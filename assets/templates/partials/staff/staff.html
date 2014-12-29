@@ -1,0 +1,35 @@
+<span ng-switch on="format">
+  <span ng-switch-when="grid-item">
+    <div>
+      <span class="icon-boxes orange-top-border">
+        <a>
+          <span class="center-image"></span>
+          <img class="center-image-img" gravatar-src="staff.email"/>
+        </a>
+      </span>
+      <span class="titles"><span>{{staff.name}}</span></span>
+      <span class="btn-box"><a>VIEW MORE</a></span>
+      <span ng-if="project" ng-click="removeFromProject()" class="btn-box"><a>DELETE</a></span>
+    </div>
+  </span>
+  <span ng-switch-when="list-item">
+    <div>
+      <div class="boxes-box col15">
+        <span class="icon-boxes">
+            <span class="center-image"></span>
+            <img class="center-image-img" gravatar-src="staff.email"/>
+        </span>
+      </div>
+      <div class="texts-box col20">
+        <span class="titles"><a>{{staff.name}}</a></span>
+      </div>
+      <div class="texts-box col28">
+        <span class="gray-texts">Allowed For</span>
+        <span class="texts">{{staff.allowed.join(", ")}}</span>
+      </div>
+      <div class="texts-box col20">
+        <a class="btn btn-primary" ng-if="project" ng-click="removeFromProject()" >DELETE</a>
+      </div>
+    </div>
+  </span>
+</span>

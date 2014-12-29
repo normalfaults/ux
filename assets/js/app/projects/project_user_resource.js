@@ -2,17 +2,11 @@
 
 /**@ngInject*/
 var ProjectUserResource = function($resource, ApiResource) {
-
-    var projectUser = $resource(ApiResource('projectUser'), {id:'@id', staff_id:'@staff_id'}, {
-        addUserToProject: {
-            method: "POST"
-        },
-        removeUserFromProject: {
-            method: "DELETE"
-        }
-    });
-
-    return projectUser;
+    return $resource(
+      ApiResource('projectUser'),
+      {id:'@id', staff_id:'@staff_id'},
+      {}
+    );
 };
 
 module.exports = ProjectUserResource;
