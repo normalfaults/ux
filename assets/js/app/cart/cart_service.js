@@ -72,20 +72,26 @@ CartService.prototype = {
    */
   checkout: function(checkoutCallback) {
 
-    var cartPromises = [];
+    var orderItems = [];
+    var staffId;
 
     _.each(this.cart, _.bind(function(item, key, cart) {
-      var response = this.OrderResource.save({
-          product_id: item.product.id,
-          project_id: item.project.id,
-          staff_id:   item.requestedBy.id,
-          cloud_id:   item.product.cloud.id
+      orderItems.push({
+        product_id: item.product.id,
+        project_id: item.project.id,
+        cloud_id:   item.product.cloud.id
       });
 
-      cartPromises.push(response.$promise);
+      staffId = item.requestedBy.id;
+
     }, this));
 
-    this.$q.all(cartPromises).then(_.bind(function() {
+    var order = {
+      staff_id: staffId,
+      order_items: orderItems
+    };
+
+    this.OrderResource.save(order).$promise.then(_.bind(function() {
 
       // Empty the Cart.
       this.clearCart();
