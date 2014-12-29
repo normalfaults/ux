@@ -51,8 +51,10 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, projec
         alert("There was a problem adding these users. Please try again.");
       }
 
+      // Refetch the project to reload the users.
+      project.$get();
+
       $modalInstance.close();
-      $state.go('base.project', {}, {reload: true});
     });
   };
 
