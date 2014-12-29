@@ -223,7 +223,7 @@
                             <span class="texts">{{user.allowed.join(", ")}}</span>
                         </div>
                         <div class="texts-box col20">
-                            <a class="btn btn-primary" ng-if="project" ng-click="projectCtrl.removeUserFromProject($index)" >DELETE</a>
+                            <a class="btn btn-primary" ng-click="projectCtrl.removeUserFromProject($index)" >DELETE</a>
                         </div>
                     </div>
                     <div class="btn-box fr" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
@@ -245,7 +245,7 @@
                     </span>
                     <span class="titles"><span>{{user.name}}</span></span>
                     <span class="btn-box"><a>VIEW MORE</a></span>
-                    <span ng-if="project" ng-click="projectCtrl.removeUserFromProject($index)" class="btn-box"><a>DELETE</a></span>
+                    <span ng-click="projectCtrl.removeUserFromProject($index)" class="btn-box"><a>DELETE</a></span>
                 </div>
                 <div class="btn-new-box" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
                     <div class="boxs">
