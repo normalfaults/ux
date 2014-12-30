@@ -15,17 +15,16 @@
 
         <table st-table="rowCollection" class="table table-responsive table-striped">
             <colgroup>
-                <col class="col17">
-                <col>
-                <col class="col10">
-                <col class="col15">
-                <col class="col15">
+                <col class="col20">
+                <col class="col20">
+                <col class="col20">
+                <col class="col20">
                 <col class="col20">
             </colgroup>
             <thead>
             <tr>
                 <th class="text-left">ORDER ID</th>
-                <th class="text-left">PRODUCT</th>
+                <th class="text-left">ITEMS</th>
                 <th class="text-left">TOTAL</th>
                 <th class="text-left">STATUS</th>
                 <th class="text-left">REQUEST DATE</th>
@@ -34,7 +33,7 @@
             <tbody>
             <tr ng-repeat="item in orders">
                 <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
-                <td class="blue-texts font15"><a class="blue-link">{{item.product_id}}</a></td>
+                <td class="item-texts">{{item.orderItemCount}}</td>
                 <td class="green-texts">{{item.total | currency}}</td>
                 <td class="{{item.color}}-texts">{{item.provision_status}}</td>
                 <td class="data-texts">{{item.created_at}}</td>
