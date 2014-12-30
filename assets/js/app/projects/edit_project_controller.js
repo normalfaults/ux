@@ -32,7 +32,7 @@ EditProjectController.resolve = {
     },
     /**@ngInject*/
     project: function(ProjectResource, $stateParams) {
-        return ProjectResource.get({id: $stateParams.id}).$promise;
+        return ProjectResource.get({id: $stateParams.projectId}).$promise;
     }
 };
 
