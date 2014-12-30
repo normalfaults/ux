@@ -3,6 +3,6 @@
 var angular = require('angular');
 
 var ApplicationsModule = angular.module('broker.applications', [])
-  .factory('Application', require('./application'));
+  .factory('ApplicationResource', require('./application_resource'));
 
 module.exports = ApplicationsModule;

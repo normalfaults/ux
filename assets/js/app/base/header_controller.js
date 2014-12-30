@@ -3,10 +3,10 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var HeaderController = function($rootScope, $scope, $sce, $modal, Cart, currentUser, alerts) {
+var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartService, currentUser, alerts) {
 
-  this.$modal = $modal;
-  this.Cart = Cart;
+  this.JellyfishModal = JellyfishModal;
+  this.CartService = CartService;
   this.alerts = alerts;
   this.currentUser = currentUser;
 
@@ -14,8 +14,6 @@ var HeaderController = function($rootScope, $scope, $sce, $modal, Cart, currentU
   angular.forEach(this.alerts, function(item) {
     item.trustedHtml = $sce.trustAsHtml(item.text);
   });
-
-  this.isModalOpen = false;
 };
 
 HeaderController.resolve = {
@@ -24,29 +22,20 @@ HeaderController.resolve = {
 
 HeaderController.prototype = {
 
+  /**
+   * Move this to a state.
+   */
   cartModal: function () {
-
-      if (this.isModalOpen) {
-        return;
-      }
-
-      this.isModalOpen = true;
-
-      var modalInstance = this.$modal.open({
-        templateUrl: 'cart/cart-modal.html',
-        controller: 'CartController as cartCtrl',
-        size: 'lg'
-      });
-
-      var setModalStatusClosed = _.bind(function() {
-        this.isModalOpen = false;
-      }, this);
-
-      modalInstance.result.finally(setModalStatusClosed, setModalStatusClosed);
-    },
+    this.JellyfishModal.open({
+      id: 'cart',
+      templateUrl: '/partials/cart/cart-modal.html',
+      controller: 'CartController as cartCtrl',
+      size: 'lg'
+    });
+  },
 
   cartCount: function() {
-    return this.Cart.count();
+    return this.CartService.getCount();
   }
 };
 

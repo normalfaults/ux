@@ -3,10 +3,9 @@
 // TODO: This controller is dealing with too much data
 
 /**@ngInject*/
-var BaseController = function($rootScope, $scope, $state, projects, bundles, applications, AuthService) {
+var BaseController = function($rootScope, $scope, $state, projects, applications, AuthService) {
   $rootScope.$state = $state;
   $rootScope.projects = projects;
-  $rootScope.bundles = bundles;
   $rootScope.applications = applications;
 
   angular.forEach(projects, function(project) {
@@ -20,16 +19,12 @@ var BaseController = function($rootScope, $scope, $state, projects, bundles, app
 
 BaseController.resolve = {
   /**@ngInject*/
-  projects: function(Project) {
-    return Project.query().$promise;
+  projects: function(ProjectResource) {
+    return ProjectResource.query().$promise;
   },
   /**@ngInject*/
-  bundles: function(Bundle) {
-    return Bundle.query().$promise;
-  },
-  /**@ngInject*/
-  applications: function(Application) {
-    return Application.query().$promise;
+  applications: function(ApplicationResource) {
+    return ApplicationResource.query().$promise;
   }
 };
 

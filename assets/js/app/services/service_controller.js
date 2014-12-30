@@ -21,8 +21,8 @@ ServiceController.prototype.setTab = function(tab) {
 
 ServiceController.resolve = {
   /**@ngInject*/
-  service: function(Service, $stateParams) {
-    return Service.get({id: $stateParams.serviceId}).$promise;
+  service: function(ServiceResource, $stateParams) {
+    return ServiceResource.get({id: $stateParams.serviceId}).$promise;
   },
   /**@ngInject*/
   viewValues: function(DataService) {

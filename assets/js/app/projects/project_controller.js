@@ -3,19 +3,27 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, $state, $stateParams ,Project, ProjectUser, project, alerts, projectQuestions) {
+function ProjectController($scope, $modal, $location, $anchorScroll, $state, project, ProjectUserResource, alerts, projectQuestions) {
+
   this.project = project;
   this.$modal = $modal;
-  this.ProjectUser = ProjectUser;
+  this.alerts = alerts;
+  this.ProjectUserResource = ProjectUserResource;
 
-  $scope.project = this.project;
-  $scope.alerts = alerts;
-  $scope.questions = projectQuestions;
+  /**
+   * On creation/transition to scope, start refresh interval if
+   * we need to to reload unfinished service data.
+   */
 
+  $scope.$on('$stateChangeSuccess', _.bind(function () {
+    this.startRefreshInterval();
+  }, this));
 
-  $scope.editProject = function() {
-    $state.go('base.editProject', {id: $scope.project.id}, {reload: true});
-  };
+  $scope.$on('$stateChangeStart', _.bind(function() {
+    this.stopRefreshInterval();
+  }, this));
+
+  // @todo View uses 'answers' but it is not hooked up here
 }
 
 ProjectController.resolve = {
@@ -25,8 +33,8 @@ ProjectController.resolve = {
     return DataService.getProjectQuestions().$promise;
   },
   /**@ngInject*/
-  project: function(Project, $stateParams) {
-    return Project.get({id: $stateParams.projectId}).$promise;
+  project: function(ProjectResource, $stateParams) {
+    return ProjectResource.get({id: $stateParams.projectId}).$promise;
   },
   /**@ngInject*/
   alerts: function(DataService) {
@@ -37,48 +45,41 @@ ProjectController.resolve = {
 
 ProjectController.prototype = {
 
+  /**
+   * Setup refresh interval if not all services are complete.
+   * Will automatically stop polling after all services are complete.
+   * Polls Every 30 Seconds.
+   */
+  startRefreshInterval: function() {
+    if (!this._areAllServicesComplete()) {
+      this.interval = window.setInterval(_.bind(function () {
+        this.project.$get().then(_.bind(function () {
+
+          if (this._areAllServicesComplete()) {
+            this.stopRefreshInterval();
+          }
+        }, this));
+      }, this), 30000);
+    }
+
+  },
+
+  /**
+   * Clear/Stop the polling.
+   */
+  stopRefreshInterval: function() {
+    window.clearInterval(this.interval);
+  },
+
   removeUserFromProject: function(index){
-    var self = this;
-    self.ProjectUser.delete({id: self.project.id, staff_id: self.project.users[index].id}).$promise.then(
-      function(data){
-        self.project.users.splice(index, 1);
-      },
+    this.ProjectUserResource.delete({id: this.project.id, staff_id: this.project.users[index].id}).$promise.then(
+      _.bind(function(data){
+        this.project.users.splice(index, 1);
+      }, this),
       function(error) {
         alert("There was an error removing this user. Please try again later");
       }
     );
-  },
-
-  openAddUsersModal: function() {
-    var self = this;
-    var modalInstance = self.$modal.open({
-      templateUrl: 'projects/users-modal.html',
-      controller: 'ProjectUsersController',
-      resolve: {
-        /**@ngInject*/
-        project: function(ProductCategory) {
-          return self.project;
-        }
-      }
-    });
-  },
-
-  openAddServicesModal: function() {
-    var modalInstance = this.$modal.open({
-      templateUrl: 'projects/add-services-modal.html',
-      controller: 'ProjectServicesController as projectServicesCtrl',
-      size: 'lg',
-      resolve: {
-        /**@ngInject*/
-        categories: function(ProductCategory) {
-          return ProductCategory.query().$promise;
-        },
-        /**@ngInject*/
-        products: function(Product) {
-          return Product.query({"includes[]": ["cloud"]}).$promise;
-        }
-      }
-    });
   },
 
   getBudgetData: function() {
@@ -88,7 +89,6 @@ ProjectController.prototype = {
     _.each(this.project.order_history, function(item, key, all) {
       // @todo In the future we can split this off to complete/pending
       usedBudget += item.total;
-
     });
 
     var usedPercent = 0;
@@ -100,10 +100,31 @@ ProjectController.prototype = {
     }
 
     return {
-      'total' : projectBudget,
-      'used'    : usedBudget,
-      'usedPercent' : usedPercent
+      'total':       projectBudget,
+      'used':        usedBudget,
+      'usedPercent': usedPercent
     };
+  },
+
+  /**
+   * Loops through the resolved order history on the project
+   * If any of these orders are not completed, we return false.
+   * A completed order is currently equivelent to a service.
+   *
+   * @private
+   */
+  _areAllServicesComplete: function() {
+
+    // This short circuits on the first non complete item.
+    var anyNotComplete = _.some(this.project.services, function(item, key) {
+      // @todo Who nows if this will be the final status.
+      return item.provision_status !== 'Complete';
+    });
+
+    // We return the reverse here.
+    // Are all services complete
+    return !anyNotComplete;
+
   }
 };
 

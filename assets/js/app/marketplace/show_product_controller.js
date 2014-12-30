@@ -7,8 +7,8 @@ function ShowProductController(product) {
 
 ShowProductController.resolve = {
   /**@ngInject*/
-  product: function(Product, $stateParams) {
-    return Product.get({id: $stateParams.id, 'includes[]': 'product_category'}).$promise;
+  product: function(ProductResource, $stateParams) {
+    return ProductResource.get({id: $stateParams.id, 'includes[]': 'product_category'}).$promise;
   }
 };
 

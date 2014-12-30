@@ -18,7 +18,7 @@ function ProductsAdminController(categories, clouds) {
     'products/confluence.png',
     'products/php.png',
     'products/java.png',
-    'products/rails.png', 
+    'products/rails.png',
     // Filling in with the project images
     'projects/1.png',
     'projects/2.png',
@@ -39,12 +39,12 @@ function ProductsAdminController(categories, clouds) {
 
 ProductsAdminController.resolve = {
   /**@ngInject*/
-  categories: function(ProductCategory) {
-    return ProductCategory.query().$promise;
+  categories: function(ProductCategoryResource) {
+    return ProductCategoryResource.query().$promise;
   },
   /**@ngInject*/
-  clouds: function(Cloud) {
-    return Cloud.query().$promise;
+  clouds: function(CloudResource) {
+    return CloudResource.query().$promise;
   }
 
 };

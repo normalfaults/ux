@@ -3,6 +3,6 @@
 var angular = require('angular');
 
 var CloudsModule = angular.module('broker.clouds', [])
-  .factory('Cloud', require('./cloud'));
+  .factory('CloudResource', require('./cloud_resource'));
 
 module.exports = CloudsModule;

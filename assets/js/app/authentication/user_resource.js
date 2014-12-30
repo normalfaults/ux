@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function UserFactory($resource, ApiResource) {
+var UserResource = function($resource, ApiResource) {
   var User = $resource(ApiResource('usersById'), {}, {
     getRecentUsers: {
       method: "GET",
@@ -24,6 +24,6 @@ function UserFactory($resource, ApiResource) {
   };
 
   return User;
-}
+};
 
-module.exports = UserFactory;
+module.exports = UserResource;

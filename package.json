@@ -75,6 +75,12 @@
       ],
       "exports": "angular.module('ngAnimate').name"
     },
+    "angular-cookies": {
+      "depends": [
+        "angular"
+      ],
+      "exports": "angular.module('ngCookies').name"
+    },
     "angular-ui-router": {
       "depends": [
         "angular"
@@ -138,6 +144,7 @@
     "jquery": "./bower_components/jquery/dist/jquery.js",
     "angular": "./bower_components/angular/angular.js",
     "angular-animate": "./bower_components/angular-animate/angular-animate.js",
+    "angular-cookies": "./bower_components/angular-cookies/angular-cookies.js",
     "angular-sanitize": "./bower_components/angular-sanitize/angular-sanitize.js",
     "angular-ui-router": "./bower_components/angular-ui-router/release/angular-ui-router.js",
     "angular-resource": "./bower_components/angular-resource/angular-resource.js",

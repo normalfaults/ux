@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function SwitchViewButtons(fixSidebar) {
+function SwitchViewButtons() {
   return {
     restrict: 'E',
     template: [
@@ -21,14 +21,12 @@ function SwitchViewButtons(fixSidebar) {
         $(scope.listView).removeClass('hide');
         $(element).find(".list-switch").addClass('active');
         $(element).find(".grid-switch").removeClass('active');
-        fixSidebar();
       };
       scope.showGrid = function() {
         $(scope.gridView).removeClass('hide');
         $(scope.listView).addClass('hide');
         $(element).find(".grid-switch").addClass('active');
         $(element).find(".list-switch").removeClass('active');
-        fixSidebar();
       };
     }
   };

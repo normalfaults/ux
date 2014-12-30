@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthService, User, Session, $urlRouter, ROUTES, $state) {
+module.exports = function($http, $rootScope, $log, $location, AuthService, UserResource, Session, $urlRouter, ROUTES, $state) {
 
   $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -11,8 +11,6 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
   $http.defaults.withCredentials = true;
 
   $rootScope.sideBarExpanded = true;
-
-  $(window).resize(fixSidebar);
 
   // auto close popup on body click
   $("body").click(function(e) {
@@ -25,7 +23,7 @@ module.exports = function($http, $rootScope, $log, $location, fixSidebar, AuthSe
 
   // On init we check the current user to see if we are already authenticated.
   // If we are, we create the session and and sync the routes.
-  var currentMember = User.getCurrentMember();
+  var currentMember = UserResource.getCurrentMember();
   currentMember.$promise.then(function(data) {
     Session.create(data.email, data.role);
     $urlRouter.sync();

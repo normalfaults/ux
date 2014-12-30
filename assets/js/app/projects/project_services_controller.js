@@ -1,9 +1,10 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectsServicesController = function($scope, $modalInstance, Cart, products, categories) {
-
-  this.Cart = Cart;
+var ProjectServicesController = function($scope, $modalInstance, CartService, project, products, categories, currentUser) {
+  this.CartService = CartService;
+  this.project = project;
+  this.CurrentUser = currentUser;
 
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
@@ -27,21 +28,32 @@ var ProjectsServicesController = function($scope, $modalInstance, Cart, products
   }, this));
 };
 
-ProjectsServicesController.prototype = {
+ProjectServicesController.resolve = {
+  /**@ngInject*/
+  categories: function(ProductCategoryResource) {
+    return ProductCategoryResource.query().$promise;
+  },
+  /**@ngInject*/
+  products: function(ProductResource) {
+    return ProductResource.query({"includes[]": ["cloud"]}).$promise;
+  }
+};
 
-  addToCart: function(projectId, productId, productName) {
-    this.Cart.add(projectId, productId, productName);
+ProjectServicesController.prototype = {
+
+  addToCart: function(product) {
+    this.CartService.add(this.CurrentUser, this.project, product);
   },
 
   cartCount: function(projectId, productId) {
-    var cartItems = this.Cart.getItems();
+    var cartItems = this.CartService.getItems();
 
     var filtered = _.filter(cartItems, function(item) {
-      return (item.productId == productId && item.projectId == projectId);
+      return (item.product.id == productId && item.project.id == projectId);
     });
 
     return filtered.length;
   }
 };
 
-module.exports = ProjectsServicesController;
+module.exports = ProjectServicesController;

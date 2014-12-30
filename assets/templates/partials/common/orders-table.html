@@ -1,4 +1,4 @@
-<div class="table-box" ng-if="project.isApproved() && project.order_history">
+<div class="table-box" ng-if="orders">
     <div class="title-box">
         <h2>
             <strong>ORDER HISTORY</strong>
@@ -15,17 +15,15 @@
 
         <table st-table="rowCollection" class="table table-responsive table-striped">
             <colgroup>
-                <col class="col17">
-                <col>
-                <col class="col10">
-                <col class="col15">
-                <col class="col15">
+                <col class="col20">
+                <col class="col20">
+                <col class="col20">
+                <col class="col20">
                 <col class="col20">
             </colgroup>
             <thead>
             <tr>
                 <th class="text-left">ORDER ID</th>
-                <th class="text-left">PROJECT</th>
                 <th class="text-left">ITEMS</th>
                 <th class="text-left">TOTAL</th>
                 <th class="text-left">STATUS</th>
@@ -33,13 +31,12 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="item in project.order_history">
-                <td class="blue-texts font15"><a class="blue-link">{{item.orderId}}</a></td>
-                <td class="blue-texts font15"><a ui-sref="base.project({projectId: item.project.id})" class="blue-link">{{item.project.name}}</a></td>
-                <td class="item-texts">{{item.items}}</td>
+            <tr ng-repeat="item in orders">
+                <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
+                <td class="item-texts">{{item.item_count}}</td>
                 <td class="green-texts">{{item.total | currency}}</td>
-                <td class="{{item.color}}-texts">{{item.status}}</td>
-                <td class="data-texts">{{item.requestDate}}</td>
+                <td class="{{item.color}}-texts">{{item.provision_status}}</td>
+                <td class="data-texts">{{item.created_at | date:'medium' }}</td>
             </tr>
             </tbody>
         </table>

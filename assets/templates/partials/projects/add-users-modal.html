@@ -1,0 +1,52 @@
+<div class="new-user-modal">
+    <div class="modal-header">
+        <h3 class="modal-title">Add Users</h3>
+    </div>
+    <div class="modal-body">
+        <p class="section-header">
+            Enter user's name or email:
+        </p>
+
+        </br>
+
+        <angucomplete id="members"
+                      placeholder="User Search"
+                      pause="400"
+                      selectedobject="lastSelected"
+                      url="{{searchURL}}"
+                      titlefield="first_name,last_name"
+                      descriptionfield="email"
+                      inputclass="form-control form-control-small"
+                      imagefield="gravatar"
+                      imageuri="http://www.gravatar.com/avatar/"/>
+
+        <br>
+
+        <p class="section-header">
+            Users to add: ({{userAdditonCount}})
+        </p>
+
+        </br>
+
+        <p ng-if="userAdditonCount === 0">
+            No users selected.
+        </p>
+
+        <div class="list-group">
+            <a href="#" class="list-group-item" ng-repeat="(email, userAddition) in userAdditons" ng-click="removeUser(email)">
+                <img src="{{userAddition.image}}"/>
+                <div class="left-most">
+                    <h4 class="list-group-item-heading">{{userAddition.title}}</h4>
+                    <p class="list-group-item-text">{{userAddition.description}}</p>
+                </div>
+                <div class="right-most">
+                    <i class="fa fa-remove"></i>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'" ng-click="ok()">{{updating ? 'Adding ...' : 'Add'}}</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</div>
