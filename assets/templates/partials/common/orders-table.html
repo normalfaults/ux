@@ -36,7 +36,7 @@
                 <td class="item-texts">{{item.orderItemCount}}</td>
                 <td class="green-texts">{{item.total | currency}}</td>
                 <td class="{{item.color}}-texts">{{item.provision_status}}</td>
-                <td class="data-texts">{{item.created_at}}</td>
+                <td class="data-texts">{{item.created_at | date:'medium' }}</td>
             </tr>
             </tbody>
         </table>
