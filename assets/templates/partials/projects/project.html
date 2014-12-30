@@ -143,7 +143,7 @@
             <!-- end .titles-box -->
 
             <div class="container-grid container-grid-project-detail-services content-box-featured">
-                <service-box ng-repeat="(serviceIndex, service) in projectCtrl.project.services" service="service">
+                <service-box ng-repeat="(serviceIndex, service) in projectCtrl.project.services" service="projectCtrl.getServiceWithProduct(service)">
                     <span class="btn-box" ui-sref="base.service({serviceId: service.id})"><a>VIEW MORE</a></span>
                     <span class="btn-box" ng-click="projectCtrl.removeServiceFromProject(serviceIndex)"><a>REMOVE</a></span>
                 </service-box>

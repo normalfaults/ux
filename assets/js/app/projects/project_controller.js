@@ -3,11 +3,14 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, project, ProjectUserResource, OrderItemResource, alerts) {
+function ProjectController($scope, $modal, project, ProjectUserResource, OrderItemResource, alerts, products) {
+
+  this.$modal = $modal;
 
   this.project = project;
-  this.$modal = $modal;
   this.alerts = alerts;
+  this.products = products;
+
   this.ProjectUserResource = ProjectUserResource;
   this.OrderItemResource = OrderItemResource;
 
@@ -98,6 +101,21 @@ ProjectController.prototype = {
         alert("There was an error removing this service.");
       }
     );
+  },
+
+  /**
+   * Links the service with the product.
+   * @param serviceObject
+   * @returns {*}
+   */
+  getServiceWithProduct: function(serviceObject) {
+    var productId = serviceObject.product_id;
+
+    serviceObject.product = _.find(this.products, function(obj) {
+      return obj.id == productId;
+    });
+
+    return serviceObject;
   },
 
   getBudgetData: function() {
