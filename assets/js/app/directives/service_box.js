@@ -4,6 +4,7 @@
 function ServiceBox($templateCache) {
   return {
     restrict: 'E',
+    transclude: true,
     scope: {
       service: "="
     },

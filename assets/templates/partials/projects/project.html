@@ -143,7 +143,10 @@
             <!-- end .titles-box -->
 
             <div class="container-grid container-grid-project-detail-services content-box-featured">
-                <service-box ng-repeat="service in projectCtrl.project.services" service="service"></service-box>
+                <service-box ng-repeat="service in projectCtrl.project.services" service="service">
+                    <span class="btn-box"><a ui-sref="base.service({serviceId: service.id})">VIEW MORE</a></span>
+                    <span class="btn-box"><a>REMOVE</a></span>
+                </service-box>
                 <div class="btn-new-box">
                     <div class="boxs">
                         <a class="add-btn add-icon" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i class="fa fa-plus-circle"></i><span>ADD NEW SERVICES</span></a>
