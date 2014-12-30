@@ -38,6 +38,10 @@ ProjectController.resolve = {
   alerts: function(DataService) {
     // @todo This should be switched to something that only returns alerts for the project.
     return DataService.getAlerts().$promise;
+  },
+  /**@ngInject*/
+  products: function(ProductResource) {
+    return ProductResource.query({"includes[]": ["cloud"]}).$promise;
   }
 };
 
