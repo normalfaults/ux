@@ -1,7 +1,7 @@
 <div class="products-list-page main-content" set-width>
   <div class="content">
 
-    <products-list ng-repeat="category in listCtrl.categories" category="category">
+    <section-header ng-repeat="category in listCtrl.categories" header="category">
       <product-box class="product-box" ng-repeat="product in category.products" product="product">
         <a ui-sref="base.admin.products.edit({id: product.id})">Edit</a>
       </product-box>
@@ -17,6 +17,6 @@
           </a>
         </div>
       </div>
-    </products-list>
+    </section-header>
   </div>
 </div>

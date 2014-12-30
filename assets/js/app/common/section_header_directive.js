@@ -1,13 +1,13 @@
 'use strict';
 
 /**@ngInject*/
-function ProductsDirective() {
+var SectionHeaderDirective = function() {
   return {
     restrict: 'E',
-    templateUrl: '/partials/products/products_list.html',
+    templateUrl: '/partials/common/section_header.html',
     transclude: true,
     scope: {
-      category: '=',
+      header: '=',
       hideEmpty: '=',
       allowViewTypeToggle: '=',
       viewType: '@'
@@ -21,6 +21,6 @@ function ProductsDirective() {
       }
     }
   };
-}
+};
 
-module.exports = ProductsDirective;
+module.exports = SectionHeaderDirective;

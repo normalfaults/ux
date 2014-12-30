@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function ProductBox() {
+var ProductBoxDirective = function() {
   return {
     restrict: 'E',
     templateUrl: '/partials/products/product_box.html',
@@ -10,6 +10,6 @@ function ProductBox() {
       product: "="
     }
   };
-}
+};
 
-module.exports = ProductBox;
+module.exports = ProductBoxDirective;

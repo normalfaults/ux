@@ -3,12 +3,12 @@
         <h3 class="modal-title">Add Service</h3>
     </div>
     <div class="modal-body">
-        <products-list ng-repeat="category in projectServicesCtrl.categories" category="category" hide-empty="true" view-type="list-view" allow-view-type-toggle="false">
+        <section-header ng-repeat="category in projectServicesCtrl.categories" header="category" hide-empty="true" view-type="list-view" allow-view-type-toggle="false">
           <product-box class="product-box" ng-repeat="product in category.products" product="product">
             <a ui-sref="base.products.show({id: product.id})">View More</a>
             <a ng-click="projectServicesCtrl.addToCart(product)">Add to Cart ({{projectServicesCtrl.cartCount(projectServicesCtrl.project.id, product.id)}})</a>
           </product-box>
-        </products-list>
+        </section-header>
 
     </div>
     <div class="modal-footer">
