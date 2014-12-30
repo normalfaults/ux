@@ -3,18 +3,18 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, $location, $anchorScroll, $state, project, ProjectUserResource, alerts, projectQuestions) {
+function ProjectController($scope, $modal, project, ProjectUserResource, OrderItemResource, alerts) {
 
   this.project = project;
   this.$modal = $modal;
   this.alerts = alerts;
   this.ProjectUserResource = ProjectUserResource;
+  this.OrderItemResource = OrderItemResource;
 
   /**
    * On creation/transition to scope, start refresh interval if
    * we need to to reload unfinished service data.
    */
-
   $scope.$on('$stateChangeSuccess', _.bind(function () {
     this.startRefreshInterval();
   }, this));
@@ -22,8 +22,6 @@ function ProjectController($scope, $modal, $location, $anchorScroll, $state, pro
   $scope.$on('$stateChangeStart', _.bind(function() {
     this.stopRefreshInterval();
   }, this));
-
-  // @todo View uses 'answers' but it is not hooked up here
 }
 
 ProjectController.resolve = {
@@ -77,7 +75,23 @@ ProjectController.prototype = {
         this.project.users.splice(index, 1);
       }, this),
       function(error) {
+        // @todo This should be handled more globally than disruptive alerts.
         alert("There was an error removing this user. Please try again later");
+      }
+    );
+  },
+
+  removeServiceFromProject: function(serviceIndex) {
+    var service = this.project.services[serviceIndex];
+
+    this.OrderItemResource.delete({id: service.id, order_id: service.order_id}).$promise.then(
+      _.bind(function() {
+        // Remove it from the existing array.
+        this.project.services.splice(serviceIndex, 1);
+      }, this),
+      function(error) {
+        // @todo This should be handled more globally than disruptive alerts.
+        alert("There was an error removing this service.");
       }
     );
   },
