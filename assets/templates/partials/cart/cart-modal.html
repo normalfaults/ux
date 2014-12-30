@@ -1,12 +1,30 @@
 <div class="modal-header">
     <h3 class="modal-title">Shopping Cart</h3>
 </div>
-<div class="modal-body">
-    <ul ng-if="cartCtrl.cartItems().length > 0">
-        <li ng-repeat="(key,item) in cartCtrl.cartItems()">
-            <a>{{item.product.name}}</a><span ng-click="cartCtrl.removeItem(key)" class="fa fa-remove"></span>
-        </li>
-    </ul>
+<div class="modal-body cart-contents">
+
+    <table ng-if="cartCtrl.cartItems().length > 0" st-table="rowCollection" class="table table-responsive table-striped">
+        <colgroup>
+            <col>
+            <col>
+            <col>
+        </colgroup>
+        <thead>
+        <tr>
+            <th class="text-left">PRODUCT</th>
+            <th class="text-left">FOR PRODUCT</th>
+            <th>REMOVE</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="(key,item) in cartCtrl.cartItems()">
+            <td class="blue-texts">{{item.product.name}}</td>
+            <td>{{item.project.name}}</td>
+            <td class="data-texts"><span ng-click="cartCtrl.removeItem(key)" class="fa fa-remove"></span></td>
+        </tr>
+        </tbody>
+    </table>
+
     <div ng-if="cartCtrl.cartItems().length == 0">
         Your Cart is Empty
     </div>
