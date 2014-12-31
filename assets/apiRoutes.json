@@ -12,7 +12,7 @@
     "staffSearch":       "/staff?query=",
     "recentUsers":       "/users/recent",
     "orders":            "/orders/:id",
-    "orderItems":        "/orders/:order_id/item/:id",
+    "orderItems":        "/orders/:order_id/items/:id",
     "projectsById":      "/projects/:id",
     "productsById":      "/products/:id",
     "productCategoriesById": "/product_categories/:id",
