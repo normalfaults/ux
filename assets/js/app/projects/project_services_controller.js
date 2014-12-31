@@ -32,10 +32,6 @@ ProjectServicesController.resolve = {
   /**@ngInject*/
   categories: function(ProductCategoryResource) {
     return ProductCategoryResource.query().$promise;
-  },
-  /**@ngInject*/
-  products: function(ProductResource) {
-    return ProductResource.query({"includes[]": ["cloud"]}).$promise;
   }
 };
 

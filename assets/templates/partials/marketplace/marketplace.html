@@ -1,10 +1,10 @@
 <div class="marketplace-page main-content" set-width>
   <div class="content">
-    <products-list ng-repeat="category in marketplaceCtrl.categories" category="category" hide-empty="true">
+    <section-header ng-repeat="category in marketplaceCtrl.categories" header="category" hide-empty="true">
       <product-box class="product-box" ng-repeat="product in category.products" product="product">
         <a ui-sref="base.marketplace.show({id: product.id})">View More</a>
       </product-box>
-    </products-list>
+    </section-header>
 
     <div class="banner-transverse top60">
       <div class="containers">
