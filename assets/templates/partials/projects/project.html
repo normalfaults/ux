@@ -122,7 +122,7 @@
 
         <div class="project-services">
             <section-header ng-if="projectCtrl.project.isApproved()" header="{name: 'Services (' + projectCtrl.project.services.length + ')'}">
-                <product-box ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
+                <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
                     <a ui-sref="base.service({serviceId: service.id})">View More</a>
                     <a ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</a>
                 </product-box>
