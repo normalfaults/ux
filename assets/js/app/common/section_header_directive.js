@@ -13,11 +13,13 @@ var SectionHeaderDirective = function() {
       viewType: '@'
     },
     link: function($scope, $element) {
+      $scope.currentViewType = 'grid-view';
+
       $scope.showGrid = function() {
-        $element.find('div.list-view').removeClass('list-view').addClass('grid-view');
+        $scope.currentViewType = 'grid-view';
       };
       $scope.showList = function() {
-        $element.find('div.grid-view').removeClass('grid-view').addClass('list-view');
+        $scope.currentViewType = 'list-view';
       }
     }
   };

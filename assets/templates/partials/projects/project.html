@@ -120,68 +120,24 @@
 
         <!-- Services -->
 
-        <div class="table-box" ng-if="projectCtrl.project.isApproved()">
-            <div class="title-box">
-                <div class="title">
-                    <h2>
-                        <strong>SERVICES ({{projectCtrl.project.services.length}})</strong>
-                    </h2>
+        <div class="project-services">
+            <section-header ng-if="projectCtrl.project.isApproved()" header="{name: 'Services'}">
+                <product-box ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
+                    <a ui-sref="base.service({serviceId: service.id})">View More</a>
+                    <a ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</a>
+                </product-box>
+                <div class="add-product-box">
+                  <div class="product-box-shadow">
+                    <a ui-sref="base.project.addService({projectId: projectCtrl.project.id})">
+                      <div class="fa-stack">
+                        <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
+                        <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+                      </div>
+                      <div class="title">Add New Service</div>
+                    </a>
+                  </div>
                 </div>
-
-                <a id="services" />
-                <switch-view-buttons
-                        grid-view="'.container-grid-project-detail-services'"
-                        list-view="'.container-list-project-detail-services'"></switch-view-buttons>
-
-                <div class="clearfix"></div>
-
-                <div class="titles-border-bar">
-                    <span class="blues width112"></span>
-                    <span class="whites width3"></span>
-                </div>
-            </div>
-            <!-- end .titles-box -->
-
-            <div class="container-grid container-grid-project-detail-services content-box-featured">
-                <service-box ng-repeat="(serviceIndex, service) in projectCtrl.project.services" service="projectCtrl.getServiceWithProduct(service)">
-                    <span class="btn-box" ui-sref="base.service({serviceId: service.id})"><a>VIEW MORE</a></span>
-                    <span class="btn-box" ng-click="projectCtrl.removeServiceFromProject(serviceIndex)"><a>REMOVE</a></span>
-                </service-box>
-                <div class="btn-new-box">
-                    <div class="boxs">
-                        <a class="add-btn add-icon" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i class="fa fa-plus-circle"></i><span>ADD NEW SERVICES</span></a>
-                    </div>
-                </div>
-            </div>
-            <!-- end .container-grid -->
-
-            <div class="container-list container-list-project-detail-services content-box-featured hide">
-                <div class="boxes" ng-repeat="item in projectCtrl.project.services">
-                    <div class="boxes-box col15">
-                            <span class="icon-boxes orange-top-border">
-                                <a><span class="center-image"></span><img class="center-image-img" ng-src="{{item.iconBig}}"/></a></span>
-                        </span>
-                    </div>
-                    <div class="texts-box col30">
-                        <span class="titles"><a ui-sref="base.service({serviceId: item.id})">{{item.name}}</a></span>
-                        <span class="texts">{{item.source}}</span>
-                    </div>
-                    <div class="texts-box col20">
-                        <span class="titles">Type</span>
-                        <span class="texts">{{item.type | uppercase}}</span>
-                    </div>
-                    <div class="texts-box col35">
-                        <span class="titles">Plan Started From</span>
-                        <span class="texts">{{item.startsFrom | currency}} {{item.startsFromSuffix}}</span>
-                    </div>
-                </div>
-
-                <div class="btn-new-box fr">
-                    <a class="add-btn add-icon" ui-sref="base.project.addService({projectId: projectCtrl.project.id})"><i class="fa fa-plus-circle"></i><span>ADD NEW SERVICES</span></a>
-                </div>
-                <span class="clearfix"></span>
-            </div>
-            <!-- end .container-list -->
+            </section-header>
         </div>
 
 

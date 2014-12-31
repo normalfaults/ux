@@ -111,9 +111,16 @@ ProjectController.prototype = {
   getServiceWithProduct: function(serviceObject) {
     var productId = serviceObject.product_id;
 
-    serviceObject.product = _.find(this.products, function(obj) {
+    var product = _.find(this.products, function(obj) {
       return obj.id == productId;
     });
+
+    // Hook on the product details we need to use the product box.
+    serviceObject.img = product.img;
+    serviceObject.name = product.name;
+    serviceObject.cloud = product.cloud;
+    serviceObject.description = product.description;
+
 
     return serviceObject;
   },

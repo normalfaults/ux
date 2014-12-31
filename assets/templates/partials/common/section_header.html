@@ -1,16 +1,16 @@
-<div ng-hide="hideEmpty && 0 >= header.products.length" ng-class="viewType || 'grid-view'">
+<div ng-hide="hideEmpty && 0 >= header.products.length" ng-class="viewType || currentViewType">
   <div class="titles-box">
     <div class="col-sm-6">
       <h2>{{header.name}}</h2>
 
       <!-- TODO: Add descriptions to product_categories -->
-      <p>Product category description goes here</p>
+      <p>{{header.description}}</p>
     </div>
     <div ng-if="allowViewTypeToggle === undefined || allowViewTypeToggle" class="switch-buttons col-sm-6 text-right">
-      <a ng-click="showGrid()" class="btn btn-link grid-switch active">
+      <a ng-click="showGrid()" class="btn btn-link grid-switch" ng-class="(currentViewType == 'grid-view') ? 'active' : ''">
         <i class="fa fa-fw fa-lg fa-th"></i>
       </a>
-      <a ng-click="showList()" class="btn btn-link list-switch">
+      <a ng-click="showList()" class="btn btn-link list-switch" ng-class="(currentViewType == 'list-view') ? 'active' : ''">
         <i class="fa fa-fw fa-lg fa-bars"></i>
       </a>
     </div>
