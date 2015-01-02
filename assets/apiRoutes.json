@@ -23,6 +23,7 @@
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
     "currentMember":     "/staff/current_member",
-    "cloudsById":        "/clouds/:id"
+    "cloudsById":        "/clouds/:id",
+    "adminSettingById":  "/admin_settings/:id"
   }
 }
