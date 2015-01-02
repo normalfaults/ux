@@ -1,0 +1,28 @@
+<div set-width>
+  <div class="page">
+    <div class="page-title">
+      <div class="page-title-text">
+        <h3>Admin Settings</h3>
+      </div>
+    </div>
+    <tabset>
+      <tab ng-repeat="setting in adminSettings" heading="{{setting.name}}">
+        </br>
+        <form class="form-horizontal padded horizontal-spanning" role="form" name="projectForm" novalidate>
+          <span ng-repeat="field in setting.admin_setting_fields">
+            <dynamic-field field-model="field" field-id="field.id" field-name="field.id" field-type="field.field_type" field-required="field.required" help-text="field.help_text" label="field.label"/>
+          </span>
+
+          <div class="form-group">
+            <div class="control-submit">
+              <button type="submit" ng-click="updateSetting(setting)"
+                      ng-class="updating ? 'btn btn-primary disabled' : 'btn btn-primary'">
+                {{updating ? 'Updating ...' : 'Update'}}
+              </button>
+            </div>
+          </div>
+        </form>
+      </tab>
+    </tabset>
+  </div>
+</div>
