@@ -4,7 +4,7 @@
     <section-header header="{name: 'Users'}">
       <users-box class="product-box" ng-repeat="user in listUsersCtrl.users" user="user">
         <a>Edit</a>
-        <a>Remove</a>
+        <a ng-click="listUsersCtrl.removeUser($index)">Remove</a>
       </users-box>
 
       <div class="add-box">
