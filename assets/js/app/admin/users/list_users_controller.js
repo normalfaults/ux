@@ -8,7 +8,9 @@ var ListUsersController = function() {
 };
 
 ListUsersController.resolve = {
+  users: function(UsersResource) {
 
+  }
 };
 
 module.exports = ListUsersController;

@@ -29,7 +29,6 @@ var app = angular.module('broker', [
   "ngCookies",
   require('./alerts').name,
   require('./common').name,
-  require('./staff').name,
   require('./base').name,
   require('./admin').name,
   require('./authentication').name,
