@@ -8,7 +8,7 @@ module.exports = function($stateProvider) {
     .state('base.admin.users', {
       url: '/users',
       abstract: true,
-      template: '<div class="users-admin" ui-view></div>',
+      template: '<div class="page users-admin-page" ui-view></div>',
       controller: 'UsersAdminController as usersAdminCtrl'
     })
     .state('base.admin.users.list', {
