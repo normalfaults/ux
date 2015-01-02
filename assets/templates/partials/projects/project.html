@@ -19,7 +19,7 @@
     </div>
 
 
-    <div class="page">
+    <div class="content box-content">
 
         <!-- Title & Url -->
 
@@ -120,13 +120,13 @@
 
         <!-- Services -->
 
-        <div class="project-services">
-            <section-header ng-if="projectCtrl.project.isApproved()" header="{name: 'Services (' + projectCtrl.project.services.length + ')'}">
+        <div class="project-services" ng-if="projectCtrl.project.isApproved()">
+            <section-header header="{name: 'Services (' + projectCtrl.project.services.length + ')'}">
                 <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
                     <a ui-sref="base.service({serviceId: service.id})">View More</a>
                     <a ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</a>
                 </product-box>
-                <div class="add-product-box">
+                <div class="add-box">
                   <div class="product-box-shadow">
                     <a ui-sref="base.project.addService({projectId: projectCtrl.project.id})">
                       <div class="fa-stack">
@@ -142,79 +142,24 @@
 
 
         <!-- Users -->
+        <div class="project-users" ng-if="projectCtrl.project.isApproved()">
+            <section-header header="{name: 'Users (' + projectCtrl.project.users.length + ')'}">
+                <users-box class="product-box" ng-repeat="user in projectCtrl.project.users" user="user">
+                    <a ng-click="projectCtrl.removeUserFromProject($index)">Remove</a>
+                </users-box>
 
-        <div class="table-box" ng-if="projectCtrl.project.isApproved()">
-            <div class="title-box">
-                <div class="title">
-                    <h2>
-                        <strong>USERS ({{projectCtrl.project.users.length}})</strong>
-                    </h2>
-                </div>
-
-                <a id="users" />
-                <switch-view-buttons
-                        grid-view="'.container-grid-users'"
-                        list-view="'.users-list'"></switch-view-buttons>
-
-                <div class="clearfix"></div>
-
-                <div class="titles-border-bar">
-                    <span class="blues width112"></span>
-                    <span class="whites width3"></span>
-                </div>
-
-                </br>
-            </div>
-            <!-- end .titles-box -->
-
-            <div class="users-list hide">
-                <div class="container-list">
-                    <div class="boxes" ng-repeat="user in projectCtrl.project.users">
-                        <div class="boxes-box col15">
-                            <span class="icon-boxes">
-                                <span class="center-image"></span>
-                                <img class="center-image-img" gravatar-src="user.email"/>
-                            </span>
-                        </div>
-                        <div class="texts-box col20">
-                            <span class="titles"><a>{{user.name}}</a></span>
-                        </div>
-                        <div class="texts-box col28">
-                            <span class="gray-texts">Allowed For</span>
-                            <span class="texts">{{user.allowed.join(", ")}}</span>
-                        </div>
-                        <div class="texts-box col20">
-                            <a class="btn btn-primary" ng-click="projectCtrl.removeUserFromProject($index)" >DELETE</a>
-                        </div>
-                    </div>
-                    <div class="btn-box fr" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
-                        <a class="add-btn add-icon"><i class="fa fa-plus-circle"></i><span>ADD NEW USER</span></a>
-                    </div>
-                    <span class="clearfix"></span>
-                    <!-- end .btn-box -->
-                </div>
-                <!-- end .container-list -->
-            </div>
-
-            <div class="container-grid container-grid-users content-box-featured">
-                <div class="boxes" ng-repeat="user in projectCtrl.project.users">
-                    <span class="icon-boxes orange-top-border">
-                        <a>
-                            <span class="center-image"></span>
-                            <img class="center-image-img" gravatar-src="user.email"/>
+                <div class="add-box">
+                    <div class="product-box-shadow">
+                        <a ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
+                            <div class="fa-stack">
+                                <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
+                                <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+                            </div>
+                            <div class="title">Add New User</div>
                         </a>
-                    </span>
-                    <span class="titles"><span>{{user.name}}</span></span>
-                    <span class="btn-box"><a>VIEW MORE</a></span>
-                    <span ng-click="projectCtrl.removeUserFromProject($index)" class="btn-box"><a>DELETE</a></span>
-                </div>
-                <div class="btn-new-box" ui-sref="base.project.addUser({projectId: projectCtrl.project.id})">
-                    <div class="boxs">
-                        <a class="add-btn add-icon"><i class="fa fa-plus-circle"></i><span>ADD NEW USER</span></a>
                     </div>
                 </div>
-            </div>
-            <!-- end .container-grid -->
+            </section-header>
         </div>
 
         <!-- Project Details -->

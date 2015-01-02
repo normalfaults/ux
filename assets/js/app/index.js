@@ -29,7 +29,6 @@ var app = angular.module('broker', [
   "ngCookies",
   require('./alerts').name,
   require('./common').name,
-  require('./staff').name,
   require('./base').name,
   require('./admin').name,
   require('./authentication').name,
@@ -42,6 +41,7 @@ var app = angular.module('broker', [
   require('./applications').name,
   require('./orders').name,
   require('./directives').name,
-  require('./dashboard').name
+  require('./dashboard').name,
+  require('./users').name
 ])
   .run(require('./init'));

@@ -1,5 +1,5 @@
-<div class="marketplace-page main-content" set-width>
-  <div class="content">
+<div class="page marketplace-page main-content" set-width>
+  <div class="content box-content">
     <section-header ng-repeat="category in marketplaceCtrl.categories" header="category" hide-empty="true">
       <product-box class="product-box" ng-repeat="product in category.products" product="product">
         <a ui-sref="base.marketplace.show({id: product.id})">View More</a>
