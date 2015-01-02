@@ -1,10 +1,10 @@
 'use strict';
 
 /**@ngInject*/
-function DynmaicField() {
+function FormInput() {
     return {
         restrict: 'E',
-        templateUrl: '/partials/common/dynamic-field.html',
+        templateUrl: '/partials/common/form-input.html',
         scope: {
             fieldModel: "=fieldModel",
             fieldType: "=fieldType",
@@ -34,4 +34,4 @@ function DynmaicField() {
     };
 }
 
-module.exports = DynmaicField;
+module.exports = FormInput;
