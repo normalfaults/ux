@@ -1,13 +1,18 @@
 'use strict';
 
 /**@ngInject*/
-var UserResource = function($resource, ApiResource) {
+var UsersResource = function($resource, ApiResource) {
   return $resource(ApiResource('staffById'), {'id': '@id'}, {
     get: {
+      method: 'GET',
+      isArray: false
+    },
+    // Get All
+    query: {
       method: 'GET',
       isArray: true
     }
   });
 };
 
-module.exports = UserResource;
+module.exports = UsersResource;

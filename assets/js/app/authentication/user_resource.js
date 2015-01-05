@@ -1,13 +1,9 @@
 'use strict';
 
+// @todo Should be combined with userss/users_resource.js -- Although prototype might make this hard with multiples.
 /**@ngInject*/
 var UserResource = function($resource, ApiResource) {
-  var User = $resource(ApiResource('usersById'), {}, {
-    getRecentUsers: {
-      method: "GET",
-      isArray: true,
-      url: ApiResource('recentUsers')
-    },
+  var User = $resource(ApiResource('staffById'), {}, {
     getCurrentMember: {
       method: 'GET',
       isArray: false,

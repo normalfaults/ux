@@ -14,7 +14,7 @@ var ListUsersController = function(UsersResource, users) {
 ListUsersController.resolve = {
   /**@ngInject*/
   users: function(UsersResource) {
-    return UsersResource.get().$promise;
+    return UsersResource.query().$promise;
   }
 };
 
