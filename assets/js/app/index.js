@@ -31,6 +31,7 @@ var app = angular.module('broker', [
   require('./common').name,
   require('./base').name,
   require('./admin').name,
+  require('./users').name,
   require('./authentication').name,
   require('./cart').name,
   require('./projects').name,
