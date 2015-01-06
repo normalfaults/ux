@@ -33,8 +33,8 @@
     <input id="email" name="email" type="email" ng-model="adminUserFormCtrl.user.email" class="form-control" required/>
 
     <div class="help-block">
-      <div class="help-text" ng-show="adminUserFormCtrl.hasError('email', 'required')">Valid Email Address is Required.
-      </div>
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('email', 'required')">Email Address is Required.</div>
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('email', 'email')">Email Address is Not Valid.</div>
     </div>
   </div>
   <div class="col-sm-4"></div>
@@ -61,8 +61,8 @@
     <input id="password_confirmation" name="password_confirmation" type="password" ng-model="adminUserFormCtrl.user.password_confirmation" class="form-control" compare-to="adminUserFormCtrl.user.password" required/>
 
     <div class="help-block">
-      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password_confirmation', 'required')">Password Confirmation is Required.
-      </div>
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password_confirmation', 'required')">Password Confirmation is Required.</div>
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password_confirmation', 'compareTo')">Passwords Must Match.</div>
     </div>
   </div>
   <div class="col-sm-4"></div>
