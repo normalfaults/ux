@@ -66,10 +66,17 @@ var paths = {
     }
   };
 
-gulp.task('bower', function() {
+/**
+ * Main Bower tasks, calls bower install and then prunes it.
+ */
+gulp.task('bower', ['bower-install'], function() {
+  return bower({'cmd': 'prune'});
+});
 
-  bower({'cmd': 'prune'});
-
+/**
+ * Install Bower Components
+ */
+gulp.task('bower-install', function() {
   return bower({'cmd': 'install'})
     .pipe(gulp.dest(paths.bower));
 });
@@ -140,7 +147,7 @@ gulp.task('scripts', ['bower', 'clean-scripts', 'jshint'], function() {
     .pipe(browserified)
     .pipe(unpathify())
     .pipe(concat('bundle.js'))
-    //.pipe(uglify({preserveComments: 'some'}))
+    .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
     .pipe(notify({message: 'Finished scripts task.'}));
 });
@@ -210,6 +217,7 @@ gulp.task('clean-fonts', function() {
 });
 
 gulp.task('fonts', ['clean-fonts', 'icons'], function() {
+
   // Move internal system fonts
   gulp.src(paths.src.fonts)
     .pipe(gulp.dest(paths.dest.fonts));
