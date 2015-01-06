@@ -30,10 +30,29 @@
   <label class="col-sm-2 control-label" for="email">Email:</label>
 
   <div class="col-sm-6 controls">
-    <input id="email" name="email" type="text" ng-model="adminUserFormCtrl.user.email" class="form-control" required/>
+    <input id="email" name="email" type="email" ng-model="adminUserFormCtrl.user.email" class="form-control" required/>
 
     <div class="help-block">
-      <div class="help-text" ng-show="adminUserFormCtrl.hasError('email', 'required')">Email Address is Required.
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('email', 'required')">Valid Email Address is Required.
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('role')}">
+  <label class="col-sm-2 control-label">Role:</label>
+
+  <div class="col-sm-6 controls">
+    <ui-select id="role" name="role" ng-model="adminUserFormCtrl.user.role" theme="selectize" required />
+    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+      <ui-select-choices repeat="role.value as role in adminUserFormCtrl.roles">
+        <span ng-bind-html-unsafe="role.name">{{role.name}}</span>
+      </ui-select-choices>
+    </ui-select>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('role', 'required')">Role is Required
       </div>
     </div>
   </div>

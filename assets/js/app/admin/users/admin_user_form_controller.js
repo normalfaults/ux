@@ -4,12 +4,30 @@ var _ = require('lodash');
 
 var adminUsersListState = 'base.admin.users.list';
 
+/**
+ * @todo This mirrors the product_form_controller.js file in a lot of regards, could be abstracted.
+ */
+
 /**@ngInject*/
 var AdminUserFormController = function($state) {
 
   this.$state = $state;
   this.user = null;
   this.formSubmitted = false;
+
+  // Set the available roles.
+  // @todo Should probably be pulled form the backend
+  // @todo For some reason ui-select goes nuts if this is returned from a method.
+  this.roles = [
+    {
+      value: 'user',
+      name: 'User'
+    },
+    {
+      value: 'admin',
+      name: 'Admin'
+    }
+  ];
 };
 
 AdminUserFormController.prototype = {
@@ -48,7 +66,7 @@ AdminUserFormController.prototype = {
     });
   },
 
-  delete: function() {
+  destroy: function() {
     this.formSubmitted = true;
     this.user.$delete(_.bind(function() {
       this.$state.go(adminUsersListState);
