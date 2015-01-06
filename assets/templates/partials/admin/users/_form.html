@@ -40,6 +40,34 @@
   <div class="col-sm-4"></div>
 </div>
 
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('password')}">
+  <label class="col-sm-2 control-label" for="email">Password:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="password" name="password" type="password" ng-model="adminUserFormCtrl.user.password" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password', 'required')">Password is Required.
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('password_confirmation')}">
+  <label class="col-sm-2 control-label" for="email">Confirm Password:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="password_confirmation" name="password_confirmation" type="password" ng-model="adminUserFormCtrl.user.password_confirmation" class="form-control" compare-to="adminUserFormCtrl.user.password" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password_confirmation', 'required')">Password Confirmation is Required.
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
 <div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('role')}">
   <label class="col-sm-2 control-label">Role:</label>
 
