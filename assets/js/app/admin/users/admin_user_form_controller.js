@@ -40,6 +40,7 @@ AdminUserFormController.prototype = {
     if (this.form.$invalid) {
       return false;
     }
+
     this.user.$update(_.bind(function() {
       this.$state.go(adminUsersListState);
     }, this), function() {

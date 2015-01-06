@@ -4,7 +4,7 @@
         <section-header header="{name: 'Add User'}" allow-view-type-toggle=false >
             <form name="adminUserFormCtrl.form" class="form-horizontal user-form" role="form"
                      ng-controller="AdminUserFormController as adminUserFormCtrl"
-                     ng-init="adminUserFormCtrl.initForm(adminAddUserCtrl)"
+                     ng-init="adminUserFormCtrl.initForm(adminEditUserCtrl)"
                      ng-submit="adminUserFormCtrl.update()"
                      novalidate>
                  <div class="row">
@@ -15,7 +15,7 @@
                      </a>
                    </div>
                    <div class="col-sm-6 text-right">
-                     <button type="submit" class="btn btn-primary" ng-disabled="!adminUserFormCtrl.canSubmit()">Create User</button>
+                     <button type="submit" class="btn btn-primary" ng-disabled="!adminUserFormCtrl.canSubmit()">Update User</button>
                    </div>
                  </div>
 

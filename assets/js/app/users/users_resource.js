@@ -3,6 +3,7 @@
 /**@ngInject*/
 var UsersResource = function($resource, ApiResource) {
   return $resource(ApiResource('staffById'), {'id': '@id'}, {
+    // Get Single
     get: {
       method: 'GET',
       isArray: false
@@ -11,6 +12,9 @@ var UsersResource = function($resource, ApiResource) {
     query: {
       method: 'GET',
       isArray: true
+    },
+    'update': {
+      method: 'PUT'
     }
   });
 };

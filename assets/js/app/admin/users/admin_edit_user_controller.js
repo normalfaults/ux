@@ -2,7 +2,6 @@
 
 /**@ngInject*/
 var AdminEditUserController = function(user) {
-  console.warn(user);
   this.user = user;
 };
 
