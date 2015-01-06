@@ -4,7 +4,6 @@
         <section-header header="{name: 'Users'}">
           <users-box class="product-box" ng-repeat="user in listUsersCtrl.users" user="user">
             <a ui-sref="base.admin.users.edit({id: user.id})">Edit</a>
-            <a ng-click="listUsersCtrl.removeUser($index)">Remove</a>
           </users-box>
 
           <div class="add-box">

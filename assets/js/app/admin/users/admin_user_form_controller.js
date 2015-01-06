@@ -48,7 +48,7 @@ AdminUserFormController.prototype = {
     });
   },
 
-  destroy: function() {
+  delete: function() {
     this.formSubmitted = true;
     this.user.$delete(_.bind(function() {
       this.$state.go(adminUsersListState);
