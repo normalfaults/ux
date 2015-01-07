@@ -1,5 +1,9 @@
 'use strict';
 
+/**
+ * @todo This mirrors the admin_user_form_controller.js file in a lot of regards, could be abstracted.
+ */
+
 /**@ngInject*/
 function ProductFormController($state) {
   var self = this;

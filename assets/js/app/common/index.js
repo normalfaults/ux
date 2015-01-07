@@ -11,4 +11,5 @@ module.exports = angular.module('broker.common', [
   .factory('httpInterceptor', require('./http_interceptor'))
   .factory('JellyfishModal', require('./jellyfish_modal'))
   .directive('sectionHeader', require('./section_header_directive'))
+  .directive('compareTo', require('./compare_to_directive'))
   .config(require('./routes'));
