@@ -14,7 +14,8 @@
 
 
         <form ng-submit="loginCtrl.login()">
-            <div class="has-error" ng-show="loginCtrl.hasFailedLogin()">
+            <div class="error" ng-show="loginCtrl.hasFailedLogin()">
+                <i class="fa fa-exclamation-triangle"></i>
                 Invalid Email or Password.
             </div>
             <table class="table-data">
