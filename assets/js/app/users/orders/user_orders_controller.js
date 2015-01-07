@@ -12,7 +12,7 @@ UserOrderController.prototype.getOrders = function() {
 UserOrderController.resolve = {
     /**@ngInject*/
     orders: function(UserOrders, currentUser) {
-        return UserOrders.query({staff_id: currentUser.id, 'methods[]': 'item_count'}).$promise;
+        return UserOrders.query({staff_id: currentUser.id}).$promise;
     }
 };
 
