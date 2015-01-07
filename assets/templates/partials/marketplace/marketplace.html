@@ -2,7 +2,7 @@
   <div class="content box-content">
     <section-header ng-repeat="category in marketplaceCtrl.categories" header="category" hide-empty="true">
       <product-box class="product-box" ng-repeat="product in category.products" product="product">
-        <a ui-sref="base.marketplace.show({id: product.id})">View More</a>
+        <button class="btn btn-primary" ui-sref="base.marketplace.show({id: product.id})">View More</button>
       </product-box>
     </section-header>
 

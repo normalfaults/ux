@@ -6,8 +6,8 @@
         <div class="content box-content">
             <section-header ng-repeat="category in projectServicesCtrl.categories" header="category" hide-empty="true" view-type="list-view" allow-view-type-toggle="false">
                 <product-box class="product-box" ng-repeat="product in category.products" product="product">
-                    <a ui-sref="base.products.show({id: product.id})">View More</a>
-                    <a ng-click="projectServicesCtrl.addToCart(product)">Add to Cart ({{projectServicesCtrl.cartCount(projectServicesCtrl.project.id, product.id)}})</a>
+                    <button class="btn btn-primary" ui-sref="base.products.show({id: product.id})">View More</button>
+                    <button class="btn btn-primary" ng-click="projectServicesCtrl.addToCart(product)">Add to Cart ({{projectServicesCtrl.cartCount(projectServicesCtrl.project.id, product.id)}})</button>
                 </product-box>
             </section-header>
         </div>

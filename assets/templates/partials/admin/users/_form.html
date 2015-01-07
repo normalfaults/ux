@@ -1,0 +1,88 @@
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('first_name')}">
+  <label class="col-sm-2 control-label" for="first_name">First Name:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="first_name" name="first_name" type="text" ng-model="adminUserFormCtrl.user.first_name" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('first_name', 'required')">First Name is Required.
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('last_name')}">
+  <label class="col-sm-2 control-label" for="last_name">Last Name:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="last_name" name="last_name" type="text" ng-model="adminUserFormCtrl.user.last_name" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('last_name', 'required')">Last Name is Required.
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('email')}">
+  <label class="col-sm-2 control-label" for="email">Email:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="email" name="email" type="email" ng-model="adminUserFormCtrl.user.email" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('email', 'required')">Email Address is Required.</div>
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('email', 'email')">Email Address is Not Valid.</div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('password')}">
+  <label class="col-sm-2 control-label" for="email">Password:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="password" name="password" type="password" ng-model="adminUserFormCtrl.user.password" class="form-control" ng-required="!adminUserFormCtrl.user.id" />
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password', 'required')">Password is Required.
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('password_confirmation')}">
+  <label class="col-sm-2 control-label" for="email">Confirm Password:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="password_confirmation" name="password_confirmation" type="password" ng-model="adminUserFormCtrl.user.password_confirmation" class="form-control" compare-to="adminUserFormCtrl.user.password" ng-required="!adminUserFormCtrl.user.id" />
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password_confirmation', 'required')">Confirm Password is Required.</div>
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password_confirmation', 'compareTo')">Passwords Must Match.</div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': adminUserFormCtrl.hasError('role')}">
+  <label class="col-sm-2 control-label">Role:</label>
+
+  <div class="col-sm-6 controls">
+    <ui-select id="role" name="role" ng-model="adminUserFormCtrl.user.role" theme="selectize" required />
+    <ui-select-match>{{$select.selected.name}}</ui-select-match>
+      <ui-select-choices repeat="role.value as role in adminUserFormCtrl.roles">
+        <span ng-bind-html-unsafe="role.name">{{role.name}}</span>
+      </ui-select-choices>
+    </ui-select>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('role', 'required')">Role is Required
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>

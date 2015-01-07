@@ -3,7 +3,7 @@
 
     <section-header ng-repeat="category in listCtrl.categories" header="category">
       <product-box class="product-box" ng-repeat="product in category.products" product="product">
-        <a ui-sref="base.admin.products.edit({id: product.id})">Edit</a>
+        <button class="btn btn-primary" ui-sref="base.admin.products.edit({id: product.id})">Edit</button>
       </product-box>
 
       <div class="add-box">

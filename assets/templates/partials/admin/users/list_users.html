@@ -1,23 +1,22 @@
-<div class="users-list-page main-content" set-width>
-  <div class="content box-content">
+<div class="users-list-page main-content " set-width>
+    <div class="content box-content">
 
-    <section-header header="{name: 'Users'}">
-      <users-box class="product-box" ng-repeat="user in listUsersCtrl.users" user="user">
-        <a>Edit</a>
-        <a ng-click="listUsersCtrl.removeUser($index)">Remove</a>
-      </users-box>
+        <section-header header="{name: 'Users'}">
+          <users-box class="product-box" ng-repeat="user in listUsersCtrl.users" user="user">
+            <button class="btn btn-primary" ui-sref="base.admin.users.edit({id: user.id})">Edit</button>
+          </users-box>
 
-      <div class="add-box">
-        <div class="product-box-shadow">
-          <a ui-sref="base.admin.users.create">
-            <div class="fa-stack">
-              <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
-              <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+          <div class="add-box">
+            <div class="product-box-shadow">
+              <a ui-sref="base.admin.users.add">
+                <div class="fa-stack">
+                  <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
+                  <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+                </div>
+                <div class="title">Add New User</div>
+              </a>
             </div>
-            <div class="title">Add New User</div>
-          </a>
-        </div>
-      </div>
-    </section-header>
-  </div>
+          </div>
+        </section-header>
+    </div>
 </div>

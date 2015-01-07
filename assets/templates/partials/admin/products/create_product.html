@@ -1,31 +1,26 @@
 <div class="create-product-page main-content" set-width>
-  <div class="content container">
-    <h2>Create Product</h2>
-
-    <div class="titles-border-bar">
-      <span class="blues width137"></span>
-      <span class="whites width3"></span>
-    </div>
-
-    <form name="productForm.form" class="form-horizontal product-form" role="form"
-          ng-controller="ProductFormController as productForm"
-          ng-init="productForm.initForm(createCtrl)"
-          ng-submit="productForm.create()"
-          novalidate>
-      <div class="row">
-        <div class="col-sm-6">
-          <a ui-sref="base.admin.products.list" class="btn btn-link">
-            <i class="fa fa-long-arrow-left"></i>
-            Back to products list
-          </a>
+  <div class="content box-content container">
+    <section-header header="{name: 'Create Product'}" allow-view-type-toggle=false>
+      <form name="productForm.form" class="form-horizontal product-form" role="form"
+            ng-controller="ProductFormController as productForm"
+            ng-init="productForm.initForm(createCtrl)"
+            ng-submit="productForm.create()"
+            novalidate>
+        <div class="row">
+          <div class="col-sm-6">
+            <a ui-sref="base.admin.products.list" class="btn btn-link">
+              <i class="fa fa-long-arrow-left"></i>
+              Back to products list
+            </a>
+          </div>
+          <div class="col-sm-6 text-right">
+            <button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Create Product</button>
+          </div>
         </div>
-        <div class="col-sm-6 text-right">
-          <button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Create Product</button>
-        </div>
-      </div>
 
-      <div ng-include src="'/partials/admin/products/_form.html'"></div>
-    </form>
+        <div ng-include src="'/partials/admin/products/_form.html'"></div>
+      </form>
+    </section-header>
 
   </div>
 </div>

@@ -32,8 +32,8 @@ module.exports = function($stateProvider, USER_ROLES) {
     },
     resolve: {
       /**@ngInject*/
-      currentUser: function(UserResource) {
-        return UserResource.getCurrentMember().$promise;
+      currentUser: function(UsersResource) {
+        return UsersResource.getCurrentMember().$promise;
       },
       /**@ngInject*/
       alerts: function(DataService) {
