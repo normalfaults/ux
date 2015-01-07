@@ -1,18 +1,22 @@
 <div class="login-box table-container table-box">
     <div class="contents">
 
-            <div class="titles-box">
-                <h2>
-                    <strong class="orange-texts">LOGIN</strong>
-                </h2>
-                <div class="titles-border-bar">
-                    <span class="blues width218"></span>
-                    <span class="whites width3"></span>
-                </div>
+        <div class="titles-box">
+            <h2>
+                <strong class="orange-texts">LOGIN</strong>
+            </h2>
+            <div class="titles-border-bar">
+                <span class="blues width218"></span>
+                <span class="whites width3"></span>
             </div>
-            <!-- end .titles-box -->
+        </div>
+        <!-- end .titles-box -->
 
-        <form class="pure-form" ng-submit="loginCtrl.login()">
+
+        <form ng-submit="loginCtrl.login()">
+            <div class="has-error" ng-show="loginCtrl.hasFailedLogin()">
+                Invalid Email or Password.
+            </div>
             <table class="table-data">
                 <colgroup>
                     <col class="col40">

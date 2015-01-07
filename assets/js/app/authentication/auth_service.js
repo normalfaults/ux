@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function AuthService($http, $location, Session, ApiResource, USER_ROLES, ROUTES) {
+var AuthService = function($http, $location, Session, ApiResource, USER_ROLES, ROUTES) {
   var authService = {};
 
   authService.login = function(credentials) {
@@ -9,10 +9,7 @@ function AuthService($http, $location, Session, ApiResource, USER_ROLES, ROUTES)
       .post(ApiResource('signIn'), credentials)
       .success(function(data, statusCode) {
         Session.create(data.email, data.role);
-      })
-      .error(function() {
-        // Do error here.
-      })
+      });
   };
 
   authService.logout = function() {
