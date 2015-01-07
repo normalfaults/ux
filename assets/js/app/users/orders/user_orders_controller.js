@@ -7,11 +7,11 @@ function UserOrderController($scope, orders) {
 
 UserOrderController.prototype.getOrders = function() {
     return this.orders;
-}
+};
 
 UserOrderController.resolve = {
     /**@ngInject*/
-    orders: function(UserResource, UserOrders, $q, currentUser) {
+    orders: function(UserOrders, currentUser) {
         return UserOrders.query({staff_id: currentUser.id, 'methods[]': 'item_count'}).$promise;
     }
 };
