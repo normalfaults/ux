@@ -8,17 +8,17 @@ function EditProjectController($scope, $state, ProjectResource, project, project
     $scope.questions = projectQuestions;
 
     $scope.updateProject = function() {
-        var filteredProject = _.omit($scope.project, 'created_at', 'updated_at', 'deleted_at', 'id', 'services', 'domain',
+        var filteredProject = _.omit($scope.project, 'created_at', 'updated_at', 'deleted_at', 'services', 'domain',
             'url', 'state', 'state_ok', 'problem_count', 'account_number', 'resources', 'icon', 'cpu', 'hdd', 'ram',
             'status', 'users', 'order_history', 'description', 'cc', 'staff_id', 'approved', 'img', 'project_answers');
 
         if ($scope.project.project_answers.length > 0) {
             filteredProject.project_answers  = _.reduce($scope.project.project_answers,
-                function(pas, pa){ pas.push(_.omit(pa, 'id', 'project_id', 'created_at', 'updated_at',
+                function(pas, pa){ pas.push(_.omit(pa, 'project_id', 'created_at', 'updated_at',
                     'project_question')); return pas;}, []);
         }
 
-        ProjectResource.update({id: $scope.project.id, project: filteredProject} , function() {
+        ProjectResource.update(filteredProject , function() {
             $state.go('base.dashboard', {}, {reload: true});
         });
     };
