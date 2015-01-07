@@ -25,6 +25,6 @@
     "currentMember":     "/staff/current_member",
     "cloudsById":        "/clouds/:id",
     "adminSettingById":  "/admin_settings/:id",
-    "usersOrders":       "/staff/:staff_id/orders/:id"
+    "userOrders":       "/staff/:staff_id/orders/:id"
   }
 }

@@ -8,7 +8,7 @@ function AuthService($http, $location, Session, ApiResource, USER_ROLES, ROUTES)
     return $http
       .post(ApiResource('signIn'), credentials)
       .success(function(data, statusCode) {
-        Session.create(data.email, data.role, data.id);
+        Session.create(data.email, data.role);
       })
       .error(function() {
         // Do error here.
