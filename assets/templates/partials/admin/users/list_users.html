@@ -3,7 +3,7 @@
 
         <section-header header="{name: 'Users'}">
           <users-box class="product-box" ng-repeat="user in listUsersCtrl.users" user="user">
-            <a ui-sref="base.admin.users.edit({id: user.id})">Edit</a>
+            <button class="btn btn-primary" ui-sref="base.admin.users.edit({id: user.id})">Edit</button>
           </users-box>
 
           <div class="add-box">
