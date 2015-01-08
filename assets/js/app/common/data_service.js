@@ -19,11 +19,6 @@ function DataService($resource, ApiResource) {
     getMarketplaceValues: {
       method: "GET",
       url: ApiResource('marketplaceValues')
-    },
-    getAlerts: {
-      method: "GET",
-      isArray: true,
-      url: ApiResource('alerts')
     }
   });
 }
