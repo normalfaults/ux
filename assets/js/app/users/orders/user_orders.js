@@ -2,7 +2,7 @@
 
 /**@ngInject*/
 var UserOrders = function($resource, ApiResource) {
-    return $resource(ApiResource('userOrders'), {id:'@id', staff_id: '@staff_id'}, {});
+    return $resource(ApiResource('staffOrders'), {id:'@id', staff_id: '@staff_id'}, {});
 };
 
 module.exports = UserOrders;
