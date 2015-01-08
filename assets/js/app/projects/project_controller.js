@@ -33,11 +33,6 @@ function ProjectController($scope, $modal, project, ProjectUserResource, OrderIt
 
 ProjectController.resolve = {
   /**@ngInject*/
-  projectQuestions: function(DataService) {
-    //todo: move this to a project questions resource.
-    return DataService.getProjectQuestions().$promise;
-  },
-  /**@ngInject*/
   project: function(ProjectResource, $stateParams) {
     return ProjectResource.get({id: $stateParams.projectId}).$promise;
   },

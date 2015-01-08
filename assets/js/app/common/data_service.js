@@ -3,11 +3,6 @@
 /**@ngInject*/
 function DataService($resource, ApiResource) {
   return $resource(ApiResource(), {}, {
-    getProjectQuestions: {
-      method: "GET",
-      isArray: true,
-      url: ApiResource('projectQuestions')
-    },
     getMarketplaceValues: {
       method: "GET",
       url: ApiResource('marketplaceValues')

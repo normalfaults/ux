@@ -17,9 +17,8 @@ var NewProjectController = function($scope, $state, ProjectResource, projectQues
 
 NewProjectController.resolve = {
   /**@ngInject*/
-  projectQuestions: function(DataService) {
-    //todo: move this to a project questions resource.
-    return DataService.getProjectQuestions().$promise;
+  projectQuestions: function(ProjectQuestionsResource) {
+    return ProjectQuestionsResource.query().$promise;
   }
 };
 

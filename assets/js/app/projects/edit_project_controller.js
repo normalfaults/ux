@@ -26,9 +26,8 @@ function EditProjectController($scope, $state, ProjectResource, project, project
 
 EditProjectController.resolve = {
     /**@ngInject*/
-    projectQuestions: function(DataService) {
-        //todo: move this to a project questions resource.
-        return DataService.getProjectQuestions().$promise;
+    projectQuestions: function(ProjectQuestionsResource) {
+        return ProjectQuestionsResource.query().$promise;
     },
     /**@ngInject*/
     project: function(ProjectResource, $stateParams) {
