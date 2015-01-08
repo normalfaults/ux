@@ -116,7 +116,9 @@
 
         <!-- Order History -->
 
-        <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
+        <section-header header="{name: 'Project Orders'}" allow-view-type-toggle="false">
+            <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
+        </section-header>
 
         <!-- Services -->
 
