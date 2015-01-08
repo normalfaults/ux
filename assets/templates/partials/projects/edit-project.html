@@ -1,27 +1,20 @@
-<div class="left-184" set-width>
-  <div class="content">
+<div class="page edit-project-page main-content" set-width>
+  <div class="content box-content">
 
-    <div class="table-box">
+  <section-header name="Edit Project">
+    <div class="row">
+      <div class="col-sm-6">
 
-      <div class="title-box">
-        <h2>
-          <strong>EDIT PROJECT</strong>
-        </h2>
-        <div class="titles-border-bar">
-          <span class="blues width218"></span>
-          <span class="whites width3"></span>
-        </div>
+        <a ui-sref="base.project({projectId: project.id})" class="btn btn-link">
+          <i class="fa fa-long-arrow-left"></i>
+          Back to Project
+        </a>
       </div>
     </div>
-    <!-- end .titles-box -->
 
-    <div>
-      <project-form button-label="'Update'" project="project" questions="questions" submit-function="updateProject()">
-      </project-form>
-    </div>
+    <project-form button-label="'Update'" project="project" questions="questions" submit-function="updateProject()">
+    </project-form>
+  </section-header>
+
   </div>
-
-  <!-- end .main-content -->
-
-  <span class="clearfix"></span>
 </div>

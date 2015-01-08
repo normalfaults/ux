@@ -11,6 +11,7 @@ var ProjectsModule = angular.module('broker.projects', [])
   .directive('projectForm', require('./project_form'))
   .factory('ProjectResource', require('./project_resource'))
   .factory('ProjectUserResource', require('./project_user_resource'))
+  .factory('ProjectQuestionsResource', require('./project_questions_resource'))
   .config(require('./routes'));
 
 module.exports = ProjectsModule;

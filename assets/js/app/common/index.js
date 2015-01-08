@@ -7,7 +7,6 @@ module.exports = angular.module('broker.common', [
   require('./constants').name
 ])
   .factory('ApiResource', require('./api_resource'))
-  .factory('DataService', require('./data_service'))
   .factory('httpInterceptor', require('./http_interceptor'))
   .factory('JellyfishModal', require('./jellyfish_modal'))
   .directive('sectionHeader', require('./section_header_directive'))

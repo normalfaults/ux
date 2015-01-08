@@ -19,16 +19,15 @@ function EditProjectController($scope, $state, ProjectResource, project, project
         }
 
         ProjectResource.update(filteredProject , function() {
-            $state.go('base.dashboard', {}, {reload: true});
+            $state.go('base.project', {projectId: project.id}, {reload: true});
         });
     };
 }
 
 EditProjectController.resolve = {
     /**@ngInject*/
-    projectQuestions: function(DataService) {
-        //todo: move this to a project questions resource.
-        return DataService.getProjectQuestions().$promise;
+    projectQuestions: function(ProjectQuestionsResource) {
+        return ProjectQuestionsResource.query().$promise;
     },
     /**@ngInject*/
     project: function(ProjectResource, $stateParams) {

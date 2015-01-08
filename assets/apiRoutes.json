@@ -1,29 +1,31 @@
 {
   "basePath": "/api",
   "routes": {
-    "solutions":         "/solutions/:id",
-    "projectQuestions": "/project_questions/:id",
-    "createProject":     "/projects",
-    "projectUser":       "/projects/:id/staff/:staff_id",
-    "manageValues":      "/manageValues",
-    "marketplaceValues": "/marketplaceValues",
+
+    "adminSettingById":  "/admin_settings/:id",
+    "cloudsById":        "/clouds/:id",
+
     "alerts":            "/alerts",
-    "staffSearch":       "/staff?query=",
-    "recentUsers":       "/users/recent",
+
     "orders":            "/orders/:id",
     "orderItems":        "/orders/:order_id/items/:id",
+
     "projectsById":      "/projects/:id",
+    "projectQuestions": "/project_questions/:id",
+    "projectUser":       "/projects/:id/staff/:staff_id",
+    "servicesById":      "/services/:id",
+
     "productsById":      "/products/:id",
     "productCategoriesById": "/product_categories/:id",
-    "servicesById":      "/services/:id",
-    "applicationsById":  "/applications/:id",
-    "staffById":         "/staff/:id",
-    "staffProjects":     "/staff/:id/projects/:project_id",
+
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
-    "currentMember":     "/staff/current_member",
-    "cloudsById":        "/clouds/:id",
-    "adminSettingById":  "/admin_settings/:id",
-    "userOrders":       "/staff/:staff_id/orders/:id"
+
+    "staffOrders":       "/staff/:staff_id/orders/:id",
+    "staffById":         "/staff/:id",
+    "staffProjects":     "/staff/:id/projects/:project_id",
+    "staffSearch":       "/staff?query=",
+    "currentMember":     "/staff/current_member"
+
   }
 }

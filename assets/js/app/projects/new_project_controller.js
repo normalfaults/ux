@@ -1,28 +1,24 @@
 'use strict';
 
 /**@ngInject*/
-function NewProjectController($scope, $state, DataService, projectQuestions) {
-  var self = this;
+var NewProjectController = function($scope, $state, ProjectResource, projectQuestions) {
 
-  this.$scope = $scope;
-  this.$state = $state;
-  this.DataService = DataService;
-
-  $scope.createProject = function() {
-    self.DataService.createProject(self.$scope.project).$promise.then(function(){
-      self.$state.go('base.dashboard', {}, {reload: true});
-    });
-  };
-
+  // @todo These should be moved to newProjectCtrl style instead of using scope.
   $scope.project = $scope.project || {};
   $scope.questions = projectQuestions;
-}
+
+
+  $scope.createProject = function() {
+    ProjectResource.save($scope.project).$promise.then(function(project){
+      $state.go('base.project', {projectId: project.id});
+    });
+  };
+};
 
 NewProjectController.resolve = {
   /**@ngInject*/
-  projectQuestions: function(DataService) {
-    //todo: move this to a project questions resource.
-    return DataService.getProjectQuestions().$promise;
+  projectQuestions: function(ProjectQuestionsResource) {
+    return ProjectQuestionsResource.query().$promise;
   }
 };
 

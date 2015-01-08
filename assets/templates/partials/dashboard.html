@@ -36,8 +36,7 @@
     <div class="bottom-area">
       <span class="fl">
          <span class="blue-texts">{{item.state}}</span>
-         <span
-           ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
+         <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
       </span>
       <!-- end .data-box -->
     </div>
@@ -47,7 +46,11 @@
 
 <div class="dashboard-page main-content" set-width>
   <div class="page">
-    <alerts-table alerts="dashboardCtrl.alerts"></alerts-table>
+
+    <section-header name="Alerts" ng-show="dashboardCtrl.alerts.length > 0">
+      <alerts-table alerts="dashboardCtrl.alerts"></alerts-table>
+    </section-header>
+
     <div class="dashboard-tab">
       <div class="tabs">
         <ul>

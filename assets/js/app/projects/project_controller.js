@@ -5,10 +5,14 @@ var _ = require('lodash');
 /**@ngInject*/
 function ProjectController($scope, $modal, project, ProjectUserResource, OrderItemResource, alerts, products) {
 
+
   this.$modal = $modal;
 
   this.project = project;
-  this.alerts = alerts;
+  // Filter the alerts to only show them for this project.
+  this.alerts = _.filter(alerts, function(alert) {
+    return alert.project_id = project.id;
+  });
   this.products = products;
 
   this.ProjectUserResource = ProjectUserResource;
@@ -29,18 +33,8 @@ function ProjectController($scope, $modal, project, ProjectUserResource, OrderIt
 
 ProjectController.resolve = {
   /**@ngInject*/
-  projectQuestions: function(DataService) {
-    //todo: move this to a project questions resource.
-    return DataService.getProjectQuestions().$promise;
-  },
-  /**@ngInject*/
   project: function(ProjectResource, $stateParams) {
     return ProjectResource.get({id: $stateParams.projectId}).$promise;
-  },
-  /**@ngInject*/
-  alerts: function(DataService) {
-    // @todo This should be switched to something that only returns alerts for the project.
-    return DataService.getAlerts().$promise;
   },
   /**@ngInject*/
   products: function(ProductResource) {

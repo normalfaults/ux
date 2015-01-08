@@ -11,7 +11,8 @@
                         <i class="fa fa-asterisk"></i>
                     </div>
                     <h3>Project is Pending</h3>
-                    <div><a class="btn btn-primary">Approve</a></div>
+                    <button class="btn btn-primary">Approve</button>
+                    <button class="btn btn-danger">Reject</button>
                 </div>
             </div>
         </div>
@@ -29,6 +30,11 @@
             </div>
             <div class="page-title-text">
                 <h3>{{projectCtrl.project.name}}</h3>
+            </div>
+            <div class="fr">
+                <div class="bottom-btn-box">
+                    <a ui-sref="base.projectEdit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
+                </div>
             </div>
         </div>
 
@@ -109,21 +115,22 @@
         </div>
 
 
-
         <!-- Problem Alerts -->
 
-        <alerts-table alerts="projectCtrl.alerts"></alerts-table>
+        <section-header name="Project Alerts" ng-show="projectCtrl.alerts.length > 0">
+            <alerts-table alerts="projectCtrl.alerts"></alerts-table>
+        </section-header>
 
         <!-- Order History -->
 
-        <section-header header="{name: 'Project Orders'}" allow-view-type-toggle="false">
+        <section-header name="Project Orders" ng-show="projectCtrl.orders.length > 0">
             <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
         </section-header>
 
         <!-- Services -->
 
         <div class="project-services" ng-if="projectCtrl.project.isApproved()">
-            <section-header header="{name: 'Services (' + projectCtrl.project.services.length + ')'}">
+            <section-header name="{{'Services (' + projectCtrl.project.services.length + ')'}}">
                 <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
                     <button class="btn btn-primary" ui-sref="base.service({serviceId: service.id})">View More</button>
                     <button class="btn btn-danger" ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</button>
@@ -145,7 +152,7 @@
 
         <!-- Users -->
         <div class="project-users" ng-if="projectCtrl.project.isApproved()">
-            <section-header header="{name: 'Users (' + projectCtrl.project.users.length + ')'}">
+            <section-header name="Users">
                 <users-box class="product-box" ng-repeat="user in projectCtrl.project.users" user="user">
                     <button class="btn btn-danger" ng-click="projectCtrl.removeUserFromProject($index)">Remove</button>
                 </users-box>
@@ -166,40 +173,35 @@
 
         <!-- Project Details -->
 
+        <div class="project-details">
 
-        <div class="table-box">
-            <div class="title-box">
-                <h2>
-                    <strong>PROJECT DETAILS</strong>
-                </h2>
+            <section-header name="Project Details">
 
-                <div class="titles-border-bar">
-                    <span class="blues width137"></span>
-                    <span class="whites width3"></span>
-                </div>
-            </div>
-            <!-- end .titles-box -->
-            <div>
-                <div class="table-container table-box" ng-if="!editingProject">
-                    <table st-table="rowCollection" class="table table-responsive table-data">
-                        <colgroup>
-                            <col class="col40">
-                            <col>
-                        </colgroup>
-                        <tbody ng-repeat="answer in projectCtrl.project.project_answers">
+                <div class="table-box">
+                    <div class="data-box">
 
-                        <tr>
-                            <td class="left-text">{{answer.project_question.question}}</td>
-                            <td class="min-value">{{answer.answer}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                        <table st-table="rowCollection" class="table table-responsive table-striped">
+                            <colgroup>
+                                <col class="col40">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th class="text-left">Detail</th>
+                                <th class="text-left">Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="answer in projectCtrl.project.project_answers">
+                                <td class="blue-texts font15">{{answer.project_question.question}}</td>
+                                <td class="item-texts">{{answer.answer}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <!-- end .table-box -->
-                <div class="bottom-btn-box">
-                    <a ui-sref="base.projectEdit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
-                </div>
-            </div>
+            </section-header>
         </div>
+
     </div>
 </div>
