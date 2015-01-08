@@ -114,10 +114,11 @@
         </div>
 
 
-
         <!-- Problem Alerts -->
 
-        <alerts-table alerts="projectCtrl.alerts"></alerts-table>
+        <section-header name="Project Alerts" ng-show="projectCtrl.alerts.length > 0">
+            <alerts-table alerts="projectCtrl.alerts"></alerts-table>
+        </section-header>
 
         <!-- Order History -->
 
