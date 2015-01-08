@@ -1,26 +1,24 @@
 <div class="main-content" set-width>
   <div class="content">
-
-    <div class="table-box">
-      <div class="title-box">
-        <h2>
-          <strong>Project Questions</strong>
-        </h2>
-
-        <div class="titles-border-bar">
-          <span class="blues width137"></span>
-          <span class="whites width3"></span>
-        </div>
+    <div class="page-title">
+      <div class="page-title-text">
+        <h3>Project Questions</h3>
       </div>
-      <!-- end .titles-box -->
+    </div>
+    <!-- end .titles-box -->
 
-      <div class="table-container table-box">
-        <table st-table="rowCollection" class="table table-responsive table-data">
-          <colgroup>
-            <col class="col40">
-            <col>
-          </colgroup>
-          <tbody>
+    <div class="table-container table-box">
+      <table st-table="rowCollection" class="table table-responsive table-striped">
+        <colgroup>
+          <col class="col30">
+          <col class="col05">
+          <col class="col05">
+          <col class="col05">
+          <col class="col40">
+          <col class="col05">
+          <col class="col05">
+        </colgroup>
+        <thead>
           <tr>
             <th>Question</th>
             <th>Type</th>
@@ -30,6 +28,8 @@
             <th>Required</th>
             <th>Actions</th>
           </tr>
+        </thead>
+        <tbody>
           <tr ng-repeat="projectQuestion in projectQuestions">
             <td>{{projectQuestion.question}}</td>
             <td>{{projectQuestion.field_type}}</td>
@@ -42,17 +42,16 @@
               <a class="fa fa-trash-o" ng-click="deleteProjectQuestion(projectQuestion)"></a>
             </td>
           </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- end .table-box -->
-
-      <br/>
-
-      <div>
-        <a class="btn btn-primary" ui-sref="base.admin.projects.new_project_questions"> ADD QUESTION</a>
-      </div>
+        </tbody>
+      </table>
     </div>
-  </div>
+
+    <!-- end .table-box -->
+
+    <br/>
+
+    <div>
+      <a class="btn btn-primary" ui-sref="base.admin.projects.new_project_questions"> ADD QUESTION</a>
+    </div>
+    </div>
 </div>

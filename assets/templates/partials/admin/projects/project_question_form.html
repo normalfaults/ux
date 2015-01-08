@@ -63,7 +63,8 @@
      ng-click="addOption()"> Add Option</a>
 
   <div class="form-group">
-    <div class="col-sm-offset-11 control-submit">
+    <div class="col-sm-offset-10">
+      <button ui-sref="base.admin.projects.project_questions" class="btn btn-danger">Cancel</button>
       <button type="submit" ng-click="submitFunction()"
               ng-class="projectQuestionForm.$invalid ? 'btn btn-primary disabled' : 'btn btn-primary'">
         {{buttonLabel}}
