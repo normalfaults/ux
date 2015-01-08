@@ -8,10 +8,6 @@ function DataService($resource, ApiResource) {
       isArray: true,
       url: ApiResource('projectQuestions')
     },
-    createProject: {
-      method: "POST",
-      url: ApiResource('createProject')
-    },
     getManageValues: {
       method: "GET",
       url: ApiResource('manageValues')

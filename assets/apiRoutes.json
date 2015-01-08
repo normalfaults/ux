@@ -3,7 +3,6 @@
   "routes": {
     "solutions":         "/solutions/:id",
     "projectQuestions": "/project_questions/:id",
-    "createProject":     "/projects",
     "projectUser":       "/projects/:id/staff/:staff_id",
     "manageValues":      "/manageValues",
     "marketplaceValues": "/marketplaceValues",
