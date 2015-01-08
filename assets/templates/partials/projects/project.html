@@ -30,6 +30,11 @@
             <div class="page-title-text">
                 <h3>{{projectCtrl.project.name}}</h3>
             </div>
+            <div class="fr">
+                <div class="bottom-btn-box">
+                    <a ui-sref="base.projectEdit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
+                </div>
+            </div>
         </div>
 
         <!-- Metrics - Status, Budget, CPU, HDD, RAM -->
@@ -166,40 +171,35 @@
 
         <!-- Project Details -->
 
+        <div class="project-details">
 
-        <div class="table-box">
-            <div class="title-box">
-                <h2>
-                    <strong>PROJECT DETAILS</strong>
-                </h2>
+            <section-header name="Project Details">
 
-                <div class="titles-border-bar">
-                    <span class="blues width137"></span>
-                    <span class="whites width3"></span>
-                </div>
-            </div>
-            <!-- end .titles-box -->
-            <div>
-                <div class="table-container table-box" ng-if="!editingProject">
-                    <table st-table="rowCollection" class="table table-responsive table-data">
-                        <colgroup>
-                            <col class="col40">
-                            <col>
-                        </colgroup>
-                        <tbody ng-repeat="answer in projectCtrl.project.project_answers">
+                <div class="table-box">
+                    <div class="data-box">
 
-                        <tr>
-                            <td class="left-text">{{answer.project_question.question}}</td>
-                            <td class="min-value">{{answer.answer}}</td>
-                        </tr>
-                        </tbody>
-                    </table>
+                        <table st-table="rowCollection" class="table table-responsive table-striped">
+                            <colgroup>
+                                <col class="col40">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th class="text-left">Detail</th>
+                                <th class="text-left">Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="answer in projectCtrl.project.project_answers">
+                                <td class="blue-texts font15">{{answer.project_question.question}}</td>
+                                <td class="item-texts">{{answer.answer}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <!-- end .table-box -->
-                <div class="bottom-btn-box">
-                    <a ui-sref="base.projectEdit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
-                </div>
-            </div>
+            </section-header>
         </div>
+
     </div>
 </div>
