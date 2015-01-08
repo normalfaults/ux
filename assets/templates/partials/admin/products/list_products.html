@@ -1,7 +1,7 @@
 <div class="products-list-page main-content" set-width>
   <div class="content box-content">
 
-    <section-header ng-repeat="category in listCtrl.categories" header="category">
+    <section-header ng-repeat="category in listCtrl.categories" name="{{category.name}}" description="{{category.description}}" allow-view-type-toggle="true">
       <product-box class="product-box" ng-repeat="product in category.products" product="product">
         <button class="btn btn-primary" ui-sref="base.admin.products.edit({id: product.id})">Edit</button>
       </product-box>

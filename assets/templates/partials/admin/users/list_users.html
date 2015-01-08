@@ -1,7 +1,7 @@
 <div class="users-list-page main-content " set-width>
     <div class="content box-content">
 
-        <section-header header="{name: 'Users'}">
+        <section-header name="Users">
           <users-box class="product-box" ng-repeat="user in listUsersCtrl.users" user="user">
             <button class="btn btn-primary" ui-sref="base.admin.users.edit({id: user.id})">Edit</button>
           </users-box>

@@ -116,14 +116,14 @@
 
         <!-- Order History -->
 
-        <section-header header="{name: 'Project Orders'}" allow-view-type-toggle="false">
+        <section-header name="Project Orders">
             <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
         </section-header>
 
         <!-- Services -->
 
         <div class="project-services" ng-if="projectCtrl.project.isApproved()">
-            <section-header header="{name: 'Services (' + projectCtrl.project.services.length + ')'}">
+            <section-header name="{{'Services (' + projectCtrl.project.services.length + ')'}}">
                 <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
                     <button class="btn btn-primary" ui-sref="base.service({serviceId: service.id})">View More</button>
                     <button class="btn btn-danger" ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</button>
@@ -145,7 +145,7 @@
 
         <!-- Users -->
         <div class="project-users" ng-if="projectCtrl.project.isApproved()">
-            <section-header header="{name: 'Users (' + projectCtrl.project.users.length + ')'}">
+            <section-header name="Users">
                 <users-box class="product-box" ng-repeat="user in projectCtrl.project.users" user="user">
                     <button class="btn btn-danger" ng-click="projectCtrl.removeUserFromProject($index)">Remove</button>
                 </users-box>
