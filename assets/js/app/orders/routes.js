@@ -4,6 +4,12 @@
 module.exports = function($stateProvider) {
   $stateProvider
     .state('base.orders', {
-      url: "/order-history"
+      abstract: true,
+      templateUrl: '/partials./orders/base.html'
+    })
+    .state('base.orders.order', {
+      url: "/orders/:id",
+      controller: "OrdersController as orderCtrl",
+      templateUrl: "/partials/orders/order.html"
     });
 };
