@@ -1,15 +1,10 @@
 'use strict';
 
 /**@ngInject*/
-var ShowProductController = function($state, $rootScope, product) {
+var ShowProductController = function($state, product) {
 
   this.$state = $state;
-
   this.product = product;
-
-
-  this.backTo = $rootScope.previousState;
-  this.backToParams = $rootScope.previousStateParams;
 };
 
 ShowProductController.prototype = {

@@ -5,6 +5,7 @@ var _ = require('lodash');
 /**@ngInject*/
 var OrdersController = function(orderData, projects, products) {
 
+  // Add the project and product resources to the order.
   _.each(orderData.order_items, function(order, id) {
 
     orderData.order_items[id].project = _.find(projects, function(project) {
@@ -44,6 +45,7 @@ OrdersController.resolve = {
 
     return deferred.promise;
   },
+
   // @todo Probably not the best for performance to load all the products to get the names for just a few of them.
   //       Should probably be resolved server side (and not nested, separated out into it's own resource to prevent duplication).
   /**@ngInject*/
