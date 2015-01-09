@@ -1,15 +1,14 @@
 'use strict';
 
+var OrdersData = require('./orders_controller').resolve;
+
 /**@ngInject*/
 module.exports = function($stateProvider) {
   $stateProvider
     .state('base.orders', {
-      abstract: true,
-      templateUrl: '/partials./orders/base.html'
-    })
-    .state('base.orders.order', {
       url: "/orders/:id",
-      controller: "OrdersController as orderCtrl",
-      templateUrl: "/partials/orders/order.html"
+      controller: "OrdersController as ordersCtrl",
+      templateUrl: "/partials/orders/orders.html",
+      resolve: OrdersData
     });
 };
