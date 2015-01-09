@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var OrdersController = function(orderData, projects) {
+var OrdersController = function(orderData, projects, products) {
 
   _.each(orderData.order_items, function(order, id) {
 
@@ -11,10 +11,11 @@ var OrdersController = function(orderData, projects) {
       return project.id == order.project_id;
     });
 
-    orderData.order_items[id].product = {};
+    orderData.order_items[id].product = _.find(products, function(product) {
+      return product.id == order.product_id;
+    });
 
   });
-
 
   this.order = orderData;
 };
@@ -42,6 +43,10 @@ OrdersController.resolve = {
     });
 
     return deferred.promise;
+  },
+  /**@ngInject*/
+  products: function(ProductResource) {
+    return ProductResource.query().$promise;
   }
 
 };
