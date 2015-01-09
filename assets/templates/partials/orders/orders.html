@@ -1,7 +1,42 @@
 <div class="page order-page main-content" set-width>
   <div class="content box-content">
+
     <section-header name="Order Detail">
-      Order Detail
+    </section-header>
+
+    <section-header name="Order Items">
+      <div class="table-box">
+          <div class="data-box">
+
+              <table st-table="rowCollection" class="table table-responsive table-striped">
+                  <colgroup>
+                      <col>
+                      <col>
+                      <col>
+                      <col>
+                      <col>
+                  </colgroup>
+                  <thead>
+                  <tr>
+                      <th class="text-left">Order Item ID</th>
+                      <th class="text-left">Product</th>
+                      <th class="text-left">Project</th>
+                      <th class="text-left">Status</th>
+                      <th class="text-left">Service</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="item in ordersCtrl.orders.order_items">
+                      <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
+                      <td class="item-texts"><a class="blue-link" ui-sref="base.marketplace.show({id: item.product_id})">{{item.product_id}}</a></td>
+                      <td class="item-texts"><a class="blue-link" ui-sref="base.project({projectId: item.project_id})">{{item.project_id}}</a></td>
+                      <td class="item-texts">{{item.provision_status}}</td>
+                      <td class="item-texts">Link to Service</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
     </section-header>
   </div>
 </div>

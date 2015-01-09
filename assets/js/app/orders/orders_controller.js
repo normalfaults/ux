@@ -4,7 +4,7 @@
 var OrdersController = function(orders) {
 
   this.orders = orders;
-
+  
 };
 
 OrdersController.prototype = {
