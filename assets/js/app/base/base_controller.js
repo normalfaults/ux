@@ -29,10 +29,7 @@ var BaseController = function($rootScope, $scope, $state, projects, AuthService)
 };
 
 BaseController.resolve = {
-  /**@ngInject*/
-  projects: function(ProjectResource) {
-    return ProjectResource.query().$promise;
-  }
+
 };
 
 module.exports = BaseController;

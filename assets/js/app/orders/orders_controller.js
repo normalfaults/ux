@@ -1,7 +1,20 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
-var OrdersController = function(orderData) {
+var OrdersController = function(orderData, projects) {
+
+  _.each(orderData.order_items, function(order, id) {
+
+    orderData.order_items[id].project = _.find(projects, function(project) {
+      return project.id == order.project_id;
+    });
+
+    orderData.order_items[id].product = {};
+
+  });
+
 
   this.order = orderData;
 };
@@ -30,6 +43,7 @@ OrdersController.resolve = {
 
     return deferred.promise;
   }
+
 };
 
 module.exports = OrdersController;

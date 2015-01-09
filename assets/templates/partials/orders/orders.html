@@ -35,7 +35,7 @@
                   <tr ng-repeat="item in ordersCtrl.order.order_items">
                       <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
                       <td class="item-texts"><a class="blue-link" ui-sref="base.marketplace.show({id: item.product_id})">{{item.product_id}}</a></td>
-                      <td class="item-texts"><a class="blue-link" ui-sref="base.project({projectId: item.project_id})">{{item.project_id}}</a></td>
+                      <td class="item-texts"><a class="blue-link" ui-sref="base.project({projectId: item.project_id})">{{item.project.name}}</a></td>
                       <td class="item-texts">{{item.provision_status}}</td>
                       <td class="item-texts">Link to Service</td>
                   </tr>
