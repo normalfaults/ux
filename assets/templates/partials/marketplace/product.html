@@ -1,39 +1,39 @@
 <div class="show-product-page main-content" set-width>
-  <div class="content container">
-    <h2>Product Detail</h2>
+  <div class="content box-content container">
+    <section-header name="Product Detail">
 
-    <div class="titles-border-bar">
-      <span class="blues width137"></span>
-      <span class="whites width3"></span>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <a ui-sref="base.marketplace.list" class="btn btn-link">
-          <i class="fa fa-long-arrow-left"></i>
-          Back to marketplace
-        </a>
+      <div class="row">
+        <div class="col-sm-6" ng-switch="showCtrl.backTo">
+          <a ng-switch-when="orderDetail" ui-sref="base.orders(showCtrl.backToParams)" class="btn btn-link">
+            <i class="fa fa-long-arrow-left"></i>
+            Back to Order Detail
+          </a>
+          <a ng-switch-default ui-sref="base.marketplace.list" class="btn btn-link">
+            <i class="fa fa-long-arrow-left"></i>
+            Back to marketplace
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm-2 product-sidebar">
-        <div class="icon-boxes green-top-border product-box-shadow">
-          <img ng-src="/images/assets/{{showCtrl.product.img}}"/>
+      <div class="row">
+        <div class="col-sm-2 product-sidebar">
+          <div class="icon-boxes green-top-border product-box-shadow">
+            <img ng-src="/images/assets/{{showCtrl.product.img}}"/>
+          </div>
+
+          <p class="text-uppercase text-center">Third Party</p>
+
+          <dl>
+            <dt>Publish Data</dt><dd>{{showCtrl.product.created_at | date: 'shortDate'}}</dd>
+            <dt>Type</dt><dd>{{showCtrl.product.product_category.name}}</dd>
+          </dl>
         </div>
 
-        <p class="text-uppercase text-center">Third Party</p>
-
-        <dl>
-          <dt>Publish Data</dt><dd>{{showCtrl.product.created_at | date: 'shortDate'}}</dd>
-          <dt>Type</dt><dd>{{showCtrl.product.product_category.name}}</dd>
-        </dl>
+        <div class="col-sm-10">
+          <h1 class="product-title">{{showCtrl.product.name}}</h1>
+          <p>{{showCtrl.product.description}}</p>
+        </div>
       </div>
-
-      <div class="col-sm-10">
-        <h1 class="product-title">{{showCtrl.product.name}}</h1>
-        <p>{{showCtrl.product.description}}</p>
-      </div>
-    </div>
+    </section-header>
   </div>
 </div>
