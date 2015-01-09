@@ -3,10 +3,10 @@
 
     <section-header name="Order Detail">
 
-        <div>Order ID: {{ordersCtrl.orders.id}}</div>
-        <div>Ordered By: {{ordersCtrl.orders.staff_id}}</div>
-        <div>Total: {{ordersCtrl.orders.total | currency}}</div>
-        <div>Ordered At: {{ordersCtrl.orders.created_at | date:'medium'}}</div>
+        <div>Order ID: {{ordersCtrl.order.id}}</div>
+        <div>Ordered By: {{ordersCtrl.order.staff.fullName()}}</div>
+        <div>Total: {{ordersCtrl.order.total | currency}}</div>
+        <div>Ordered At: {{ordersCtrl.order.created_at | date:'medium'}}</div>
 
     </section-header>
 
@@ -32,7 +32,7 @@
                   </tr>
                   </thead>
                   <tbody>
-                  <tr ng-repeat="item in ordersCtrl.orders.order_items">
+                  <tr ng-repeat="item in ordersCtrl.order.order_items">
                       <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
                       <td class="item-texts"><a class="blue-link" ui-sref="base.marketplace.show({id: item.product_id})">{{item.product_id}}</a></td>
                       <td class="item-texts"><a class="blue-link" ui-sref="base.project({projectId: item.project_id})">{{item.project_id}}</a></td>

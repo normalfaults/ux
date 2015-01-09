@@ -1,10 +1,9 @@
 'use strict';
 
 /**@ngInject*/
-var OrdersController = function(orders) {
+var OrdersController = function(orderData) {
 
-  this.orders = orders;
-
+  this.order = orderData;
 };
 
 OrdersController.prototype = {
@@ -13,10 +12,24 @@ OrdersController.prototype = {
 
 OrdersController.resolve = {
   /**@ngInject*/
-  orders: function(OrderResource, $stateParams) {
-    return OrderResource.get({id: $stateParams.id}).$promise;
-  }
+  orderData: function($stateParams, $q, OrderResource, UsersResource) {
 
+    var deferred = $q.defer();
+    var orderData = {};
+
+    OrderResource.get({id: $stateParams.id}).$promise.then(function(order) {
+
+      orderData = order;
+
+      UsersResource.get({id: order.staff_id}).$promise.then(function(user) {
+        orderData.staff = user;
+        deferred.resolve(orderData);
+      })
+
+    });
+
+    return deferred.promise;
+  }
 };
 
 module.exports = OrdersController;
