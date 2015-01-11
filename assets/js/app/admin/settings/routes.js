@@ -1,6 +1,6 @@
 'use strict';
 
-var AdminSettingsData = require('./edit_settings_controller').resolve;
+var SettingsData = require('./edit_settings_controller').resolve;
 
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
@@ -15,6 +15,6 @@ module.exports = function($stateProvider, USER_ROLES) {
             url: '/edit',
             controller: 'EditSettingsController as editSettings',
             templateUrl: "/partials/admin/settings/edit.html",
-            resolve: AdminSettingsData
+            resolve: SettingsData
         })
 }
