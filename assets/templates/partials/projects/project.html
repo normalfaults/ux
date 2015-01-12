@@ -11,8 +11,8 @@
                         <i class="fa fa-asterisk"></i>
                     </div>
                     <h3>Project is Pending</h3>
-                    <button class="btn btn-primary">Approve</button>
-                    <button class="btn btn-danger">Reject</button>
+                    <a type="button" class="btn btn-primary">Approve</a>
+                    <a type="button" class="btn btn-danger">Reject</a>
                 </div>
             </div>
         </div>
@@ -132,8 +132,8 @@
         <div class="project-services" ng-if="projectCtrl.project.isApproved()">
             <section-header name="{{'Services (' + projectCtrl.project.services.length + ')'}}">
                 <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
-                    <button class="btn btn-primary" ui-sref="base.service({serviceId: service.id})">View More</button>
-                    <button class="btn btn-danger" ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</button>
+                    <a type="button" class="btn btn-primary" ui-sref="base.service({serviceId: service.id})">View More</a>
+                    <a type="button" class="btn btn-danger" ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</a>
                 </product-box>
                 <div class="add-box">
                   <div class="product-box-shadow">
@@ -154,7 +154,7 @@
         <div class="project-users" ng-if="projectCtrl.project.isApproved()">
             <section-header name="Users">
                 <users-box class="product-box" ng-repeat="user in projectCtrl.project.users" user="user">
-                    <button class="btn btn-danger" ng-click="projectCtrl.removeUserFromProject($index)">Remove</button>
+                    <a type="button" class="btn btn-danger" ng-click="projectCtrl.removeUserFromProject($index)">Remove</a>
                 </users-box>
 
                 <div class="add-box">
