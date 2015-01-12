@@ -24,7 +24,7 @@
         </div>
 
         <section-header name="Order Details">
-            
+
             <div class="table-box">
                 <div class="data-box">
 
@@ -86,6 +86,9 @@
                     </table>
                 </div>
             </div>
+        </section-header>
+
+        <section-header name="Manage">
             <div class="col-sm-6 text-left">
               <a type="button" class="btn btn-danger" ng-click="serviceCtrl.stopService()">Stop Service</a>
               <a type="button" class="btn btn-primary" ng-disabled="serviceCtrl.startService()">Start Service</a>
@@ -93,8 +96,9 @@
         </section-header>
 
         <section-header name="Logs">
-            Service Logs go here.
-
+            <div class="col-sm-6 text-left">
+              Service Logs Go Here.
+            </div>
         </section-header>
     </div>
 </div>
