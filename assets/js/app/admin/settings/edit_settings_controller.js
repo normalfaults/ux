@@ -17,8 +17,8 @@ function EditSettingsController($scope, $state, settings) {
 
 EditSettingsController.resolve = {
     /**@ngInject*/
-    settings: function(Setting) {
-        return Setting.query().$promise;
+    settings: function(SettingsResource) {
+        return SettingsResource.query().$promise;
     }
 };
 
