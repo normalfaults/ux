@@ -1,11 +1,25 @@
 'use strict';
 
 /**@ngInject*/
-function ServiceController(service) {
+function ServiceController(service, OrderItemResource) {
   this.service = service;
+
+  this.OrderItemResource = OrderItemResource;
 }
 
 ServiceController.prototype = {
+
+  startService: function() {
+    this.OrderItemResource.startService({order_id: this.service.order_id, id: this.service.id});
+  },
+
+  stopService: function() {
+    this.OrderItemResource.stopService({order_id: this.service.order_id, id: this.service.id});
+  },
+
+  getLogs: function() {
+
+  }
 
 };
 
