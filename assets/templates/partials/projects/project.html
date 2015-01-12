@@ -123,7 +123,7 @@
 
         <!-- Order History -->
 
-        <section-header name="Project Orders" ng-show="projectCtrl.orders.length > 0">
+        <section-header name="Project Orders" ng-show="projectCtrl.project.order_history.length > 0">
             <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
         </section-header>
 
