@@ -1,6 +1,16 @@
 <div class="page service-page main-content" set-width>
     <div class="content box-content">
 
+        <div class="page-title">
+            <div class="page-title-icon">
+                <img ng-src="/images/assets/{{serviceCtrl.service.product.img}}"/>
+            </div>
+            <div class="page-title-text">
+                <h3>{{serviceCtrl.service.project.name}} | {{serviceCtrl.service.product.name}}</h3>
+            </div>
+        </div>
+
+
         <section-header name="Order Details">
 
             <div class="row">
@@ -26,12 +36,24 @@
                             <td class="item-texts">{{serviceCtrl.service.id}}</td>
                         </tr>
                         <tr>
+                            <td class="blue-texts font15">Created At</td>
+                            <td class="item-texts">{{serviceCtrl.service.created_at | date:'medium'}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Updated At</td>
+                            <td class="item-texts">{{serviceCtrl.service.updated_at | date:'medium'}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Cloud</td>
+                            <td class="item-texts">{{serviceCtrl.service.cloud_id}}</td>
+                        </tr>
+                        <tr>
                             <td class="blue-texts font15">Product</td>
-                            <td class="item-texts">{{serviceCtrl.service.product_id}}</td>
+                            <td class="item-texts">{{serviceCtrl.service.product.name}}</td>
                         </tr>
                         <tr>
                             <td class="blue-texts font15">Project</td>
-                            <td class="item-texts">{{serviceCtrl.service.project_id}}</td>
+                            <td class="item-texts">{{serviceCtrl.service.project.name}}</td>
                         </tr>
                         <tr>
                             <td class="blue-texts font15">Status</td>
