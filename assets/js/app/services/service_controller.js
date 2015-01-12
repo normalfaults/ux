@@ -1,27 +1,18 @@
 'use strict';
 
 /**@ngInject*/
-function ServiceController($scope, $sce, service) {
-  this.$scope = $scope;
-
-  $scope.service = service;
-  $scope.tab = "feature";
-
-  service.feature = $sce.trustAsHtml(service.feature);
-  service.specification = $sce.trustAsHtml(service.specification);
-  service.review = $sce.trustAsHtml(service.review);
+function ServiceController($scope, service) {
+  this.service = service;
 }
 
-ServiceController.prototype.setTab = function(tab) {
-  var self = this;
+ServiceController.prototype = {
 
-  self.$scope.tab = tab;
 };
 
 ServiceController.resolve = {
   /**@ngInject*/
-  service: function(ServiceResource, $stateParams) {
-    return ServiceResource.get({id: $stateParams.serviceId}).$promise;
+  service: function(OrderItemResource, $stateParams) {
+    return OrderItemResource.get({order_id: $stateParams.order_id, id: $stateParams.id}).$promise;
   }
 };
 
