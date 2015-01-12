@@ -1,27 +1,53 @@
 'use strict';
 
 /**@ngInject*/
-function ServiceController($scope, $sce, service) {
-  this.$scope = $scope;
+function ServiceController(service, OrderItemResource) {
+  this.service = service;
 
-  $scope.service = service;
-  $scope.tab = "feature";
-
-  service.feature = $sce.trustAsHtml(service.feature);
-  service.specification = $sce.trustAsHtml(service.specification);
-  service.review = $sce.trustAsHtml(service.review);
+  this.OrderItemResource = OrderItemResource;
 }
 
-ServiceController.prototype.setTab = function(tab) {
-  var self = this;
+ServiceController.prototype = {
 
-  self.$scope.tab = tab;
+  startService: function() {
+    this.OrderItemResource.startService({order_id: this.service.order_id, id: this.service.id});
+  },
+
+  stopService: function() {
+    this.OrderItemResource.stopService({order_id: this.service.order_id, id: this.service.id});
+  },
+
+  getLogs: function() {
+
+  }
+
 };
 
 ServiceController.resolve = {
   /**@ngInject*/
-  service: function(ServiceResource, $stateParams) {
-    return ServiceResource.get({id: $stateParams.serviceId}).$promise;
+  service: function($stateParams, $q, projects, OrderItemResource, ProductResource) {
+
+    var deferred = $q.defer();
+    var orderItemData = {};
+
+    OrderItemResource.get({order_id: $stateParams.order_id, id: $stateParams.id}).$promise.then(function(orderItem) {
+
+      orderItemData = orderItem;
+
+      // Add on the project.
+      orderItemData.project = _.find(projects, function(project) {
+        return project.id == orderItem.project_id;
+      });
+
+      // Add on the product.
+      ProductResource.get({id: orderItem.product_id}).$promise.then(function(product) {
+        orderItemData.product = product;
+        deferred.resolve(orderItemData);
+      })
+
+    });
+
+    return deferred.promise;
   }
 };
 

@@ -70,7 +70,7 @@
                       <td class="item-texts"><a class="blue-link" ui-sref="base.marketplace.show({id: item.product_id})">{{item.product.name}}</a></td>
                       <td class="item-texts"><a class="blue-link" ui-sref="base.project({projectId: item.project_id})">{{item.project.name}}</a></td>
                       <td class="item-texts">{{item.provision_status}}</td>
-                      <td class="item-texts">Link to Service</td>
+                      <td class="item-texts" ui-sref="base.service({order_id: ordersCtrl.order.id, id: item.id})">Service</td>
                   </tr>
                   </tbody>
               </table>
