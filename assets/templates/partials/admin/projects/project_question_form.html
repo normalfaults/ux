@@ -64,11 +64,11 @@
 
   <div class="form-group">
     <div class="col-sm-offset-10">
-      <button ui-sref="base.admin.projects.project_questions" class="btn btn-danger">Cancel</button>
-      <button type="submit" ng-click="submitFunction()"
+      <a type="button" ui-sref="base.admin.projects.project_questions" class="btn btn-danger">Cancel</a>
+      <a type="submit" ng-click="submitFunction()"
               ng-class="projectQuestionForm.$invalid ? 'btn btn-primary disabled' : 'btn btn-primary'">
         {{buttonLabel}}
-      </button>
+      </a>
     </div>
   </div>
 </form>
