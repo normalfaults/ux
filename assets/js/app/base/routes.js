@@ -1,8 +1,5 @@
 'use strict';
 
-var BaseData = require('./base_controller').resolve;
-var HeaderData = require('./header_controller').resolve;
-
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
   $stateProvider.state('root', {
@@ -16,8 +13,7 @@ module.exports = function($stateProvider, USER_ROLES) {
     views: {
       header: {
         templateUrl: "/partials/common/header.html",
-        controller: "HeaderController as headerCtrl",
-        resolve: HeaderData
+        controller: "HeaderController as headerCtrl"
 
       },
       "left-sidebar" : {
@@ -26,8 +22,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       },
       "" : {
         controller: "BaseController as baseCtrl",
-        template: "<div ui-view></div>",
-        resolve: BaseData
+        template: "<div ui-view></div>"
       }
     },
     resolve: {
@@ -38,6 +33,10 @@ module.exports = function($stateProvider, USER_ROLES) {
       /**@ngInject*/
       alerts: function(AlertsResource) {
         return AlertsResource.query().$promise;
+      },
+      /**@ngInject*/
+      projects: function(ProjectResource) {
+        return ProjectResource.query().$promise;
       }
     },
     data: {

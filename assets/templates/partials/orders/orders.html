@@ -1,0 +1,81 @@
+<div class="page order-page main-content" set-width>
+  <div class="content box-content">
+
+    <section-header name="Order Detail">
+
+        <div class="row">
+          <div class="col-sm-6" ng-switch="previousState">
+            <a ng-switch-when="base.project" ui-sref="base.project(previousStateParams)" class="btn btn-link">
+              <i class="fa fa-long-arrow-left"></i>
+              Back to Project
+            </a>
+            <a ng-switch-default ui-sref="base.users.orders" class="btn btn-link">
+              <i class="fa fa-long-arrow-left"></i>
+              Back to User Orders
+            </a>
+          </div>
+        </div>
+
+        <div class="table-box">
+             <div class="data-box">
+
+                 <table st-table="rowCollection" class="table table-responsive table-striped">
+                     <tbody>
+                     <tr>
+                         <td class="blue-texts font15">Order ID</td>
+                         <td class="item-texts">{{ordersCtrl.order.id}}</td>
+                     </tr>
+                     <tr>
+                         <td class="blue-texts font15">Ordered By</td>
+                         <td class="item-texts">{{ordersCtrl.order.staff.fullName()}}</td>
+                     </tr>
+                     <tr>
+                         <td class="blue-texts font15">Total</td>
+                         <td class="item-texts">{{ordersCtrl.order.total | currency}}</td>
+                     </tr>
+                     <tr>
+                         <td class="blue-texts font15">Order Date</td>
+                         <td class="item-texts">{{ordersCtrl.order.created_at | date:'medium'}}</td>
+                     </tr>
+                     </tbody>
+                 </table>
+             </div>
+         </div>
+    </section-header>
+
+    <section-header name="Order Items">
+      <div class="table-box">
+          <div class="data-box">
+
+              <table st-table="rowCollection" class="table table-responsive table-striped">
+                  <colgroup>
+                      <col>
+                      <col>
+                      <col>
+                      <col>
+                      <col>
+                  </colgroup>
+                  <thead>
+                  <tr>
+                      <th class="text-left">Order Item ID</th>
+                      <th class="text-left">Product</th>
+                      <th class="text-left">Project</th>
+                      <th class="text-left">Status</th>
+                      <th class="text-left">Service</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr ng-repeat="item in ordersCtrl.order.order_items">
+                      <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
+                      <td class="item-texts"><a class="blue-link" ui-sref="base.marketplace.show({id: item.product_id})">{{item.product.name}}</a></td>
+                      <td class="item-texts"><a class="blue-link" ui-sref="base.project({projectId: item.project_id})">{{item.project.name}}</a></td>
+                      <td class="item-texts">{{item.provision_status}}</td>
+                      <td class="item-texts">Link to Service</td>
+                  </tr>
+                  </tbody>
+              </table>
+          </div>
+      </div>
+    </section-header>
+  </div>
+</div>
