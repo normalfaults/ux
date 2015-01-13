@@ -1,8 +1,8 @@
 'use strict';
 
 /**@ngInject*/
-function EditSettingsController($scope, $state, adminSettings, AdminSetting) {
-    $scope.adminSettings = adminSettings;
+function EditSettingsController($scope, $state, settings) {
+    $scope.settings = settings;
     $scope.updating = false;
     $scope.updateSetting = function(setting) {
         $scope.updating = true;
@@ -17,8 +17,8 @@ function EditSettingsController($scope, $state, adminSettings, AdminSetting) {
 
 EditSettingsController.resolve = {
     /**@ngInject*/
-    adminSettings: function(AdminSetting) {
-        return AdminSetting.query().$promise;
+    settings: function(SettingsResource) {
+        return SettingsResource.query().$promise;
     }
 };
 

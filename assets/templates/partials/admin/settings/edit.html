@@ -6,10 +6,10 @@
       </div>
     </div>
     <tabset>
-      <tab ng-repeat="setting in adminSettings" heading="{{setting.name}}">
+      <tab ng-repeat="setting in settings" heading="{{setting.name}}">
         </br>
         <form class="form-horizontal padded horizontal-spanning" role="form" name="projectForm" novalidate>
-          <span ng-repeat="field in setting.admin_setting_fields">
+          <span ng-repeat="field in setting.setting_fields">
             <form-input field-model="field" field-id="field.id" field-name="field.id" field-type="field.field_type" field-required="field.required" help-text="field.help_text" label="field.label"/>
           </span>
 
