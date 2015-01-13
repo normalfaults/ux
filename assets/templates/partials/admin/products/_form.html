@@ -60,6 +60,21 @@
   <div class="col-sm-4"></div>
 </div>
 
+<div class="form-group" ng-class="{'has-error': productForm.hasError('chefRole')}">
+  <label class="col-sm-2 control-label" for="chefRole">Chef Role:</label>
+
+  <div class="col-sm-6 controls">
+    <input id="chefRole" name="chefRole" type="text" ng-model="productForm.product.chef_role" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('chefRole', 'required')">A Chef Role is
+        required for all products
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4"></div>
+</div>
+
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productCategory')}">
   <label class="col-sm-2 control-label" for="productCategory">Category:</label>
 

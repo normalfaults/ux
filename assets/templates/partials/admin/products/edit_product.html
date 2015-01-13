@@ -15,7 +15,7 @@
           </div>
           <div class="col-sm-6 text-right">
             <a type="button" class="btn btn-danger" ng-click="productForm.destroy()">Delete</a>
-            <a type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Update</a>
+            <a type="submit" class="btn btn-primary" ng-click="productForm.update()" ng-disabled="!productForm.canSubmit()">Update</a>
           </div>
         </div>
 

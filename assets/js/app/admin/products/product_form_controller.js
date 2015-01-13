@@ -32,6 +32,10 @@ function ProductFormController($state) {
     if (self.form.$invalid) {
       return false;
     }
+
+    // Make sure description is a string, textarea empty is null which is not valid;
+    self.product.description = String(self.product.description);
+
     self.product.$update(function() {
       $state.go('base.admin.products.list');
     }, function() {
