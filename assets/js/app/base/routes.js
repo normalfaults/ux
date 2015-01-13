@@ -20,6 +20,10 @@ module.exports = function($stateProvider, USER_ROLES) {
         templateUrl: "/partials/common/left-sidebar.html",
         controller: "LeftSidebarController as leftSidebarCtrl"
       },
+      "footer" : {
+        templateUrl: "/partials/common/footer.html",
+        controller: "FooterController as footerCtrl"
+      },
       "" : {
         controller: "BaseController as baseCtrl",
         template: "<div ui-view></div>"
@@ -37,6 +41,14 @@ module.exports = function($stateProvider, USER_ROLES) {
       /**@ngInject*/
       projects: function(ProjectResource) {
         return ProjectResource.query().$promise;
+      },
+      /**@ngInject*/
+      headerLinks: function(SettingsResource) {
+        return SettingsResource.get({name: 'Header Links'}).$promise;
+      },
+      /**@ngInject*/
+      footerLinks: function(SettingsResource) {
+        return SettingsResource.get({name: 'Footer Links'}).$promise;
       }
     },
     data: {
