@@ -18,7 +18,10 @@ var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartSe
 };
 
 HeaderController.resolve = {
-
+  /**@ngInject*/
+  headerLinks: function(SettingsResource) {
+    return SettingsResource.get({name: 'Header Links'}).$promise;
+  }
 };
 
 HeaderController.prototype = {
