@@ -1,12 +1,12 @@
 <div class="dashboard-page main-content" set-width>
-  <div class="page">
+  <div class="content">
 
     <section-header name="Alerts" ng-show="dashboardCtrl.alerts.length > 0">
       <alerts-table alerts="dashboardCtrl.alerts"></alerts-table>
     </section-header>
 
-    <div class="dashboard-tab">
-    <section-header name="PROJECTS ({{projects.length}})">
+
+    <section-header name="Projects ({{projects.length}})">
       <div class="tab-content projects-content" ng-show="tab == 'projects'">
         <project-box ng-repeat="project in projects" project="project"></project-box>
         <div class="btn-box">
@@ -16,8 +16,6 @@
       </div>
 
     </section-header>
-    </div>
-
 
 
 
