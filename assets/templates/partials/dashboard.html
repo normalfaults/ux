@@ -1,49 +1,3 @@
-<script type="text/ng-template" id="ModuleBox.html">
-  <div class="module">
-    <h3>
-      <a ng-if="item.sref" ui-sref="{{item.sref}}" class="titles">{{item.name | uppercase}}</a>
-      <a ng-if="!item.sref" href="javascript:" class="titles">{{item.name | uppercase}}</a>
-    </h3>
-
-    <div class="data-box">
-      <div class="info">
-        <a ng-if="item.sref" ui-sref="{{item.sref}}">
-          <img ng-src="{{item.icon}}"/>
-        </a>
-        <a ng-if="!item.sref" href="javascript:">
-          <img ng-src="{{item.icon}}"/>
-        </a>
-
-        <p>
-          <a href="{{item.url}}" class="blue-texts">{{item.domain}}</a>
-        </p>
-      </div>
-      <div class="icons">
-        <a>
-          <span class="fa fa-money"></span>
-        </a>
-        <a>
-          <span class="fa fa-desktop"></span>
-        </a>
-        <a>
-          <span class="fa fa-database"></span>
-        </a>
-        <a>
-          <span class="fa fa-tachometer"></span>
-        </a>
-      </div>
-    </div>
-    <div class="bottom-area">
-      <span class="fl">
-         <span class="blue-texts">{{item.state}}</span>
-         <span ng-class="{'fa fa-check-circle-o success-icon': item.state_ok, 'fa fa-exclamation-circle error-icon' : !item.state_ok }"></span>
-      </span>
-      <!-- end .data-box -->
-    </div>
-    <!-- end .bottom-area -->
-  </div>
-</script>
-
 <div class="dashboard-page main-content" set-width>
   <div class="page">
 
@@ -69,7 +23,7 @@
       <!-- end .tabs -->
 
       <div class="tab-content projects-content" ng-show="tab == 'projects'">
-        <ng-include src="'ModuleBox.html'" ng-repeat="item in projects"></ng-include>
+        <project-box ng-repeat="project in projects" project="project"></project-box>
         <div class="btn-box">
           <a ui-sref="base.newProject" class="add-btn add-icon"><i class="fa fa-plus-circle"></i><span>ADD NEW PROJECT</span></a>
         </div>
