@@ -30,7 +30,7 @@ module.exports = function($stateProvider, USER_ROLES) {
     })
     // Edit Project
     // @todo This should extend the base.project state if possible.
-    .state('base.projectEdit', {
+    .state('base.project.edit', {
       url: "^/project/:projectId/edit",
       templateUrl: "/partials/projects/edit-project.html",
       resolve: EditProjectData,

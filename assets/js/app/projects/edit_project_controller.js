@@ -28,10 +28,6 @@ EditProjectController.resolve = {
     /**@ngInject*/
     projectQuestions: function(ProjectQuestionsResource) {
         return ProjectQuestionsResource.query().$promise;
-    },
-    /**@ngInject*/
-    project: function(ProjectResource, $stateParams) {
-        return ProjectResource.get({id: $stateParams.projectId}).$promise;
     }
 };
 
