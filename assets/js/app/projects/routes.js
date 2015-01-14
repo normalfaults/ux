@@ -39,7 +39,7 @@ module.exports = function($stateProvider, USER_ROLES) {
     // Add Service to Project
     .state('base.project.addService', {
       url: "^/project/:projectId/add-service",
-      templateUrl: '/partials/projects/add-services-modal.html',
+      templateUrl: '/partials/projects/add-services.html',
       controller: 'ProjectServicesController as projectServicesCtrl',
       resolve: ProjectServicesData
     })
