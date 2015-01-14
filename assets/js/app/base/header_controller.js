@@ -3,12 +3,13 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartService, currentUser, alerts) {
+var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartService, currentUser, alerts, headerLinks) {
 
   this.JellyfishModal = JellyfishModal;
   this.CartService = CartService;
   this.alerts = alerts;
   this.currentUser = currentUser;
+  this.headerLinks = headerLinks;
 
   // @todo This is in the wrong format, does not match the problem-alerts.html partial format.
   angular.forEach(this.alerts, function(item) {
@@ -17,7 +18,10 @@ var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartSe
 };
 
 HeaderController.resolve = {
-
+  /**@ngInject*/
+  headerLinks: function(SettingsResource) {
+    return SettingsResource.get({name: 'Header Links'}).$promise;
+  }
 };
 
 HeaderController.prototype = {

@@ -7,14 +7,9 @@
     <div class="nav-user fr" ng-if="headerCtrl.currentUser">
         <nav>
             <ul>
-                <li ng-class="active">
-                    <a ui-sref="base.dashboard">DASHBOARD</a>
+                <li ng-repeat="headerLink in headerCtrl.headerLinks">
+                    <a href="{{headerLink.url}}">{{headerLink.name}}</a>
                 </li>
-                <li><a>BROWSE</a></li>
-                <li><a>BUILD</a></li>
-                <li><a>MANAGE</a>
-                </li>
-                <li><a>PRICING</a></li>
             </ul>
         </nav>
         <!-- end nav -->

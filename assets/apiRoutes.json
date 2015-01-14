@@ -3,6 +3,7 @@
   "routes": {
 
     "settingById":       "/settings/:id",
+    "settingsByName":    "/settings/:name",
     "cloudsById":        "/clouds/:id",
 
     "alerts":            "/alerts",

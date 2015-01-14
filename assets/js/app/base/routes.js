@@ -1,5 +1,8 @@
 'use strict';
 
+var HeaderData = require('./header_controller').resolve;
+var FooterData = require('./footer_controller').resolve;
+
 /**@ngInject*/
 module.exports = function($stateProvider, USER_ROLES) {
   $stateProvider.state('root', {
@@ -13,12 +16,17 @@ module.exports = function($stateProvider, USER_ROLES) {
     views: {
       header: {
         templateUrl: "/partials/common/header.html",
-        controller: "HeaderController as headerCtrl"
-
+        controller: "HeaderController as headerCtrl",
+        resolve: HeaderData
       },
       "left-sidebar" : {
         templateUrl: "/partials/common/left-sidebar.html",
         controller: "LeftSidebarController as leftSidebarCtrl"
+      },
+      "footer" : {
+        templateUrl: "/partials/common/footer.html",
+        controller: "FooterController as footerCtrl",
+        resolve: FooterData
       },
       "" : {
         controller: "BaseController as baseCtrl",
