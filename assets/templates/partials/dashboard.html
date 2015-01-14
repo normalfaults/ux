@@ -6,22 +6,7 @@
     </section-header>
 
     <div class="dashboard-tab">
-      <div class="tabs">
-        <ul>
-          <li ng-class="{active: tab == 'projects'} ">
-            <a ng-click="dashboardCtrl.showTab('projects')">
-              <div class="title-box">
-              <h2>
-                <strong>PROJECTS ({{projects.length}})</strong>
-              </h2>
-              </div>
-            </a>
-            <span class="border-spacing"></span>
-          </li>
-        </ul>
-      </div>
-      <!-- end .tabs -->
-
+    <section-header name="PROJECTS ({{projects.length}})">
       <div class="tab-content projects-content" ng-show="tab == 'projects'">
         <project-box ng-repeat="project in projects" project="project"></project-box>
         <div class="btn-box">
@@ -30,9 +15,11 @@
         <!-- end .btn-box -->
       </div>
 
-      <!-- end .tab-content -->
+    </section-header>
     </div>
-    <!-- end .dashboard-tab -->
+
+
+
 
   </div>
 </div>
