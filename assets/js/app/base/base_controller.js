@@ -20,7 +20,7 @@ var BaseController = function($rootScope, $scope, $state, projects, AuthService)
   });
 
   angular.forEach(projects, function(project) {
-    project.sref = "base.project(" + angular.toJson({projectId: project.id}) + ")";
+    project.sref = "base.project.view(" + angular.toJson({projectId: project.id}) + ")";
   });
 
   $rootScope.logout = function() {

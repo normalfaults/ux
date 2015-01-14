@@ -103,7 +103,7 @@ CartService.prototype = {
        * @todo This is probably not the best way to handle this, but since the cart can be launched
        *       from anywhere, it's hard to pass in a callback without making an equally ugly global one.
        */
-      if (this.$state.is('base.project')) {
+      if (this.$state.is('base.project.view')) {
         this.$state.reload();
       }
 
