@@ -14,11 +14,18 @@ module.exports = function($stateProvider, USER_ROLES) {
       resolve: NewProjectData,
       controller: "NewProjectController as newProjectCtrl"
     })
-    // Project
+    // Project Base
     .state('base.project', {
+      abstract: true,
+      url: "^/project/:projectId",
+      template: "<div ui-view></div>",
+      resolve: ProjectData,
+      controller: "BaseProjectController as baseProjectCtrl"
+    })
+    // Project
+    .state('base.project.view', {
       url: "^/project/:projectId",
       templateUrl: "/partials/projects/project.html",
-      resolve: ProjectData,
       controller: "ProjectController as projectCtrl"
     })
     // Edit Project
@@ -28,6 +35,13 @@ module.exports = function($stateProvider, USER_ROLES) {
       templateUrl: "/partials/projects/edit-project.html",
       resolve: EditProjectData,
       controller: "EditProjectController as editProjectCtrl"
+    })
+    // Add Service to Project
+    .state('base.project.addService', {
+      url: "^/project/:projectId/add-service",
+      templateUrl: '/partials/projects/add-services-modal.html',
+      controller: 'ProjectServicesController as projectServicesCtrl',
+      resolve: ProjectServicesData
     })
     // Add User to Project
     .state('base.project.addUser', {
@@ -59,45 +73,4 @@ module.exports = function($stateProvider, USER_ROLES) {
         }).result.then(onClose, onClose);
       }
     })
-    // Add Service to Project
-    .state('base.project.addService', {
-      url: "^/project/:projectId/add-service",
-      resolve: ProjectServicesData,
-      /**@ngInject**/
-      onEnter: function($stateParams, $state, JellyfishModal, currentUser, project, products, categories) {
-
-        // When the modal is resolved or rejected we want to transition
-        // back to the project page.
-        var onClose = function() {
-          return $state.transitionTo("base.project", $stateParams);
-        };
-
-        JellyfishModal.open({
-          id: 'app-services',
-          templateUrl: '/partials/projects/add-services-modal.html',
-          controller: 'ProjectServicesController as projectServicesCtrl',
-          size: 'lg',
-          /**
-           * This is somewhat of a hack, because of using string based controller instantiation in the modal
-           * the ui-router scope does not cascade into onEnter.  We use resolve to effectively inject the data
-           * back in.
-           */
-          resolve: {
-            currentUser: function() {
-              return currentUser;
-            },
-            project: function() {
-              return project;
-            },
-            products: function() {
-              return products;
-            },
-            categories: function() {
-              return categories;
-            }
-
-          }
-        }).result.then(onClose, onClose);
-      }
-    });
 };

@@ -8,7 +8,7 @@
                     <span class="texts">DASHBOARD</span>
                 </a>
             </li>
-            <li class="li-my-projects" ng-class="{active: $state.includes('base.project'), current: $state.includes('base.project')}" expand-arrow>
+            <li class="li-my-projects" ng-class="{active: $state.includes('base.project.view'), current: $state.includes('base.project.view')}" expand-arrow>
                 <a class="li-links">
                     <span class="fa fa-file-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">MY PROJECTS </span>
@@ -17,7 +17,7 @@
                 </a>
                 <ul>
                     <li ng-class="{first: $first}"
-                        ng-repeat="item in projects"><i></i><a ui-sref="base.project({projectId: item.id})"
+                        ng-repeat="item in projects"><i></i><a ui-sref="base.project.view({projectId: item.id})"
                                                                ui-sref-active="active">{{item.name}}</a></li>
                 </ul>
             </li>

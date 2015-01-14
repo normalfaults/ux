@@ -19,7 +19,7 @@ function EditProjectController($scope, $state, ProjectResource, project, project
         }
 
         ProjectResource.update(filteredProject , function() {
-            $state.go('base.project', {projectId: project.id}, {reload: true});
+            $state.go('base.project.view', {projectId: project.id}, {reload: true});
         });
     };
 }

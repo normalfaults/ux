@@ -10,7 +10,7 @@ var NewProjectController = function($scope, $state, ProjectResource, projectQues
 
   $scope.createProject = function() {
     ProjectResource.save($scope.project).$promise.then(function(project){
-      $state.go('base.project', {projectId: project.id});
+      $state.go('base.project.view', {projectId: project.id});
     });
   };
 };
