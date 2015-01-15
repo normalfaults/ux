@@ -44,7 +44,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       resolve: ProjectServicesData
     })
     // Add User to Project
-    .state('base.project.addUser', {
+    .state('base.project.view.addUser', {
       url: "^/project/:projectId/add-user",
       /**@ngInject**/
       onEnter: function($stateParams, $state, JellyfishModal, project) {
@@ -52,7 +52,7 @@ module.exports = function($stateProvider, USER_ROLES) {
         // When the modal is resolved or rejected we want to transition
         // back to the project page.
         var onClose = function() {
-          return $state.transitionTo("base.project", $stateParams);
+          return $state.transitionTo("base.project.view", $stateParams);
         };
 
         JellyfishModal.open({
