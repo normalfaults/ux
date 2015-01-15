@@ -45,10 +45,11 @@
   <label class="col-sm-2 control-label" for="email">Password:</label>
 
   <div class="col-sm-6 controls">
-    <input id="password" name="password" type="password" ng-model="adminUserFormCtrl.user.password" ng-change="adminUserFormCtrl.clearSubmitError('password')" class="form-control" ng-required="!adminUserFormCtrl.user.id" />
+    <input id="password" name="password" type="password" ng-minlength=8 ng-model="adminUserFormCtrl.user.password" ng-change="adminUserFormCtrl.clearSubmitError('password')" class="form-control" ng-required="!adminUserFormCtrl.user.id" />
 
     <div class="help-block">
       <div class="help-text" ng-show="adminUserFormCtrl.hasError('password', 'required')">Password is Required.</div>
+      <div class="help-text" ng-show="adminUserFormCtrl.hasError('password', 'minlength')">Password must be at least 8 Characters.</div>
       <div class="help-text" ng-show="adminUserFormCtrl.hasError('password', 'submitError')">{{adminUserFormCtrl.getSubmitErrorValue('password')}}</div>
     </div>
   </div>
