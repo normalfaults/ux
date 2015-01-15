@@ -44,7 +44,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       resolve: ProjectServicesData
     })
     // Add User to Project
-    .state('base.project.addUser', {
+    .state('base.project.view.addUser', {
       url: "^/project/:projectId/add-user",
       /**@ngInject**/
       onEnter: function($stateParams, $state, JellyfishModal, project) {
