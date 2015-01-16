@@ -12,12 +12,12 @@
                 <a class="li-links">
                     <span class="fa fa-file-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">MY PROJECTS </span>
-                    <span class="number side-bar-space">{{projects.length}}</span>
+                    <span class="number side-bar-space">{{leftSidebarCtrl.projects.length}}</span>
                     <span class="arrows-container"><i class="arrows fa fa-caret-right"></i></span>
                 </a>
                 <ul>
                     <li ng-class="{first: $first}"
-                        ng-repeat="item in projects"><i></i><a ui-sref="base.project.view({projectId: item.id})"
+                        ng-repeat="item in leftSidebarCtrl.projects"><i></i><a ui-sref="base.project.view({projectId: item.id})"
                                                                ui-sref-active="active">{{item.name}}</a></li>
                 </ul>
             </li>
@@ -34,7 +34,7 @@
                     <span class="texts">MARKETPLACE</span>
                 </a>
             </li>
-            <li ng-show="currentUser.isAdmin()" ng-class="{active: $state.includes('base.admin'), current: $state.includes('base.admin')}" expand-arrow>
+            <li ng-show="leftSidebarCtrl.currentUser.isAdmin()" ng-class="{active: $state.includes('base.admin'), current: $state.includes('base.admin')}" expand-arrow>
                 <a class="li-links">
                     <span class="fa fa-cubes left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">ADMIN</span>
@@ -63,6 +63,6 @@
                 </ul>
             </li>
         </ul>
-        <a ng-click="logout()" class="logout-btn"><i class="fa fa-power-off left-tray-icon left-tray-menu-icon"></i><span>LOGOUT</span></a>
+        <a ng-click="leftSidebarCtrl.logout()" class="logout-btn"><i class="fa fa-power-off left-tray-icon left-tray-menu-icon"></i><span>LOGOUT</span></a>
     </nav>
 </aside>

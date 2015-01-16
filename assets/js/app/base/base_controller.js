@@ -3,9 +3,8 @@
 // TODO: This controller is dealing with too much data
 
 /**@ngInject*/
-var BaseController = function($rootScope, $scope, $state, projects, AuthService) {
+var BaseController = function($rootScope, $scope, $state, AuthService) {
   $rootScope.$state = $state;
-  $rootScope.projects = projects;
 
   /**
    * Track the previous state and the parameters.  Helpful for use in controllers
@@ -18,14 +17,6 @@ var BaseController = function($rootScope, $scope, $state, projects, AuthService)
     $rootScope.previousState = fromState.name;
     $rootScope.previousStateParams = fromParams;
   });
-
-  angular.forEach(projects, function(project) {
-    project.sref = "base.project.view(" + angular.toJson({projectId: project.id}) + ")";
-  });
-
-  $rootScope.logout = function() {
-    AuthService.logout();
-  };
 };
 
 BaseController.resolve = {

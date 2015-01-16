@@ -6,9 +6,9 @@
     </section-header>
 
 
-    <section-header name="Projects ({{projects.length}})">
+    <section-header name="Projects ({{dashboardCtrl.projects.length}})">
       <div class="project-boxes">
-        <project-box ng-repeat="project in projects" project="project"></project-box>
+        <project-box ng-repeat="project in dashboardCtrl.projects" project="project"></project-box>
         <div class="btn-box">
           <a ui-sref="base.newProject" class="add-btn add-icon"><i class="fa fa-plus-circle"></i><span>ADD NEW PROJECT</span></a>
         </div>
