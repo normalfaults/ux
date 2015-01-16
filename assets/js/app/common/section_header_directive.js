@@ -22,8 +22,6 @@ var SectionHeaderDirective = function() {
 
       $scope.showGrid = function() {
         $scope.currentViewType = 'grid-view';
-        console.warn($scope);
-
       };
 
       $scope.showList = function() {

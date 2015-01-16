@@ -4,7 +4,7 @@
 function FormInput() {
     return {
         restrict: 'E',
-        templateUrl: '/partials/common/form-input.html',
+        templateUrl: '/partials/common/form_input.html',
         scope: {
             fieldModel: "=fieldModel",
             fieldType: "=fieldType",

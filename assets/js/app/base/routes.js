@@ -20,7 +20,7 @@ module.exports = function($stateProvider, USER_ROLES) {
         resolve: HeaderData
       },
       "left-sidebar" : {
-        templateUrl: "/partials/common/left-sidebar.html",
+        templateUrl: "/partials/common/left_sidebar.html",
         controller: "LeftSidebarController as leftSidebarCtrl"
       },
       "footer" : {
