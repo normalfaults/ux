@@ -13,7 +13,7 @@ var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartSe
   this.CartService = CartService;
   this.AuthService = AuthService;
 
-  // @todo This is in the wrong format, does not match the problem-alerts.html partial format.
+  // @todo This is in the wrong format, does not match the problem_alerts.html partial format.
   angular.forEach(this.alerts, function(item) {
     item.trustedHtml = $sce.trustAsHtml(item.text);
   });
@@ -31,7 +31,7 @@ HeaderController.prototype = {
   cartModal: function () {
     this.JellyfishModal.open({
       id: 'cart',
-      templateUrl: '/partials/cart/cart-modal.html',
+      templateUrl: '/partials/cart/cart_modal.html',
       controller: 'CartController as cartCtrl',
       size: 'lg'
     });

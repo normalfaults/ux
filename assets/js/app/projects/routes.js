@@ -10,7 +10,7 @@ module.exports = function($stateProvider, USER_ROLES) {
     // Create Project
     .state('base.newProject', {
       url: "^/project/new",
-      templateUrl: "/partials/projects/new-project.html",
+      templateUrl: "/partials/projects/new_project.html",
       resolve: NewProjectData,
       controller: "NewProjectController as newProjectCtrl"
     })
@@ -32,14 +32,14 @@ module.exports = function($stateProvider, USER_ROLES) {
     // @todo This should extend the base.project state if possible.
     .state('base.project.edit', {
       url: "^/project/:projectId/edit",
-      templateUrl: "/partials/projects/edit-project.html",
+      templateUrl: "/partials/projects/edit_project.html",
       resolve: EditProjectData,
       controller: "EditProjectController as editProjectCtrl"
     })
     // Add Service to Project
     .state('base.project.addService', {
       url: "^/project/:projectId/add-service",
-      templateUrl: '/partials/projects/add-services.html',
+      templateUrl: '/partials/projects/add_services.html',
       controller: 'ProjectServicesController as projectServicesCtrl',
       resolve: ProjectServicesData
     })
@@ -57,7 +57,7 @@ module.exports = function($stateProvider, USER_ROLES) {
 
         JellyfishModal.open({
           id: 'add-users',
-          templateUrl: '/partials/projects/add-users-modal.html',
+          templateUrl: '/partials/projects/add_users_modal.html',
           controller: 'ProjectUsersController as projectUsersCtrl',
           /**
            * This is somewhat of a hack, because of using string based controller instantiation in the modal
