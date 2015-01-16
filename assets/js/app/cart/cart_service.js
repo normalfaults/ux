@@ -2,9 +2,9 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var CartService = function($q, $state, OrderResource) {
+var CartService = function($q, $state, OrdersResource) {
   this.$q = $q;
-  this.OrderResource = OrderResource;
+  this.OrdersResource = OrdersResource;
   this.$state = $state;
 
   this.cart = this._getResource();
@@ -91,7 +91,7 @@ CartService.prototype = {
       order_items: orderItems
     };
 
-    this.OrderResource.save(order).$promise.then(_.bind(function() {
+    this.OrdersResource.save(order).$promise.then(_.bind(function() {
 
       // Empty the Cart.
       this.clearCart();

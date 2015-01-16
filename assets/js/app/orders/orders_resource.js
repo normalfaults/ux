@@ -1,8 +1,8 @@
 'use strict';
 
 /**@ngInject*/
-var OrderResource = function($resource, ApiResource) {
+var OrdersResource = function($resource, ApiResource) {
   return $resource(ApiResource('orders'), { id: '@id' });
 };
 
-module.exports = OrderResource;
+module.exports = OrdersResource;

@@ -13,8 +13,8 @@ ShowProductController.prototype = {
 
 ShowProductController.resolve = {
   /**@ngInject*/
-  product: function(ProductResource, $stateParams) {
-    return ProductResource.get({id: $stateParams.id, 'includes[]': 'product_category'}).$promise;
+  product: function(ProductsResource, $stateParams) {
+    return ProductsResource.get({id: $stateParams.id, 'includes[]': 'product_category'}).$promise;
   }
 };
 

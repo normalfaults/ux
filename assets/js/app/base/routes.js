@@ -43,8 +43,8 @@ module.exports = function($stateProvider, USER_ROLES) {
         return AlertsResource.query().$promise;
       },
       /**@ngInject*/
-      projects: function(ProjectResource) {
-        return ProjectResource.query().$promise;
+      projects: function(ProjectsResource) {
+        return ProjectsResource.query().$promise;
       }
     },
     data: {

@@ -11,8 +11,8 @@ var ProjectsModule = angular.module('broker.projects', [])
   .controller('ProjectServicesController', require('./project_services_controller'))
   .directive('projectForm', require('./project_form'))
   .directive('projectBox', require('./project_box_directive'))
-  .factory('ProjectResource', require('./project_resource'))
-  .factory('ProjectUserResource', require('./project_user_resource'))
+  .factory('ProjectsResource', require('./projects_resource'))
+  .factory('ProjectUsersResource', require('./project_users_resource'))
   .factory('ProjectQuestionsResource', require('./project_questions_resource'))
   .config(require('./routes'));
 

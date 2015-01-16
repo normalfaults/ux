@@ -1,20 +1,20 @@
 'use strict';
 
 /**@ngInject*/
-function ServiceController(service, OrderItemResource) {
+function ServiceController(service, OrderItemsResource) {
   this.service = service;
 
-  this.OrderItemResource = OrderItemResource;
+  this.OrderItemsResource = OrderItemsResource;
 }
 
 ServiceController.prototype = {
 
   startService: function() {
-    this.OrderItemResource.startService({order_id: this.service.order_id, id: this.service.id});
+    this.OrderItemsResource.startService({order_id: this.service.order_id, id: this.service.id});
   },
 
   stopService: function() {
-    this.OrderItemResource.stopService({order_id: this.service.order_id, id: this.service.id});
+    this.OrderItemsResource.stopService({order_id: this.service.order_id, id: this.service.id});
   },
 
   getLogs: function() {
@@ -25,12 +25,12 @@ ServiceController.prototype = {
 
 ServiceController.resolve = {
   /**@ngInject*/
-  service: function($stateParams, $q, projects, OrderItemResource, ProductResource) {
+  service: function($stateParams, $q, projects, OrderItemsResource, ProductsResource) {
 
     var deferred = $q.defer();
     var orderItemData = {};
 
-    OrderItemResource.get({order_id: $stateParams.order_id, id: $stateParams.id}).$promise.then(function(orderItem) {
+    OrderItemsResource.get({order_id: $stateParams.order_id, id: $stateParams.id}).$promise.then(function(orderItem) {
 
       orderItemData = orderItem;
 
@@ -40,7 +40,7 @@ ServiceController.resolve = {
       });
 
       // Add on the product.
-      ProductResource.get({id: orderItem.product_id}).$promise.then(function(product) {
+      ProductsResource.get({id: orderItem.product_id}).$promise.then(function(product) {
         orderItemData.product = product;
         deferred.resolve(orderItemData);
       })

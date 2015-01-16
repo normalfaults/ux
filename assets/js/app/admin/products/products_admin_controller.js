@@ -43,8 +43,8 @@ ProductsAdminController.resolve = {
     return ProductCategoryResource.query().$promise;
   },
   /**@ngInject*/
-  clouds: function(CloudResource) {
-    return CloudResource.query().$promise;
+  clouds: function(CloudsResource) {
+    return CloudsResource.query().$promise;
   }
 
 };

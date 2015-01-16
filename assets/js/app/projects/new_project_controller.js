@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-var NewProjectController = function($scope, $state, ProjectResource, projectQuestions) {
+var NewProjectController = function($scope, $state, ProjectsResource, projectQuestions) {
 
   // @todo These should be moved to newProjectCtrl style instead of using scope.
   $scope.project = $scope.project || {};
@@ -9,7 +9,7 @@ var NewProjectController = function($scope, $state, ProjectResource, projectQues
 
 
   $scope.createProject = function() {
-    ProjectResource.save($scope.project).$promise.then(function(project){
+    ProjectsResource.save($scope.project).$promise.then(function(project){
       $state.go('base.project.view', {projectId: project.id});
     });
   };
