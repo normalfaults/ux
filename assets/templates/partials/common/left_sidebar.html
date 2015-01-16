@@ -1,14 +1,14 @@
 <aside>
     <nav class="side-nav" toggle-sidebar>
         <ul>
-            <li class="dashboard-menu" ng-class="{active: $state.includes('base.dashboard')}">
+            <li class="dashboard-menu" ng-class="{active: leftSidebarCtrl.$state.includes('base.dashboard')}">
                 <a class="side-arrow"> <i class="minimize-icon grey-icon fa fa-angle-left"></i></a>
                 <a ui-sref="base.dashboard" class="li-links">
                     <span class="fa fa-bars left-tray-icon left-tray-title-icon"></span>
                     <span class="texts">DASHBOARD</span>
                 </a>
             </li>
-            <li class="li-my-projects" ng-class="{active: $state.includes('base.project.view'), current: $state.includes('base.project.view')}" expand-arrow>
+            <li class="li-my-projects" ng-class="{active: leftSidebarCtrl.$state.includes('base.project.view'), current: leftSidebarCtrl.$state.includes('base.project.view')}" expand-arrow>
                 <a class="li-links">
                     <span class="fa fa-file-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">MY PROJECTS </span>
@@ -22,19 +22,19 @@
                 </ul>
             </li>
 
-            <li ng-class="{active: $state.includes('base.users.orders')}">
+            <li ng-class="{active: leftSidebarCtrl.$state.includes('base.users.orders')}">
                 <a ui-sref="base.users.orders" class="li-links last">
                     <span class="fa fa-clock-o left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">ORDER HISTORY</span>
                 </a>
             </li>
-            <li ng-class="{active: $state.includes('base.marketplace')}">
+            <li ng-class="{active: leftSidebarCtrl.$state.includes('base.marketplace')}">
                 <a ui-sref="base.marketplace.list" class="li-links">
                     <span class="fa fa-briefcase left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">MARKETPLACE</span>
                 </a>
             </li>
-            <li ng-show="leftSidebarCtrl.currentUser.isAdmin()" ng-class="{active: $state.includes('base.admin'), current: $state.includes('base.admin')}" expand-arrow>
+            <li ng-show="leftSidebarCtrl.currentUser.isAdmin()" ng-class="{active: leftSidebarCtrl.$state.includes('base.admin'), current: leftSidebarCtrl.$state.includes('base.admin')}" expand-arrow>
                 <a class="li-links">
                     <span class="fa fa-cubes left-tray-icon left-tray-menu-icon"></span>
                     <span class="texts">ADMIN</span>

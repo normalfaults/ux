@@ -1,10 +1,7 @@
 'use strict';
 
-// TODO: This controller is dealing with too much data
-
 /**@ngInject*/
-var BaseController = function($rootScope, $scope, $state, AuthService) {
-  $rootScope.$state = $state;
+var BaseController = function($rootScope) {
 
   /**
    * Track the previous state and the parameters.  Helpful for use in controllers
@@ -17,6 +14,7 @@ var BaseController = function($rootScope, $scope, $state, AuthService) {
     $rootScope.previousState = fromState.name;
     $rootScope.previousStateParams = fromParams;
   });
+
 };
 
 BaseController.resolve = {

@@ -3,11 +3,12 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var LeftSidebarController = function(currentUser, projects, AuthService) {
+var LeftSidebarController = function($state, currentUser, projects, AuthService) {
   this.currentUser = currentUser;
   this.projects = projects;
 
   this.AuthService = AuthService;
+  this.$state = $state;
 };
 
 LeftSidebarController.prototype = {
