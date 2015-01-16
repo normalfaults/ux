@@ -1,18 +1,13 @@
 <div class="project-box">
   <h3>
-    <a ng-if="project.sref" ui-sref="{{project.sref}}" class="titles">{{project.name | uppercase}}</a>
-    <a ng-if="!project.sref" class="titles">{{project.name | uppercase}}</a>
+    <a ng-if="sref" ui-sref="{{sref}}" class="titles">{{project.name | uppercase}}</a>
   </h3>
 
   <div class="data-box">
     <div class="info">
-      <a ng-if="project.sref" ui-sref="{{project.sref}}">
+      <a ng-if="sref" ui-sref="{{sref}}">
         <img ng-src="{{project.icon}}"/>
       </a>
-      <a ng-if="!project.sref" href="javascript:">
-        <img ng-src="{{project.icon}}"/>
-      </a>
-
       <p>
         <a href="{{project.url}}" class="blue-texts">{{project.domain}}</a>
       </p>
