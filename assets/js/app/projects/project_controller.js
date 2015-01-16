@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, project, ProjectUserResource, OrderItemResource, alerts, products) {
+function ProjectController($scope, $modal, project, ProjectUsersResource, OrderItemsResource, alerts, products) {
 
 
   this.$modal = $modal;
@@ -15,8 +15,8 @@ function ProjectController($scope, $modal, project, ProjectUserResource, OrderIt
   });
   this.products = products;
 
-  this.ProjectUserResource = ProjectUserResource;
-  this.OrderItemResource = OrderItemResource;
+  this.ProjectUsersResource = ProjectUsersResource;
+  this.OrderItemsResource = OrderItemsResource;
 
   /**
    * On creation/transition to scope, start refresh interval if
@@ -33,12 +33,12 @@ function ProjectController($scope, $modal, project, ProjectUserResource, OrderIt
 
 ProjectController.resolve = {
   /**@ngInject*/
-  project: function(ProjectResource, $stateParams) {
-    return ProjectResource.get({id: $stateParams.projectId}).$promise;
+  project: function(ProjectsResource, $stateParams) {
+    return ProjectsResource.get({id: $stateParams.projectId}).$promise;
   },
   /**@ngInject*/
-  products: function(ProductResource) {
-    return ProductResource.query({"includes[]": ["cloud"]}).$promise;
+  products: function(ProductsResource) {
+    return ProductsResource.query({"includes[]": ["cloud"]}).$promise;
   }
 };
 
@@ -71,7 +71,7 @@ ProjectController.prototype = {
   },
 
   removeUserFromProject: function(index){
-    this.ProjectUserResource.delete({id: this.project.id, staff_id: this.project.users[index].id}).$promise.then(
+    this.ProjectUsersResource.delete({id: this.project.id, staff_id: this.project.users[index].id}).$promise.then(
       _.bind(function(data){
         this.project.users.splice(index, 1);
       }, this),
@@ -85,7 +85,7 @@ ProjectController.prototype = {
   removeServiceFromProject: function(serviceIndex) {
     var service = this.project.services[serviceIndex];
 
-    this.OrderItemResource.delete({id: service.id, order_id: service.order_id}).$promise.then(
+    this.OrderItemsResource.delete({id: service.id, order_id: service.order_id}).$promise.then(
       _.bind(function() {
         // Remove it from the existing array.
         this.project.services.splice(serviceIndex, 1);

@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function MarketplaceController($scope, products, categories) {
+function MarketplaceController(products, categories) {
 
   this.categories = categories;
   // Only display non deleted products.
@@ -28,8 +28,8 @@ MarketplaceController.resolve = {
     return ProductCategoryResource.query().$promise;
   },
   /**@ngInject*/
-  products: function(ProductResource) {
-    return ProductResource.query({"includes[]": ["cloud"]}).$promise;
+  products: function(ProductsResource) {
+    return ProductsResource.query({"includes[]": ["cloud"]}).$promise;
   }
 };
 
