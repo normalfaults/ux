@@ -1,0 +1,73 @@
+<span ng-switch on="qiCtrl.question.field_type">
+
+  <div ng-switch-when="text" class="form-group" ng-class="{'has-error': qiCtrl.hasError()}">
+    <label class="col-sm-2 control-label" for="{{qiCtrl.fieldId()}}">{{qi.question.label}}</label>
+
+    <div class="col-sm-6 controls">
+      <input type="text" class="form-control" placeholder="{{qiCtrl.question.placeholder}}"
+             id="{{qiCtrl.fieldId()}}" name="{{qiCtrl.fieldName()}}"
+             ng-model="qiCtrl.model" ng-required="{{qiCtrl.question.required}}"/>
+
+      <div class="help-block">
+        <div class="help-text" ng-show="qiCtrl.hasError('required')">
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="help-block">
+        <div class="help-text">{{qiCtrl.question.help}}</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <span ng-switch-when="check_box">
+    <div class="form-group">
+      <label for="qiCtrl.fieldId()" class="col-sm-3 control-label">{{qiCtrl.question.label}}</label>
+
+      <div class="col-sm-8 control-input">
+        <input type="checkbox" name="{{fieldName}}" ng-model='fieldModel.value' id="{{fieldId}}" ng-true-value="'true'"
+               ng-false-value="'false'">
+      </div>
+    </div>
+  </span>
+  <span ng-switch-when="date">
+    <div class="form-group">
+      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
+
+      <div class="col-sm-8 control-input">
+        <div class="input-group">
+          <span class="input-group-addon" ng-click="openDate($event, $index)"><i class="fa fa-calendar"></i></span>
+          <input name="{{fieldName}}" ng-click="openDate($event, $index)" ng-model='fieldModel.value'
+                 class="form-control" id="{{fieldId}}" placeholder="{{helpText}}" ng-required="{{fieldRequired}}"
+                 datepicker-popup="{{format}}" is-open="dateOpened[$index]" datepicker-options="dateOptions"
+                 close-text="Close">
+        </div>
+      </div>
+    </div>
+  </span>
+  <span ng-switch-when="text">
+    <div class="form-group">
+      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
+
+      <div class="col-sm-8 control-input">
+        <input name="{{fieldName}}" ng-model='fieldModel.value' class="form-control" id="{{fieldId}}"
+               placeholder="{{helpText}}" ng-required="{{required}}">
+      </div>
+    </div>
+  </span>
+  <span ng-switch-when="select_option">
+    <div class="form-group">
+      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
+
+      <div class="col-sm-8 control-input">
+        <select name="{{fieldName}}" class="form-control" ng-model="fieldModel.value"
+                ng-options="option for option in options" ng-required="{{required}}">
+          <option value="">Please select an option.</option>
+        </select>
+      </div>
+    </div>
+  </span>
+</span>
