@@ -23,15 +23,15 @@ var ProjectServicesController = function($scope, $modalInstance, CartService, pr
 
   _.each(this.categories, _.bind(function(category) {
     category.products = _.filter(this.products, function(product) {
-      return product.product_category_id == category.id;
+      return product.product_type_id == category.id;
     });
   }, this));
 };
 
 ProjectServicesController.resolve = {
   /**@ngInject*/
-  categories: function(ProductCategoryResource) {
-    return ProductCategoryResource.query().$promise;
+  categories: function(ProductTypeResource) {
+    return ProductTypeResource.query().$promise;
   }
 };
 

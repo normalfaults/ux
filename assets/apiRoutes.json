@@ -11,12 +11,12 @@
     "orderItems":        "/orders/:order_id/items/:id",
 
     "projectsById":      "/projects/:id",
-    "projectQuestions": "/project_questions/:id",
+    "projectQuestions":  "/project_questions/:id",
     "projectUser":       "/projects/:id/staff/:staff_id",
     "servicesById":      "/services/:id",
 
     "productsById":      "/products/:id",
-    "productCategoriesById": "/product_categories/:id",
+    "productTypesById":  "/product_types/:id",
 
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",

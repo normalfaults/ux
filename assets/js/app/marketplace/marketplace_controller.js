@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function MarketplaceController($scope, products, categories) {
+function MarketplaceController(products, categories) {
 
   this.categories = categories;
   // Only display non deleted products.
@@ -13,7 +13,7 @@ function MarketplaceController($scope, products, categories) {
 
   _.each(this.categories, _.bind(function(category) {
     category.products = _.filter(this.products, function(product) {
-      return product.product_category_id == category.id;
+      return product.product_type_id == category.id;
     });
   }, this));
 }
@@ -23,14 +23,14 @@ function MarketplaceController($scope, products, categories) {
  *       combined better in the future.
  */
 MarketplaceController.resolve = {
-  /**@ngInject*/
-  categories: function(ProductCategoryResource) {
-    return ProductCategoryResource.query().$promise;
-  },
-  /**@ngInject*/
-  products: function(ProductResource) {
-    return ProductResource.query({"includes[]": ["cloud"]}).$promise;
-  }
+  ///**@ngInject*/
+  //categories: function(ProductTypeResource) {
+  //  return ProductTypeResource.query({"includes[]": ["questions"]}).$promise;
+  //},
+  ///**@ngInject*/
+  //products: function(ProductResource) {
+  //  return ProductResource.query({"includes[]": ["cloud", "answers"]}).$promise;
+  //}
 };
 
 module.exports = MarketplaceController;

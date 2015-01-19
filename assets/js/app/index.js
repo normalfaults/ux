@@ -28,6 +28,7 @@ var app = angular.module('broker', [
   "fiestah.money",
   "ngCookies",
   require('./alerts').name,
+  require('./question_input').name,
   require('./common').name,
   require('./base').name,
   require('./admin').name,

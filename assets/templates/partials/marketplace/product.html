@@ -1,39 +1,45 @@
 <div class="show-product-page main-content" set-width>
-  <div class="content container">
-    <h2>Product Detail</h2>
+  <div class="content box-content">
+    <section-header name="Product Detail">
 
-    <div class="titles-border-bar">
-      <span class="blues width137"></span>
-      <span class="whites width3"></span>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-6">
-        <a ui-sref="base.marketplace.list" class="btn btn-link">
-          <i class="fa fa-long-arrow-left"></i>
-          Back to marketplace
-        </a>
+      <div class="row">
+        <div class="col-sm-6">
+          <a ui-sref="base.marketplace.list" class="btn btn-link">
+            <i class="fa fa-long-arrow-left"></i>
+            Back to marketplace
+          </a>
+        </div>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-sm-2 product-sidebar">
-        <div class="icon-boxes green-top-border product-box-shadow">
-          <img ng-src="/images/assets/{{showCtrl.product.img}}"/>
+      <div class="row">
+        <div class="col-sm-2 product-sidebar">
+          <div class="icon-boxes green-top-border product-box-shadow">
+            <img class="icon-image" ng-src="/images/assets/{{showCtrl.product.img}}"/>
+          </div>
+
+          <p class="text-uppercase text-center">Third Party</p>
+
+          <dl>
+            <dt>Publish Data</dt><dd>{{showCtrl.product.created_at | date: 'shortDate'}}</dd>
+            <dt>Type</dt><dd>{{showCtrl.productType.name}}</dd>
+          </dl>
         </div>
 
-        <p class="text-uppercase text-center">Third Party</p>
+        <div class="col-sm-10 product-about">
+          <h1 class="product-title">{{showCtrl.product.name}}</h1>
 
-        <dl>
-          <dt>Publish Data</dt><dd>{{showCtrl.product.created_at | date: 'shortDate'}}</dd>
-          <dt>Type</dt><dd>{{showCtrl.product.product_category.name}}</dd>
-        </dl>
+          <dl class="dl-horizontal">
+            <dt>Description</dt><dd>{{showCtrl.product.description}}</dd>
+            <dt>ManageIQ Catalog ID</dt><dd>{{showCtrl.product.service_catalog_id}}</dd>
+            <dt>ManageIQ Type ID</dt><dd>{{showCtrl.product.service_type_id}}</dd>
+            <dt>Chef Role</dt><dd>{{showCtrl.product.chef_role}}</dd>
+            <div ng-repeat="answer in showCtrl.product.answers">
+              <dt>{{answer.question.label}}</dt><dd>{{answer.answer}}</dd>
+            </div>
+          </dl>
+        </div>
       </div>
 
-      <div class="col-sm-10">
-        <h1 class="product-title">{{showCtrl.product.name}}</h1>
-        <p>{{showCtrl.product.description}}</p>
-      </div>
-    </div>
+    </section-header>
   </div>
 </div>

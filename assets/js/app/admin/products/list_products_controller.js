@@ -11,7 +11,7 @@ function ListProductsController(products, categories) {
 
   _.each(this.categories, function(category) {
     category.products = _.filter(self.products, function(product) {
-      return product.product_category_id == category.id;
+      return product.product_type_id == category.id;
     });
   });
 }

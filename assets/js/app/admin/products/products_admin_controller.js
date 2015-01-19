@@ -39,8 +39,8 @@ function ProductsAdminController(categories, clouds) {
 
 ProductsAdminController.resolve = {
   /**@ngInject*/
-  categories: function(ProductCategoryResource) {
-    return ProductCategoryResource.query().$promise;
+  categories: function(ProductTypeResource) {
+    return ProductTypeResource.query({'includes[]': ["questions"]}).$promise;
   },
   /**@ngInject*/
   clouds: function(CloudResource) {
