@@ -97,9 +97,9 @@ AdminUserFormController.prototype = {
    * @param field
    */
   clearSubmitError: function(field) {
-    delete this.form[field].$error['submitError'];
+    delete this.form[field].$error.submitError;
 
-    if (this.form[field].$error.length == 0) {
+    if (this.form[field].$error.length === 0) {
       this.form[field].$invalid = false;
     }
   },
@@ -111,7 +111,7 @@ AdminUserFormController.prototype = {
    * @returns {*}
    */
   getSubmitErrorValue: function(field) {
-    return this.form[field].$error['submitError'];
+    return this.form[field].$error.submitError;
   },
 
   /**
@@ -124,11 +124,11 @@ AdminUserFormController.prototype = {
     var form = this.form;
 
     _.each(errors, function(errorArray, fieldName) {
-      form[fieldName].$error['submitError'] = '';
+      form[fieldName].$error.submitError = '';
 
       _.each(errorArray, function(error) {
         var formattedFieldName = fieldName.charAt(0).toUpperCase() + fieldName.slice(1).toLowerCase();
-        form[fieldName].$error['submitError'] += formattedFieldName + ' ' + error + ' ';
+        form[fieldName].$error.submitError += formattedFieldName + ' ' + error + ' ';
       });
 
       form[fieldName].$invalid = true;

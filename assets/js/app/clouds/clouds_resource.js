@@ -1,8 +1,8 @@
 'use strict';
 
 /**@ngInject*/
-var CloudsResource = function($resource, ApiResource) {
-  return $resource(ApiResource('cloudsById'));
+var CloudsResource = function($resource, apiResource) {
+  return $resource(apiResource('cloudsById'));
 };
 
 module.exports = CloudsResource;

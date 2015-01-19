@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function UsersController($scope) {
+function UsersController() {
 }
 
 UsersController.resolve = {

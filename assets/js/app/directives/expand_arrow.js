@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 function ExpandArrow() {
   return {
     restrict: 'A',

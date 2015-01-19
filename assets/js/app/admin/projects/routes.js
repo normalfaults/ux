@@ -28,5 +28,5 @@ module.exports = function($stateProvider) {
           templateUrl: "/partials/admin/projects/project_question.html",
           controller: 'EditProjectQuestionController as editProjectQuestion',
           resolve: ProjectQuestionData
-      })
+      });
 };

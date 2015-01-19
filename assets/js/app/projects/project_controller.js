@@ -11,7 +11,7 @@ function ProjectController($scope, $modal, project, ProjectUsersResource, OrderI
   this.project = project;
   // Filter the alerts to only show them for this project.
   this.alerts = _.filter(alerts, function(alert) {
-    return alert.project_id = project.id;
+    return alert.project_id == project.id;
   });
   this.products = products;
 

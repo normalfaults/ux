@@ -6,7 +6,7 @@ module.exports = angular.module('broker.common', [
   require('./exception_handler').name,
   require('./constants').name
 ])
-  .factory('ApiResource', require('./api_resource'))
+  .factory('apiResource', require('./api_resource'))
   .factory('httpInterceptor', require('./http_interceptor'))
   .factory('xsrfInterceptor', require('./xsrf_interceptor'))
   .factory('JellyfishModal', require('./jellyfish_modal'))

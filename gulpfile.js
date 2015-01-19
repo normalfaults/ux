@@ -82,13 +82,10 @@ gulp.task('bower-install', function() {
 });
 
 gulp.task('jshint', ['bower'], function() {
-  var jsFilter = filter(['*', '!' + appAssetSrc + '/js/vendor']);
-
   return gulp.src(appAssetSrc + '/js/**/*.js')
     .pipe(plumber({
       errorHandler: errorHandler
     }))
-    .pipe(jsFilter)
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish-recolor'))
     .pipe(jshint.reporter('fail'))
@@ -97,7 +94,6 @@ gulp.task('jshint', ['bower'], function() {
       sound: "Sosumi"
     }))
     .pipe(notify({ message: 'JS Hinting task complete' }))
-    .pipe(jsFilter.restore());
 });
 
 gulp.task('clean-templates', function() {

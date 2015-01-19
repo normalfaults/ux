@@ -1,9 +1,11 @@
 'use strict';
 
-/**@ngInject*/
-var ProjectUsersController = function($scope, $modalInstance, $q, $state, project, ProjectUsersResource, ApiResource) {
+var _ = require('lodash');
 
-  $scope.searchURL = ApiResource("staffSearch");
+/**@ngInject*/
+var ProjectUsersController = function($scope, $modalInstance, $q, $state, project, ProjectUsersResource, apiResource) {
+
+  $scope.searchURL = apiResource("staffSearch");
   $scope.search = "";
   $scope.userAdditons = {};
   $scope.userAdditonCount = 0;
@@ -61,7 +63,7 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, projec
   $scope.removeUser = function(email) {
     delete $scope.userAdditons[email];
     $scope.userAdditonCount = Object.keys($scope.userAdditons).length;
-  }
+  };
 };
 
 module.exports = ProjectUsersController;

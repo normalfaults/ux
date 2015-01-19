@@ -11,5 +11,5 @@ module.exports = function($stateProvider, USER_ROLES) {
       templateUrl: "/partials/dashboard.html",
       resolve: DashboardData,
       controller: "DashboardController as dashboardCtrl"
-    })
+    });
 };

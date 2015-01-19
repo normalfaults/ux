@@ -1,5 +1,7 @@
 'use strict';
 
+var $ = require('jquery');
+
 /**@ngInject*/
 function SwitchViewButtons() {
   return {

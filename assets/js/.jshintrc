@@ -1,0 +1,18 @@
+{
+  "bitwise": true,
+  "nonbsp": true,
+  "unused": "vars",
+  "undef": true,
+  "noempty": true,
+  "newcap": true,
+  "maxdepth": 4,
+  "maxcomplexity": 10,
+  "latedef": true,
+  "freeze": true,
+  "forin": true,
+  "curly": true,
+  "devel": true,
+  "globalstrict" : true,
+  "browser": true,
+  "browserify": true
+}

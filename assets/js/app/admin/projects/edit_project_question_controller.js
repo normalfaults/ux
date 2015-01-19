@@ -13,7 +13,7 @@ function EditProjectQuestionController($scope, $state, projectQuestion, ProjectQ
         ProjectQuestion.update( updatedProjectQuestion , function() {
             $state.go('base.admin.projects.project_questions', {}, {reload: true});
         });
-    }
+    };
 }
 
 EditProjectQuestionController.resolve = {

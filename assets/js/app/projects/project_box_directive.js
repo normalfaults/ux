@@ -1,5 +1,7 @@
 'use strict';
 
+var angular = require('angular');
+
 /**@ngInject*/
 var ProjectBoxDirective = function() {
   return {
