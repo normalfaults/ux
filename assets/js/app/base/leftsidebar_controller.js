@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 /**@ngInject*/
 var LeftSidebarController = function($state, currentUser, projects, AuthService) {
   this.currentUser = currentUser;

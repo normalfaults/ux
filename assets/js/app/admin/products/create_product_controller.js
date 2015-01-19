@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 /**@ngInject*/
 function CreateProductController(product) {
   this.product = product;

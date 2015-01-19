@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function ProjectQuestionsController($scope, $state, projectQuestions, ProjectQuestion) {
+function ProjectQuestionsController($scope, $state, projectQuestions) {
     $scope.projectQuestions = projectQuestions;
     $scope.projectQuestion = {};
 

@@ -34,7 +34,7 @@ LoginController.prototype = {
     };
 
     // @todo Add optional to redirect back to where they were instead of always going to dashboard.
-    var response = this.AuthService.login(credentials)
+    this.AuthService.login(credentials)
       .success(_.bind(function () {
         this.$location.path(this.ROUTES.default);
       }, this))
