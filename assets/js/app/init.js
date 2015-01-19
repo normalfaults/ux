@@ -1,9 +1,11 @@
 'use strict';
 
+var $ = require('jquery');
+
 /**@ngInject*/
 module.exports = function($http, $rootScope, $log, $location, AuthService, UsersResource, Session, $urlRouter, ROUTES, $state) {
 
-  $http.defaults.headers.common['Accept'] = 'application/json, text/javascript';
+  $http.defaults.headers.common.Accept= 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
 
   // Allows us to have a different host for the API and still have cookies set correctly.
@@ -58,7 +60,7 @@ module.exports = function($http, $rootScope, $log, $location, AuthService, Users
       if ('base.dashboard' !== fromState.name) {
         $state.transitionTo('base.dashboard');
       } else {
-        $log.error('Redirect to /dashboard loop halted.')
+        $log.error('Redirect to /dashboard loop halted.');
         // Keep the app from being stuck in a loop requesting broken dashboard data.
         event.preventDefault();
         // TODO: Redirect instead to a "We're sorry." error page.

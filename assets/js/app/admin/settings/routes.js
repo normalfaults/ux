@@ -16,5 +16,5 @@ module.exports = function($stateProvider) {
           controller: 'EditSettingsController as editSettings',
           templateUrl: "/partials/admin/settings/edit.html",
           resolve: SettingsData
-      })
+      });
 };

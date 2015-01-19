@@ -1,9 +1,9 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectUsersResource = function($resource, ApiResource) {
+var ProjectUsersResource = function($resource, apiResource) {
     return $resource(
-      ApiResource('projectUser'),
+      apiResource('projectUser'),
       {id:'@id', staff_id:'@staff_id'},
       {}
     );

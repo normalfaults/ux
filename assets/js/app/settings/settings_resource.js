@@ -3,12 +3,12 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var SettingsResource = function($resource, ApiResource) {
-    return $resource(ApiResource('settingById'), { id: '@id', name: '@name'}, {
+var SettingsResource = function($resource, apiResource) {
+    return $resource(apiResource('settingById'), { id: '@id', name: '@name'}, {
         'update': { method:'PUT' },
         'get': {
             method: 'GET',
-            url: ApiResource('settingsByName'),
+            url: apiResource('settingsByName'),
             isArray: true,
             transformResponse: function(data, headersGetter) {
 
@@ -22,7 +22,7 @@ var SettingsResource = function($resource, ApiResource) {
                     // If this is an even loop, we know it must be the url value.
                     // Since we have already grabbed this value by a look ahead on the
                     // odd loop, we skip it here.
-                    if (loopCount % 2 == 0) {
+                    if (loopCount % 2 === 0) {
                         return;
                     }
 
@@ -35,7 +35,7 @@ var SettingsResource = function($resource, ApiResource) {
                         response.push({
                             name: linkName,
                             url: linkUrl
-                        })
+                        });
                     }
 
                 });

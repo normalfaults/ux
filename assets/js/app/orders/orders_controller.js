@@ -26,6 +26,12 @@ OrdersController.prototype = {
 };
 
 OrdersController.resolve = {
+
+  /**
+   * @TODO This resolves the staff member on to the order, but ideally this would be resolved on the
+   *       server side, with the response returning back an array of unique dependent staff members to link them up.
+   */
+
   /**@ngInject*/
   orderData: function($stateParams, $q, OrdersResource, UsersResource) {
 
@@ -39,7 +45,7 @@ OrdersController.resolve = {
       UsersResource.get({id: order.staff_id}).$promise.then(function(user) {
         orderData.staff = user;
         deferred.resolve(orderData);
-      })
+      });
 
     });
 

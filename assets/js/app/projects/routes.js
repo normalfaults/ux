@@ -5,7 +5,7 @@ var EditProjectData = require('./edit_project_controller').resolve;
 var ProjectServicesData = require('./project_services_controller').resolve;
 
 /**@ngInject*/
-module.exports = function($stateProvider, USER_ROLES) {
+module.exports = function($stateProvider) {
   $stateProvider
     // Create Project
     .state('base.newProject', {
@@ -72,5 +72,5 @@ module.exports = function($stateProvider, USER_ROLES) {
           }
         }).result.then(onClose, onClose);
       }
-    })
+    });
 };

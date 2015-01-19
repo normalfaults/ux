@@ -1,8 +1,8 @@
 'use strict';
 
 /**@ngInject*/
-var ProductCategoryResource = function($resource, ApiResource) {
-  return $resource(ApiResource('productCategoriesById'));
+var ProductCategoryResource = function($resource, apiResource) {
+  return $resource(apiResource('productCategoriesById'));
 };
 
 module.exports = ProductCategoryResource;

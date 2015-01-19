@@ -10,9 +10,9 @@ function EditSettingsController($scope, $state, settings) {
             $scope.updating = false;
         }, function() {
             $scope.updating = false;
-            alert("There was an error updating this setting. Please try again.")
+            alert("There was an error updating this setting. Please try again.");
         });
-    }
+    };
 }
 
 EditSettingsController.resolve = {

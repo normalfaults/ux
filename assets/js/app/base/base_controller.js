@@ -9,7 +9,7 @@ var BaseController = function($rootScope) {
    *
    * @todo Potentially store this data so on a page refresh we can set the state back correctly for the user.
    */
-  $rootScope.previousState;
+  $rootScope.previousState = null;
   $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
     $rootScope.previousState = fromState.name;
     $rootScope.previousStateParams = fromParams;

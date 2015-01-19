@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
 function ServiceController(service, OrderItemsResource) {
   this.service = service;
@@ -43,7 +45,7 @@ ServiceController.resolve = {
       ProductsResource.get({id: orderItem.product_id}).$promise.then(function(product) {
         orderItemData.product = product;
         deferred.resolve(orderItemData);
-      })
+      });
 
     });
 

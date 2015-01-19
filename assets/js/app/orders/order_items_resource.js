@@ -1,15 +1,15 @@
 'use strict';
 
 /**@ngInject*/
-var OrderItemsResource = function($resource, ApiResource) {
-  return $resource(ApiResource('orderItems'), { id: '@id', order_id: '@order_id'}, {
+var OrderItemsResource = function($resource, apiResource) {
+  return $resource(apiResource('orderItems'), { id: '@id', order_id: '@order_id'}, {
     startService: {
       method: 'PUT',
-      url: ApiResource('orderItems') + '/start_service'
+      url: apiResource('orderItems') + '/start_service'
     },
     stopService: {
       method: 'PUT',
-      url: ApiResource('orderItems') + '/stop_service'
+      url: apiResource('orderItems') + '/stop_service'
     }
   });
 };

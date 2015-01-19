@@ -1,12 +1,14 @@
 'use strict';
 
+var angular = require('angular');
+
 /**@ngInject*/
-var AuthService = function($http, $location, Session, ApiResource, USER_ROLES, ROUTES) {
+var AuthService = function($http, $location, Session, apiResource, USER_ROLES, ROUTES) {
   var authService = {};
 
   authService.login = function(credentials) {
     return $http
-      .post(ApiResource('signIn'), credentials)
+      .post(apiResource('signIn'), credentials)
       .success(function(data, statusCode) {
         Session.create(data.email, data.role);
       });
@@ -14,7 +16,7 @@ var AuthService = function($http, $location, Session, ApiResource, USER_ROLES, R
 
   authService.logout = function() {
     return $http
-      .delete(ApiResource('signOut'))
+      .delete(apiResource('signOut'))
       .success(function() {
         Session.destroy();
         $location.path(ROUTES.login);

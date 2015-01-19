@@ -4,7 +4,7 @@ var apiRoutes = require('apiRoutes');
 var _ = require('lodash');
 
 /**@ngInject*/
-function ApiResource(APP_CONFIG) {
+function apiResource(APP_CONFIG) {
   // Get the data from the config if it has been passed in, otherwise use the default
   // from the apiRoutes.json file.
   var apiBasePath = APP_CONFIG.apiBasePath || apiRoutes.basePath;
@@ -19,4 +19,4 @@ function ApiResource(APP_CONFIG) {
   };
 }
 
-module.exports = ApiResource;
+module.exports = apiResource;

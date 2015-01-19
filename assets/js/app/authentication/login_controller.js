@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 // Set outside of the controller instantiation to make sure we keep the state.
 var isFailedLogin = false;
 
@@ -34,11 +36,11 @@ LoginController.prototype = {
     // @todo Add optional to redirect back to where they were instead of always going to dashboard.
     var response = this.AuthService.login(credentials)
       .success(_.bind(function () {
-        this.$location.path(this.ROUTES.default)
+        this.$location.path(this.ROUTES.default);
       }, this))
       .error(_.bind(function() {
         isFailedLogin = true;
-      }, this))
+      }, this));
   },
 
   hasFailedLogin: function() {
