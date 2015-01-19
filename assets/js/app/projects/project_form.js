@@ -1,10 +1,12 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
 function ProjectForm() {
     return {
         restrict: 'E',
-        templateUrl: '/partials/projects/project-form.html',
+        templateUrl: '/partials/projects/project_form.html',
         scope: {
             project: "=project",
             questions: "=questions",
@@ -15,7 +17,7 @@ function ProjectForm() {
             $scope.project.project_answers = $scope.project.project_answers || [];
 
             _.each($scope.questions, function(question){
-                var existingAnswer = _.find($scope.project.project_answers, function(answer) {return answer.project_question_id === question.id});
+                var existingAnswer = _.find($scope.project.project_answers, function(answer) {return answer.project_question_id === question.id;});
 
                 if (existingAnswer === undefined) {
                     $scope.project.project_answers.push({

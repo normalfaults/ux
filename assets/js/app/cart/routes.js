@@ -6,5 +6,5 @@ module.exports = function($stateProvider, USER_ROLES) {
     url: "^/cart",
     templateUrl: '/partials/cart/cart.html',
     controller: "CartController as cartCtrl"
-  })
+  });
 };

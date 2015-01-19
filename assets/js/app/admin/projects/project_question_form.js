@@ -12,8 +12,8 @@ function ProjectQuestionForm() {
         },
         controller: [ '$scope', function ($scope) {
             $scope.addOption = function() {
-                $scope.projectQuestion.options.push('')
-            }
+                $scope.projectQuestion.options.push('');
+            };
 
             $scope.$watch('projectQuestion.field_type', function(newType, lastType) {
                 if(newType != lastType && newType === 'select_option') {

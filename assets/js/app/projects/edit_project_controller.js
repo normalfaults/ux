@@ -3,7 +3,7 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function EditProjectController($scope, $state, ProjectResource, project, projectQuestions) {
+function EditProjectController($scope, $state, ProjectsResource, project, projectQuestions) {
     $scope.project = project;
     $scope.questions = projectQuestions;
 
@@ -18,8 +18,8 @@ function EditProjectController($scope, $state, ProjectResource, project, project
                     'project_question')); return pas;}, []);
         }
 
-        ProjectResource.update(filteredProject , function() {
-            $state.go('base.project', {projectId: project.id}, {reload: true});
+        ProjectsResource.update(filteredProject , function() {
+            $state.go('base.project.view', {projectId: project.id}, {reload: true});
         });
     };
 }
@@ -28,10 +28,6 @@ EditProjectController.resolve = {
     /**@ngInject*/
     projectQuestions: function(ProjectQuestionsResource) {
         return ProjectQuestionsResource.query().$promise;
-    },
-    /**@ngInject*/
-    project: function(ProjectResource, $stateParams) {
-        return ProjectResource.get({id: $stateParams.projectId}).$promise;
     }
 };
 

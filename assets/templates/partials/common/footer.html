@@ -1,0 +1,26 @@
+<footer>
+  <div class="footer-content">
+    <div class="left fl">
+      <strong>Project Jellyfish – Release 2 Preview</strong>
+      <span>Copyright &copy; 2014 Booz Allen Hamilton. All Rights Reserved.</span>
+    </div>
+    <!-- end .left -->
+    <div class="right fr">
+      <nav class="links">
+        <div ng-repeat="footerLink in footerCtrl.footerLinks">
+          <a href="{{footerLink.url}}">{{footerLink.name}}</a>
+        </div>
+      </nav>
+      <!-- end .links -->
+      <div class="shape">
+        <a class="fa fa-facebook footer-icon"></a>
+        <a class="fa fa-twitter footer-icon"></a>
+        <a class="fa fa-linkedin footer-icon"></a>
+        <a class="fa fa-google-plus footer-icon"></a>
+      </div>
+      <!-- end .shape -->
+    </div>
+    <!-- end .right -->
+  </div>
+</footer>
+<!-- end footer -->

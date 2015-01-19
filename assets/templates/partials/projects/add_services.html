@@ -1,0 +1,30 @@
+<div class="page project-add-services-page main-content" set-width>
+    <div class="content box-content">
+
+        <div class="page-title">
+            <div class="page-title-text">
+                <h3>Add Service</h3>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6" >
+            <a ui-sref="base.project.view({projectId: projectServicesCtrl.project.id})" class="btn btn-link">
+              <i class="fa fa-long-arrow-left"></i>
+              Back to Project
+            </a>
+          </div>
+        </div>
+
+        <section-header ng-repeat="category in projectServicesCtrl.categories"
+                        name="{{category.name}}"
+                        description="{{category.description}}"
+                        ng-show="category.products.length > 0"
+                        allow-view-type-toggle="true"
+        />
+        <product-box class="product-box" ng-repeat="product in category.products" product="product">
+            <a type="button" class="btn btn-primary" ui-sref="base.marketplace.show({id: product.id})" target="_blank">View More</a>
+            <a type="button" class="btn btn-primary" ng-click="projectServicesCtrl.addToCart(product)">Add to Cart ({{projectServicesCtrl.cartCount(projectServicesCtrl.project.id, product.id)}}) </a>
+        </product-box>
+        </section-header>
+    </div>
+</div>

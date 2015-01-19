@@ -1,8 +1,8 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectQuestion = function($resource, ApiResource) {
-    var projectQuestion = $resource(ApiResource('projectQuestions'), { id: '@id' }, {
+var ProjectQuestion = function($resource, apiResource) {
+    var projectQuestion = $resource(apiResource('projectQuestions'), { id: '@id' }, {
         'update': { method:'PUT' }
     });
     return projectQuestion;

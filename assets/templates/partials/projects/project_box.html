@@ -1,0 +1,38 @@
+<div class="project-box">
+  <h3>
+    <a ng-if="sref" ui-sref="{{sref}}" class="titles">{{project.name | uppercase}}</a>
+  </h3>
+
+  <div class="data-box">
+    <div class="info">
+      <a ng-if="sref" ui-sref="{{sref}}">
+        <img ng-src="{{project.icon}}"/>
+      </a>
+      <p>
+        <a href="{{project.url}}" class="blue-texts">{{project.domain}}</a>
+      </p>
+    </div>
+    <div class="icons">
+      <a>
+        <span class="fa fa-money"></span>
+      </a>
+      <a>
+        <span class="fa fa-desktop"></span>
+      </a>
+      <a>
+        <span class="fa fa-database"></span>
+      </a>
+      <a>
+        <span class="fa fa-tachometer"></span>
+      </a>
+    </div>
+  </div>
+  <div class="bottom-area">
+    <span class="fl">
+       <span class="blue-texts">{{project.state}}</span>
+       <span ng-class="{'fa fa-check-circle-o success-icon': project.state_ok, 'fa fa-exclamation-circle error-icon' : !project.state_ok }"></span>
+    </span>
+    <!-- end .data-box -->
+  </div>
+  <!-- end .bottom-area -->
+</div>

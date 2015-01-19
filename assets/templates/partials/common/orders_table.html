@@ -20,7 +20,7 @@
             </thead>
             <tbody>
             <tr ng-repeat="item in orders">
-                <td class="blue-texts font15"><a class="blue-link">{{item.id}}</a></td>
+                <td class="blue-texts font15"><a class="blue-link" ui-sref="base.orders({id: item.id})">{{item.id}}</a></td>
                 <td class="item-texts">{{item.item_count || item.order_items.length || 0}}</td>
                 <td class="green-texts">{{item.total | currency}}</td>
                 <td class="{{item.color}}-texts">{{item.provision_status}}</td>

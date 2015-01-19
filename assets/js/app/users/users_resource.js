@@ -1,13 +1,13 @@
 'use strict';
 
 /**@ngInject*/
-var UsersResource = function($resource, ApiResource) {
-  var Users = $resource(ApiResource('staffById'), {'id': '@id'}, {
+var UsersResource = function($resource, apiResource) {
+  var Users = $resource(apiResource('staffById'), {'id': '@id'}, {
     // Get Current
     getCurrentMember: {
       method: 'GET',
       isArray: false,
-      url: ApiResource('currentMember')
+      url: apiResource('currentMember')
     },
     // Get Single
     get: {

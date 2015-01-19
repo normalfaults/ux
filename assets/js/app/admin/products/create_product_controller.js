@@ -1,7 +1,5 @@
 'use strict';
 
-var _ = require('lodash');
-
 /**@ngInject*/
 function CreateProductController(product, categories, $stateParams) {
   this.product = product;
@@ -18,8 +16,8 @@ function CreateProductController(product, categories, $stateParams) {
 
 CreateProductController.resolve = {
   /**@ngInject*/
-  product: function(ProductResource, $stateParams) {
-    return new ProductResource($stateParams);
+  product: function(ProductsResource, $stateParams) {
+    return new ProductsResource($stateParams);
   }
 };
 

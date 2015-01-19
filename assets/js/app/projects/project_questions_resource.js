@@ -1,9 +1,9 @@
 'use strict';
 
 /**@ngInject*/
-var ProjectQuestionsResource = function($resource, ApiResource) {
+var ProjectQuestionsResource = function($resource, apiResource) {
     return $resource(
-      ApiResource('projectQuestions'), {id:'@id'}, {
+      apiResource('projectQuestions'), {id:'@id'}, {
         query: {
           method: 'GET',
           isArray: true

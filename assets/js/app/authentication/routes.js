@@ -12,5 +12,5 @@ module.exports = function($stateProvider, USER_ROLES) {
   }).state('publicbase.logout', {
     url: "^/logout",
     controller: "LogoutController as logoutCtrl"
-  })
+  });
 };

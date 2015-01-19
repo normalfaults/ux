@@ -26,7 +26,7 @@ var SectionHeaderDirective = function() {
 
       $scope.showList = function() {
         $scope.currentViewType = 'list-view';
-      }
+      };
     }
   };
 };

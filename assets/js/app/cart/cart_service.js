@@ -2,9 +2,9 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-var CartService = function($q, $state, OrderResource) {
+var CartService = function($q, $state, OrdersResource) {
   this.$q = $q;
-  this.OrderResource = OrderResource;
+  this.OrdersResource = OrdersResource;
   this.$state = $state;
 
   this.cart = this._getResource();
@@ -91,7 +91,7 @@ CartService.prototype = {
       order_items: orderItems
     };
 
-    this.OrderResource.save(order).$promise.then(_.bind(function() {
+    this.OrdersResource.save(order).$promise.then(_.bind(function() {
 
       // Empty the Cart.
       this.clearCart();
@@ -103,7 +103,7 @@ CartService.prototype = {
        * @todo This is probably not the best way to handle this, but since the cart can be launched
        *       from anywhere, it's hard to pass in a callback without making an equally ugly global one.
        */
-      if (this.$state.is('base.project')) {
+      if (this.$state.is('base.project.view')) {
         this.$state.reload();
       }
 

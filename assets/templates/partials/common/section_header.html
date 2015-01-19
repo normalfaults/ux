@@ -1,16 +1,14 @@
-<div ng-class="viewType || currentViewType">
+<div ng-class="currentViewType">
   <div class="titles-box">
     <div class="col-sm-6">
       <h2>{{name}}</h2>
-
-      <!-- TODO: Add descriptions to product_categories -->
       <p>{{description}}</p>
     </div>
     <div ng-if="allowViewTypeToggle === undefined || allowViewTypeToggle" class="switch-buttons col-sm-6 text-right">
-      <a ng-click="showGrid()" class="btn btn-link grid-switch" ng-class="(currentViewType == 'grid-view') ? 'active' : ''">
+      <a ng-click="showGrid()" class="btn btn-link" ng-class="(currentViewType == 'grid-view') ? 'grid-switch active' : ''">
         <i class="fa fa-fw fa-lg fa-th"></i>
       </a>
-      <a ng-click="showList()" class="btn btn-link list-switch" ng-class="(currentViewType == 'list-view') ? 'active' : ''">
+      <a ng-click="showList()" class="btn btn-link" ng-class="(currentViewType == 'list-view') ? 'list-switch active' : ''">
         <i class="fa fa-fw fa-lg fa-bars"></i>
       </a>
     </div>

@@ -1,148 +1,104 @@
-<div class="service-detail-page main-content" set-width>
+<div class="page service-page main-content" set-width>
+    <div class="content box-content">
 
-<div class="service-detail-container">
-<div class="right-bar">
-
-    <div class="build-custom-box">
-        <h2>
-            BUILD CUSTOM
-            CLOUD SOLUTION
-        </h2>
-        <p>
-            Build your custom solution
-            project guided by expert
-        </p>
-        <a><span>Get Started</span> <i class="fa fa-caret-right"></i></a>
-        <span class="build-custom-img"></span>
-    </div>
-    <!-- end .build-custom-box -->
-
-    <div class="banner-vertical">
-        <h2>
-            NEED HELP<br/>
-            BUILDING<br/>
-            CLOUD SOLUTION ?
-        </h2>
-        <p>
-            Confused where to start? We’re
-            here to help, simply tell us what
-            is you need
-        </p>
-        <a><span>Get Started</span> <i class="fa fa-caret-right"></i></a>
-        <div>
-            <span class="map-icon"><i class="fa fa-map-marker"></i></span>
-        </div>
-        <span class="shape-banner-img"></span>
-    </div>
-    <!-- end .banner-vertical -->
-</div>
-<!-- end .right-bar -->
-
-<div class="contents">
-    <div class="titles-box">
-        <h2>
-            <strong>SERVICE DETAIL</strong>
-        </h2>
-        <div class="titles-border-bar">
-            <span class="blues width137"></span>
-            <span class="whites width3"></span>
-        </div>
-    </div>
-    <!-- end .titles-box -->
-
-    <div class="deail-contents">
-        <div class="deail-info">
-            <div class="container-grid">
-                <div class="boxes">
-                    <span class="icon-boxes green-top-border">
-                        <span class="center-image"></span><img class="center-image-img" ng-src="{{service.iconBig}}"/>
-                    </span>
-                </div>
+        <div class="page-title">
+            <div class="page-title-icon">
+                <img ng-src="/images/assets/{{serviceCtrl.service.product.img}}"/>
             </div>
-            <div class="texts">
-                <h3>{{service.source | uppercase}}</h3>
-                <dl>
-                    <dt>PUBLISH DATE</dt>
-                    <dd>{{service.publishDate}}</dd>
-                    <dt>TYPE</dt>
-                    <dd>{{service.type | uppercase}}</dd>
-                </dl>
-                <a class="btn btn-primary">VIEW DOCS</a>
+            <div class="page-title-text">
+                <h3>{{serviceCtrl.service.project.name}} | {{serviceCtrl.service.product.name}}</h3>
             </div>
         </div>
-        <!-- end .deail-info -->
 
-        <div class="deail-boxs">
-            <div class="top-texts">
-                <h3><strong class="green-texts">{{service.name | uppercase}}</strong><a href="javascript:;" class="info-footer"><i class="fa fa-info-circle"></i></a></h3>
-                <p>
-                    {{service.fullDescription}}
-                </p>
-                <div class="btn-box">
-                    <a href="javascript:" class="btn btn-primary">ADD TO CART</a>
-                </div>
+        <div class="row">
+            <div class="col-sm-6" ng-switch="previousState">
+                <a ng-switch-when="base.project.view" ui-sref="base.project.view(previousStateParams)" class="btn btn-link">
+                    <i class="fa fa-long-arrow-left"></i>
+                    Back to Project
+                </a>
+                <a ng-switch-default ui-sref="base.orders({id: serviceCtrl.service.order_id})" class="btn btn-link">
+                    <i class="fa fa-long-arrow-left"></i>
+                    Back to Order
+                </a>
             </div>
-            <!-- end .top-texts -->
-
-            <div class="table-texts">
-                <h3>Pick a plan</h3>
-                <table class="table-data">
-                    <colgroup>
-                        <col class="col20">
-                        <col class="col40">
-                        <col>
-                    </colgroup>
-                    <thead>
-                    <tr>
-                        <th>Plan</th>
-                        <th>Features</th>
-                        <th>Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr ng-repeat="(name, data) in service.plans">
-                        <td>{{name}}</td>
-                        <td>
-                            <span ng-repeat="item in data.features">{{item}}<br/></span>
-                        </td>
-                        <td>
-                            <span ng-repeat="item in data.price">{{item}}<br/></span>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-            <!-- end .table-texts -->
-
-            <div class="function-tab-box">
-                <div class="tabs service-detail-tabs">
-                    <ul>
-                        <li ng-class="{active: tab == 'feature'}"><a href="javascript:" ng-click="serviceCtrl.setTab('feature')">FEATURE</a><span class="border-spacing"></span></li>
-                        <li ng-class="{active: tab == 'specification'}"><a href="javascript:" ng-click="serviceCtrl.setTab('specification')">SPECIFICATION</a><span class="border-spacing"></span></li>
-                    </ul>
-                </div>
-                <!-- end .tabs -->
-
-                <div class="tab-content feature-content" ng-bind-html="service.feature" ng-show="tab == 'feature'">
-                </div>
-
-                <div class="tab-content specification-content"  ng-bind-html="service.specification"  ng-show="tab == 'specification'">
-                </div>
-
-                <!-- end .tab-content -->
-            </div>
-            <!-- end .function-tab-box -->
         </div>
-        <!-- end .deail-boxs -->
-        <span class="clearfix"></span>
+
+        <section-header name="Order Details">
+
+            <div class="table-box">
+                <div class="data-box">
+
+                    <table st-table="rowCollection" class="table table-responsive table-striped">
+                        <tbody>
+                        <tr>
+                            <td class="blue-texts font15">Order Item ID</td>
+                            <td class="item-texts">{{serviceCtrl.service.id}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Created At</td>
+                            <td class="item-texts">{{serviceCtrl.service.created_at | date:'medium'}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Updated At</td>
+                            <td class="item-texts">{{serviceCtrl.service.updated_at | date:'medium'}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Cloud</td>
+                            <td class="item-texts">{{serviceCtrl.service.cloud_id}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Product</td>
+                            <td class="item-texts">{{serviceCtrl.service.product.name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Project</td>
+                            <td class="item-texts">{{serviceCtrl.service.project.name}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Status</td>
+                            <td class="item-texts">{{serviceCtrl.service.provision_status}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section-header>
+
+        <section-header name="Service">
+            <div class="table-box">
+                <div class="data-box">
+
+                    <table st-table="rowCollection" class="table table-responsive table-striped">
+                        <tbody>
+                        <tr>
+                            <td class="blue-texts font15">Pricing</td>
+                            <td class="item-texts">{{serviceCtrl.service.total | currency}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">Hostname</td>
+                            <td class="item-texts">{{serviceCtrl.service.hostname}}</td>
+                        </tr>
+                        <tr>
+                            <td class="blue-texts font15">IP Address</td>
+                            <td class="item-texts">{{serviceCtrl.service.ip_address}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section-header>
+
+        <section-header name="Manage">
+            <div class="col-sm-6 text-left">
+              <a type="button" class="btn btn-danger" ng-click="serviceCtrl.stopService()">Stop Service</a>
+              <a type="button" class="btn btn-primary" ng-click="serviceCtrl.startService()">Start Service</a>
+            </div>
+        </section-header>
+
+        <section-header name="Logs">
+            <div class="col-sm-6 text-left">
+              Service Logs Go Here.
+            </div>
+        </section-header>
     </div>
-    <!-- end .deail-contents -->
-
-
-</div>
-<!-- end .contents -->
-<span class="clearfix"></span>
-</div>
-<!-- end .service-detail-container -->
-<span class="clearfix"></span>
 </div>

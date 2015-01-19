@@ -7,13 +7,13 @@ function EditProjectQuestionController($scope, $state, projectQuestion, ProjectQ
     $scope.projectQuestion = projectQuestion;
 
     $scope.submitProject = function(){
-        var filteredProjectQuestion = _.omit($scope.projectQuestion, 'created_at', 'updated_at', 'deleted_at', 'id'),
+        var filteredProjectQuestion = _.omit($scope.projectQuestion, 'created_at', 'updated_at', 'deleted_at'),
             updatedProjectQuestion = filteredProjectQuestion.options ? filteredProjectQuestion : _.omit(filteredProjectQuestion, 'options');
 
-        ProjectQuestion.update({id: $scope.projectQuestion.id, project_question: updatedProjectQuestion} , function() {
+        ProjectQuestion.update( updatedProjectQuestion , function() {
             $state.go('base.admin.projects.project_questions', {}, {reload: true});
         });
-    }
+    };
 }
 
 EditProjectQuestionController.resolve = {

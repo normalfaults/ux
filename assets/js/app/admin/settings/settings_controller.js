@@ -1,7 +1,7 @@
 'use strict';
 
 /**@ngInject*/
-function SettingsController($scope, $state) {
+function SettingsController() {
 }
 
 module.exports = SettingsController;

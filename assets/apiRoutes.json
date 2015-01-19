@@ -2,7 +2,8 @@
   "basePath": "/api",
   "routes": {
 
-    "adminSettingById":  "/admin_settings/:id",
+    "settingById":       "/settings/:id",
+    "settingsByName":    "/settings/:name",
     "cloudsById":        "/clouds/:id",
 
     "alerts":            "/alerts",

@@ -15,7 +15,7 @@ require('angular-cookies');
 
 var angular = require('angular');
 
-var app = angular.module('broker', [
+angular.module('broker', [
   "ui.router",
   "ngResource",
   "angular-loading-bar",
@@ -43,6 +43,8 @@ var app = angular.module('broker', [
   require('./orders').name,
   require('./directives').name,
   require('./dashboard').name,
-  require('./users').name
+  require('./users').name,
+  require('./settings').name
+
 ])
   .run(require('./init'));

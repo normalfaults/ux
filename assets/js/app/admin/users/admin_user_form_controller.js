@@ -28,6 +28,7 @@ var AdminUserFormController = function($state) {
       name: 'Admin'
     }
   ];
+
 };
 
 AdminUserFormController.prototype = {
@@ -46,11 +47,13 @@ AdminUserFormController.prototype = {
     if (this.form.$invalid) {
       return false;
     }
+
     this.user.$save(_.bind(function() {
       this.$state.go(adminUsersListState);
-    }, this), function() {
-      // TODO: Failure
-    });
+    }, this), _.bind(function(response) {
+      this._handleServerErrors(response.data.errors);
+    }, this));
+
   },
 
   update: function() {
@@ -61,8 +64,8 @@ AdminUserFormController.prototype = {
 
     this.user.$update(_.bind(function() {
       this.$state.go(adminUsersListState);
-    }, this), function() {
-      // TODO: Failure
+    }, this), function(response) {
+      this._handleServerErrors(response.data.errors);
     });
   },
 
@@ -70,8 +73,8 @@ AdminUserFormController.prototype = {
     this.formSubmitted = true;
     this.user.$delete(_.bind(function() {
       this.$state.go(adminUsersListState);
-    }, this), function() {
-      // TODO: Failure
+    }, this), function(response) {
+      this._handleServerErrors(response.data.errors);
     });
   },
 
@@ -85,6 +88,51 @@ AdminUserFormController.prototype = {
       return this.formSubmitted && this.form[field].$error[validation];
     }
     return this.formSubmitted && this.form[field].$invalid;
+  },
+
+  /**
+   * Since we can't easily validate the error coming from the server, we use ng-change
+   * to clear the error when the user updates the field.  This way the form will allow a resubmit.
+   *
+   * @param field
+   */
+  clearSubmitError: function(field) {
+    delete this.form[field].$error.submitError;
+
+    if (this.form[field].$error.length === 0) {
+      this.form[field].$invalid = false;
+    }
+  },
+
+  /**
+   * Get the submit error value.
+   *
+   * @param field
+   * @returns {*}
+   */
+  getSubmitErrorValue: function(field) {
+    return this.form[field].$error.submitError;
+  },
+
+  /**
+   * Parse the errors from the server, Set the invalid flag, error flag for the server.
+   * @param errors
+   * @private
+   */
+  _handleServerErrors: function(errors) {
+
+    var form = this.form;
+
+    _.each(errors, function(errorArray, fieldName) {
+      form[fieldName].$error.submitError = '';
+
+      _.each(errorArray, function(error) {
+        var formattedFieldName = fieldName.charAt(0).toUpperCase() + fieldName.slice(1).toLowerCase();
+        form[fieldName].$error.submitError += formattedFieldName + ' ' + error + ' ';
+      });
+
+      form[fieldName].$invalid = true;
+    });
   }
 };
 

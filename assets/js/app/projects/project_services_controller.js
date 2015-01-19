@@ -1,14 +1,12 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
-var ProjectServicesController = function($scope, $modalInstance, CartService, project, products, categories, currentUser) {
+var ProjectServicesController = function($scope, CartService, project, products, categories, currentUser) {
   this.CartService = CartService;
   this.project = project;
   this.CurrentUser = currentUser;
-
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
 
   /**
    * @todo This mirrors the marketplace controller currently

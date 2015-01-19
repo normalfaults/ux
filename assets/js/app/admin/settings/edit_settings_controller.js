@@ -1,8 +1,8 @@
 'use strict';
 
 /**@ngInject*/
-function EditSettingsController($scope, $state, adminSettings, AdminSetting) {
-    $scope.adminSettings = adminSettings;
+function EditSettingsController($scope, $state, settings) {
+    $scope.settings = settings;
     $scope.updating = false;
     $scope.updateSetting = function(setting) {
         $scope.updating = true;
@@ -10,15 +10,15 @@ function EditSettingsController($scope, $state, adminSettings, AdminSetting) {
             $scope.updating = false;
         }, function() {
             $scope.updating = false;
-            alert("There was an error updating this setting. Please try again.")
+            alert("There was an error updating this setting. Please try again.");
         });
-    }
+    };
 }
 
 EditSettingsController.resolve = {
     /**@ngInject*/
-    adminSettings: function(AdminSetting) {
-        return AdminSetting.query().$promise;
+    settings: function(SettingsResource) {
+        return SettingsResource.query().$promise;
     }
 };
 

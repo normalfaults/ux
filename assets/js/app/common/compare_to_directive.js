@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Allows comparing of two different valus against each other.
  *

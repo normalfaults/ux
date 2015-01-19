@@ -1,9 +1,11 @@
 'use strict';
 
-/**@ngInject*/
-var ProjectUsersController = function($scope, $modalInstance, $q, $state, project, ProjectUserResource, ApiResource) {
+var _ = require('lodash');
 
-  $scope.searchURL = ApiResource("staffSearch");
+/**@ngInject*/
+var ProjectUsersController = function($scope, $modalInstance, $q, $state, project, ProjectUsersResource, apiResource) {
+
+  $scope.searchURL = apiResource("staffSearch");
   $scope.search = "";
   $scope.userAdditons = {};
   $scope.userAdditonCount = 0;
@@ -32,7 +34,7 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, projec
     userInserts = _.map(Object.keys($scope.userAdditons), function(key) {
       var user = $scope.userAdditons[key].originalObject;
 
-      return ProjectUserResource.save({id: project.id, staff_id: user.id}).$promise.then(
+      return ProjectUsersResource.save({id: project.id, staff_id: user.id}).$promise.then(
         function(data){
         }, function(error) {
           // @todo We should use a code here not a string match.
@@ -61,7 +63,7 @@ var ProjectUsersController = function($scope, $modalInstance, $q, $state, projec
   $scope.removeUser = function(email) {
     delete $scope.userAdditons[email];
     $scope.userAdditonCount = Object.keys($scope.userAdditons).length;
-  }
+  };
 };
 
 module.exports = ProjectUsersController;
