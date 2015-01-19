@@ -1,4 +1,6 @@
 {
+  "bitwise": true,
+  "nonbsp": true,
   "unused": "vars",
   "undef": true,
   "noempty": true,
