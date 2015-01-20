@@ -10,16 +10,10 @@ function ShowProductController(products, categories, $stateParams) {
   this.productType = _.find(categories, {id: this.product.product_type_id});
 
   _.each(this.product.answers, function(answer) {
-    answer.question = _.find(self.productType.questions, {id: answer.product_type_question_id})
+    answer.question = _.find(self.productType.questions, {id: answer.product_type_question_id});
   });
 }
 
-ShowProductController.resolve = {
-  ///**@ngInject*/
-  //product: function(products, $stateParams) {
-  //  return _.find(products, {id: $stateParams.id});
-  //  //return ProductResource.get({id: $stateParams.id, 'includes[]': ['product_type', 'answers']}).$promise;
-  //}
-};
+ShowProductController.resolve = {};
 
 module.exports = ShowProductController;

@@ -16,7 +16,7 @@ function QuestionInputDirective() {
     link: function(scope, el, attrs, required) {
       scope.qiCtrl.init(scope, el, attrs, required);
     }
-  }
+  };
 }
 
 module.exports = QuestionInputDirective;

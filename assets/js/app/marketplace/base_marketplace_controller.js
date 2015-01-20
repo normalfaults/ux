@@ -6,12 +6,12 @@ function BaseMarketplaceController() {
 
 BaseMarketplaceController.resolve = {
   /**@ngInject*/
-  categories: function(ProductTypeResource) {
-    return ProductTypeResource.query({"includes[]": ["questions"]}).$promise;
+  categories: function(ProductTypesResource) {
+    return ProductTypesResource.query({"includes[]": ["questions"]}).$promise;
   },
   /**@ngInject*/
-  products: function(ProductResource) {
-    return ProductResource.query({"includes[]": ["cloud", "answers"]}).$promise;
+  products: function(ProductsResource) {
+    return ProductsResource.query({"includes[]": ["cloud", "answers"], active: true}).$promise;
   }
 };
 

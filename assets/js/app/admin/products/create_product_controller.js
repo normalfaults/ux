@@ -1,5 +1,7 @@
 'use strict';
 
+var _ = require('lodash');
+
 /**@ngInject*/
 function CreateProductController(product, categories, $stateParams) {
   this.product = product;
