@@ -20,12 +20,12 @@ module.exports = function($stateProvider) {
       controller: 'ListProductsController as listCtrl',
       resolve: ProductsListData
     }).state('base.admin.products.edit', {
-      url: '/edit/:id',
+      url: '/edit/{id:int}',
       templateUrl: '/partials/admin/products/edit_product.html',
       controller: 'EditProductController as editCtrl',
       resolve: ProductEditData
     }).state('base.admin.products.create', {
-      url: '/create?{product_category_id:int}',
+      url: '/create?{product_type_id:int}',
       templateUrl: '/partials/admin/products/create_product.html',
       controller: 'CreateProductController as createCtrl',
       resolve: ProductCreateData

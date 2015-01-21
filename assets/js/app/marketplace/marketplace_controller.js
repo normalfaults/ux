@@ -4,33 +4,16 @@ var _ = require('lodash');
 
 /**@ngInject*/
 function MarketplaceController(products, categories) {
+  var self = this;
 
+  this.products = products;
   this.categories = categories;
-  // Only display non deleted products.
-  this.products = _.filter(products, function(product) {
-    return product.deleted_at === null;
-  });
 
-  _.each(this.categories, _.bind(function(category) {
-    category.products = _.filter(this.products, function(product) {
-      return product.product_category_id == category.id;
-    });
-  }, this));
+  _.each(this.categories, function(category) {
+    category.products = _.filter(self.products, {product_type_id: category.id});
+  });
 }
 
-/**
- * @todo categories, products are used in product admin as well, could be
- *       combined better in the future.
- */
-MarketplaceController.resolve = {
-  /**@ngInject*/
-  categories: function(ProductCategoryResource) {
-    return ProductCategoryResource.query().$promise;
-  },
-  /**@ngInject*/
-  products: function(ProductsResource) {
-    return ProductsResource.query({"includes[]": ["cloud"]}).$promise;
-  }
-};
+MarketplaceController.resolve = {};
 
 module.exports = MarketplaceController;

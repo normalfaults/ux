@@ -1,3 +1,10 @@
+a
+  cursor: pointer
+
+  &.disabled,
+  &[disabled]
+    cursor: default
+
 .btn
   text-align: center
   cursor: pointer
@@ -20,6 +27,6 @@
 
     &:hover
       color: $hover-color
-      
+
     &.active
       color: $medium-blue-color

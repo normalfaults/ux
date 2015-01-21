@@ -1,5 +1,5 @@
 <div class="create-product-page main-content" set-width>
-  <div class="content box-content container">
+  <div class="content box-content">
     <section-header name="Create Product">
       <form name="productForm.form" class="form-horizontal product-form" role="form"
             ng-controller="ProductFormController as productForm"
@@ -17,10 +17,8 @@
             <button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Create Product</button>
           </div>
         </div>
-
         <div ng-include src="'/partials/admin/products/_form.html'"></div>
       </form>
     </section-header>
-
   </div>
 </div>

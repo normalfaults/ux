@@ -1,0 +1,46 @@
+<div ng-switch on="qiCtrl.question.field_type">
+
+  <div ng-switch-when="text" class="form-group" ng-class="{'has-error': qiCtrl.hasError()}">
+    <label class="col-sm-2 control-label" for="{{qiCtrl.fieldId()}}">{{qiCtrl.question.label}}</label>
+
+    <div class="col-sm-6 control-input">
+      <input type="text" class="form-control" placeholder="{{qiCtrl.question.placeholder}}"
+             id="{{qiCtrl.fieldId()}}" name="{{qiCtrl.fieldName()}}"
+             ng-model="qiCtrl.answer.answer" ng-required="{{qiCtrl.question.required}}"/>
+
+      <div class="help-block">
+        <div class="help-text" ng-show="qiCtrl.hasError('required')">
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="help-block">
+        <div class="help-text">{{qiCtrl.question.help}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div ng-switch-when="select" class="form-group" ng-class="{'has-error': qiCtrl.hasError()}">
+    <label class="col-sm-2 control-label" for="{{qiCtrl.fieldId()}}">{{qiCtrl.question.label}}</label>
+
+    <div class="col-sm-6 control-input">
+      <select class="form-control"
+             ng-options="option[0] as option[1] for option in qiCtrl.question.options"
+             id="{{qiCtrl.fieldId()}}" name="{{qiCtrl.fieldName()}}"
+             ng-model="qiCtrl.answer.answer" ng-required="{{qiCtrl.question.required}}"/>
+
+      <div class="help-block">
+        <div class="help-text" ng-show="qiCtrl.hasError('required')">
+          Required
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="help-block">
+        <div class="help-text">{{qiCtrl.question.help}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

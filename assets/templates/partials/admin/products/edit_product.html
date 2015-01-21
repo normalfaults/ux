@@ -1,5 +1,5 @@
 <div class="edit-product-page main-content" set-width>
-  <div class="content box-content container">
+  <div class="content box-content">
     <section-header name="Edit Project">
       <form name="productForm.form" class="form-horizontal product-form" role="form"
             ng-controller="ProductFormController as productForm"
@@ -18,7 +18,6 @@
             <button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Update</button>
           </div>
         </div>
-
         <div ng-include src="'/partials/admin/products/_form.html'"></div>
       </form>
     </section-header>

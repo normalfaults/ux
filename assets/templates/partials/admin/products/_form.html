@@ -1,7 +1,7 @@
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productName')}">
   <label class="col-sm-2 control-label" for="productName">Name:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <input id="productName" name="productName" type="text" ng-model="productForm.product.name" class="form-control"
            required/>
 
@@ -17,7 +17,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="productDescription">Description:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <textarea id="productDescription" name="productDescription" ng-model="productForm.product.description"
               class="form-control" rows="3"></textarea>
 
@@ -29,9 +29,9 @@
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceCatalog')}">
-  <label class="col-sm-2 control-label" for="productName">ManageIQ Catalog ID:</label>
+  <label class="col-sm-2 control-label" for="productServiceCatalog">ManageIQ Catalog ID:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <input id="productServiceCatalog" name="productServiceCatalog" type="number"
            ng-model="productForm.product.service_catalog_id" class="form-control" required/>
 
@@ -45,9 +45,9 @@
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceType')}">
-  <label class="col-sm-2 control-label" for="productName">ManageIQ Type ID:</label>
+  <label class="col-sm-2 control-label" for="productServiceType">ManageIQ Type ID:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <input id="productServiceType" name="productServiceType" type="number"
            ng-model="productForm.product.service_type_id" class="form-control" required/>
 
@@ -60,14 +60,15 @@
   <div class="col-sm-4"></div>
 </div>
 
-<div class="form-group" ng-class="{'has-error': productForm.hasError('chefRole')}">
-  <label class="col-sm-2 control-label" for="chefRole">Chef Role:</label>
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productChefRole')}">
+  <label class="col-sm-2 control-label" for="productChefRole">Chef Role:</label>
 
-  <div class="col-sm-6 controls">
-    <input id="chefRole" name="chefRole" type="text" ng-model="productForm.product.chef_role" class="form-control" required/>
+  <div class="col-sm-6 control-input">
+    <input id="productChefRole" name="productChefRole" type="text"
+           ng-model="productForm.product.chef_role" class="form-control" required/>
 
     <div class="help-block">
-      <div class="help-text" ng-show="productForm.hasError('chefRole', 'required')">A Chef Role is
+      <div class="help-text" ng-show="productForm.hasError('productChefRole', 'required')">A Chef role is required for
         required for all products
       </div>
     </div>
@@ -75,27 +76,29 @@
   <div class="col-sm-4"></div>
 </div>
 
+<!--
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productCategory')}">
   <label class="col-sm-2 control-label" for="productCategory">Category:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <select id="productCategory" name="productCategory" class="form-control"
             ng-model="productForm.product.product_category_id"
             ng-options="category.id as category.name for category in productsAdminCtrl.categories" required></select>
 
     <div class="help-block">
-      <div class="help-text" ng-show="productForm.hasError('productCategory', 'required')">A category is required for
+      <div class="help-text" ng-show="productForm.hasError('productCategory', 'required')">A type is required for
         all products
       </div>
     </div>
   </div>
   <div class="col-sm-4"></div>
 </div>
+-->
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productCloud')}">
   <label class="col-sm-2 control-label" for="productCloud">Cloud Provider:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <select id="productCloud" name="productCloud" class="form-control" ng-model="productForm.product.cloud_id"
             ng-options="cloud.id as cloud.name for cloud in productsAdminCtrl.clouds" required></select>
 
@@ -111,7 +114,7 @@
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productImg')}">
   <label class="col-sm-2 control-label">Icon:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <ui-select id="productImg" name="productImg" ng-model="productForm.product.img" theme="selectize" required>
       <ui-select-match>
         <img ng-src="/images/assets/{{$select.selected}}"/>
@@ -133,7 +136,7 @@
 <div class="form-group">
   <label class="col-sm-2 control-label" for="productActive">Active?:</label>
 
-  <div class="col-sm-6 controls">
+  <div class="col-sm-6 control-input">
     <input id="productActive" name="productActive" type="checkbox" ng-model="productForm.product.active"
            class="form-control"/>
 
@@ -146,4 +149,80 @@
       <div class="help-text">Only active products are displayed in the marketplace.</div>
     </div>
   </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productSetupPrice')}">
+  <label class="col-sm-2 control-label" for="productSetupPrice">Setup Price:</label>
+
+  <div class="col-sm-6 control-input">
+    <input id="productSetupPrice" name="productSetupPrice"
+           type="text" ng-pattern="productForm.priceRegex"
+           ng-model="productForm.product.setup_price" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productSetupPrice', 'required')">A setup price
+        is required for all products
+      </div>
+      <div class="help-text" ng-show="productForm.hasError('productSetupPrice', 'pattern')">Numeric values only.
+        999999.9999
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="help-block">
+      <div class="help-text">Values have precision to four decimal places</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productMonthlyPrice')}">
+  <label class="col-sm-2 control-label" for="productMonthlyPrice">Monthly Price:</label>
+
+  <div class="col-sm-6 control-input">
+    <input id="productMonthlyPrice" name="productMonthlyPrice"
+           type="text" ng-pattern="productForm.priceRegex"
+           ng-model="productForm.product.monthly_price" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productMonthlyPrice', 'required')">A monthly price
+        is required for all products
+      </div>
+      <div class="help-text" ng-show="productForm.hasError('productMonthlyPrice', 'pattern')">Numeric values only.
+        999999.9999
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="help-block">
+      <div class="help-text">Values have precision to four decimal places</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productHourlyPrice')}">
+  <label class="col-sm-2 control-label" for="productHourlyPrice">Hourly Price:</label>
+
+  <div class="col-sm-6 control-input">
+    <input id="productHourlyPrice" name="productHourlyPrice"
+           type="text" ng-pattern="productForm.priceRegex"
+           ng-model="productForm.product.hourly_price" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productHourlyPrice', 'required')">An hourly price
+        is required for all products
+      </div>
+      <div class="help-text" ng-show="productForm.hasError('productHourlyPrice', 'pattern')">Numeric values only.
+        999999.9999
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="help-block">
+      <div class="help-text">Values have precision to four decimal places</div>
+    </div>
+  </div>
+</div>
+
+<div ng-repeat="answer in productForm.product.answers">
+  <question-input answer="answer" question="answer.question" form-ctrl="productForm"/>
 </div>
