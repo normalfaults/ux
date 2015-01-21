@@ -27,15 +27,23 @@
 
         <div class="col-sm-10 product-about">
           <h1 class="product-title">{{showCtrl.product.name}}</h1>
-
+          <hr/>
           <dl class="dl-horizontal">
             <dt>Description</dt><dd>{{showCtrl.product.description}}</dd>
+            <!--
             <dt>ManageIQ Catalog ID</dt><dd>{{showCtrl.product.service_catalog_id}}</dd>
             <dt>ManageIQ Type ID</dt><dd>{{showCtrl.product.service_type_id}}</dd>
             <dt>Chef Role</dt><dd>{{showCtrl.product.chef_role}}</dd>
+            -->
             <div ng-repeat="answer in showCtrl.product.answers">
               <dt>{{answer.question.label}}</dt><dd>{{answer.answer}}</dd>
             </div>
+          </dl>
+          <hr/>
+          <dl class="dl-horizontal">
+            <dt>Setup Price</dt><dd>$ {{showCtrl.product.setup_price}}</dd>
+            <dt>Monthly Price</dt><dd>$ {{showCtrl.product.monthly_price}}</dd>
+            <dt>Hourly Price</dt><dd>$ {{showCtrl.product.hourly_price}}</dd>
           </dl>
         </div>
       </div>

@@ -29,7 +29,7 @@
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceCatalog')}">
-  <label class="col-sm-2 control-label" for="productName">ManageIQ Catalog ID:</label>
+  <label class="col-sm-2 control-label" for="productServiceCatalog">ManageIQ Catalog ID:</label>
 
   <div class="col-sm-6 control-input">
     <input id="productServiceCatalog" name="productServiceCatalog" type="number"
@@ -45,7 +45,7 @@
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productServiceType')}">
-  <label class="col-sm-2 control-label" for="productName">ManageIQ Type ID:</label>
+  <label class="col-sm-2 control-label" for="productServiceType">ManageIQ Type ID:</label>
 
   <div class="col-sm-6 control-input">
     <input id="productServiceType" name="productServiceType" type="number"
@@ -61,10 +61,10 @@
 </div>
 
 <div class="form-group" ng-class="{'has-error': productForm.hasError('productChefRole')}">
-  <label class="col-sm-2 control-label" for="productName">Chef Role:</label>
+  <label class="col-sm-2 control-label" for="productChefRole">Chef Role:</label>
 
   <div class="col-sm-6 control-input">
-    <input id="productchefRole" name="productChefRole" type="text"
+    <input id="productChefRole" name="productChefRole" type="text"
            ng-model="productForm.product.chef_role" class="form-control" required/>
 
     <div class="help-block">
@@ -147,6 +147,78 @@
   <div class="col-sm-4">
     <div class="help-block">
       <div class="help-text">Only active products are displayed in the marketplace.</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productSetupPrice')}">
+  <label class="col-sm-2 control-label" for="productSetupPrice">Setup Price:</label>
+
+  <div class="col-sm-6 control-input">
+    <input id="productSetupPrice" name="productSetupPrice"
+           type="text" ng-pattern="productForm.priceRegex"
+           ng-model="productForm.product.setup_price" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productSetupPrice', 'required')">A setup price
+        is required for all products
+      </div>
+      <div class="help-text" ng-show="productForm.hasError('productSetupPrice', 'pattern')">Numeric values only.
+        999999.9999
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="help-block">
+      <div class="help-text">Values have precision to four decimal places</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productMonthlyPrice')}">
+  <label class="col-sm-2 control-label" for="productMonthlyPrice">Monthly Price:</label>
+
+  <div class="col-sm-6 control-input">
+    <input id="productMonthlyPrice" name="productMonthlyPrice"
+           type="text" ng-pattern="productForm.priceRegex"
+           ng-model="productForm.product.monthly_price" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productMonthlyPrice', 'required')">A monthly price
+        is required for all products
+      </div>
+      <div class="help-text" ng-show="productForm.hasError('productMonthlyPrice', 'pattern')">Numeric values only.
+        999999.9999
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="help-block">
+      <div class="help-text">Values have precision to four decimal places</div>
+    </div>
+  </div>
+</div>
+
+<div class="form-group" ng-class="{'has-error': productForm.hasError('productHourlyPrice')}">
+  <label class="col-sm-2 control-label" for="productHourlyPrice">Hourly Price:</label>
+
+  <div class="col-sm-6 control-input">
+    <input id="productHourlyPrice" name="productHourlyPrice"
+           type="text" ng-pattern="productForm.priceRegex"
+           ng-model="productForm.product.hourly_price" class="form-control" required/>
+
+    <div class="help-block">
+      <div class="help-text" ng-show="productForm.hasError('productHourlyPrice', 'required')">An hourly price
+        is required for all products
+      </div>
+      <div class="help-text" ng-show="productForm.hasError('productHourlyPrice', 'pattern')">Numeric values only.
+        999999.9999
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="help-block">
+      <div class="help-text">Values have precision to four decimal places</div>
     </div>
   </div>
 </div>

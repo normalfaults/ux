@@ -11,6 +11,8 @@ function ProductFormController($state) {
   this.product = null;
   this.formSubmitted = false;
 
+  this.priceRegex = "\\d{1,6}(\\.\\d{1,4})?";
+
   this.initForm = function(parent) {
     this.product = parent.product;
   };
