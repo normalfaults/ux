@@ -19,6 +19,11 @@ function ProductsAdminController(categories, clouds) {
     'products/php.png',
     'products/java.png',
     'products/rails.png',
+    'products/apache.png',
+    'products/database.png',
+    'products/postgresql.png',
+    'products/dna.png',
+    'products/hadoop.png',
     // Filling in with the project images
     'projects/1.png',
     'projects/2.png',
