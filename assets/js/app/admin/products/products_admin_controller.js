@@ -24,6 +24,9 @@ function ProductsAdminController(categories, clouds) {
     'products/postgresql.png',
     'products/dna.png',
     'products/hadoop.png',
+    'products/kb.png',
+    'products/teradata.png',
+    'products/mssql.png',
     // Filling in with the project images
     'projects/1.png',
     'projects/2.png',

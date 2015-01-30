@@ -3,7 +3,7 @@
 var $ = require('jquery');
 
 /**@ngInject*/
-module.exports = function($http, $rootScope, $log, $location, AuthService, UsersResource, Session, $urlRouter, ROUTES, $state) {
+module.exports = function($http, $rootScope, $log, $location, AuthService, UsersResource, Session, $urlRouter, ROUTES, $state, APP_CONFIG) {
 
   $http.defaults.headers.common.Accept= 'application/json, text/javascript';
   $http.defaults.headers.common['Content-Type'] = 'application/json; charset=utf-8';
@@ -13,6 +13,8 @@ module.exports = function($http, $rootScope, $log, $location, AuthService, Users
   $http.defaults.withCredentials = true;
 
   $rootScope.sideBarExpanded = true;
+
+  $rootScope.APP_CONFIG = APP_CONFIG;
 
   // auto close popup on body click
   $("body").click(function(e) {

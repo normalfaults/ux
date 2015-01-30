@@ -2,7 +2,9 @@
 
 var defaults = {
   'port': 5000,
-  'apiBasePath': 'http://localhost:3000'
+  'apiBasePath': 'http://localhost:3000',
+  'orgLogo': '/images/logo.png',
+  'orgColor': '#0a498a'
 };
 
 var express = require('express');
@@ -46,7 +48,20 @@ if (process.env.API_BASE_PATH) {
   apiBasePath = process.env.API_BASE_PATH;
 }
 
-var appConfigContents = 'window.appConfig = {apiBasePath: "' + apiBasePath + '"};';
+// Set the org Logo
+var orgLogo = defaults.orgLogo;
+if (process.env.ORG_LOGO) {
+  orgLogo = process.env.ORG_LOGO;
+}
+
+// Set the org Color
+var orgColor = defaults.orgColor;
+if (process.env.ORG_COLOR) {
+  orgColor = process.env.ORG_COLOR;
+}
+
+var appConfigContents = 'window.appConfig = {apiBasePath: "' + apiBasePath + '", orgLogo: "' + orgLogo + '", orgColor: "' + orgColor + '"};';
+
 
 fs.writeFileSync(appConfigPath, appConfigContents);
 
