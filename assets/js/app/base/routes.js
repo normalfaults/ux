@@ -40,7 +40,7 @@ module.exports = function($stateProvider, USER_ROLES) {
       },
       /**@ngInject*/
       alerts: function(AlertsResource) {
-        return AlertsResource.query().$promise;
+        return AlertsResource.query({'includes[]': ['project']}).$promise;
       },
       /**@ngInject*/
       projects: function(ProjectsResource) {
