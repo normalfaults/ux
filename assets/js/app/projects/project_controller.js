@@ -121,32 +121,51 @@ ProjectController.prototype = {
 
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;
-    var usedBudget = 0;
-
-    _.each(this.project.order_history, function(item, key, all) {
-      // @todo In the future we can split this off to complete/pending
-      usedBudget += item.total;
-    });
-
+    var projectSpent = this.project.spent || 0;
+    var monthlySpend = this.project.month_spend || 0;
     var usedPercent = 0;
+    var leftPercent = 100;
+    var leftMonths = '>12';
+    var leftColor = 'green';
+    var usedColor = 'green';
+    var spendColor = 'green';
+
     if (projectBudget > 0) {
-      usedPercent = Math.round(((usedBudget / projectBudget) * 100));
+      usedPercent = Math.round(((projectSpent / projectBudget) * 100));
       if (usedPercent > 100) {
         usedPercent = 100;
+        leftPercent = 0;
+        leftMonths = 0;
       }
+
+      leftMonths = Math.round(((projectBudget - projectSpent) / 12));
+      if (leftMonths > 12) {
+        leftMonths = '>12';
+      }
+
+      if (leftMonths <= 0) {
+        leftMonths = 0;
+      }
+
     }
 
     return {
       'total':       projectBudget,
-      'used':        usedBudget,
-      'usedPercent': usedPercent
+      'used':        projectSpent,
+      'usedPercent': usedPercent,
+      'leftPercent': leftPercent,
+      'leftMonths': leftMonths,
+      'monthlySpend': monthlySpend,
+      'leftColor': leftColor,
+      'usedColor': usedColor,
+      'spendColor': spendColor,
     };
   },
 
   /**
    * Loops through the resolved order history on the project
    * If any of these orders are not completed, we return false.
-   * A completed order is currently equivelent to a service.
+   * A completed order is currently equivalent to a service.
    *
    * @private
    */

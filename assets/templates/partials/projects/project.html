@@ -26,7 +26,7 @@
 
         <div class="page-title">
             <div class="page-title-icon">
-                <img ng-src="{{projectCtrl.project.icon}}"/>
+                <img ng-src="{{projectCtrl.project.img}}"/>
             </div>
             <div class="page-title-text">
                 <h3>{{projectCtrl.project.name}}</h3>
@@ -57,10 +57,10 @@
                 <div class="info-box-icon fa fa-money"></div>
                 <div class="info-box-data">
                     <div class="info-box-title">
-                        Budget
+                        Budget: {{projectCtrl.project.budget | currency}}
                     </div>
                     <div class="info-box-text">
-                        {{projectCtrl.project.budget ? projectCtrl.project.budget + ' used ' + '/ 1,000,000 remaining' : "N/A"}}
+                        {{projectCtrl.project.spent | currency }} used
                     </div>
                     <div class="info-box-percent-outer">
                         <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().usedPercent + '%' }"></div>
@@ -72,63 +72,17 @@
                 <div class="info-box-icon fa fa-money"></div>
                 <div class="info-box-data">
                     <div class="info-box-title">
-                        Budget
+                        Monthly Charge: {{projectCtrl.getBudgetData().monthlySpend | currency}}
                     </div>
                     <div class="info-box-text">
-                        37 Months Remaining (using $1000 per day)
+                        {{projectCtrl.getBudgetData().leftMonths}} Month(s) Remaining
                     </div>
                     <div class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().usedPercent + '%' }"></div>
+                        <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().leftPercent + '%' }"></div>
                     </div>
                 </div>
             </div>
             <div class="info-box-split"></div>
-            <!--
-            <div class="info-box col18">
-                <div class="info-box-icon fa fa-desktop"></div>
-                <div class="info-box-data">
-                    <div class="info-box-title">
-                        CPU
-                    </div>
-                    <div class="info-box-text">
-                        {{projectCtrl.project.cpu}} Cores
-                    </div>
-                    <div ng-init="percentCpu = 90" class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: percentCpu + '%' }"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="info-box-split"></div>
-            <div class="info-box col18">
-                <div class="info-box-icon fa fa-database"></div>
-                <div class="info-box-data">
-                    <div class="info-box-title">
-                        HDD
-                    </div>
-                    <div class="info-box-text">
-                        {{projectCtrl.project.hdd}}
-                    </div>
-                    <div ng-init="percentHdd = 90" class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: percentHdd + '%' }"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="info-box-split"></div>
-            <div class="info-box col18">
-                <div class="info-box-icon fa fa-tachometer"></div>
-                <div class="info-box-data">
-                    <div class="info-box-title">
-                        RAM
-                    </div>
-                    <div class="info-box-text">
-                        {{projectCtrl.project.ram}}
-                    </div>
-                    <div ng-init="percentRam = 90" class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: percentRam + '%' }"></div>
-                    </div>
-                </div>
-            </div>
-            -->
         </div>
 
 
