@@ -60,10 +60,15 @@ if (process.env.ORG_COLOR) {
   orgColor = process.env.ORG_COLOR;
 }
 
+// Create the default contents of the file
 var appConfigContents = 'window.appConfig = {apiBasePath: "' + apiBasePath + '", orgLogo: "' + orgLogo + '", orgColor: "' + orgColor + '"};';
 
-
-fs.writeFileSync(appConfigPath, appConfigContents);
+// Only create the file, if it does not exist
+fs.exists(appConfigPath, function (exists) {
+  if(!exists){
+    fs.writeFileSync(appConfigPath, appConfigContents);
+  }
+});
 
 // Get all the public directories.
 var dirs = fs.readdirSync(path.join(__dirname, 'public'));
