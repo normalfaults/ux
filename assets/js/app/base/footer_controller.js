@@ -4,6 +4,8 @@
 var FooterController = function(footerLinks) {
 
   this.footerLinks = footerLinks;
+  this.copyrightYear = new Date();
+  this.jellyfishVersion = window.appVersion.ux;
 };
 
 FooterController.resolve = {
