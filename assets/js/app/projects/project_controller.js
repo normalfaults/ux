@@ -121,7 +121,7 @@ ProjectController.prototype = {
   getLeftData: function() {
     var projectBudget = this.project.budget || 0;
     var projectSpent = this.project.spent || 0;
-    var monthlySpend = this.project.month_spend || 0;
+    var monthlySpend = this.project.monthly_spend || 0;
 
     var leftPercent = 1.0;
     var leftMonths = '>12';
