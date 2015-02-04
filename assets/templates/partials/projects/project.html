@@ -41,44 +41,44 @@
         <!-- Metrics - Status, Budget, CPU, HDD, RAM -->
 
         <div class="info-boxes">
+
             <div class="info-box col18">
-                <div class="info-box-icon fa fa-times text-danger"></div>
+                <div class="info-box-icon">
+                    <progress-arc
+                            size="65"
+                            stroke="{{projectCtrl.getBudgetData().usedColor}}"
+                            stroke-width="5"
+                            complete="projectCtrl.getBudgetData().usedPercent"
+                            background="#dedede">
+                    </progress-arc>
+                </div>
                 <div class="info-box-data">
                     <div class="info-box-title">
-                        Status
+                        Total Project Funds: {{projectCtrl.project.budget | currency}}
                     </div>
                     <div class="info-box-text">
-                        {{projectCtrl.project.state}}
+                        {{projectCtrl.project.spent | currency }} funds used
                     </div>
                 </div>
             </div>
             <div class="info-box-split"></div>
             <div class="info-box col18">
-                <div class="info-box-icon fa fa-money"></div>
-                <div class="info-box-data">
-                    <div class="info-box-title">
-                        Budget: {{projectCtrl.project.budget | currency}}
-                    </div>
-                    <div class="info-box-text">
-                        {{projectCtrl.project.spent | currency }} used
-                    </div>
-                    <div class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().usedPercent + '%' }"></div>
-                    </div>
+                <div class="info-box-icon">
+                    <progress-arc
+                            size="65"
+                            stroke="{{projectCtrl.getLeftData().leftColor}}"
+                            stroke-width="5"
+                            complete="projectCtrl.getLeftData().leftPercent"
+                            background="#dedede">
+                    </progress-arc>
                 </div>
-            </div>
-            <div class="info-box-split"></div>
-            <div class="info-box col18">
-                <div class="info-box-icon fa fa-money"></div>
+
                 <div class="info-box-data">
                     <div class="info-box-title">
-                        Monthly Charge: {{projectCtrl.getBudgetData().monthlySpend | currency}}
+                        Monthly Charge: {{projectCtrl.getLeftData().monthlySpend | currency}}
                     </div>
                     <div class="info-box-text">
-                        {{projectCtrl.getBudgetData().leftMonths}} Month(s) Remaining
-                    </div>
-                    <div class="info-box-percent-outer">
-                        <div class="info-box-percent-inner" ng-style="{ width: projectCtrl.getBudgetData().leftPercent + '%' }"></div>
+                        {{projectCtrl.getLeftData().leftMonths}} Month(s) of Funding Remaining
                     </div>
                 </div>
             </div>

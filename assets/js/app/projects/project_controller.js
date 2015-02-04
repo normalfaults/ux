@@ -115,36 +115,60 @@ ProjectController.prototype = {
     serviceObject.cloud = product.cloud;
     serviceObject.description = product.description;
 
-
     return serviceObject;
+  },
+
+  getLeftData: function() {
+    var projectBudget = this.project.budget || 0;
+    var projectSpent = this.project.spent || 0;
+    var monthlySpend = this.project.month_spend || 0;
+
+    var leftPercent = 1.0;
+    var leftMonths = '>12';
+    var leftColor = 'green';
+
+    if (projectBudget > 0) {
+
+      leftMonths = (projectBudget - projectSpent) / 12;
+
+      if (leftMonths > 12) {
+        leftMonths = '>12';
+        leftPercent = 1.0;
+      } else if (leftMonths <= 6 && leftMonths > 3) {
+        leftColor = '#CCDB23';
+      } else if (leftMonths <= 0) {
+        leftMonths = 0;
+        leftPercent = 0.0;
+        leftColor = 'red';
+      }
+
+    }
+
+    return {
+      'leftPercent': leftPercent,
+      'leftColor': leftColor,
+      'leftMonths': leftMonths,
+      'monthlySpend': monthlySpend
+    };
   },
 
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;
     var projectSpent = this.project.spent || 0;
-    var monthlySpend = this.project.month_spend || 0;
-    var usedPercent = 0;
-    var leftPercent = 100;
-    var leftMonths = '>12';
-    var leftColor = 'green';
+    var usedPercent = 0.0;
     var usedColor = 'green';
-    var spendColor = 'green';
 
     if (projectBudget > 0) {
-      usedPercent = Math.round(((projectSpent / projectBudget) * 100));
-      if (usedPercent > 100) {
-        usedPercent = 100;
-        leftPercent = 0;
-        leftMonths = 0;
+      usedPercent = projectSpent / projectBudget;
+      if (usedPercent > 1.0) {
+        usedPercent = 1.0;
       }
 
-      leftMonths = Math.round(((projectBudget - projectSpent) / 12));
-      if (leftMonths > 12) {
-        leftMonths = '>12';
-      }
-
-      if (leftMonths <= 0) {
-        leftMonths = 0;
+      // Set the colors for usedAmount
+      if (usedPercent <= 0.85 && usedPercent > 0.65) {
+        usedColor = '#CCDB23';
+      } else if (usedPercent >= 0.85) {
+        usedColor = 'red';
       }
 
     }
@@ -153,12 +177,7 @@ ProjectController.prototype = {
       'total':       projectBudget,
       'used':        projectSpent,
       'usedPercent': usedPercent,
-      'leftPercent': leftPercent,
-      'leftMonths': leftMonths,
-      'monthlySpend': monthlySpend,
-      'leftColor': leftColor,
       'usedColor': usedColor,
-      'spendColor': spendColor,
     };
   },
 
