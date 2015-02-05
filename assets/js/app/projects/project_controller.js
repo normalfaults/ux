@@ -115,38 +115,76 @@ ProjectController.prototype = {
     serviceObject.cloud = product.cloud;
     serviceObject.description = product.description;
 
-
     return serviceObject;
+  },
+
+  getLeftData: function() {
+    var projectBudget = this.project.budget || 0;
+    var projectSpent = this.project.spent || 0;
+    var monthlySpend = this.project.monthly_spend || 0;
+
+    var leftPercent = 1.0;
+    var leftMonths = '>12';
+    var leftColor = 'green';
+
+    if (projectBudget > 0) {
+
+      leftMonths = (projectBudget - projectSpent) / 12;
+
+      if (leftMonths > 12) {
+        leftMonths = '>12';
+        leftPercent = 1.0;
+      } else if (leftMonths <= 6 && leftMonths > 3) {
+        leftColor = '#CCDB23';
+      } else if (leftMonths <= 0) {
+        leftMonths = 0;
+        leftPercent = 0.0;
+        leftColor = 'red';
+      }
+
+    }
+
+    return {
+      'leftPercent': leftPercent,
+      'leftColor': leftColor,
+      'leftMonths': leftMonths,
+      'monthlySpend': monthlySpend
+    };
   },
 
   getBudgetData: function() {
     var projectBudget = this.project.budget || 0;
-    var usedBudget = 0;
+    var projectSpent = this.project.spent || 0;
+    var usedPercent = 0.0;
+    var usedColor = 'green';
 
-    _.each(this.project.order_history, function(item, key, all) {
-      // @todo In the future we can split this off to complete/pending
-      usedBudget += item.total;
-    });
-
-    var usedPercent = 0;
     if (projectBudget > 0) {
-      usedPercent = Math.round(((usedBudget / projectBudget) * 100));
-      if (usedPercent > 100) {
-        usedPercent = 100;
+      usedPercent = projectSpent / projectBudget;
+      if (usedPercent > 1.0) {
+        usedPercent = 1.0;
       }
+
+      // Set the colors for usedAmount
+      if (usedPercent <= 0.85 && usedPercent > 0.65) {
+        usedColor = '#CCDB23';
+      } else if (usedPercent >= 0.85) {
+        usedColor = 'red';
+      }
+
     }
 
     return {
       'total':       projectBudget,
-      'used':        usedBudget,
-      'usedPercent': usedPercent
+      'used':        projectSpent,
+      'usedPercent': usedPercent,
+      'usedColor': usedColor,
     };
   },
 
   /**
    * Loops through the resolved order history on the project
    * If any of these orders are not completed, we return false.
-   * A completed order is currently equivelent to a service.
+   * A completed order is currently equivalent to a service.
    *
    * @private
    */

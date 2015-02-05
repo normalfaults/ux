@@ -28,8 +28,8 @@ var ProjectServicesController = function($scope, CartService, project, products,
 
 ProjectServicesController.resolve = {
   /**@ngInject*/
-  categories: function(ProductTypeResource) {
-    return ProductTypeResource.query().$promise;
+  categories: function(ProductTypesResource) {
+    return ProductTypesResource.query().$promise;
   }
 };
 

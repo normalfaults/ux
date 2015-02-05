@@ -12,6 +12,7 @@ require('angular-ui-select');
 require('angular-money-directive');
 require('angucomplete');
 require('angular-cookies');
+require('angular-progress-arc');
 
 var angular = require('angular');
 
@@ -27,6 +28,7 @@ angular.module('broker', [
   "ui.select",
   "fiestah.money",
   "ngCookies",
+  "angular-progress-arc",
   require('./alerts').name,
   require('./question_input').name,
   require('./common').name,

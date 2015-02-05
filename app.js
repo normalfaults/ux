@@ -2,8 +2,12 @@
 
 var defaults = {
   'port': 5000,
-  'apiBasePath': 'http://localhost:3000'
+  'apiBasePath': 'http://localhost:3000',
+  'orgLogo': '/images/logo.png',
+  'orgColor': '#0a498a'
 };
+
+var appVersion = '2.0.0';
 
 var express = require('express');
 var path = require('path');
@@ -19,6 +23,7 @@ var app = express();
 var fs = require('fs');
 
 var appConfigPath = './public/appConfig.js';
+var appVersionPath = './public/appVersion.js';
 
 app.set('port', process.env.PORT || defaults.port);
 
@@ -46,9 +51,29 @@ if (process.env.API_BASE_PATH) {
   apiBasePath = process.env.API_BASE_PATH;
 }
 
-var appConfigContents = 'window.appConfig = {apiBasePath: "' + apiBasePath + '"};';
+// Set the org Logo
+var orgLogo = defaults.orgLogo;
+if (process.env.ORG_LOGO) {
+  orgLogo = process.env.ORG_LOGO;
+}
 
-fs.writeFileSync(appConfigPath, appConfigContents);
+// Set the org Color
+var orgColor = defaults.orgColor;
+if (process.env.ORG_COLOR) {
+  orgColor = process.env.ORG_COLOR;
+}
+
+// Create the default contents of the file, if it does not exist
+var appConfigContents = 'window.appConfig = {apiBasePath: "' + apiBasePath + '", orgLogo: "' + orgLogo + '", orgColor: "' + orgColor + '"};';
+fs.exists(appConfigPath, function (exists) {
+  if(!exists){
+    fs.writeFileSync(appConfigPath, appConfigContents);
+  }
+});
+
+// Create the default contents of the versions file, always remake it
+var appVersionContents = 'window.appVersion = {ux: "' + appVersion + '"};';
+fs.writeFileSync(appVersionPath, appVersionContents);
 
 // Get all the public directories.
 var dirs = fs.readdirSync(path.join(__dirname, 'public'));
