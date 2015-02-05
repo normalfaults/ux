@@ -21,6 +21,7 @@ Get the Nginx Package for your RHEL Version (http://nginx.org/en/linux_packages.
 ````
 sudo yum install git
 sudo yum install -y gcc-c++ make
+sudo yum install ruby rubygems sass
 curl -sL https://rpm.nodesource.com/setup | sudo bash -
 sudo yum install -y nodejs
 sudo rpm -i rpm -i <url to repo file from above page>
