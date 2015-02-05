@@ -6,8 +6,9 @@
   <div class="data-box">
     <div class="info">
       <a ng-if="sref" ui-sref="{{sref}}">
-        <img ng-src="{{project.img}}"/>
+        <img class="project-icon" ng-src="{{project.img}}" fallback-image="images/no_image.png"/>
       </a>
+
       <p>
         <!--<a href="{{project.url}}" class="blue-texts">{{project.domain}}</a>-->
       </p>
@@ -30,7 +31,8 @@
   <div class="bottom-area">
     <span class="fl">
        <span class="blue-texts">{{project.state}}</span>
-       <span ng-class="{'fa fa-check-circle-o success-icon': project.state_ok, 'fa fa-exclamation-circle error-icon' : !project.state_ok }"></span>
+       <span
+         ng-class="{'fa fa-check-circle-o success-icon': project.state_ok, 'fa fa-exclamation-circle error-icon' : !project.state_ok }"></span>
     </span>
     <!-- end .data-box -->
   </div>

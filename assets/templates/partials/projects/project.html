@@ -1,178 +1,179 @@
 <div class="project-detail-page main-content" set-width>
 
-    <div class="banner">
+  <div class="banner">
 
-        <!-- Pending Approval Banner -->
+    <!-- Pending Approval Banner -->
 
-        <div class="top-notice-banner" ng-if="!projectCtrl.project.isApproved()">
-            <div class="app-project">
-                <div class="col40">
-                    <div class="project-approval-icon">
-                        <i class="fa fa-asterisk"></i>
-                    </div>
-                    <h3>Project is Pending</h3>
-                    <a type="button" class="btn btn-primary">Approve</a>
-                    <a type="button" class="btn btn-danger">Reject</a>
-                </div>
-            </div>
+    <div class="top-notice-banner" ng-if="!projectCtrl.project.isApproved()">
+      <div class="app-project">
+        <div class="col40">
+          <div class="project-approval-icon">
+            <i class="fa fa-asterisk"></i>
+          </div>
+          <h3>Project is Pending</h3>
+          <a type="button" class="btn btn-primary">Approve</a>
+          <a type="button" class="btn btn-danger">Reject</a>
         </div>
-
+      </div>
     </div>
 
+  </div>
 
-    <div class="content box-content">
+  <div class="content box-content">
 
-        <!-- Title & Url -->
+    <!-- Title & Url -->
 
-        <div class="page-title">
-            <div class="page-title-icon">
-                <img ng-src="{{projectCtrl.project.img}}"/>
-            </div>
-            <div class="page-title-text">
-                <h3>{{projectCtrl.project.name}}</h3>
-            </div>
-            <div class="fr">
-                <div class="bottom-btn-box">
-                    <a ui-sref="base.project.edit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
-                </div>
-            </div>
+    <div class="page-title">
+      <div class="page-title-icon">
+        <img class="project-icon" ng-src="{{projectCtrl.project.img}}"
+             fallback-image="images/no_image.png"/>
+      </div>
+      <div class="page-title-text">
+        <h3>{{projectCtrl.project.name}}</h3>
+      </div>
+      <div class="fr">
+        <div class="bottom-btn-box">
+          <a ui-sref="base.project.edit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
         </div>
-
-        <!-- Metrics - Status, Budget, CPU, HDD, RAM -->
-
-        <div class="info-boxes">
-
-            <div class="info-box col18">
-                <div class="info-box-icon">
-                    <progress-arc
-                            size="65"
-                            stroke="{{projectCtrl.getBudgetData().usedColor}}"
-                            stroke-width="5"
-                            complete="projectCtrl.getBudgetData().usedPercent"
-                            background="#dedede">
-                    </progress-arc>
-                </div>
-                <div class="info-box-data">
-                    <div class="info-box-title">
-                        Total Project Funds: {{projectCtrl.project.budget | currency}}
-                    </div>
-                    <div class="info-box-text">
-                        {{projectCtrl.project.spent | currency }} funds used
-                    </div>
-                </div>
-            </div>
-            <div class="info-box-split"></div>
-            <div class="info-box col18">
-                <div class="info-box-icon">
-                    <progress-arc
-                            size="65"
-                            stroke="{{projectCtrl.getLeftData().leftColor}}"
-                            stroke-width="5"
-                            complete="projectCtrl.getLeftData().leftPercent"
-                            background="#dedede">
-                    </progress-arc>
-                </div>
-
-                <div class="info-box-data">
-                    <div class="info-box-title">
-                        Monthly Charge: {{projectCtrl.getLeftData().monthlySpend | currency}}
-                    </div>
-                    <div class="info-box-text">
-                        {{projectCtrl.getLeftData().leftMonths}} Month(s) of Funding Remaining
-                    </div>
-                </div>
-            </div>
-            <div class="info-box-split"></div>
-        </div>
-
-
-        <!-- Problem Alerts -->
-
-        <section-header name="Project Alerts" ng-show="projectCtrl.alerts.length > 0">
-            <alerts-table alerts="projectCtrl.alerts"></alerts-table>
-        </section-header>
-
-        <!-- Order History -->
-
-        <section-header name="Project Orders" ng-show="projectCtrl.project.order_history.length > 0">
-            <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
-        </section-header>
-
-        <!-- Services -->
-
-        <div class="project-services" ng-if="projectCtrl.project.isApproved()">
-            <section-header name="{{'Services (' + projectCtrl.project.services.length + ')'}}">
-                <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services" product="projectCtrl.getServiceWithProduct(service)">
-                    <a type="button" class="btn btn-primary" ui-sref="base.service({order_id: service.order_id, id: service.id})">View More</a>
-                    <a type="button" class="btn btn-danger" ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</a>
-                </product-box>
-                <div class="add-box">
-                  <div class="product-box-shadow">
-                    <a ui-sref="base.project.addService({projectId: projectCtrl.project.id})">
-                      <div class="fa-stack">
-                        <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
-                        <i class="fa fa-fw fa-stack-1x fa-plus"></i>
-                      </div>
-                      <div class="title">Add Service</div>
-                    </a>
-                  </div>
-                </div>
-            </section-header>
-        </div>
-
-
-        <!-- Users -->
-        <div class="project-users" ng-if="projectCtrl.project.isApproved()">
-            <section-header name="Users">
-                <users-box class="product-box" ng-repeat="user in projectCtrl.project.users" user="user">
-                    <a type="button" class="btn btn-danger" ng-click="projectCtrl.removeUserFromProject($index)">Remove</a>
-                </users-box>
-
-                <div class="add-box">
-                    <div class="product-box-shadow">
-                        <a ui-sref="base.project.view.addUser({projectId: projectCtrl.project.id})">
-                            <div class="fa-stack">
-                                <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
-                                <i class="fa fa-fw fa-stack-1x fa-plus"></i>
-                            </div>
-                            <div class="title">Add User</div>
-                        </a>
-                    </div>
-                </div>
-            </section-header>
-        </div>
-
-        <!-- Project Details -->
-
-        <div class="project-details">
-
-            <section-header name="Project Details">
-
-                <div class="table-box">
-                    <div class="data-box">
-
-                        <table st-table="rowCollection" class="table table-responsive table-striped">
-                            <colgroup>
-                                <col class="col40">
-                                <col>
-                            </colgroup>
-                            <thead>
-                            <tr>
-                                <th class="text-left">Detail</th>
-                                <th class="text-left">Value</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr ng-repeat="answer in projectCtrl.project.project_answers">
-                                <td class="blue-texts font15">{{answer.project_question.question}}</td>
-                                <td class="item-texts">{{answer.answer}}</td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </section-header>
-        </div>
-
+      </div>
     </div>
+
+    <!-- Metrics - Status, Budget, CPU, HDD, RAM -->
+
+    <div class="info-boxes">
+
+      <div class="info-box col18">
+        <div class="info-box-icon">
+          <progress-arc
+            size="65"
+            stroke="{{projectCtrl.getBudgetData().usedColor}}"
+            stroke-width="5"
+            complete="projectCtrl.getBudgetData().usedPercent"
+            background="#dedede">
+          </progress-arc>
+        </div>
+        <div class="info-box-data">
+          <div class="info-box-title">
+            Total Project Funds: {{projectCtrl.project.budget | currency}}
+          </div>
+          <div class="info-box-text">
+            {{projectCtrl.project.spent | currency }} funds used
+          </div>
+        </div>
+      </div>
+      <div class="info-box-split"></div>
+      <div class="info-box col18">
+        <div class="info-box-icon">
+          <progress-arc
+            size="65"
+            stroke="{{projectCtrl.getLeftData().leftColor}}"
+            stroke-width="5"
+            complete="projectCtrl.getLeftData().leftPercent"
+            background="#dedede">
+          </progress-arc>
+        </div>
+
+        <div class="info-box-data">
+          <div class="info-box-title">
+            Monthly Charge: {{projectCtrl.getLeftData().monthlySpend | currency}}
+          </div>
+          <div class="info-box-text">
+            {{projectCtrl.getLeftData().leftMonths}} Month(s) of Funding Remaining
+          </div>
+        </div>
+      </div>
+      <div class="info-box-split"></div>
+    </div>
+
+    <!-- Problem Alerts -->
+
+    <section-header name="Project Alerts" ng-show="projectCtrl.alerts.length > 0">
+      <alerts-table alerts="projectCtrl.alerts"></alerts-table>
+    </section-header>
+
+    <!-- Order History -->
+
+    <section-header name="Project Orders" ng-show="projectCtrl.project.order_history.length > 0">
+      <orders-table ng-if="projectCtrl.project.isApproved()" orders="projectCtrl.project.order_history"></orders-table>
+    </section-header>
+
+    <!-- Services -->
+
+    <div class="project-services" ng-if="projectCtrl.project.isApproved()">
+      <section-header name="{{'Services (' + projectCtrl.project.services.length + ')'}}">
+        <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services"
+                     product="projectCtrl.getServiceWithProduct(service)">
+          <a type="button" class="btn btn-primary" ui-sref="base.service({order_id: service.order_id, id: service.id})">View
+            More</a>
+          <a type="button" class="btn btn-danger"
+             ng-click="projectCtrl.removeServiceFromProject(serviceIndex)">Remove</a>
+        </product-box>
+        <div class="add-box">
+          <div class="product-box-shadow">
+            <a ui-sref="base.project.addService({projectId: projectCtrl.project.id})">
+              <div class="fa-stack">
+                <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
+                <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+              </div>
+              <div class="title">Add Service</div>
+            </a>
+          </div>
+        </div>
+      </section-header>
+    </div>
+
+    <!-- Users -->
+    <div class="project-users" ng-if="projectCtrl.project.isApproved()">
+      <section-header name="Users">
+        <users-box class="product-box" ng-repeat="user in projectCtrl.project.users" user="user">
+          <a type="button" class="btn btn-danger" ng-click="projectCtrl.removeUserFromProject($index)">Remove</a>
+        </users-box>
+
+        <div class="add-box">
+          <div class="product-box-shadow">
+            <a ui-sref="base.project.view.addUser({projectId: projectCtrl.project.id})">
+              <div class="fa-stack">
+                <i class="fa fa-fw fa-stack-2x fa-circle-thin"></i>
+                <i class="fa fa-fw fa-stack-1x fa-plus"></i>
+              </div>
+              <div class="title">Add User</div>
+            </a>
+          </div>
+        </div>
+      </section-header>
+    </div>
+
+    <!-- Project Details -->
+
+    <div class="project-details">
+
+      <section-header name="Project Details">
+
+        <div class="table-box">
+          <div class="data-box">
+
+            <table st-table="rowCollection" class="table table-responsive table-striped">
+              <colgroup>
+                <col class="col40">
+                <col>
+              </colgroup>
+              <thead>
+              <tr>
+                <th class="text-left">Detail</th>
+                <th class="text-left">Value</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr ng-repeat="answer in projectCtrl.project.project_answers">
+                <td class="blue-texts font15">{{answer.project_question.question}}</td>
+                <td class="item-texts">{{answer.answer}}</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section-header>
+    </div>
+
+  </div>
 </div>
