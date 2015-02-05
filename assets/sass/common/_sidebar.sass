@@ -1,0 +1,204 @@
+//side menu bar
+
+.left-sidebar
+  position: absolute
+  left: 0
+  background-color: $sidebar-background-color
+  box-sizing: border-box
+  top: $header-height
+  bottom: $footer-height
+  height: auto
+  //float: left
+  //margin-top: -1 * $header-height
+  //padding-top: $header-height
+  //min-height: 100%
+  .side-arrow
+    padding-left: 5px
+    width: 27px
+    background: #2F333C
+    height: 51px
+    display: inline-block
+    position: absolute
+    top: 0
+    right: 0
+    z-index: 8
+    &:hover
+      background: #5b5f68
+  .absolute-nav
+    .side-arrow
+      i
+        background-position: -86px -264px
+      background: no-repeat
+    .active .side-arrow
+      background: no-repeat
+    width: 74px
+    overflow: hidden
+    .current ul
+      display: none
+    li .li-links
+      .texts, .number
+        display: none
+  nav.absolute-nav .logout-btn
+    width: 74px
+    overflow: hidden
+    span
+      display: none
+  .absolute-nav .active
+    background: #727683
+  nav
+    background: $sidebar-background-color
+    width: 184px
+    overflow: hidden
+
+    .active .side-arrow
+      background: #5B5F68
+    .side-arrow:hover
+      background: #727683
+    .active .side-arrow:hover
+      background: #727683
+
+    li
+      font-family: "SourceSansPro_Semibold"
+      border-top: 1px solid #3e4249
+      margin-top: -1px
+      position: relative
+    .side-arrow i
+      background-position: -86px -240px
+      width: 24px
+      height: 24px
+      margin: 11px 0 0 3px
+      display: inline-block
+    .dashboard-menu .li-links
+      height: 52px
+      line-height: 52px
+    .li-links:hover
+      color: #fff
+      background: #494d56
+      text-decoration: none
+    .active .li-links
+      color: #fff
+      background: #494d56
+      text-decoration: none
+      &:hover
+        color: #fff
+        background: #494d56
+        text-decoration: none
+    .li-links
+      font-size: 13px
+      color: #c1c8d7
+      background: #353942
+      display: block
+      height: 50px
+      line-height: 48px
+      &.last
+        padding-top: 9px
+        padding-bottom: 1px
+    .active .li-links
+      .texts
+        font-size: 14px
+    .current .li-links
+      .number
+        margin: 8px 5px 0 6px
+    .li-links
+      span
+        float: left
+      .texts
+        white-space: nowrap
+      .number
+        color: #fff
+        font-size: 12px
+        font-family: "SourceSansPro_Regular"
+        text-align: center
+        background: $light-red-color
+        min-width: 9px
+        padding: 0 5px
+        height: 19px
+        line-height: 18px
+        border-radius: 20px
+        margin: 13px 5px 0 6px
+    .current
+      border-top: 0
+      .li-links
+        font-size: 13px
+        color: #c1c8d7
+        background: #353942
+        display: block
+        height: 44px
+        line-height: 38px
+        border-top: 3px solid #2e3239
+        padding-top: 3px
+      ul
+        border-bottom: 4px solid #2e3239
+        padding-bottom: 10px
+        display: block
+      li
+        border-top: none
+        position: relative
+        height: 26px
+        line-height: 26px
+        padding-left: 38px
+        margin: 0 17px
+        i
+          background-image: url(../images/icon-sprites.png)
+          background-repeat: no-repeat
+          background-position: -154px -96px
+          width: 32px
+          height: 32px
+          display: inline-block
+          bottom: 10px
+          left: 0
+          position: absolute
+        a
+          color: #c7c5c6
+          font-size: 13px
+          white-space: nowrap
+          &:hover, &.active
+            color: #2e96db
+      .first i
+        background-position: -154px -116px
+        height: 12px
+    li ul
+      display: none
+  .logout-btn
+    font-family: "SourceSansPro_Semibold"
+    color: #c1c8d7
+    font-size: 13px
+    background: #0b4b8d
+    height: 49px
+    width: 184px
+    position: absolute
+    bottom: 0
+    left: 0
+    z-index: 8
+    display: block
+    &:hover
+      text-decoration: none
+      background: #2872bf
+
+    span
+      position: absolute
+      top: 50%
+      transform: translateY(-50%)
+
+  .left-tray-title-icon
+    margin: 15px 10px 0 15px
+
+  .left-tray-menu-icon
+    margin: 12px 10px 0 15px
+
+  .current
+    .left-tray-menu-icon
+      margin: 7px 10px 0 15px
+
+  .left-tray-icon
+    font-size: 24px
+
+
+  .sidebar-overflow
+    height: auto
+    width: 100%
+    overflow-y: auto
+    overflow-x: hidden
+    position: absolute
+    top: 0
+    bottom: 49px
