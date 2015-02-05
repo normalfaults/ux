@@ -93,7 +93,11 @@ gulp.task('jshint', ['bower'], function() {
       message: 'JS Hinting task failed',
       sound: "Sosumi"
     }))
-    .pipe(notify({ message: 'JS Hinting task complete' }))
+    .pipe(notify({
+      title: 'Jellyfish UX : Hinting',
+      message: 'JavaScript hinting has finished',
+      onLast: true
+    }));
 });
 
 gulp.task('clean-templates', function() {
@@ -103,7 +107,7 @@ gulp.task('clean-templates', function() {
     .pipe(clean({force: true}));
 });
 
-gulp.task('templates', ['bower', 'clean-templates'], function() {
+gulp.task('templates', ['bower'/*, 'clean-templates'*/], function() {
   // Copy over views
   gulp.src(paths.src.views)
     .pipe(gulp.dest(paths.dest.views));
@@ -114,7 +118,12 @@ gulp.task('templates', ['bower', 'clean-templates'], function() {
       root: '/partials/',
       module: 'broker'
     }))
-    .pipe(gulp.dest(paths.dest.partials));
+    .pipe(gulp.dest(paths.dest.partials))
+    .pipe(notify({
+      title: 'Jellyfish UX : Templates',
+      message: 'Template compiling and minification has finished.',
+      onLast: true
+    }));
 });
 
 gulp.task('clean-scripts', function() {
@@ -128,7 +137,7 @@ gulp.task('clean-scripts', function() {
  * Dependent on templates because template partials are wrapped into a
  * js file required here.
  */
-gulp.task('scripts', ['bower', 'clean-scripts', 'jshint'], function() {
+gulp.task('scripts', ['bower'/*, 'clean-scripts'*/, 'jshint'], function() {
 
   var browserified = transform(function(filename) {
     var b = browserify(filename);
@@ -145,7 +154,11 @@ gulp.task('scripts', ['bower', 'clean-scripts', 'jshint'], function() {
     .pipe(concat('bundle.js'))
     .pipe(uglify({preserveComments: 'some'}))
     .pipe(gulp.dest(paths.dest.scripts))
-    .pipe(notify({message: 'Finished scripts task.'}));
+    .pipe(notify({
+      title: 'Jellyfish UX : Javascript',
+      message: 'JavaScript compiling and minification has finished',
+      onLast: true
+    }));
 });
 
 gulp.task('clean-styles', function() {
@@ -153,7 +166,7 @@ gulp.task('clean-styles', function() {
     .pipe(clean({force: true}));
 });
 
-gulp.task('styles', ['bower', 'clean-styles', 'ie-styles'], function() {
+gulp.task('styles', ['bower'/*, 'clean-styles'*/, 'ie-styles'], function() {
   // Vendor Angular Loading Bar CSS
   var angularLoadingBarFiles = gulp.src(paths.bower + '/angular-loading-bar/build/loading-bar.css');
   var angucompleteFile = gulp.src(paths.bower + '/angucomplete/angucomplete.css');
@@ -176,7 +189,11 @@ gulp.task('styles', ['bower', 'clean-styles', 'ie-styles'], function() {
     .pipe(concat('styles.css'))
     .pipe(autoprefix("last 2 version", "> 1%"))
     .pipe(minifyCSS())
-    .pipe(notify({message: 'Finished styles task.'}))
+    .pipe(notify({
+      title: 'Jellyfish UX : Styles',
+      message: 'Sass compiling and minification has finished',
+      onLast: true
+    }))
     .pipe(gulp.dest(paths.dest.styles));
 });
 
@@ -199,12 +216,17 @@ gulp.task('clean-images', function() {
     .pipe(clean({force: true}));
 });
 
-gulp.task('images', ['bower', 'clean-images'], function() {
+gulp.task('images', ['bower'/*, 'clean-images'*/], function() {
   return gulp.src(paths.src.images)
     .pipe(plumber({
       errorHandler: errorHandler
     }))
-    .pipe(gulp.dest(paths.dest.images));
+    .pipe(gulp.dest(paths.dest.images))
+    .pipe(notify({
+      title: 'Jellyfish UX : Images',
+      message: 'Image minification has finished',
+      onLast: true
+    }));
 });
 
 gulp.task('clean-fonts', function() {
@@ -212,7 +234,7 @@ gulp.task('clean-fonts', function() {
     .pipe(clean({force: true}));
 });
 
-gulp.task('fonts', ['clean-fonts', 'icons'], function() {
+gulp.task('fonts', [/*'clean-fonts',*/ 'icons'], function() {
 
   // Move internal system fonts
   gulp.src(paths.src.fonts)
