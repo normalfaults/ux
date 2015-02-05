@@ -1,57 +1,59 @@
+<header class="header" ng-style="{'background-color': APP_CONFIG.orgColor}">
+  <div class="logo fl">
+    <a href="#"><img ng-src="{{APP_CONFIG.orgLogo}}" alt="Project Jellyfish"></a>
+  </div>
+  <!-- end .logo -->
+  <div class="nav-user fr" ng-if="headerCtrl.currentUser">
+    <nav>
+      <ul>
+        <li ng-repeat="headerLink in headerCtrl.headerLinks">
+          <a href="{{headerLink.url}}">{{headerLink.name}}</a>
+        </li>
+      </ul>
+    </nav>
+    <!-- end nav -->
+    <div class="icons-box">
+      <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerCtrl.alerts.length">{{headerCtrl.alerts.length}}</i></a>
 
-<header class="header" style="background-color: {{APP_CONFIG.orgColor}}">
-    <div class="logo fl">
-        <a href="#"><img src="{{APP_CONFIG.orgLogo}}" alt="Project Jellyfish"></a>
+      <div class="drop-down-box hide keep-drop-down-open">
+        <ul ng-if="headerCtrl.alerts.length > 0">
+          <li ng-repeat="item in headerCtrl.alerts | limitTo:5">
+            <span class="texts" ng-bind-html="item.trustedHtml"></span>
+            <span class="ago">{{item.ago}}</span>
+          </li>
+        </ul>
+        <ul ng-if="headerCtrl.alerts.length == 0">
+          <li>
+            <span>No Alerts</span>
+          </li>
+        </ul>
+        <div ng-if="headerCtrl.alerts.length > 5" class="view-all">
+          <a>View all notifications</a>
+        </div>
+      </div>
+      <!-- end nav -->
     </div>
-    <!-- end .logo -->
-    <div class="nav-user fr" ng-if="headerCtrl.currentUser">
-        <nav>
-            <ul>
-                <li ng-repeat="headerLink in headerCtrl.headerLinks">
-                    <a href="{{headerLink.url}}">{{headerLink.name}}</a>
-                </li>
-            </ul>
-        </nav>
-        <!-- end nav -->
-        <div class="icons-box">
-            <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerCtrl.alerts.length">{{headerCtrl.alerts.length}}</i></a>
-            <div class="drop-down-box hide keep-drop-down-open">
-                <ul ng-if="headerCtrl.alerts.length > 0">
-                    <li ng-repeat="item in headerCtrl.alerts | limitTo:5">
-                        <span class="texts" ng-bind-html="item.trustedHtml"></span>
-                        <span class="ago">{{item.ago}}</span>
-                    </li>
-                </ul>
-                <ul ng-if="headerCtrl.alerts.length == 0">
-                    <li>
-                        <span>No Alerts</span>
-                    </li>
-                </ul>
-                <div ng-if="headerCtrl.alerts.length > 5" class="view-all">
-                    <a>View all notifications</a>
-                </div>
-            </div>
-            <!-- end nav -->
-        </div>
-        <!-- end .drop-down-box -->
-        <div class="icons-box">
-            <a ng-click="headerCtrl.cartModal()" class="fa fa-shopping-cart top-bar-icon"><i class="info" ng-if="headerCtrl.cartCount()">{{headerCtrl.cartCount()}}</i></a>
-        </div>
-        <!-- end .icons-box -->
-        <div class="user-info">
-            <a class="user-info-dwwn" drop-down>
-                <span class="texts">Welcome<span class="name">{{headerCtrl.currentUser.fullName()}}</span></span>
-                <span class="avatar"><img gravatar-src="headerCtrl.currentUser.email" gravatar-size="26" alt="Avatar"></span>
-            </a>
-            <div class="drop-down-box hide">
-                <ul>
-                    <li><a>Edit Profile</a></li>
-                    <li><a href="/logout">Logout</a></li>
-                </ul>
-            </div>
-            <!-- end .drop-down-box -->
-        </div>
-        <!-- end .user-info -->
+    <!-- end .drop-down-box -->
+    <div class="icons-box">
+      <a ng-click="headerCtrl.cartModal()" class="fa fa-shopping-cart top-bar-icon"><i class="info"
+                                                                                       ng-if="headerCtrl.cartCount()">{{headerCtrl.cartCount()}}</i></a>
     </div>
-    <!-- end .nav-user -->
+    <!-- end .icons-box -->
+    <div class="user-info">
+      <a class="user-info-dwwn" drop-down>
+        <span class="texts">Welcome<span class="name">{{headerCtrl.currentUser.fullName()}}</span></span>
+        <span class="avatar"><img gravatar-src="headerCtrl.currentUser.email" gravatar-size="26" alt="Avatar"></span>
+      </a>
+
+      <div class="drop-down-box hide">
+        <ul>
+          <li><a>Edit Profile</a></li>
+          <li><a href="/logout">Logout</a></li>
+        </ul>
+      </div>
+      <!-- end .drop-down-box -->
+    </div>
+    <!-- end .user-info -->
+  </div>
+  <!-- end .nav-user -->
 </header>
