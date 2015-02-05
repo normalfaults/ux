@@ -7,6 +7,8 @@ var defaults = {
   'orgColor': '#0a498a'
 };
 
+var appVersion = '2.0.0';
+
 var express = require('express');
 var path = require('path');
 var methodOverride = require('method-override');
@@ -21,6 +23,7 @@ var app = express();
 var fs = require('fs');
 
 var appConfigPath = './public/appConfig.js';
+var appVersionPath = './public/appVersion.js';
 
 app.set('port', process.env.PORT || defaults.port);
 
@@ -60,15 +63,17 @@ if (process.env.ORG_COLOR) {
   orgColor = process.env.ORG_COLOR;
 }
 
-// Create the default contents of the file
+// Create the default contents of the file, if it does not exist
 var appConfigContents = 'window.appConfig = {apiBasePath: "' + apiBasePath + '", orgLogo: "' + orgLogo + '", orgColor: "' + orgColor + '"};';
-
-// Only create the file, if it does not exist
 fs.exists(appConfigPath, function (exists) {
   if(!exists){
     fs.writeFileSync(appConfigPath, appConfigContents);
   }
 });
+
+// Create the default contents of the versions file, always remake it
+var appVersionContents = 'window.appVersion = {ux: "' + appVersion + '"};';
+fs.writeFileSync(appVersionPath, appVersionContents);
 
 // Get all the public directories.
 var dirs = fs.readdirSync(path.join(__dirname, 'public'));
