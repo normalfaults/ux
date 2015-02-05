@@ -3,10 +3,11 @@
 var _ = require('lodash');
 
 /**@ngInject*/
-function ProjectController($scope, $modal, project, ProjectUsersResource, OrderItemsResource, alerts, products) {
+function ProjectController($scope, $interval, project, ProjectUsersResource, OrderItemsResource, alerts, products) {
 
+  this.intervalDelay = 30000;
 
-  this.$modal = $modal;
+  this.$interval = $interval;
 
   this.project = project;
   // Filter the alerts to only show them for this project.
@@ -21,14 +22,16 @@ function ProjectController($scope, $modal, project, ProjectUsersResource, OrderI
   /**
    * On creation/transition to scope, start refresh interval if
    * we need to to reload unfinished service data.
+   *
+   * TODO : Revisit the data refresh
    */
-  $scope.$on('$stateChangeSuccess', _.bind(function () {
-    this.startRefreshInterval();
-  }, this));
-
-  $scope.$on('$stateChangeStart', _.bind(function() {
-    this.stopRefreshInterval();
-  }, this));
+  //$scope.$on('$stateChangeSuccess', _.bind(function () {
+  //  this.stopRefreshInterval();
+  //}, this));
+  //
+  //$scope.$on('$stateChangeStart', _.bind(function() {
+  //  this.startRefreshInterval();
+  //}, this));
 }
 
 ProjectController.resolve = {
@@ -50,24 +53,24 @@ ProjectController.prototype = {
    * Polls Every 30 Seconds.
    */
   startRefreshInterval: function() {
-    if (!this._areAllServicesComplete()) {
-      this.interval = window.setInterval(_.bind(function () {
-        this.project.$get().then(_.bind(function () {
-
-          if (this._areAllServicesComplete()) {
-            this.stopRefreshInterval();
+    var self = this;
+    if (!self._areAllServicesComplete()) {
+      self.interval = this.$interval(function() {
+        self.project.$get(function() {
+          if (self._areAllServicesComplete()) {
+            self.stopRefreshInterval();
           }
-        }, this));
-      }, this), 30000);
+        });
+      }, this.intervalDelay);
     }
-
   },
 
   /**
    * Clear/Stop the polling.
    */
   stopRefreshInterval: function() {
-    window.clearInterval(this.interval);
+    this.$interval.cancel(this.interval);
+    this.interval = undefined;
   },
 
   removeUserFromProject: function(index){
@@ -177,7 +180,7 @@ ProjectController.prototype = {
       'total':       projectBudget,
       'used':        projectSpent,
       'usedPercent': usedPercent,
-      'usedColor': usedColor,
+      'usedColor': usedColor
     };
   },
 
