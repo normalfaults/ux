@@ -18,6 +18,6 @@ Update /assets/js/app/admin/products/products_admin_controller.js
 
 ####License
 
-See LICENSE.txt
+See LICENSE
 
 Copyright 2015 Booz Allen Hamilton
