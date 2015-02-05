@@ -1,0 +1,74 @@
+/*
+Error: File to import not found or unreadable: bootstrap/variables.
+       Load paths:
+         
+        on line 2 of vendor/_bootstrap.sass
+        from line 1 of styles.sass
+
+1: @import 'vendor/bootstrap'
+2: @import 'vendor/fontawesome'
+3: @import 'common/index'
+4: 
+5: @import 'admin/index'
+6: @import "products/index"
+7: @import 'projects/index'
+
+Backtrace:
+vendor/_bootstrap.sass:2
+styles.sass:1
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/import_node.rb:66:in `rescue in import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/import_node.rb:45:in `import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/import_node.rb:28:in `imported_file'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/import_node.rb:37:in `css_import?'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:301:in `visit_import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block (2 levels) in visit_import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `map'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:315:in `block in visit_import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:88:in `block in with_import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:88:in `with_import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:312:in `visit_import'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `block in with_base'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:115:in `with_frame'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/stack.rb:79:in `with_base'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `block in visit_children'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `map'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:52:in `visit_children'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:167:in `block in visit_children'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:166:in `visit_children'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `block in visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:186:in `visit_root'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/base.rb:36:in `visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:157:in `visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/visitors/perform.rb:8:in `visit'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/root_node.rb:36:in `css_tree'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/tree/root_node.rb:29:in `render_with_sourcemap'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/engine.rb:368:in `_render_with_sourcemap'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/engine.rb:285:in `render_with_sourcemap'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:209:in `each'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/plugin.rb:82:in `update_stylesheets'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:350:in `watch_or_update'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/exec/sass_scss.rb:50:in `process_result'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/exec/base.rb:52:in `parse'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/lib/sass/exec/base.rb:19:in `parse!'
+/Users/isapple/.rbenv/versions/2.1.5/lib/ruby/gems/2.1.0/gems/sass-3.4.9/bin/sass:13:in `<top (required)>'
+/Users/isapple/.rbenv/versions/2.1.5/bin/sass:23:in `load'
+/Users/isapple/.rbenv/versions/2.1.5/bin/sass:23:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: File to import not found or unreadable: bootstrap/variables.\A        Load paths:\A          \A         on line 2 of vendor/_bootstrap.sass\A         from line 1 of styles.sass\A \A 1: @import 'vendor/bootstrap'\A 2: @import 'vendor/fontawesome'\A 3: @import 'common/index'\A 4: \A 5: @import 'admin/index'\A 6: @import \"products/index\"\A 7: @import 'projects/index'"; }
