@@ -1,8 +1,8 @@
 <footer>
   <div class="footer-content">
     <div class="left fl">
-      <strong>Project Jellyfish – Release 2 Preview</strong>
-      <span>Copyright &copy; 2014 Booz Allen Hamilton. All Rights Reserved.</span>
+      <strong>Project Jellyfish – Version {{footerCtrl.jellyfishVersion}}</strong>
+      <span>Copyright &copy; {{footerCtrl.copyrightYear | date:'yyyy' }} Booz Allen Hamilton. All Rights Reserved.</span>
     </div>
     <!-- end .left -->
     <div class="right fr">
@@ -13,10 +13,7 @@
       </nav>
       <!-- end .links -->
       <div class="shape">
-        <a class="fa fa-facebook footer-icon"></a>
         <a class="fa fa-twitter footer-icon"></a>
-        <a class="fa fa-linkedin footer-icon"></a>
-        <a class="fa fa-google-plus footer-icon"></a>
       </div>
       <!-- end .shape -->
     </div>
