@@ -1,4 +1,4 @@
-## Local Setup Procedures (for Mac OS X Mavericks)
+##How to install on Mac OX 10.9.x
 
 ####Step 1: Install the Mac command line tools:
 
@@ -30,7 +30,7 @@ brew install npm
 ####Step 5: Install npm dependencies
 
 ```
-sudo npm install`
+sudo npm install
 ```
 
 ####Step 6: Install gulp

@@ -1,4 +1,4 @@
-## How to install on Mac OS X Mavericks
+##How to install on a RHEL based OS
 
 This guide will walk you through how to install and run Jellyfish-Core on RedHat Enterprise Linux (or similar, like CentOS).
 
