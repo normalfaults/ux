@@ -1,6 +1,8 @@
 ##jellyfish-ux
 ============
 
+[![Code Climate](https://codeclimate.com/repos/54d4fa726956803255002db9/badges/38731195832f7b398c44/gpa.svg)](https://codeclimate.com/repos/54d4fa726956803255002db9/feed)
+[![Test Coverage](https://codeclimate.com/repos/54d4fa726956803255002db9/badges/38731195832f7b398c44/coverage.svg)](https://codeclimate.com/repos/54d4fa726956803255002db9/feed)
 [![Build Status](https://magnum.travis-ci.com/projectjellyfish/ux.svg?token=hzrJLxrVn5bNaxiZp1bx)](https://magnum.travis-ci.com/projectjellyfish/ux)
 
 Jellyfish-UX is the UI layer of Project Jellyfish.
