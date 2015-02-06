@@ -10,6 +10,7 @@ var DirectivesModule = angular.module('broker.directives', [])
   .directive('setWidth', require('./set_width'))
   .directive('toggleSidebar', require('./toggle_sidebar'))
   .directive('formInput', require('./form_input'))
-  .directive('switchViewButtons', require('./switch_view_buttons'));
+  .directive('switchViewButtons', require('./switch_view_buttons'))
+  .directive('fallbackImage', require('./fallback_image'));
 
 module.exports = DirectivesModule;

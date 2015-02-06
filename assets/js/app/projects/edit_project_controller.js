@@ -10,7 +10,7 @@ function EditProjectController($scope, $state, ProjectsResource, project, projec
     $scope.updateProject = function() {
         var filteredProject = _.omit($scope.project, 'created_at', 'updated_at', 'deleted_at', 'services', 'domain',
             'url', 'state', 'state_ok', 'problem_count', 'account_number', 'resources', 'icon', 'cpu', 'hdd', 'ram',
-            'status', 'users', 'order_history', 'description', 'cc', 'staff_id', 'approved', 'img', 'project_answers');
+            'status', 'users', 'order_history', 'cc', 'staff_id', 'approved', 'project_answers');
 
         if ($scope.project.project_answers.length > 0) {
             filteredProject.project_answers  = _.reduce($scope.project.project_answers,
