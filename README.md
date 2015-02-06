@@ -1,9 +1,9 @@
 ##jellyfish-ux
 ============
 
-[![Build Status](https://magnum.travis-ci.com/booz-allen-hamilton/jellyfish-ux.svg?token=hzrJLxrVn5bNaxiZp1bx&branch=master)](https://magnum.travis-ci.com/booz-allen-hamilton/jellyfish-ux)
+[![Build Status](https://magnum.travis-ci.com/projectjellyfish/ux.svg?token=hzrJLxrVn5bNaxiZp1bx)](https://magnum.travis-ci.com/projectjellyfish/ux)
 
-Jellyfish-UX is the UI layer of Jellyfish.
+Jellyfish-UX is the UI layer of Project Jellyfish.
 
 ####Overview
 
@@ -17,11 +17,12 @@ for admins to add new products and services.
 
 ####Installation
 
-Jellyfish-UX is a Node/ExpressJS application.  Please see the appropriate installation guide for specifics for
-how to install.
+Jellyfish-UX is a Node/ExpressJS application.
 
-INSTALL-REHL.md - RedHat Linux installation
-INSTALL-MACOSX.md - Mac OS X installation
+Please use the OS specific install guide from below.
+
+- INSTALL-REHL.md - RedHat Linux installation
+- INSTALL-MACOSX.md - Mac OS X installation
 
 ####Adding product icons
 
