@@ -11,9 +11,9 @@ Project Jellyfish is an IT broker system.  It allows admins to create a product 
 TaaS, PaaS, or even Staff) and allows them to be assigned a cost, and then users can create projects and add those
 services to a project.  Jellyfish current supports IaaS via ManageIQ and Chef.
 
-Project Jellyfish has 3 main components: Jellyfish-Core, Jellyfish-UX, and ManageIQ.  Jellyfish-UX is the HTML5 User
-Interface for Project Jellyfish.  It provides an HTML5 front-end to Jellyfish-Core for users to purchase services, and
-for admins to add new products and services.
+Project Jellyfish has 2 main components: API and UX.  UX is the HTML5 User Interface for Project Jellyfish.  It is an
+AngularJS / NodeJS application that provides an HTML5 front-end to Jellyfish-Core for users to purchase services, and
+for admins to add new products and services; and for end-users to sign-up for services.
 
 ####Installation
 
