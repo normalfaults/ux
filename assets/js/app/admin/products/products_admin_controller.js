@@ -31,7 +31,9 @@ function ProductsAdminController(categories, clouds) {
     'products/oracle.png',
     'products/netapp.png',
     'products/firewall.png',
-    'products/f5.png'
+    'products/f5.png',
+    'products/man.png',
+    'products/woman.png'
   ];
 }
 
