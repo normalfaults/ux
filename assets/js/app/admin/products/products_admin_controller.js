@@ -33,7 +33,8 @@ function ProductsAdminController(categories, clouds) {
     'products/firewall.png',
     'products/f5.png',
     'products/man.png',
-    'products/woman.png'
+    'products/woman.png',
+    'products/mean.png',
   ];
 }
 
