@@ -11,8 +11,10 @@ deploy:
   app: jellyfish-ux-dev
   skip_cleanup: true
   api_key:
-    secure: It6RgD34mScWklzk8NxRBLanqDjxFX/hR+knUG3g81EXID+5LJHnjw/yz1J1MvHzWcIW1bgjkHVcAclI5tPVqh9o6oJ2tp2CTr9rmHgzSRt7upZlIiYR06tOBSWwTk6et62VdiDIlYUDN4wX/kK90SW5HDASn+ATon13s3kjgLA=
+    secure: "VINB/PoU27DpJKUSvJf2bF1eAM6+EbOL7/MXSGrboyPZfSmcgCdT/VYoZEPSYVVZ9znCsB0myYZNaIvmt8GRJVIDe7hNxYnf5pjVhUD0e1cZsL9U90P6L1CSqKtzEvGgKBmRC8GbJmuC5yFd9cwj4d/98o9rd1zYiF8pGRfFmZY="
 notifications:
   slack:
-    secure: Rus6LY+m64yx9iBwfYneBozMiNVhjS4OfyfMI09ZrLhdxcWb3sU7AZeLMiuUbh64VwpqK1yb7Y8tZS/qosVafsI4kIbGMnEyMDLSnluabgIYXWBnpijvQ4u7n1IemlL5DWnSjGE3eGUeHAE9UlMjcGnvdA//TsAG0I1AGDyVctc=
+    secure: "aqxG0CKy5kHNyJ0N2qrQlS4i3OYT5Ty5sSgdTGujvxmmf2uL3aEeC0KPHEdELmgow+t3wCjdFdmAGxBLhzXJD0PzAKA5vEFgw9Tnyapz4MzUMjFwUq5+lP5R+HMziQcH2o32cI2D9oRGdtu2pZQr/A5UCnJnHfpRAMTHHDJv2qc="
+     on_success: change
+     on_failure: always
 
