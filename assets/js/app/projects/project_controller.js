@@ -132,11 +132,10 @@ ProjectController.prototype = {
 
     if (projectBudget > 0) {
 
-      leftMonths = (projectBudget - projectSpent) / 12;
+      leftMonths = Math.round((projectBudget - projectSpent) / 12);
       leftPercent = leftMonths / 12;
 
       if (leftMonths > 12) {
-        leftMonths = '>12';
         leftPercent = 1.0;
       } else if (leftMonths <= 5 && leftMonths > 3) {
         leftColor = '#CCDB23';
@@ -146,6 +145,10 @@ ProjectController.prototype = {
         leftMonths = 0;
         leftPercent = 0.0;
         leftColor = 'red';
+      }
+
+      if (leftMonths > 99) {
+        leftMonths = '>99';
       }
 
     }
