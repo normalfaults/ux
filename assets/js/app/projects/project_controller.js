@@ -133,12 +133,15 @@ ProjectController.prototype = {
     if (projectBudget > 0) {
 
       leftMonths = (projectBudget - projectSpent) / 12;
+      leftPercent = leftMonths / 12;
 
       if (leftMonths > 12) {
         leftMonths = '>12';
         leftPercent = 1.0;
-      } else if (leftMonths <= 6 && leftMonths > 3) {
+      } else if (leftMonths <= 5 && leftMonths > 3) {
         leftColor = '#CCDB23';
+      } else if (leftMonths <=3 && leftMonths > 0) {
+        leftColor = 'red';
       } else if (leftMonths <= 0) {
         leftMonths = 0;
         leftPercent = 0.0;
@@ -162,6 +165,7 @@ ProjectController.prototype = {
     var usedColor = 'green';
 
     if (projectBudget > 0) {
+
       usedPercent = projectSpent / projectBudget;
       if (usedPercent > 1.0) {
         usedPercent = 1.0;
