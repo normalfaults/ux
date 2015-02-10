@@ -36,4 +36,12 @@
       </div>
     </div>
   </span>
+  <span ng-switch-when="password">
+    <div class="form-group">
+        <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
+        <div class="col-sm-8 control-input">
+            <input type="password" ng-model="fieldModel.value" name="{{fieldName}}" class="form-control" id="{{fieldId}}" ng-required="{{required}}">
+        </div>
+    </div>
+  </span>
 </span>
