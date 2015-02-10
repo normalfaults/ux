@@ -130,9 +130,9 @@ ProjectController.prototype = {
     var leftMonths = '>12';
     var leftColor = 'green';
 
-    if (projectBudget > 0) {
+    if (projectBudget > 0 && monthlySpend !== 0) {
 
-      leftMonths = Math.round((projectBudget - projectSpent) / 12);
+      leftMonths = Math.round((projectBudget - projectSpent) / monthlySpend);
       leftPercent = leftMonths / 12;
 
       if (leftMonths > 12) {
