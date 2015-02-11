@@ -9,6 +9,7 @@ function FormInput() {
             fieldModel: "=fieldModel",
             fieldType: "=fieldType",
             fieldRequired: "=fieldRequired",
+            fieldDisabled: "=fieldDisabled",
             fieldId: "=fieldId",
             fieldName: "=fieldName",
             label: "=label",
