@@ -6,10 +6,11 @@ var _ = require('lodash');
 function ProjectController($scope, $interval, project, ProjectUsersResource, OrderItemsResource, alerts, products) {
 
   this.intervalDelay = 30000;
-
   this.$interval = $interval;
 
   this.project = project;
+  this.reason = null; // The reason this project has been rejected.
+
   // Filter the alerts to only show them for this project.
   this.alerts = _.filter(alerts, function(alert) {
     return alert.project_id == project.id;
@@ -73,9 +74,27 @@ ProjectController.prototype = {
     this.interval = undefined;
   },
 
-  removeUserFromProject: function(index){
+  /**
+   * Project Approval actions
+   */
+  approve: function() {
+    var self = this;
+    this.project.$approve(function() {
+      self.project.$get();
+    });
+  },
+  reject: function() {
+    var self = this;
+
+    var reason = 'RAISINS';
+    this.project.$reject({reason: reason}, function() {
+      self.project.$get();
+    });
+  },
+
+  removeUserFromProject: function(index) {
     this.ProjectUsersResource.delete({id: this.project.id, staff_id: this.project.users[index].id}).$promise.then(
-      _.bind(function(data){
+      _.bind(function(data) {
         this.project.users.splice(index, 1);
       }, this),
       function(error) {
@@ -139,7 +158,7 @@ ProjectController.prototype = {
         leftPercent = 1.0;
       } else if (leftMonths <= 5 && leftMonths > 3) {
         leftColor = '#CCDB23';
-      } else if (leftMonths <=3 && leftMonths > 0) {
+      } else if (leftMonths <= 3 && leftMonths > 0) {
         leftColor = 'red';
       } else if (leftMonths <= 0) {
         leftMonths = 0;
@@ -184,8 +203,8 @@ ProjectController.prototype = {
     }
 
     return {
-      'total':       projectBudget,
-      'used':        projectSpent,
+      'total': projectBudget,
+      'used': projectSpent,
       'usedPercent': usedPercent,
       'usedColor': usedColor
     };

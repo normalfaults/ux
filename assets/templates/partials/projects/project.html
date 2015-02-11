@@ -1,18 +1,22 @@
-<div class="project-detail-page main-content" set-width>
+<div class="project-detail-page main-content container-fluid" set-width>
 
-  <div class="banner">
-
+  <div class="approval-banner row" ng-hide="projectCtrl.project.isApproved()">
     <!-- Pending Approval Banner -->
 
-    <div class="top-notice-banner" ng-if="!projectCtrl.project.isApproved()">
-      <div class="app-project">
-        <div class="col40">
-          <div class="project-approval-icon">
-            <i class="fa fa-asterisk"></i>
+    <div class="col-sm-12">
+      <i class="project-approval-icon fa fa-asterisk"></i>
+      <h3>Project is Pending</h3>
+      <div class="pull-left">
+        <button type="button" class="btn btn-primary" ng-click="projectCtrl.approve()">Approve</button>
+      </div>
+      <div class="col-sm-7">
+        <div class="input-group">
+          <input type="text" class="form-control" ng-model="projectCtrl.reason" placeholder="Reason for rejection"/>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-danger" ng-click="projectCtrl.reject()"
+                    ng-disabled="!projectCtrl.reason">Reject
+            </button>
           </div>
-          <h3>Project is Pending</h3>
-          <a type="button" class="btn btn-primary">Approve</a>
-          <a type="button" class="btn btn-danger">Reject</a>
         </div>
       </div>
     </div>
