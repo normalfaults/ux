@@ -1,5 +1,7 @@
 language: node_js
 
+sudo: false
+
 before_install:
   - gem install sass
   - npm install
@@ -20,5 +22,3 @@ deploy:
 notifications:
   slack:
     secure: "aqxG0CKy5kHNyJ0N2qrQlS4i3OYT5Ty5sSgdTGujvxmmf2uL3aEeC0KPHEdELmgow+t3wCjdFdmAGxBLhzXJD0PzAKA5vEFgw9Tnyapz4MzUMjFwUq5+lP5R+HMziQcH2o32cI2D9oRGdtu2pZQr/A5UCnJnHfpRAMTHHDJv2qc="
-    on_success: change
-    on_failure: always
