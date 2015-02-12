@@ -9,7 +9,7 @@
     "alerts":            "/alerts",
 
     "orders":            "/orders/:id",
-    "orderItems":        "/orders/:order_id/items/:id",
+    "orderItems":        "/order_items/:id",
 
     "projectsById":      "/projects/:id",
     "projectQuestions":  "/project_questions/:id",

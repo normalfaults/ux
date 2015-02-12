@@ -1,14 +1,25 @@
+*,
+*:before,
+*:after
+  box-sizing: border-box
+
 html, body
   height: 100%
 
 body
-  font-family: "proximanova_light", Arial, Helvetica
+  font-family: proximanova_semibold, Arial, "Helvetica Neue", Helvetica
+  //font-family: "proximanova_light", Arial, Helvetica
   font-size: 13px
   color: $text-color
   line-height: 1
   background: #fff
   /* BREAK LONG WORDS
   word-break: break-word
+
+  /* Things are so broken clearfix needs hacks
+  .clearfix
+    clear: none
+    display: table
 
 // Generic Header + Table Layout
 .table-box
@@ -119,10 +130,6 @@ body
 
 .alert-unknown
   color: #0a4887
-
-.top-notice-banner
-  border-bottom: 1px solid #cbcccd
-  background: #F2F2F3
 
 .content
   margin-left: 20px
