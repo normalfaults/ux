@@ -2,7 +2,7 @@
 
 /**@ngInject*/
 var OrderItemsResource = function($resource, apiResource) {
-  return $resource(apiResource('orderItems'), { id: '@id', order_id: '@order_id'}, {
+  return $resource(apiResource('orderItems'), { id: '@id' }, {
     startService: {
       method: 'PUT',
       url: apiResource('orderItems') + '/start_service'

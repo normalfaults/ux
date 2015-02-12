@@ -38,7 +38,7 @@ function ProjectController($scope, $interval, project, ProjectUsersResource, Ord
 ProjectController.resolve = {
   /**@ngInject*/
   project: function(ProjectsResource, $stateParams) {
-    return ProjectsResource.get({id: $stateParams.projectId}).$promise;
+    return ProjectsResource.get({id: $stateParams.projectId, 'includes[]': ['approvals', 'approvers', 'services', 'project_answers', 'staff']}).$promise;
   },
   /**@ngInject*/
   products: function(ProductsResource) {
@@ -78,18 +78,10 @@ ProjectController.prototype = {
    * Project Approval actions
    */
   approve: function() {
-    var self = this;
-    this.project.$approve(function() {
-      self.project.$get();
-    });
+    this.project.$approve();
   },
   reject: function() {
-    var self = this;
-
-    var reason = 'RAISINS';
-    this.project.$reject({reason: reason}, function() {
-      self.project.$get();
-    });
+    this.project.$reject({reason: this.reason});
   },
 
   removeUserFromProject: function(index) {

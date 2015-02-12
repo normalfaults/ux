@@ -1,17 +1,22 @@
 <div class="project-detail-page main-content container-fluid" set-width>
 
-  <div class="approval-banner row" ng-hide="projectCtrl.project.isApproved()">
+  <div class="approval-banner row" ng-hide="projectCtrl.project.approval == 'approved'">
     <!-- Pending Approval Banner -->
 
-    <div class="col-sm-12">
+    <div class="col-sm-12" ng-show="projectCtrl.project.approval == 'undecided'">
       <i class="project-approval-icon fa fa-asterisk"></i>
+
       <h3>Project is Pending</h3>
+
       <div class="pull-left">
         <button type="button" class="btn btn-primary" ng-click="projectCtrl.approve()">Approve</button>
       </div>
       <div class="col-sm-7">
         <div class="input-group">
-          <input type="text" class="form-control" ng-model="projectCtrl.reason" placeholder="Reason for rejection"/>
+          <input type="text" class="form-control" ng-model="projectCtrl.reason"
+                 ng-model-options="{ updateOn: 'default blur', debounce: {'default': 500, 'blur': 0} }"
+                 placeholder="Reason for rejection"/>
+
           <div class="input-group-btn">
             <button type="button" class="btn btn-danger" ng-click="projectCtrl.reject()"
                     ng-disabled="!projectCtrl.reason">Reject
@@ -19,6 +24,15 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <div class="col-sm-12" ng-show="projectCtrl.project.approval == 'rejected'">
+      <i class="project-approval-icon fa fa-exclamation"></i>
+
+      <h3>Project was rejected</h3>
+
+      <p><strong>{{projectCtrl.project.finalApproval().staff_name}}:</strong>
+        {{projectCtrl.project.finalApproval().reason}}</p>
     </div>
 
   </div>
@@ -36,7 +50,7 @@
         <h3>{{projectCtrl.project.name}}</h3>
       </div>
       <div class="fr">
-        <div class="bottom-btn-box">
+        <div class="bottom-btn-box" ng-show="projectCtrl.project.approval == 'approved'">
           <a ui-sref="base.project.edit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
         </div>
       </div>
@@ -103,7 +117,7 @@
 
     <!-- Services -->
 
-    <div class="project-services" ng-if="projectCtrl.project.isApproved()">
+    <div class="project-services" ng-show="projectCtrl.project.approval == 'approved'">
       <section-header name="{{'Services (' + projectCtrl.project.services.length + ')'}}">
         <product-box class="product-box" ng-repeat="(serviceIndex, service) in projectCtrl.project.services"
                      product="projectCtrl.getServiceWithProduct(service)">
@@ -127,9 +141,9 @@
     </div>
 
     <!-- Users -->
-    <div class="project-users" ng-if="projectCtrl.project.isApproved()">
+    <div class="project-users" ng-show="projectCtrl.project.approval == 'approved'">
       <section-header name="Users">
-        <users-box class="product-box" ng-repeat="user in projectCtrl.project.users" user="user">
+        <users-box class="product-box" ng-repeat="user in projectCtrl.project.staff" user="user">
           <a type="button" class="btn btn-danger" ng-click="projectCtrl.removeUserFromProject($index)">Remove</a>
         </users-box>
 

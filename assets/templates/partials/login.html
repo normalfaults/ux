@@ -1,49 +1,45 @@
 <div class="login-box table-container table-box">
-    <div class="contents">
+  <div class="contents">
 
-        <div class="titles-box">
-            <h2>
-                <strong class="orange-texts">LOGIN</strong>
-            </h2>
-            <div class="titles-border-bar">
-                <span class="blues width218"></span>
-                <span class="whites width3"></span>
-            </div>
-        </div>
-        <!-- end .titles-box -->
+    <div class="titles-box">
+      <h2>
+        <strong class="orange-texts">LOGIN</strong>
+      </h2>
 
-
-        <form ng-submit="loginCtrl.login()">
-            <div class="error" ng-show="loginCtrl.hasFailedLogin()">
-                <i class="fa fa-exclamation-triangle"></i>
-                Invalid Email or Password.
-            </div>
-            <table class="table-data">
-                <colgroup>
-                    <col class="col40">
-                    <col>
-                </colgroup>
-                <tbody>
-                <tr>
-                    <td class="left-text">Email</td>
-                    <td class="min-value">
-                           <span class="input-box">
-                            <input name="email" type="text" ng-model="email">
-                          </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="left-text">Password</td>
-                    <td class="min-value">
-                          <span class="input-box">
-                           <input name="password" type="password" ng-model="password">
-                         </span>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-            <input type="submit" value="Login" class="btn btn-primary">
-        </form>
+      <div class="titles-border-bar">
+        <span class="blues width218"></span>
+        <span class="whites width3"></span>
+      </div>
     </div>
+    <!-- end .titles-box -->
+
+    <form ng-submit="loginCtrl.login()">
+      <div class="error" ng-show="loginCtrl.hasFailedLogin()">
+        <i class="fa fa-exclamation-triangle"></i>
+        Invalid Email or Password.
+      </div>
+      <table class="table-data">
+        <colgroup>
+          <col class="col40">
+          <col>
+        </colgroup>
+        <tbody>
+        <tr>
+          <td class="left-text">Email</td>
+          <td class="min-value">
+            <input class="form-control" name="email" type="text" ng-model="email">
+          </td>
+        </tr>
+        <tr>
+          <td class="left-text">Password</td>
+          <td class="min-value">
+            <input class="form-control" name="password" type="password" ng-model="password">
+          </td>
+        </tr>
+
+        </tbody>
+      </table>
+      <input type="submit" value="Login" class="btn btn-primary">
+    </form>
+  </div>
 </div>
