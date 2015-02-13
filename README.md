@@ -23,7 +23,7 @@ Jellyfish-UX is a Node/ExpressJS application.
 
 Please use the OS specific install guide from below.
 
-- INSTALL-REHL.md - RedHat Linux installation
+- INSTALL-RHEL.md - Red Hat Enterprise Linux installation
 - INSTALL-MACOSX.md - Mac OS X installation
 
 ####Adding product icons
