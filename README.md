@@ -11,7 +11,7 @@ Jellyfish-UX is the UI layer of Project Jellyfish.
 
 Project Jellyfish is an IT broker system.  It allows admins to create a product catalog of any type of service (IaaS,
 TaaS, PaaS, or even Staff) and allows them to be assigned a cost, and then users can create projects and add those
-services to a project.  Jellyfish current supports IaaS via ManageIQ and Chef.
+services to a project.  Jellyfish current supports IaaS via [ManageIQ](http://manageiq.org) and [Chef](http://www.chef.io).
 
 Project Jellyfish has 2 main components: API and UX.  UX is the HTML5 User Interface for Project Jellyfish.  It is an
 AngularJS / NodeJS application that provides an HTML5 front-end to Jellyfish-Core for users to purchase services, and
