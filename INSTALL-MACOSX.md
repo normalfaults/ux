@@ -1,51 +1,44 @@
-##How to install on Mac OX 10.9.x
+## How to install on Mac OX 10.9.x
 
-####Step 1: Install the Mac command line tools:
+
+#### Install the Mac command line tools:
 
 ````
 xcode-select --install
 ````
 
-####Step 2: Install homebrew
+#### Install ThoughtBot Laptop Tools
 
 ````
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-echo 'export PATH=/usr/local/bin:$PATH' >> ~/.bash_profile
-source ~/.bash_profile
+curl --remote-name https://raw.githubusercontent.com/thoughtbot/laptop/master/mac
+sh mac 2>&1 | tee ~/laptop.log
 ````
 
-####Step 3: Run brew doctor
-This will make sure that all is good
-
-````
-brew doctor
-````
-
-####Step 4: Install Node Package Manager.
+#### Install npm dependencies
 
 ```
-brew install npm
+npm install
 ```
 
-####Step 5: Install npm dependencies
+#### Install bower
 
 ```
-sudo npm install
+npm install -g bower
 ```
 
-####Step 6: Install gulp
+#### Install gulp
 
 ```
-sudo npm install -g gulp
+npm install -g gulp
 ```
 
-####Step 7: Build application
+#### Build application
 
 ```
 gulp production
 ```
 
-####Step 8: Start node
+#### Start node
 
 ```
 node app
