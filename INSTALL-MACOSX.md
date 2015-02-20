@@ -7,18 +7,26 @@
 xcode-select --install
 ````
 
-#### Install ThoughtBot Laptop Tools
+#### Install thoughtbot Laptop Tools
 
 ````
 curl --remote-name https://raw.githubusercontent.com/thoughtbot/laptop/master/mac
 sh mac 2>&1 | tee ~/laptop.log
 ````
 
-#### Install npm dependencies
+#### Get thoughtbot dotFiles
 
-```
-npm install
-```
+````
+cd ~
+git clone git://github.com/thoughtbot/dotfiles.git
+env RCRC=$HOME
+````
+
+#### Clone the Repo
+
+````
+git clone git@github.com:projectjellyfish/ux.git
+````
 
 #### Install bower
 
@@ -30,6 +38,13 @@ npm install -g bower
 
 ```
 npm install -g gulp
+```
+
+#### Install project npm dependencies
+
+```
+cd ux
+npm install
 ```
 
 #### Build application
