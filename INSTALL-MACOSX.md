@@ -40,33 +40,30 @@ npm install -g bower
 npm install -g gulp
 ```
 
-#### Install project npm dependencies
+#### Install project dependencies
 
 ```
 cd ux
 npm install
-```
-
-#### Build application
-
-```
 gulp production
 ```
 
 #### Start node
 
 ```
-node app
+node app.js
 ```
+
+## Misc Notes
 
 Default port/host is http://localhost:5000
 
-### Configuration
-* process.env.PORT -- NodeJS server port (optional, defaults to 3000)
-* process.env.API_BASE_PATH -- Core API Base Path (optional, defaults to http://localhost:3000);
+#### Configuration
+* process.env.PORT -- NodeJS server port (optional, defaults to 5000)
+* process.env.API_BASE_PATH -- Jellyfish API Base Path (optional, defaults to http://localhost:3000);
 
 
-### Adding product icons
+#### Adding product icons
 
 Put the 60x60px images in images/assets/images/products/
 Update /assets/js/app/admin/products/products_admin_controller.js
