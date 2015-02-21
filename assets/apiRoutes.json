@@ -3,7 +3,7 @@
   "routes": {
 
     "settingById":       "/settings/:id",
-    "settingsByName":    "/settings/:name",
+    "settingsByHid":     "/settings/:hid",
     "cloudsById":        "/clouds/:id",
 
     "alerts":            "/alerts",
@@ -21,6 +21,7 @@
 
     "signIn":            "/staff/sign_in",
     "signOut":           "/staff/sign_out",
+    "ssoInit":           "/saml/init",
 
     "staffOrders":       "/staff/:staff_id/orders/:id",
     "staffById":         "/staff/:id",

@@ -6,12 +6,12 @@ var _ = require('lodash');
 var isFailedLogin = false;
 
 /**@ngInject*/
-function LoginController($scope, $location, AuthService, ROUTES) {
+function LoginController($scope, $location, AuthService, ROUTES, ssoUrl) {
   this.$scope = $scope;
   this.$location = $location;
   this.AuthService = AuthService;
   this.ROUTES = ROUTES;
-
+  this.ssoUrl = ssoUrl;
 
   // If the user is already logged in, take them to the default route.
   if (AuthService.isAuthenticated()) {
@@ -45,6 +45,13 @@ LoginController.prototype = {
 
   hasFailedLogin: function() {
     return isFailedLogin;
+  }
+};
+
+LoginController.resolve = {
+  /**@ngInject*/
+  ssoUrl: function(AuthService) {
+    return AuthService.ssoInit();
   }
 };
 

@@ -4,11 +4,11 @@ var _ = require('lodash');
 
 /**@ngInject*/
 var SettingsResource = function($resource, apiResource) {
-    return $resource(apiResource('settingById'), { id: '@id', name: '@name'}, {
+    return $resource(apiResource('settingById'), { id: '@id', hid: '@hid'}, {
         'update': { method:'PUT' },
         'get': {
             method: 'GET',
-            url: apiResource('settingsByName'),
+            url: apiResource('settingsByHid'),
             isArray: true,
             transformResponse: function(data, headersGetter) {
 
