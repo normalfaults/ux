@@ -7,17 +7,16 @@ var ProjectsResource = function($resource, apiResource) {
   var Project = $resource(apiResource('projectsById'), { id: '@id' }, {
     'query': {
       method: 'GET',
-      paramDefaults: {
+      params: {
         'methods[]': ['domain', 'url', 'problem_count', 'account_number', 'resources', 'resources_unit', 'cpu', 'hdd', 'ram', 'status', 'monthly_spend']
       },
       isArray: true
     },
     'get': {
       method: 'GET',
-      paramDefaults: {
+      params: {
         'methods[]': ['domain', 'url', 'problem_count', 'account_number', 'resources', 'resources_unit', 'cpu', 'hdd', 'ram', 'status', 'monthly_spend', 'order_history']
-      },
-      isArray: false
+      }
     },
     'update': { method:'PUT' },
     'approve': {
