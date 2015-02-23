@@ -30,9 +30,13 @@
   </div>
   <div class="bottom-area">
     <span class="fl">
-       <span class="blue-texts">{{project.state}}</span>
-       <span
-         ng-class="{'fa fa-check-circle-o success-icon': project.state_ok, 'fa fa-exclamation-circle error-icon' : !project.state_ok }"></span>
+      <span ng-pluralize class="blue-texts" count="{{project.problem_count}}"
+            when="{'0': 'No Problems', '1': '1 Problem', 'other': '{{project.problem_count}} Problems'}"></span>
+      <span ng-switch on="project.status">
+        <i ng-switch-when="ok" class="fa fa-check-circle-o status-icon success-icon"></i>
+        <i ng-switch-when="critical" class="fa fa-exclamation-circle status-icon error-icon"></i>
+        <i ng-switch-default class="fa fa-exclamation-triangle status-icon warning-icon"></i>
+      </span>
     </span>
     <!-- end .data-box -->
   </div>

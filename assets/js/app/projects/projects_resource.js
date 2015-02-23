@@ -5,6 +5,21 @@ var _ = require('lodash');
 /**@ngInject*/
 var ProjectsResource = function($resource, apiResource) {
   var Project = $resource(apiResource('projectsById'), { id: '@id' }, {
+    'query': {
+      method: 'GET',
+      params: {
+        // TODO: This list should be trimmed of things no longer needed or part of the application
+        'methods[]': ['domain', 'url', 'problem_count', 'account_number', 'resources', 'resources_unit', 'cpu', 'hdd', 'ram', 'status', 'monthly_spend']
+      },
+      isArray: true
+    },
+    'get': {
+      method: 'GET',
+      params: {
+        // TODO: This list should be trimmed of things no longer needed or part of the application
+        'methods[]': ['domain', 'url', 'problem_count', 'account_number', 'resources', 'resources_unit', 'cpu', 'hdd', 'ram', 'status', 'monthly_spend', 'order_history']
+      }
+    },
     'update': { method:'PUT' },
     'approve': {
       url: apiResource('projectsById') + '/approve',
