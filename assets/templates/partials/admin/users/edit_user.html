@@ -14,13 +14,13 @@
                        Back to Admin Users
                      </a>
                    </div>
-                   <div class="col-sm-6 text-right">
-                     <button type="button" class="btn btn-danger" ng-click="adminUserFormCtrl.destroy()">Delete</button>
-                     <button type="submit" class="btn btn-primary" ng-disabled="!adminUserFormCtrl.canSubmit()">Update User</button>
-                   </div>
                  </div>
 
                  <div ng-include src="'/partials/admin/users/_form.html'"></div>
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary" ng-disabled="!adminUserFormCtrl.canSubmit()">UPDATE USER</button>
+                    <button type="button" class="btn btn-danger" ng-click="adminUserFormCtrl.destroy()">REMOVE USER</button>
+                </div>
                </form>
         </section-header>
     </div>
