@@ -3,8 +3,21 @@
 var angular = require('angular');
 
 /**@ngInject*/
-var AuthService = function($http, $location, Session, apiResource, USER_ROLES, ROUTES) {
+var AuthService = function($http, $q, $location, Session, apiResource, USER_ROLES, ROUTES) {
   var authService = {};
+
+  authService.ssoInit = function() {
+    var deferred = $q.defer();
+
+    $http.get(apiResource('ssoInit'))
+      .success(function(response) {
+        deferred.resolve(response.url);
+      }).error(function() {
+        deferred.resolve(false);
+      });
+
+    return deferred.promise;
+  };
 
   authService.login = function(credentials) {
     return $http
