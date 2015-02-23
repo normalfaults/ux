@@ -22,8 +22,8 @@
                         allow-view-type-toggle="true"
         />
         <product-box class="product-box" ng-repeat="product in category.products" product="product">
-            <a type="button" class="btn btn-primary" ui-sref="base.marketplace.show({id: product.id})" target="_blank">View More</a>
-            <a type="button" class="btn btn-primary" ng-click="projectServicesCtrl.addToCart(product)">Add to Cart ({{projectServicesCtrl.cartCount(projectServicesCtrl.project.id, product.id)}}) </a>
+            <a type="button" class="btn btn-primary" ui-sref="base.marketplace.show({id: product.id})" target="_blank">VIEW MORE</a>
+            <a type="button" class="btn btn-primary" ng-click="projectServicesCtrl.addToCart(product)">ADD TO CART ({{projectServicesCtrl.cartCount(projectServicesCtrl.project.id, product.id)}}) </a>
         </product-box>
         </section-header>
     </div>
