@@ -8,6 +8,7 @@ var ProjectsResource = function($resource, apiResource) {
     'query': {
       method: 'GET',
       params: {
+        // TODO: This list should be trimmed of things no longer needed or part of the application
         'methods[]': ['domain', 'url', 'problem_count', 'account_number', 'resources', 'resources_unit', 'cpu', 'hdd', 'ram', 'status', 'monthly_spend']
       },
       isArray: true
@@ -15,6 +16,7 @@ var ProjectsResource = function($resource, apiResource) {
     'get': {
       method: 'GET',
       params: {
+        // TODO: This list should be trimmed of things no longer needed or part of the application
         'methods[]': ['domain', 'url', 'problem_count', 'account_number', 'resources', 'resources_unit', 'cpu', 'hdd', 'ram', 'status', 'monthly_spend', 'order_history']
       }
     },
