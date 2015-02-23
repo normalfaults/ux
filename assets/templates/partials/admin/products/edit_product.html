@@ -1,6 +1,6 @@
 <div class="edit-product-page main-content" set-width>
   <div class="content box-content">
-    <section-header name="Edit Project">
+    <section-header name="Edit Product">
       <form name="productForm.form" class="form-horizontal product-form" role="form"
             ng-controller="ProductFormController as productForm"
             ng-init="productForm.initForm(editCtrl)"
@@ -13,14 +13,14 @@
               <!--Back to products list-->
             <!--</a>-->
           </div>
-          <div class="col-sm-6 text-right">
-            <a ui-sref="base.admin.products.list" class="btn btn-link">Cancel</a>
-            <button type="button" class="btn btn-danger" ng-click="productForm.destroy()">Delete</button>
-            <button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">Update</button>
-          </div>
         </div>
         <div ng-include src="'/partials/admin/products/_form.html'"></div>
       </form>
+        <div class="col-sm-6 form-group">
+            <button type="submit" class="btn btn-primary" ng-disabled="!productForm.canSubmit()">UPDATE</button>
+            <button type="button" class="btn btn-danger" ng-click="productForm.destroy()">DELETE PRODUCT</button>
+            <a ui-sref="base.admin.products.list" class="btn btn-link">CANCEL</a>
+        </div>
     </section-header>
   </div>
 </div>

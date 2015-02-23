@@ -9,7 +9,7 @@
       <h3>Project is Pending</h3>
 
       <div class="pull-left">
-        <button type="button" class="btn btn-primary" ng-click="projectCtrl.approve()">Approve</button>
+        <button type="button" class="btn btn-primary" ng-click="projectCtrl.approve()">APPROVE</button>
       </div>
       <div class="col-sm-7">
         <div class="input-group">
@@ -19,7 +19,7 @@
 
           <div class="input-group-btn">
             <button type="button" class="btn btn-danger" ng-click="projectCtrl.reject()"
-                    ng-disabled="!projectCtrl.reason">Reject
+                    ng-disabled="!projectCtrl.reason">REJECT
             </button>
           </div>
         </div>
@@ -51,7 +51,7 @@
       </div>
       <div class="fr">
         <div class="bottom-btn-box" ng-show="projectCtrl.project.approval == 'approved'">
-          <a ui-sref="base.project.edit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT</a>
+          <a ui-sref="base.project.edit({projectId: projectCtrl.project.id})" class="btn btn-primary">EDIT PROJECT</a>
         </div>
       </div>
     </div>
