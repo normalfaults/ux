@@ -1,55 +1,46 @@
-<span ng-switch on="fieldType">
-  <span ng-switch-when="check_box">
-    <div class="form-group">
-      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
-      <div class="col-sm-8 control-input">
-        <input type="checkbox" name="{{fieldName}}" ng-model='fieldModel.value' id="{{fieldId}}" ng-true-value="'true'" ng-false-value="'false'" ng-disabled="{{fieldDisabled}}">
+<div class="form-group">
+  <label for="{{field.id}}" class="col-sm-3 control-label">{{field.label}}</label>
+
+  <div class="col-sm-8 control-input">
+    <div ng-switch on="field.field_type">
+      <!-- check_box -->
+      <input ng-switch-when="check_box" type="checkbox" name="{{field.id}}" ng-model="field.value"
+             id="{{field.id}}" ng-true-value="'true'" ng-false-value="'false'" ng-disabled="{{field.disabled}}"/>
+
+      <!-- date -->
+      <div ng-switch-when="date" class="input-group">
+        <span class="input-group-addon" ng-click="openDate($event, $index)"><i class="fa fa-calendar"></i></span>
+        <input type="text" name="{{field.id}}" ng-click="openDate($event, $index)" ng-model="field.value"
+               class="form-control" id="{{field.id}}" placeholder="{{field.help_text}}" ng-required="{{field.required}}"
+               ng-disabled="{{field.disabled}}" datepicker-popup="{{format}}" is-open="dateOpened[$index]"
+               datepicker-options="dateOptions" close-text="Close">
       </div>
+
+      <!-- text -->
+      <input ng-switch-when="text" type="text" name="{{field.id}}" ng-model="field.value" class="form-control"
+             id="{{field.id}}" placeholder="{{field.help_text}}" ng-required="{{field.required}}"
+             ng-disabled="{{field.disabled}}"/>
+
+      <!-- textarea -->
+      <textarea ng-switch-when="textarea" name="{{field.id}}" ng-model='field.value' class="form-control"
+                id="{{field.id}}" placeholder="{{field.help_text}}" ng-required="{{field.required}}"
+                ng-disabled="{{field.disabled}}"
+                rows="8"></textarea>
+
+      <!-- select_option -->
+      <select ng-switch-when="select_option" name="{{field.id}}" class="form-control" ng-model="field.value"
+              ng-options="option for option in options" ng-required="{{field.required}}"
+              ng-disabled="{{field.disabled}}">
+        <option value="">Please select an option.</option>
+      </select>
+
+      <!-- password -->
+      <input ng-switch-when="password" type="password" ng-model="field.value" name="{{field.id}}"
+             class="form-control" id="{{field.id}}" ng-required="{{field.required}}" ng-disabled="{{field.disabled}}"/>
     </div>
-  </span>
-  <span ng-switch-when="date">
-    <div class="form-group">
-      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
-      <div class="col-sm-8 control-input">
-        <div class="input-group">
-          <span class="input-group-addon" ng-click="openDate($event, $index)"><i class="fa fa-calendar"></i></span>
-          <input type="text" name="{{fieldName}}" ng-click="openDate($event, $index)" ng-model='fieldModel.value' class="form-control" id="{{fieldId}}" placeholder="{{helpText}}" ng-required="{{fieldRequired}}" ng-disabled="{{fieldDisabled}}" datepicker-popup="{{format}}" is-open="dateOpened[$index]" datepicker-options="dateOptions" close-text="Close">
-        </div>
-      </div>
+    <div class="help-block" ng-show="field.secret && field.setting_given">
+      <span class="help-text">A value has been set but hidden for security reasons</span>
     </div>
-  </span>
-  <span ng-switch-when="text">
-    <div class="form-group">
-      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
-      <div class="col-sm-8 control-input">
-        <input type="text" name="{{fieldName}}" ng-model='fieldModel.value' class="form-control" id="{{fieldId}}" placeholder="{{helpText}}" ng-required="{{required}}" ng-disabled="{{fieldDisabled}}">
-      </div>
-    </div>
-  </span>
-  <span ng-switch-when="textarea">
-    <div class="form-group">
-      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
-      <div class="col-sm-8 control-input">
-        <textarea name="{{fieldName}}" ng-model='fieldModel.value' class="form-control" id="{{fieldId}}" placeholder="{{helpText}}" ng-required="{{required}}" ng-disabled="{{fieldDisabled}}" rows="8"></textarea>
-      </div>
-    </div>
-  </span>
-  <span ng-switch-when="select_option">
-    <div class="form-group">
-      <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
-      <div class="col-sm-8 control-input">
-        <select name="{{fieldName}}" class="form-control" ng-model="fieldModel.value" ng-options="option for option in options" ng-required="{{required}}" ng-disabled="{{fieldDisabled}}">
-          <option value="">Please select an option.</option>
-        </select>
-      </div>
-    </div>
-  </span>
-  <span ng-switch-when="password">
-    <div class="form-group">
-        <label for="{{fieldId}}" class="col-sm-3 control-label">{{label}}</label>
-        <div class="col-sm-8 control-input">
-            <input type="password" ng-model="fieldModel.value" name="{{fieldName}}" class="form-control" id="{{fieldId}}" ng-required="{{required}}" ng-disabled="{{fieldDisabled}}">
-        </div>
-    </div>
-  </span>
-</span>
+  </div>
+</div>
+
