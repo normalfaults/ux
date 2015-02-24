@@ -19,7 +19,7 @@ sh mac 2>&1 | tee ~/laptop.log
 ````
 cd ~
 git clone git://github.com/thoughtbot/dotfiles.git
-env RCRC=$HOME
+env RCRC=$HOME/dotfiles/rcrc rcup
 ````
 
 #### Clone the Repo
@@ -27,6 +27,13 @@ env RCRC=$HOME
 ````
 git clone git@github.com:projectjellyfish/ux.git
 ````
+
+#### Install sass gem (ruby)
+
+```
+cd ~
+gem install sass
+```
 
 #### Install bower
 
