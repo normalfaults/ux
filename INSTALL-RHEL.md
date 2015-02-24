@@ -2,7 +2,7 @@
 
 This guide will walk you through how to install and run Jellyfish-Core on Red Hat Enterprise Linux (or similar, like CentOS).
 
-####C reate jellyfish user
+####Create jellyfish user
 
 ````
 sudo useradd jellyfish
