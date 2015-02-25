@@ -6,14 +6,7 @@ function FormInput() {
         restrict: 'E',
         templateUrl: '/partials/common/form_input.html',
         scope: {
-            fieldModel: "=fieldModel",
-            fieldType: "=fieldType",
-            fieldRequired: "=fieldRequired",
-            fieldDisabled: "=fieldDisabled",
-            fieldId: "=fieldId",
-            fieldName: "=fieldName",
-            label: "=label",
-            helpText: "=helpText"
+          field: '='
         },
         controller: [ '$scope', function ($scope) {
             $scope.dateOpened = [];
