@@ -13,19 +13,19 @@
         <input type="text" name="{{field.id}}" ng-click="openDate($event, $index)" ng-model="field.value"
                class="form-control" id="{{field.id}}" placeholder="{{field.help_text}}" ng-required="{{field.required}}"
                ng-disabled="{{field.disabled}}" datepicker-popup="{{format}}" is-open="dateOpened[$index]"
-               datepicker-options="dateOptions" close-text="Close">
+               datepicker-options="dateOptions" close-text="Close"/>
       </div>
 
       <!-- text -->
       <input ng-switch-when="text" type="text" name="{{field.id}}" ng-model="field.value" class="form-control"
              id="{{field.id}}" placeholder="{{field.help_text}}" ng-required="{{field.required}}"
-             ng-disabled="{{field.disabled}}"/>
+             ng-disabled="{{field.disabled}}" initially-null-always-null/>
 
       <!-- textarea -->
       <textarea ng-switch-when="textarea" name="{{field.id}}" ng-model='field.value' class="form-control"
                 id="{{field.id}}" placeholder="{{field.help_text}}" ng-required="{{field.required}}"
                 ng-disabled="{{field.disabled}}"
-                rows="8"></textarea>
+                rows="8" initially-null-always-null></textarea>
 
       <!-- select_option -->
       <select ng-switch-when="select_option" name="{{field.id}}" class="form-control" ng-model="field.value"
@@ -36,9 +36,10 @@
 
       <!-- password -->
       <input ng-switch-when="password" type="password" ng-model="field.value" name="{{field.id}}"
-             class="form-control" id="{{field.id}}" ng-required="{{field.required}}" ng-disabled="{{field.disabled}}"/>
+             class="form-control" id="{{field.id}}" ng-required="{{field.required}}" ng-disabled="{{field.disabled}}"
+             initially-null-always-null/>
     </div>
-    <div class="help-block" ng-show="field.secret && field.setting_given">
+    <div class="help-block" ng-show="field.secret && field.value_withheld">
       <span class="help-text">A value has been set but hidden for security reasons</span>
     </div>
   </div>
