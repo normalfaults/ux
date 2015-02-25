@@ -18,19 +18,4 @@ npm-debug.log
 
 # build
 public/
-.sass-cache/gnore OS
-.DS_Store
-
-# ignore IDE
-.idea
-
-# ignore bower
-bower_components
-
-# ignore node modules, npm artifacts
-node_modules
-npm-debug.log
-
-# build
-public/
 .sass-cache/
