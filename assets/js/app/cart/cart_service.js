@@ -56,7 +56,7 @@ CartService.prototype = {
    * @param product
    */
   add: function (requestedBy, project, product) {
-    var tmpInCartPrice = parseFloat(product.monthly_price) + (parseFloat(product.hourly_price) * 750);
+    var tmpInCartPrice = this._getInCartPrice(product);
     // Ensure at least two decimal points are shown
     product.in_cart_price = tmpInCartPrice.toFixed(Math.max(2, (tmpInCartPrice.toString().split('.')[1] || []).length));
     this.cart.push({
@@ -133,6 +133,15 @@ CartService.prototype = {
     // Ensure at least two decimal places are shown
     this.totalPrice = this.totalPrice.toFixed(Math.max(2, (this.totalPrice.toString().split('.')[1] || []).length));
     return this.totalPrice;
+  },
+  
+  /**
+   * Get the price to display in cart
+   * 
+   * @private
+   */
+  _getInCartPrice: function(product) {
+    return parseFloat(product.monthly_price) + (parseFloat(product.hourly_price) * 750);
   },
 
   /**
