@@ -15,7 +15,7 @@ var HeaderController = function($rootScope, $scope, $sce, JellyfishModal, CartSe
 
   // @todo This is in the wrong format, does not match the problem_alerts.html partial format.
   angular.forEach(this.alerts, function(item) {
-    item.trustedHtml = $sce.trustAsHtml(item.text);
+    item.trustedHtml = $sce.trustAsHtml(item.text); //shouldn't this be $sce.trustAsHtml(item.message); ?
   });
 };
 
