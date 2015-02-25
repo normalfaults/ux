@@ -13,6 +13,7 @@
         <tr>
             <th class="text-left">PRODUCT</th>
             <th class="text-left">FOR PRODUCT</th>
+            <th class="text-left">PRICE</th>
             <th>REMOVE</th>
         </tr>
         </thead>
@@ -20,6 +21,7 @@
         <tr ng-repeat="(key,item) in cartCtrl.cartItems()">
             <td class="blue-texts">{{item.product.name}}</td>
             <td>{{item.project.name}}</td>
+            <td>${{item.product.in_cart_price}}</td>
             <td class="data-texts"><span ng-click="cartCtrl.removeItem(key)" class="fa fa-remove"></span></td>
         </tr>
         </tbody>
@@ -30,6 +32,7 @@
     </div>
 </div>
 <div class="modal-footer">
-    <a type="button" class="btn btn-warning fl" ng-click="cartCtrl.close()">CONTINUE SHOPPING</a>
+    <div class="total-text">TOTAL: ${{cartCtrl.totalPrice()}}</div>
+    <a type="button" class="btn btn-warning" ng-click="cartCtrl.close()">CONTINUE SHOPPING</a>
     <a type="button" class="btn btn-primary" ng-click="cartCtrl.checkout()">CHECKOUT</a>
 </div>

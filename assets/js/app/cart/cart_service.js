@@ -56,6 +56,9 @@ CartService.prototype = {
    * @param product
    */
   add: function (requestedBy, project, product) {
+    var tmpInCartPrice = parseFloat(product.monthly_price) + (parseFloat(product.hourly_price) * 750);
+    // Ensure at least two decimal points are shown
+    product.in_cart_price = tmpInCartPrice.toFixed(Math.max(2, (tmpInCartPrice.toString().split('.')[1] || []).length));
     this.cart.push({
       requestedBy: requestedBy,
       project:     project,
@@ -115,6 +118,21 @@ CartService.prototype = {
     }, this), function() {
       // @todo Error/Reject case.
     });
+  },
+  
+  /**
+   * Returns sum of prices in cart
+   *
+   * @returns Float
+   */
+  getTotalPrice: function() {
+    this.totalPrice = 0;
+    _.each(this.cart, _.bind(function(item, key, cart) {
+      this.totalPrice=parseFloat(this.totalPrice)+parseFloat(item.product.in_cart_price);
+    }, this));
+    // Ensure at least two decimal places are shown
+    this.totalPrice = this.totalPrice.toFixed(Math.max(2, (this.totalPrice.toString().split('.')[1] || []).length));
+    return this.totalPrice;
   },
 
   /**
