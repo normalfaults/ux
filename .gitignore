@@ -11,6 +11,11 @@ bower_components
 node_modules
 npm-debug.log
 
+# ignore cloud9-specific files
+.c9/metadata/**
+.c9/.nakignore
+.c9/project.settings
+
 # build
 public/
 .sass-cache/
