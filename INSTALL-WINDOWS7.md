@@ -45,18 +45,18 @@ Default port/host is http://localhost:5000
 
 #### Configuration
 * process.env.PORT -- NodeJS server port (optional, defaults to 5000)
-* process.env.API\_BASE\_PATH -- Jellyfish API Base Path (optional, defaults to http://localhost:3000)
+* process.env.API_BASE_PATH -- Jellyfish API Base Path (optional, defaults to http://localhost:3000)
 
 
 #### Adding product icons
 
 Put the 60x60px images in images/assets/images/products/
-Update /assets/js/app/admin/products/products\_admin\_controller.js
+Update /assets/js/app/admin/products/products_admin_controller.js
 
 #### Possible Issue installing sass gem
 
 If there is a "certificate verify failed" error, try this [StackOverflow](http://stackoverflow.com/questions/27262582/i-get-certificate-verify-failed-on-installing-bundler-for-ruby-on-rails-on-wi).
--Save this
+
 
 	-----BEGIN CERTIFICATE-----
 	MIIENjCCAx6gAwIBAgIBATANBgkqhkiG9w0BAQUFADBvMQswCQYDVQQGEwJTRTEU
@@ -84,10 +84,6 @@ If there is a "certificate verify failed" error, try this [StackOverflow](http:/
 	mnkPIAou1Z5jJh5VkpTYghdae9C8x49OhgQ=
 	-----END CERTIFICATE-----
 
-into a file called "AddTrustExternalCARoot-2048.pem".
-Then
-	$ gem which rubygems
-This will return the path for a rubygems.rb file; change to the directory holding that file.
-That is, if it returns "C:\Ruby21\lib\ruby\2.1.0\rubygems.rb", then go to "C:\Ruby21\lib\ruby\2.1.0". 
-From this folder, open the "rubygems" folder. Then open the "ssl_certs" folder. Place your "AddTrustExternalCARoot-2048.pem" file in this folder. 
-Make sure you return to your repo folder (ux).
+* Save this into a file called "AddTrustExternalCARoot-2048.pem".
+
+* Then run `$ gem which rubygems` in Git Bash. This will return the path for a rubygems.rb file; change to the directory holding that file. That is, if it returns "C:\Ruby21\lib\ruby\2.1.0\rubygems.rb", then go to "C:\Ruby21\lib\ruby\2.1.0". From this folder, open the "rubygems" folder. Then open the "ssl_certs" folder. Place your "AddTrustExternalCARoot-2048.pem" file in this folder. 
