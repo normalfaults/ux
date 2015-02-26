@@ -25,6 +25,7 @@ Please use the OS specific install guide from below.
 
 - INSTALL-RHEL.md - Red Hat Enterprise Linux installation
 - INSTALL-MACOSX.md - Mac OS X installation
+- INSTALL-WINDOWS7.md - Windows 7 installation
 
 ####Adding product icons
 
