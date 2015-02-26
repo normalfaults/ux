@@ -141,7 +141,7 @@ ProjectController.prototype = {
     var leftMonths = '>12';
     var leftColor = 'green';
 
-    if (projectBudget > 0 && monthlySpend !== 0) {
+    if (projectBudget > 0 && monthlySpend !== 0 && this._isANumber(monthlySpend)) {
 
       leftMonths = Math.round((projectBudget - projectSpent) / monthlySpend);
       leftPercent = leftMonths / 12;
@@ -221,6 +221,17 @@ ProjectController.prototype = {
     // Are all services complete
     return !anyNotComplete;
 
+  },
+  
+  /**
+   * Check that a variable is a number and defined (avoids NaN and undefined)
+   *
+   * http://stackoverflow.com/questions/18082/validate-decimal-numbers-in-javascript-isnumeric
+   * 
+   * @private
+   */
+  _isANumber: function(n) {
+    return (!isNaN(parseFloat(n)) && isFinite(n));
   }
 };
 
