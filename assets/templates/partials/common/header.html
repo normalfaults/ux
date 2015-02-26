@@ -16,12 +16,15 @@
       <a class="fa fa-bell-o top-bar-icon" drop-down><i class="notice" ng-if="headerCtrl.alerts.length">{{headerCtrl.alerts.length}}</i></a>
 
       <div class="drop-down-box hide keep-drop-down-open">
-        <ul ng-if="headerCtrl.alerts.length > 0">
-          <li ng-repeat="item in headerCtrl.alerts | limitTo:5">
-            <span class="texts" ng-bind-html="item.trustedHtml"></span>
-            <span class="ago">{{item.ago}}</span>
-          </li>
-        </ul>
+        <ul ng-if="headerCtrl.alerts.length > 0" >
+          <li ng-repeat="row in headerCtrl.alerts | limitTo:5" ng-switch on="row.status">
+              <span>{{row.project.name}}</span>
+              <div ng-switch-when="OK" class="text-ok">{{row.trustedHtml}}</div>
+              <div ng-switch-when="WARNING" class="text-warning">{{row.trustedHtml}}</div>
+              <div ng-switch-when="CRITICAL" class="text-critical">{{row.trustedHtml}}</div>
+              <div ng-switch-default class="text-unknown">{{row.trustedHtml}}</div>
+            </li>
+          </ul>
         <ul ng-if="headerCtrl.alerts.length == 0">
           <li>
             <span>No Alerts</span>
