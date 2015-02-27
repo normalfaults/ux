@@ -30,31 +30,24 @@
   .project-box
     background: #fff
     margin: 0 25px 25px 0
-    height: 313px
+    height: 290px
     min-width: 243px
     box-shadow: 0 0 5px 1px #ccc
     border-radius: 5px
     float: left
+    position: relative
+    overflow: hidden
     h3
       height: 30px
       line-height: 30px
-      padding: 18px 0 0 14px
+      margin: 9px 0 9px 14px
       .titles
         font-family: "proximanova_semibold"
         font-size: 16px
         color: #0a4887
         float: left
-      .icons
-        float: right
-        padding: 5px 5px 0 0
-        a
-          float: left
-          width: 16px
-          height: 16px
-          margin-right: 12px
-          display: inline-block
     .data-box
-      height: 220px
+      height: 198px
       .info
         text-align: center
         min-height: 120px
@@ -80,11 +73,11 @@
       height: 66px
       text-align: center
       a
-        margin: 11px 0 0 6px
+        margin: 11px 4px
         width: 44px
         height: 44px
         border: 3px solid #2e96db
-        border-radius: 100%
+        border-radius: 50%
         display: inline-block
         &:hover
           border: 3px solid #1e56bb
@@ -93,21 +86,30 @@
           font-size: 25px
           line-height: 40px
 
-    .bottom-area
+    .project-status
       height: 45px
-      background: #f5f8fc
-      padding: 0 7px 0 20px
-      border-bottom-left-radius: 5px
-      border-bottom-right-radius: 5px
-      .blue-texts
-        font-family: "SourceSansPro_Regular"
-        font-size: 14px
-        color: #0b4b8d
-        height: 24px
-        line-height: 24px
-        margin: 10px 0
-        display: inline-block
-        float: left
+      background-color: $unknown-color
+      color: #000
+      position: absolute
+      left: 0
+      right: 0
+      bottom: 0
+
+      .status-icon
+        font-size: 36px
+        transform: translate(-50%, -50%)
+        position: absolute
+        top: 50%
+        left: 50%
+
+    .project-status-ok
+      background-color: $ok-color
+      color: #fff
+    .project-status-warning
+      background-color: $warning-color
+    .project-status-critical
+      background-color: $critical-color
+      color: #fff
 
   .btn-box
     background: #fff
